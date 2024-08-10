@@ -1,0 +1,165 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "119c71e2-5f10-42cb-9b28-f58f50c066c9")
+	(paper "A2")
+	(lib_symbols)
+	(sheet
+		(at 398.526 26.162)
+		(size 162.814 140.97)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "451f1fcb-140c-4b1a-9412-d453953d687a")
+		(property "Sheetname" "POWER"
+			(at 398.526 25.4504 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 398.526 167.7166 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "MicroMouse2024_V1"
+				(path "/119c71e2-5f10-42cb-9b28-f58f50c066c9"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 218.44 25.654)
+		(size 159.512 142.494)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "5f96007a-433b-4fe5-a465-31d5e8f7596b")
+		(property "Sheetname" "ESP32"
+			(at 218.44 24.9424 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "esp32.kicad_sch"
+			(at 218.44 168.7326 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "MicroMouse2024_V1"
+				(path "/119c71e2-5f10-42cb-9b28-f58f50c066c9"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 33.274 187.96)
+		(size 169.164 116.84)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "6da916bb-9199-48d8-8c49-63c774e536d7")
+		(property "Sheetname" "TB6612"
+			(at 33.274 187.2484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "tb6612.kicad_sch"
+			(at 33.274 305.3846 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "MicroMouse2024_V1"
+				(path "/119c71e2-5f10-42cb-9b28-f58f50c066c9"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 31.75 26.162)
+		(size 170.18 141.986)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "cea03a34-a2e8-4d47-b953-830632fc800c")
+		(property "Sheetname" "STM32"
+			(at 31.75 25.4504 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "stm32.kicad_sch"
+			(at 31.75 168.7326 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "MicroMouse2024_V1"
+				(path "/119c71e2-5f10-42cb-9b28-f58f50c066c9"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

@@ -1,0 +1,9 @@
+.vagrant
+*.log
+*build
+
+# Visual Studio Code
+*.code-workspace
+.vscode/settings.json
+.vscode/.cortex-debug*.json
+.vscode/cquery_cached_index

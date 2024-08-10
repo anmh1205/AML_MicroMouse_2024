@@ -1,0 +1,12 @@
+build
+.dep
+Drivers
+Inc
+Middlewares
+Src
+TrueSTUDIO
+Makefile
+*.s
+*.ld
+.mxproject
+mx.scratch

@@ -1,0 +1,2 @@
+PCB 2 Layer, Green
+PCB Thinkness 1.2mm

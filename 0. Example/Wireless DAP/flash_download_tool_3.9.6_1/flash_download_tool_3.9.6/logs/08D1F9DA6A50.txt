@@ -1,0 +1,167 @@
+*************************** START ****************************
+START TIME: 202406201631
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+mac l: 0xf9da6a50
+mac h: 0xc508d1
+crc_cal: 197
+crc_read: 197
+crc_test: 0
+ESP32 MAC CRC OK
+get mac res: 1
+get flash id : 0x001840a1
+manufacturer_id: 0xa1
+device_id: 0x4018
+com closed
+Use time: 18 s
+Download result: PASS
+*************************** END ****************************
+
+*************************** START ****************************
+START TIME: 202406201631
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+mac l: 0xf9da6a50
+mac h: 0xc508d1
+crc_cal: 197
+crc_read: 197
+crc_test: 0
+ESP32 MAC CRC OK
+get mac res: 1
+get flash id : 0x001840a1
+manufacturer_id: 0xa1
+device_id: 0x4018
+Wrote 1036656 bytes (658684 compressed) at 0x00000000 in 29.6 seconds (effective 280.5 kbit/s)...
+Hash of data verified.Wrote 1441792 bytes (11578 compressed) at 0x00290000 in 5.6 seconds (effective 2049.4 kbit/s)...
+Hash of data verified.
+Leaving...
+com closed
+Use time: 41 s
+Download result: PASS
+*************************** END ****************************
+
+*************************** START ****************************
+START TIME: 202406201634
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+mac l: 0xf9da6a50
+mac h: 0xc508d1
+crc_cal: 197
+crc_read: 197
+crc_test: 0
+ESP32 MAC CRC OK
+get mac res: 1
+get flash id : 0x001840a1
+manufacturer_id: 0xa1
+device_id: 0x4018
+com closed
+Use time: 15 s
+Download result: PASS
+*************************** END ****************************
+
+*************************** START ****************************
+START TIME: 202406201634
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+mac l: 0xf9da6a50
+mac h: 0xc508d1
+crc_cal: 197
+crc_read: 197
+crc_test: 0
+ESP32 MAC CRC OK
+get mac res: 1
+get flash id : 0x001840a1
+manufacturer_id: 0xa1
+device_id: 0x4018
+Wrote 4128768 bytes (673279 compressed) at 0x00000000 in 23.7 seconds (effective 1395.2 kbit/s)...
+Hash of data verified.
+Leaving...
+com closed
+Use time: 32 s
+Download result: PASS
+*************************** END ****************************
+
+*************************** START ****************************
+START TIME: 202406201638
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+mac l: 0xf9da6a50
+mac h: 0xc508d1
+crc_cal: 197
+crc_read: 197
+crc_test: 0
+ESP32 MAC CRC OK
+get mac res: 1
+get flash id : 0x001840a1
+manufacturer_id: 0xa1
+device_id: 0x4018
+com closed
+Use time: 14 s
+Download result: PASS
+*************************** END ****************************
+
+*************************** START ****************************
+START TIME: 202406201638
+CONNECT BAUD: 115200
+set state: ESP_DL_SYNC
+serial port opened
+-----------
+baud:115200
+root baud:115200
+-------------
+===============BAUD : 115200===============CALL DEVICE SYNC
+connecting...
+mac l: 0xf9da6a50
+mac h: 0xc508d1
+crc_cal: 197
+crc_read: 197
+crc_test: 0
+ESP32 MAC CRC OK
+get mac res: 1
+get flash id : 0x001840a1
+manufacturer_id: 0xa1
+device_id: 0x4018
+Wrote 1036656 bytes (658684 compressed) at 0x00000000 in 15.4 seconds (effective 538.3 kbit/s)...
+Hash of data verified.Wrote 1441792 bytes (11578 compressed) at 0x00290000 in 5.2 seconds (effective 2198.3 kbit/s)...
+Hash of data verified.
+Leaving...
+com closed
+Use time: 27 s
+Download result: PASS
+*************************** END ****************************
+

@@ -1,0 +1,7 @@
+{
+    "cortex-debug.armToolchainPath": "C:\\MAKE\\TEST\\GCC-ARM-NONE-EABI-9-2019-Q4-MAJOR-WIN32\\BIN",
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "aml_debugdevice.h": "c"
+    }
+}
