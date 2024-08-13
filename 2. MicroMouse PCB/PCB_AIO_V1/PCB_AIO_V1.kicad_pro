@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 2.54,
-          "width": 2.54
+          "drill": 0.762,
+          "height": 1.524,
+          "width": 1.524
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -179,9 +179,11 @@
       ],
       "track_widths": [
         0.0,
+        0.2,
         0.25,
         0.3,
         0.4,
+        0.45,
         0.5,
         1.0
       ],
@@ -445,13 +447,11 @@
     }
   },
   "libraries": {
-    "pinned_footprint_libs": [
-      "Mini560"
-    ],
+    "pinned_footprint_libs": [],
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "PCB_T2.kicad_pro",
+    "filename": "PCB_AIO_V1.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -485,10 +485,10 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "D:/KiCad8/",
+      "netlist": "",
       "plot": "",
       "pos_files": "",
-      "specctra_dsn": "PCB_T2_kicad.dsn",
+      "specctra_dsn": "PCB_AIO_V1_2.dsn",
       "step": "",
       "svg": "",
       "vrml": ""
@@ -596,7 +596,7 @@
   },
   "sheets": [
     [
-      "c8e27fb8-9151-4666-b894-d6f2234889f4",
+      "c3ade80b-66d6-444b-9830-c8cc5666432b",
       "Root"
     ]
   ],

@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 49,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -73,7 +73,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "PCB_T2.kicad_prl",
+    "filename": "PCB_AIO_V1.kicad_prl",
     "version": 3
   },
   "project": {
