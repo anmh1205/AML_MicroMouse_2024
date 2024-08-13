@@ -9879,7 +9879,7 @@
 		)
 		(uuid "67a9908e-2aac-4484-bf75-14752b2d77ad")
 	)
-	(label "BUTTON_1"
+	(label "BUTTON_0"
 		(at 325.374 120.904 180)
 		(fields_autoplaced yes)
 		(effects
@@ -10206,7 +10206,7 @@
 		)
 		(uuid "b7175146-42aa-4aa3-b47a-03576f527d4c")
 	)
-	(label "BUTTON_2"
+	(label "BUTTON_1"
 		(at 374.142 120.904 180)
 		(fields_autoplaced yes)
 		(effects
