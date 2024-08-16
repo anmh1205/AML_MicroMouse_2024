@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 113)
+    (start_pass_no 20)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -41,11 +41,26 @@
     )
     (attach off)
   )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
   (via 
     "Via[0-1]_600:300_um" "Via[0-1]_600:300_um" default
   )
   (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
     "Via[0-1]_600:300_um-kicad_default" "Via[0-1]_600:300_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
   )
   (via_rule
     default "Via[0-1]_600:300_um"
@@ -64,22 +79,33 @@
     )
   )
   (class "kicad_default"
-    GND "Net-(BZ1--)" +3.3V "Net-(C2-Pad2)" "Net-(C5-Pad2)" /NRST /PH0 /PH1
-    +5V "Net-(D1-K)" "/LED_0" "/LED_1" "Net-(D2-K)" "/LED_2" "Net-(D3-K)" "Net-(D4-K)"
-    "/LED_3" "/IN-" /IN+ /SWDIO /SWCLK "/USART2_TX" "/USART2_RX" "/USART1_TX"
-    "/USART1_RX" "/NW_SERVO" "/SW_SERVO" "/SE_SERVO" "/NE_SERVO" "/N_TOF" "/W_TOF" "/S_TOF"
-    "/E_TOF" "/NW_ENC_A" "/NW_M2" "/NW_M1" "/NW_ENC_B" "/NE_M2" "/NE_M1" "/NE_ENC_B"
-    "/NE_ENC_A" "/SW_ENC_A" "/SW_M2" "/SW_M1" "/SW_ENC_B" "/SE_M1" "/SE_M2" "/SE_ENC_A"
-    "/SE_ENC_B" "Net-(Q1-B)" "/BUTTON_0" "/BUTTON_1" /BUZZER "Net-(U1-GND)" "/SW_PWM" "/SW_IN1"
-    "/NW_IN1" "/NW_PWM" "/NW_IN2" "/SW_IN2" "unconnected-(U3-PB12-Pad51)" "unconnected-(U3-PB13-Pad52)" "unconnected-(U3-PE4-Pad3)" "/I2C4_SDA"
-    "unconnected-(U3-PC15-Pad9)" "unconnected-(U3-PD11-Pad58)" "/NE_IN1" "unconnected-(U3-PA8-Pad67)" "unconnected-(U3-PA4-Pad28)" "unconnected-(U3-PC11-Pad79)" "unconnected-(U3-PB10-Pad46)" "/SE_IN1"
-    "unconnected-(U3-PC14-Pad8)" "unconnected-(U3-PB5-Pad91)" "unconnected-(U3-PB4-Pad90)" "unconnected-(U3-PD14-Pad61)" "unconnected-(U3-PA15-Pad77)" "/SE_IN2" "unconnected-(U3-PA12-Pad71)" "/I2C1_SDA"
-    "unconnected-(U3-PD7-Pad88)" "unconnected-(U3-PE2-Pad1)" "unconnected-(U3-PD15-Pad62)" "unconnected-(U3-PD10-Pad57)" "unconnected-(U3-PA9-Pad68)" "/I2C4_SCL" "/SE_PWM" "unconnected-(U3-PE5-Pad4)"
-    "/USART3_RX" "unconnected-(U3-PC4-Pad32)" "unconnected-(U3-PD6-Pad87)" "unconnected-(U3-PE3-Pad2)" "unconnected-(U3-PE6-Pad5)" "unconnected-(U3-PC12-Pad80)" "/NE_IN2" "/USART3_TX"
-    "/NE_PWM" "/I2C1_SCL" "unconnected-(U3-PC5-Pad33)" "unconnected-(U3-PE1-Pad98)" "unconnected-(U3-PC10-Pad78)" "unconnected-(U3-PA11-Pad70)" "unconnected-(U3-PE0-Pad97)" "unconnected-(U3-PA10-Pad69)"
-    "unconnected-(U3-PC13-Pad7)" "unconnected-(U3-PB11-Pad47)" "Net-(U4-GND)"
+    +5V "/SW_M2" "/SW_M1" "/SE_M1" "/SE_M2" "/NE_M1" "/NE_M2" "/NW_M2"
+    "/NW_M1" /IN+ "/IN-" "Net-(BZ1--)" +3.3V "Net-(C2-Pad2)" "Net-(C5-Pad2)" /NRST
+    /PH0 /PH1 "Net-(D1-K)" "/LED_0" "/LED_1" "Net-(D2-K)" "/LED_2" "Net-(D3-K)"
+    "Net-(D4-K)" "/LED_3" /SWDIO /SWCLK "/USART2_TX" "/USART2_RX" "/USART1_TX" "/USART1_RX"
+    "/NW_SERVO" "/SW_SERVO" "/SE_SERVO" "/NE_SERVO" "/N_TOF" "/W_TOF" "/S_TOF" "/E_TOF"
+    "/NW_ENC_A" "/NW_ENC_B" "/NE_ENC_B" "/NE_ENC_A" "/SW_ENC_A" "/SW_ENC_B" "/SE_ENC_A" "/SE_ENC_B"
+    "Net-(Q1-B)" "/BUTTON_0" "/BUTTON_1" /BUZZER "Net-(U1-GND)" "/SW_PWM" "/SW_IN1" "/NW_IN1"
+    "/NW_PWM" "/NW_IN2" "/SW_IN2" "unconnected-(U3-PB12-Pad51)" "unconnected-(U3-PB13-Pad52)" "unconnected-(U3-PE4-Pad3)" "/I2C4_SDA" "unconnected-(U3-PC15-Pad9)"
+    "unconnected-(U3-PD11-Pad58)" "/NE_IN1" "unconnected-(U3-PA8-Pad67)" "unconnected-(U3-PA4-Pad28)" "unconnected-(U3-PC11-Pad79)" "unconnected-(U3-PB10-Pad46)" "/SE_IN1" "unconnected-(U3-PC14-Pad8)"
+    "unconnected-(U3-PB5-Pad91)" "unconnected-(U3-PB4-Pad90)" "unconnected-(U3-PD14-Pad61)" "unconnected-(U3-PA15-Pad77)" "/SE_IN2" "unconnected-(U3-PA12-Pad71)" "/I2C1_SDA" "unconnected-(U3-PD7-Pad88)"
+    "unconnected-(U3-PE2-Pad1)" "unconnected-(U3-PD15-Pad62)" "unconnected-(U3-PD10-Pad57)" "unconnected-(U3-PA9-Pad68)" "/I2C4_SCL" "/SE_PWM" "unconnected-(U3-PE5-Pad4)" "/USART3_RX"
+    "unconnected-(U3-PC4-Pad32)" "unconnected-(U3-PD6-Pad87)" "unconnected-(U3-PE3-Pad2)" "unconnected-(U3-PE6-Pad5)" "unconnected-(U3-PC12-Pad80)" "/NE_IN2" "/USART3_TX" "/NE_PWM"
+    "/I2C1_SCL" "unconnected-(U3-PC5-Pad33)" "unconnected-(U3-PE1-Pad98)" "unconnected-(U3-PC10-Pad78)" "unconnected-(U3-PA11-Pad70)" "unconnected-(U3-PE0-Pad97)" "unconnected-(U3-PA10-Pad69)" "unconnected-(U3-PC13-Pad7)"
+    "unconnected-(U3-PB11-Pad47)" "Net-(U4-GND)"
     (clearance_class "kicad_default")
     (via_rule "kicad_default")
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class gnd
+    GND
+    (clearance_class default)
+    (via_rule default)
     (rule
       (width 200.0)
     )
