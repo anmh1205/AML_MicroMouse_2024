@@ -10577,6 +10577,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.078 165.608) (xy 119.888 165.608)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d68aaf0e-0453-462e-bbaf-d441245e2c4c")
+	)
+	(wire
+		(pts
 			(xy 566.674 87.884) (xy 553.212 87.884)
 		)
 		(stroke
@@ -11439,6 +11449,17 @@
 			(justify right bottom)
 		)
 		(uuid "18e217c0-b540-40e5-b0d8-240553893b24")
+	)
+	(label "BUZZER"
+		(at 116.078 165.608 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "19d65b49-cfd6-48eb-9bc6-73bfe2400e1b")
 	)
 	(label "SW_M2"
 		(at 524.256 286.258 0)
