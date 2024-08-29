@@ -59,6 +59,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define NE_ENC_A_Pin GPIO_PIN_0
+#define NE_ENC_A_GPIO_Port GPIOA
+#define NE_ENC_B_Pin GPIO_PIN_1
+#define NE_ENC_B_GPIO_Port GPIOA
 #define NW_ENC_A_Pin GPIO_PIN_5
 #define NW_ENC_A_GPIO_Port GPIOA
 #define SW_ENC_A_Pin GPIO_PIN_6
@@ -89,42 +93,18 @@ void Error_Handler(void);
 #define NE_PWM_GPIO_Port GPIOE
 #define NE_IN2_Pin GPIO_PIN_15
 #define NE_IN2_GPIO_Port GPIOE
-#define E_53_EXTI_Pin GPIO_PIN_12
-#define E_53_EXTI_GPIO_Port GPIOB
-#define E_53_XSHUT_Pin GPIO_PIN_13
-#define E_53_XSHUT_GPIO_Port GPIOB
-#define E_61_EXTI_Pin GPIO_PIN_10
-#define E_61_EXTI_GPIO_Port GPIOD
-#define E_61_XSHUT_Pin GPIO_PIN_11
-#define E_61_XSHUT_GPIO_Port GPIOD
 #define SE_ENC_A_Pin GPIO_PIN_12
 #define SE_ENC_A_GPIO_Port GPIOD
 #define SE_ENC_B_Pin GPIO_PIN_13
 #define SE_ENC_B_GPIO_Port GPIOD
-#define S_53_EXTI_Pin GPIO_PIN_14
-#define S_53_EXTI_GPIO_Port GPIOD
-#define S_53_XSHUT_Pin GPIO_PIN_15
-#define S_53_XSHUT_GPIO_Port GPIOD
-#define S_61_EXTI_Pin GPIO_PIN_6
-#define S_61_EXTI_GPIO_Port GPIOC
-#define S_61_XSHUT_Pin GPIO_PIN_7
-#define S_61_XSHUT_GPIO_Port GPIOC
-#define W_53_XSHUT_Pin GPIO_PIN_8
-#define W_53_XSHUT_GPIO_Port GPIOC
-#define W_53_EXTI_Pin GPIO_PIN_9
-#define W_53_EXTI_GPIO_Port GPIOC
-#define W_61_EXTI_Pin GPIO_PIN_8
-#define W_61_EXTI_GPIO_Port GPIOA
-#define W_61_XSHUT_Pin GPIO_PIN_9
-#define W_61_XSHUT_GPIO_Port GPIOA
-#define N_53_XSHUT_Pin GPIO_PIN_10
-#define N_53_XSHUT_GPIO_Port GPIOA
-#define N_53_EXTI_Pin GPIO_PIN_11
-#define N_53_EXTI_GPIO_Port GPIOA
-#define N_61_XSHUT_Pin GPIO_PIN_12
-#define N_61_XSHUT_GPIO_Port GPIOA
-#define N_61_EXTI_Pin GPIO_PIN_15
-#define N_61_EXTI_GPIO_Port GPIOA
+#define NW_SERVO_Pin GPIO_PIN_6
+#define NW_SERVO_GPIO_Port GPIOC
+#define SW_SERVO_Pin GPIO_PIN_7
+#define SW_SERVO_GPIO_Port GPIOC
+#define SE_SERVO_Pin GPIO_PIN_8
+#define SE_SERVO_GPIO_Port GPIOC
+#define NE_SERVO_Pin GPIO_PIN_9
+#define NE_SERVO_GPIO_Port GPIOC
 #define NW_ENC_B_Pin GPIO_PIN_3
 #define NW_ENC_B_GPIO_Port GPIOB
 

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Mini560-5A")(type "KiCad")(uri "${KIPRJMOD}/Lib/Mini560/Mini560-5A.kicad_sym")(options "")(descr ""))
+)
