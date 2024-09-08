@@ -59,6 +59,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define N_TOF_Pin GPIO_PIN_0
+#define N_TOF_GPIO_Port GPIOC
+#define W_TOF_Pin GPIO_PIN_1
+#define W_TOF_GPIO_Port GPIOC
+#define S_TOF_Pin GPIO_PIN_2
+#define S_TOF_GPIO_Port GPIOC
+#define E_TOF_Pin GPIO_PIN_3
+#define E_TOF_GPIO_Port GPIOC
 #define NE_ENC_A_Pin GPIO_PIN_0
 #define NE_ENC_A_GPIO_Port GPIOA
 #define NE_ENC_B_Pin GPIO_PIN_1
@@ -105,6 +113,18 @@ void Error_Handler(void);
 #define SE_SERVO_GPIO_Port GPIOC
 #define NE_SERVO_Pin GPIO_PIN_9
 #define NE_SERVO_GPIO_Port GPIOC
+#define BUTTON_0_Pin GPIO_PIN_0
+#define BUTTON_0_GPIO_Port GPIOD
+#define BUTTON_1_Pin GPIO_PIN_1
+#define BUTTON_1_GPIO_Port GPIOD
+#define LED_0_Pin GPIO_PIN_2
+#define LED_0_GPIO_Port GPIOD
+#define LED_1_Pin GPIO_PIN_3
+#define LED_1_GPIO_Port GPIOD
+#define LED_2_Pin GPIO_PIN_4
+#define LED_2_GPIO_Port GPIOD
+#define LED_3_Pin GPIO_PIN_5
+#define LED_3_GPIO_Port GPIOD
 #define NW_ENC_B_Pin GPIO_PIN_3
 #define NW_ENC_B_GPIO_Port GPIOB
 

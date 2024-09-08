@@ -1,18 +1,26 @@
 {
+  "version": 4,
   "configurations": [
     {
-      "name": "windows-gcc-x86",
+      "name": "STM32",
+      "configurationProvider": "ms-vscode.cmake-tools",
+      "intelliSenseMode": "${default}",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc",
+        "${workspaceFolder}/Drivers/CMSIS/Include",
+        "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
       ],
-      "compilerPath": "C:/MinGW/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x86",
-      "compilerArgs": [
-        ""
-      ]
+      "browse": {
+        "path": [
+          "${workspaceFolder}/**",
+          "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc",
+          "${workspaceFolder}/Drivers/CMSIS/Include",
+          "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      }
     }
-  ],
-  "version": 4
+  ]
 }
