@@ -495,7 +495,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "PCB_AIO_V2.dsn",
-      "step": "",
+      "step": "PCB_AIO_V2.step",
       "svg": "",
       "vrml": ""
     },
