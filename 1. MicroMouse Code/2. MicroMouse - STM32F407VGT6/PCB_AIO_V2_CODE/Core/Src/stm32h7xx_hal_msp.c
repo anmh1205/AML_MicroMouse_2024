@@ -127,20 +127,20 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PC4     ------> ADC2_INP4
     PB1     ------> ADC2_INP5
     */
-    GPIO_InitStruct.Pin = IR_SENSOR_BL_Pin|IR_SENSOR_BR_Pin|IR_SENSOR_FL_Pin;
+    GPIO_InitStruct.Pin = IR_SENSOR_FR_Pin|IR_SENSOR_RR_Pin|IR_SENSOR_FL_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = IR_SENSOR_RR_Pin|IR_SENSOR_FR_Pin|IR_SENSOR_FF_Pin;
+    GPIO_InitStruct.Pin = IR_SENSOR_BR_Pin|IR_SENSOR_BL_Pin|IR_SENSOR_RL_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = IR_SENSOR_RL_Pin;
+    GPIO_InitStruct.Pin = IR_SENSOR_FF_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(IR_SENSOR_RL_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(IR_SENSOR_FF_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN ADC2_MspInit 1 */
 
@@ -175,11 +175,11 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PC4     ------> ADC2_INP4
     PB1     ------> ADC2_INP5
     */
-    HAL_GPIO_DeInit(GPIOC, IR_SENSOR_BL_Pin|IR_SENSOR_BR_Pin|IR_SENSOR_FL_Pin);
+    HAL_GPIO_DeInit(GPIOC, IR_SENSOR_FR_Pin|IR_SENSOR_RR_Pin|IR_SENSOR_FL_Pin);
 
-    HAL_GPIO_DeInit(GPIOA, IR_SENSOR_RR_Pin|IR_SENSOR_FR_Pin|IR_SENSOR_FF_Pin);
+    HAL_GPIO_DeInit(GPIOA, IR_SENSOR_BR_Pin|IR_SENSOR_BL_Pin|IR_SENSOR_RL_Pin);
 
-    HAL_GPIO_DeInit(IR_SENSOR_RL_GPIO_Port, IR_SENSOR_RL_Pin);
+    HAL_GPIO_DeInit(IR_SENSOR_FF_GPIO_Port, IR_SENSOR_FF_Pin);
 
   /* USER CODE BEGIN ADC2_MspDeInit 1 */
 

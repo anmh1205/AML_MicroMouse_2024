@@ -131,6 +131,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+    HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET);
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET); 
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+    HAL_Delay(200);
+    HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
   }
   /* USER CODE END 3 */
 }
@@ -695,17 +708,32 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin
-                          |LEFT_MOTOR_IN1_Pin|LEFT_MOTOR_IN2_Pin|RIGHT_MOTOR_IN1_Pin|RIGHT_MOTOR_IN2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, LEFT_MOTOR_IN1_Pin|LEFT_MOTOR_IN2_Pin|RIGHT_MOTOR_IN1_Pin|RIGHT_MOTOR_IN2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED_0_Pin LED_1_Pin LED_2_Pin LED_3_Pin
-                           LEFT_MOTOR_IN1_Pin LEFT_MOTOR_IN2_Pin RIGHT_MOTOR_IN1_Pin RIGHT_MOTOR_IN2_Pin */
-  GPIO_InitStruct.Pin = LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin
-                          |LEFT_MOTOR_IN1_Pin|LEFT_MOTOR_IN2_Pin|RIGHT_MOTOR_IN1_Pin|RIGHT_MOTOR_IN2_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOD, LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : BIT_SW_0_Pin BIT_SW_1_Pin BIT_SW_2_Pin BIT_SW_3_Pin
+                           BIT_SW_4_Pin */
+  GPIO_InitStruct.Pin = BIT_SW_0_Pin|BIT_SW_1_Pin|BIT_SW_2_Pin|BIT_SW_3_Pin
+                          |BIT_SW_4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LEFT_MOTOR_IN1_Pin LEFT_MOTOR_IN2_Pin RIGHT_MOTOR_IN1_Pin RIGHT_MOTOR_IN2_Pin */
+  GPIO_InitStruct.Pin = LEFT_MOTOR_IN1_Pin|LEFT_MOTOR_IN2_Pin|RIGHT_MOTOR_IN1_Pin|RIGHT_MOTOR_IN2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LED_0_Pin LED_1_Pin LED_2_Pin LED_3_Pin */
+  GPIO_InitStruct.Pin = LED_0_Pin|LED_1_Pin|LED_2_Pin|LED_3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pins : BUTTON_0_Pin BUTTON_1_Pin */
   GPIO_InitStruct.Pin = BUTTON_0_Pin|BUTTON_1_Pin;
