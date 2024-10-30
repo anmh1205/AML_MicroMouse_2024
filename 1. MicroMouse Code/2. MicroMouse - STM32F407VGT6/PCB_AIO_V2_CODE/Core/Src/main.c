@@ -1,27 +1,29 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "AML_MPUSensor.h"
+#include "AML_LedDebug.h"
+#include "AML_Buzzer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,25 +53,26 @@ TIM_HandleTypeDef htim5;
 
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
-UART_HandleTypeDef huart3;
+DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USER CODE BEGIN PV */
-
+double CurrentAngle = 0;
+uint32_t frequency_test = 1000;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MPU_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM1_Init(void);
-static void MX_TIM3_Init(void);
 static void MX_TIM5_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
-static void MX_USART3_UART_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -106,22 +109,36 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+  MX_TIM3_Init();
+
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  AML_Buzzer_TurnOff();
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
+  // DO NOT REMOVE THIS LINE (IMPORTANT)
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_TIM2_Init();
   MX_ADC2_Init();
   MX_I2C1_Init();
   MX_TIM1_Init();
-  MX_TIM3_Init();
   MX_TIM5_Init();
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  MX_USART3_UART_Init();
-  /* USER CODE BEGIN 2 */
 
+  /* USER CODE BEGIN 2 */
+  AML_MPUSensor_ResetAngle();
+  AML_MPUSensor_Setup();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -132,18 +149,54 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-    HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET);
-    HAL_Delay(200);
-    HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET); 
-    HAL_Delay(200);
-    HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
-    HAL_Delay(200);
-    HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
-    HAL_Delay(200);
-    HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET);
+    // HAL_Delay(200);
+    // HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET);
+    // HAL_Delay(200);
+    // HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET);
+    // HAL_Delay(200);
+    // HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_SET);
+    // HAL_Delay(200);
+    // HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, GPIO_PIN_RESET);
+
+    // CurrentAngle = AML_MPUSensor_GetAngle();
+    // HAL_Delay(50);
+
+    // AML_Buzzer_PlayNote(frequency_test, 2000);
+    // HAL_Delay(3000);
+
+    AML_Buzzer_PlaySong();
+    HAL_Delay(3000);
+
+    // AML_LedDebug_TurnOnLED(YELLOW);
+    // HAL_Delay(200);
+    // AML_LedDebug_TurnOffLED(YELLOW);
+    // AML_LedDebug_TurnOnLED(GREEN);
+    // HAL_Delay(200);
+    // AML_LedDebug_TurnOffLED(GREEN);
+    // AML_LedDebug_TurnOnLED(BLUE);
+    // HAL_Delay(200);
+    // AML_LedDebug_TurnOffLED(BLUE);
+    // AML_LedDebug_TurnOnLED(RED);
+    // HAL_Delay(200);
+    // AML_LedDebug_TurnOffLED(RED);
+
+
+    // HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
+    // // delay us
+    // for (int i = 0; i < 10000; i++)
+    //   ;
+    // HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
+    // for (int i = 0; i < 10000; i++)
+    //   ;
+
+    // __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 65535);
+    // HAL_Delay(3000);
+    // __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+    // HAL_Delay(3000);
   }
   /* USER CODE END 3 */
 }
@@ -465,7 +518,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0;
+  htim3.Init.Prescaler = 4000;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 65535;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -641,50 +694,18 @@ static void MX_USART2_UART_Init(void)
 }
 
 /**
-  * @brief USART3 Initialization Function
-  * @param None
-  * @retval None
+  * Enable DMA controller clock
   */
-static void MX_USART3_UART_Init(void)
+static void MX_DMA_Init(void)
 {
 
-  /* USER CODE BEGIN USART3_Init 0 */
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
-  /* USER CODE END USART3_Init 0 */
-
-  /* USER CODE BEGIN USART3_Init 1 */
-
-  /* USER CODE END USART3_Init 1 */
-  huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
-  huart3.Init.WordLength = UART_WORDLENGTH_8B;
-  huart3.Init.StopBits = UART_STOPBITS_1;
-  huart3.Init.Parity = UART_PARITY_NONE;
-  huart3.Init.Mode = UART_MODE_TX_RX;
-  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart3, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart3, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_DisableFifoMode(&huart3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART3_Init 2 */
-
-  /* USER CODE END USART3_Init 2 */
+  /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
 
 }
 

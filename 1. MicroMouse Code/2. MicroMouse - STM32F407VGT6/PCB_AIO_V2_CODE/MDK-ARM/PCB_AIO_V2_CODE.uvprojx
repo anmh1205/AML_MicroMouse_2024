@@ -81,7 +81,7 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
-            <RunUserProg2>1</RunUserProg2>
+            <RunUserProg2>0</RunUserProg2>
             <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
@@ -391,9 +391,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
@@ -410,6 +407,21 @@
               <FileName>stm32h7xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32h7xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_MPUSensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_MPUSensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_LedDebug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_LedDebug.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_Buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_Buzzer.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -537,6 +549,9 @@
               <FilePath>../Core/Src/system_stm32h7xx.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>
     </Target>

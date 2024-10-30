@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "main.h": "c",
+    "aml_buzzer.h": "c"
+  }
+}

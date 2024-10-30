@@ -55,7 +55,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+static void MX_TIM3_Init(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -99,8 +99,6 @@ void Error_Handler(void);
 #define RIGHT_MOTOR_IN1_GPIO_Port GPIOE
 #define RIGHT_MOTOR_IN2_Pin GPIO_PIN_13
 #define RIGHT_MOTOR_IN2_GPIO_Port GPIOE
-#define BUZZER_Pin GPIO_PIN_6
-#define BUZZER_GPIO_Port GPIOC
 #define LEFT_ENCODER_A_Pin GPIO_PIN_15
 #define LEFT_ENCODER_A_GPIO_Port GPIOA
 #define LED_0_Pin GPIO_PIN_0
