@@ -28,15 +28,31 @@ Project File Date:  10/30/2024
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'PCB_AIO_V2_CODE'
 compiling AML_Buzzer.c...
-../Core/Inc/AML_Buzzer.h(12): warning:  #1-D: last line of file ends without a newline
+../Core/Inc/AML_Buzzer.h(12): warning:  #1295-D: Deprecated declaration AML_Buzzer_Beep - give arg types
+  void AML_Buzzer_Beep();
+../Core/Inc/AML_Buzzer.h(14): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Core\Src\AML_Buzzer.c(56): warning:  #940-D: missing return statement at end of non-void function "AML_Buzzer_PlaySong" 
+..\Core\Src\AML_Buzzer.c(27): warning:  #1295-D: Deprecated declaration AML_Buzzer_Beep - give arg types
+  void AML_Buzzer_Beep();
+..\Core\Src\AML_Buzzer.c(49): warning:  #940-D: missing return statement at end of non-void function "AML_Buzzer_PlaySong" 
   }
-..\Core\Src\AML_Buzzer.c: 2 warnings, 0 errors
+..\Core\Src\AML_Buzzer.c: 4 warnings, 0 errors
+compiling main.c...
+../Core/Inc/AML_GlobalVariable.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_LedDebug.h(23): warning:  #1295-D: Deprecated declaration AML_LedDebug_ToggleAllLED - give arg types
+  void AML_LedDebug_ToggleAllLED();
+../Core/Inc/AML_Buzzer.h(12): warning:  #1295-D: Deprecated declaration AML_Buzzer_Beep - give arg types
+  void AML_Buzzer_Beep();
+../Core/Inc/AML_Buzzer.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_Switch.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Src/main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=27044 RO-data=860 RW-data=56 ZI-data=2576  
+Program Size: Code=27560 RO-data=972 RW-data=88 ZI-data=2576  
 FromELF: creating hex file...
-"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 2 Warning(s).
+"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -59,7 +75,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:18
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

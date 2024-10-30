@@ -15,8 +15,6 @@ typedef enum
     RED
 } COLOR;
 
-void AML_LedDebug_BuzzerBeep(uint16_t delay);
-
 void AML_LedDebug_TurnOnLED(COLOR color);
 void AML_LedDebug_TurnOffLED(COLOR color);
 void AML_LedDebug_ToggleLED(COLOR color);

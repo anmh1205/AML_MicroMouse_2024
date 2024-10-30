@@ -135,7 +135,8 @@
 				28,
 				29,
 				30,
-				31
+				31,
+				32
 			]
 		},
 		{
@@ -182,7 +183,7 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				32
+				33
 			]
 		}
 	],
@@ -251,14 +252,15 @@
 				28,
 				29,
 				30,
-				31
+				31,
+				32
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				32
+				33
 			]
 		}
 	],
@@ -286,6 +288,12 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "Core/Src/AML_PID.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/AML_Switch.c",
 			"sourceGroupIndex" : 0
 		},
 		{

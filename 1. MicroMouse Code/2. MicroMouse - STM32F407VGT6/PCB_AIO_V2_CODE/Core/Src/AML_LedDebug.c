@@ -9,17 +9,16 @@ uint8_t LedIndex = 0;
 uint8_t LedIndexFlag = 1;
 uint8_t MidIndex = 0;
 
-void AML_LedDebug_BuzzerBeep(uint16_t delay)
-{
-    // uint32_t InitTime = HAL_GetTick();
+//-------------------------------------------------------------------------------------------------------//
 
-    // HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
+void AML_LedDebug_TurnOnLED(COLOR color);
+void AML_LedDebug_TurnOffLED(COLOR color);
+void AML_LedDebug_ToggleLED(COLOR color);
+void AML_LedDebug_SetLED(COLOR color, GPIO_PinState state);
+void AML_LedDebug_SetAllLED(GPIO_PinState state);
+void AML_LedDebug_ToggleAllLED();
 
-    // while (HAL_GetTick() - InitTime < (uint32_t)delay)
-    //     ;
-
-    // HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
-}
+//-------------------------------------------------------------------------------------------------------//
 
 void AML_LedDebug_TurnOnLED(COLOR color)
 {

@@ -13,6 +13,16 @@ volatile uint8_t buffer = 119;
 volatile double Angle, PreviousAngle = 0, SaveAngle = 0;
 volatile uint8_t error = 0;
 
+//-------------------------------------------------------------------------------------------------------//
+void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart);
+void AML_MPUSensor_ResetAngle(void);
+void AML_MPUSensor_Setup(void);
+void handle(void);
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+double AML_MPUSensor_GetAngle(void);
+
+//-------------------------------------------------------------------------------------------------------//
+
 void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
 {
     UNUSED(huart);
