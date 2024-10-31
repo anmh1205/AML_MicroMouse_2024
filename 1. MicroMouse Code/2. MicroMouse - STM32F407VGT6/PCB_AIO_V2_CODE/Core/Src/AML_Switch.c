@@ -48,4 +48,16 @@ uint8_t AML_Read_Button(uint8_t index)
     return !HAL_GPIO_ReadPin(ButtonPort, ButtonPinArray[index]);
 }
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if (GPIO_Pin == BUTTON_0_Pin)
+    {
+        ButtonState[0] = 1;
+    }
+    else if (GPIO_Pin == BUTTON_1_Pin)
+    {
+        ButtonState[1] = 1;
+    }
+}
+
 //-------------------------------------------------------------------------------------------------------//

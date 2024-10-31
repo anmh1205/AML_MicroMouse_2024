@@ -44,3 +44,6 @@ pcb_aio_v2_code\main.o: ../Core/Inc/AML_MPUSensor.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_LedDebug.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Buzzer.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Switch.h
+pcb_aio_v2_code\main.o: ../Core/Inc/AML_MotorControl.h
+pcb_aio_v2_code\main.o: ../Core/Inc/AML_PID.h
+pcb_aio_v2_code\main.o: ../Core/Inc/AML_Encoder.h

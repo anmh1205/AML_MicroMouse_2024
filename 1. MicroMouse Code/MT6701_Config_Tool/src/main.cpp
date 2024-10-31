@@ -35,7 +35,9 @@ void setup()
   //    MT6701_HYST_2
   //    MT6701_HYST_4
   //    MT6701_HYST_8
-  encoder.abzModeSet(720, MT6701_PULSE_WIDTH_16LSB, MT6701_HYST_2);
+  encoder.abzModeSet(720, MT6701_PULSE_WIDTH_16LSB, MT6701_HYST_0_5);
+  delay(1000);
+
   encoder.programmEEPROM(); // Save setting to EEPROM
 
   delay(1000);

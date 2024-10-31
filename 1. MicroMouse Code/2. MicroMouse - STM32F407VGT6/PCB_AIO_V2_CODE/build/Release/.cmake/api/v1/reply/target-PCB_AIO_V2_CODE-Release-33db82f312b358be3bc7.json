@@ -136,7 +136,9 @@
 				29,
 				30,
 				31,
-				32
+				32,
+				33,
+				34
 			]
 		},
 		{
@@ -183,7 +185,7 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				33
+				35
 			]
 		}
 	],
@@ -253,14 +255,16 @@
 				29,
 				30,
 				31,
-				32
+				32,
+				33,
+				34
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				33
+				35
 			]
 		}
 	],
@@ -275,6 +279,12 @@
 		{
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
+			"path" : "Core/Src/AML_Encoder.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
 			"path" : "Core/Src/AML_LedDebug.c",
 			"sourceGroupIndex" : 0
 		},
@@ -282,6 +292,12 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "Core/Src/AML_MPUSensor.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/AML_MotorControl.c",
 			"sourceGroupIndex" : 0
 		},
 		{

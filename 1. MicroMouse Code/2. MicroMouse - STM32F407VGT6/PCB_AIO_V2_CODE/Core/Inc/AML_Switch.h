@@ -11,4 +11,6 @@ uint8_t AML_Read_BitSwitch(uint8_t index);
 void AML_ReadAll_Button(void);
 uint8_t AML_Read_Button(uint8_t index);
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
+
 #endif

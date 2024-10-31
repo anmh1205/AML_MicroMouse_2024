@@ -20,7 +20,9 @@
 #define LED_3 3
 
 // DEFINE FOR MOTOR CONTROL-------------------------------------------------------------------------------------------------------//
-#define MotorDirection 1 // use for change direction of motor
+#define MotorDirection 0 // use for change direction of motor
+#define LeftMotorDirection MotorDirection // use for change direction of left motor
+#define RightMotorDirection !MotorDirection // use for change direction of right motor
 
 // define parameter for transmission function
 #define Pi 3.14159265359  // Pi number
@@ -33,8 +35,8 @@
 
 #define SampleTime 20 // time per second
 #define PIDMode 1 // automatic mode
-#define PIDOutputMin -20 // minimum output of PID (duty cycle)
-#define PIDOutputMax 20 // maximum output of PID (duty cycle)
+#define PIDOutputMin -MouseSpeed // minimum output of PID (duty cycle)
+#define PIDOutputMax MouseSpeed // maximum output of PID (duty cycle)
 
 // DEFINE FOR -------------------------------------------------------------------------------------------------------//
 

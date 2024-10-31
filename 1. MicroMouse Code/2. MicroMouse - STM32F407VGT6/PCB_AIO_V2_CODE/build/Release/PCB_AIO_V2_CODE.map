@@ -315,7 +315,7 @@ Discarded input sections
  .text.AML_PID_Init
                 0x00000000       0x38 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .text.AML_PID_Compute
-                0x00000000      0x118 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+                0x00000000      0x140 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .text.AML_PID_SetOutputLimits
                 0x00000000       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .text.AML_PID_SetSampleTime
@@ -330,6 +330,8 @@ Discarded input sections
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .text.AML_Read_BitSwitch
                 0x00000000       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .text.HAL_GPIO_EXTI_Callback
+                0x00000000       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj

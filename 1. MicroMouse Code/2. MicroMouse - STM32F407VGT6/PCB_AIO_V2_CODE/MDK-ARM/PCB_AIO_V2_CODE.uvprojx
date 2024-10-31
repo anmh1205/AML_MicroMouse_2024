@@ -428,6 +428,21 @@
               <FileType>1</FileType>
               <FilePath>..\Core\Src\AML_Switch.c</FilePath>
             </File>
+            <File>
+              <FileName>AML_PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_PID.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_MotorControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_MotorControl.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_Encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_Encoder.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

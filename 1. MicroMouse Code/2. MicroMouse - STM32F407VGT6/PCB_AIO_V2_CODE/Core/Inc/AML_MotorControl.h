@@ -11,5 +11,11 @@
 #include "AML_Switch.h"
 #include "AML_MPUSensor.h"
 
+void AML_MotorControl_AMLPIDSetup(void);
+void AML_MotorControl_Setup(void);
+void AML_MotorControl_LeftPWM(int32_t DutyCycle);
+void AML_MotorControl_RightPWM(int32_t DutyCycle);
+void AML_MotorControl_Move(int32_t LeftDutyCycle, int32_t RightDutyCycle);
+void AML_MotorControl_Stop(void);
 
 #endif // AML_MOTORCONTROL_H
