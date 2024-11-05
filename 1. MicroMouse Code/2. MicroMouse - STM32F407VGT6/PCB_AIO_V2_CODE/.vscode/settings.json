@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "main.h": "c",
+    "aml_buzzer.h": "c",
+    "aml_globalvariable.h": "c",
+    "aml_switch.h": "c",
+    "aml_motorcontrol.h": "c",
+    "aml_pid.h": "c"
+  }
+}

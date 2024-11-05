@@ -1,0 +1,29 @@
+﻿Designator,Footprint,Quantity,Value,,,Mã,Số lượng,Link
+BZ1,MagneticBuzzer_CUI_CMT-8504-100-SMT,1,Buzzer,,,,,
+"C1, C10, C12, C14, C18, C3, C5, C6, C7, C8, C9",603,11,100nF,,,CLA4098,4,https://linhkienchatluong.vn/tu-dan-0603/tu-dan-0603-104-100nf-01uf-50v-10-10c_sp1063_ct14618.aspx
+C11,CP_EIA-3216-10_Kemet-I,1,4.7uF,,,CLA1283,5,https://linhkienchatluong.vn/tu-tantalium/tu-tantalum-3216-475c-16v-47uf-32x16mm-taja475k016rnj_sp460_ct1155.aspx
+"C13, C16",603,2,10uF,,,CLA4107,4,https://linhkienchatluong.vn/tu-dan-0603/tu-dan-0603-106-10uf-10v-10c_sp1063_ct14639.aspx
+"C15, C17",603,2,15pF,,,CLA4082,4,https://linhkienchatluong.vn/tu-dan-0603/tu-dan-0603-15pf-50v-5-10c_sp1063_ct14359.aspx
+C19,CP_EIA-7343-20_Kemet-V,1,330uF,,,CLA1293,3,https://linhkienchatluong.vn/tu-tantalium/tu-tantalum-7343-337a-10v-330uf-73x43mm-tajd337k010rnj_sp460_ct1167.aspx
+"C2, C4",CP_EIA-3216-10_Kemet-I,2,2.2uF,,,CLA1281,5,https://linhkienchatluong.vn/tu-tantalium/tu-tantalum-3216-225c-16v-22uf-32x16mm_sp460_ct2793.aspx
+"C20, C21",CP_EIA-3216-10_Kemet-I,2,10uF,,,CLA1281,5,https://linhkienchatluong.vn/tu-tantalium/tu-tantalum-3216-225c-16v-22uf-32x16mm_sp460_ct2793.aspx
+"D1, D2, D3, D4",603,4,3VL,,,Led dán 0603 4 màu khác nhau (10 con mỗi loại),,
+J1,PinHeader_1x01_P2.54mm_Vertical,1,EN pin,,,Không cần mua,,
+J2,PinHeader_1x09_P2.54mm_Vertical,1,Conn_01x09_Pin,,,CLA1894,2,https://linhkienchatluong.vn/header-xh254-trang/header-duc-9p-xh254-9p-chan-cong-10c_sp861_ct1709.aspx
+J3,JST 4,1,MPU,,,Không cần mua,,
+J4,JST 4,1,STLINK,,,CLA1880,3,https://linhkienchatluong.vn/header-xh254-trang/header-duc-4p-xh254-4p-chan-thang-10c_sp861_ct1713.aspx
+"J5, J6",JST_SH_BM06B-SRSS-TB_1x06-1MP_P1.00mm_Vertical,2,Conn_01x06_Pin,,,Không cần mua,,
+J7,PinHeader_1x04_P2.54mm_Vertical,1,MPU,,,Không cần mua,,
+Q1,SOT-23,1,S8550,,,Không cần mua,,
+"R1, R4, R5",603,3,1K,,,CLA0742,1,https://linhkienchatluong.vn/dien-tro-dan-0603-116w-1/dien-tro-dan-0603-1k-1-50c_sp836_ct5772.aspx
+"R2, R3",603,2,10K,,,CLA0759,1,https://linhkienchatluong.vn/dien-tro-dan-0603-116w-1/dien-tro-dan-0603-10k-1-50c_sp836_ct5792.aspx
+RN1,R_Array_Convex_4x0603,1,R_Pack04,,,CLA0907,1,https://linhkienchatluong.vn/dien-tro-bang-dan-smd/dien-tro-bang-0603x4-330r-8p4r-10c_sp1275_ct13129.aspx
+RN2,R_Array_Convex_5x0603,1,R_Pack05,,,CLA0906,1,https://linhkienchatluong.vn/dien-tro-bang-dan-smd/dien-tro-bang-0603x4-100r-8p4r-10c_sp1275_ct13127.aspx
+"SW1, SW2, SW3",SW_Tactile_SPST_NO_Straight_CK_PTS636Sx25SMTRLFS,3,SW_Push,,,CLA1752,2,https://linhkienchatluong.vn/nut-nhan-sieu-nho/nut-nhan-2-chan-dan-3x6x5mm-loai-tot-dong-day-10c_sp849_ct1802.aspx
+SW4,SW_DIP_SPSTx05_Slide_KingTek_DSHP05TS_W7.62mm_P1.27mm,1,SW_DIP_x05,,,A022606,3,https://linhkien.cxt.vn/4614-cong-tac-bit-5p-smd-127mm.html
+SW5,SW_SPDT_PCM12,1,SW_DPDT_x2,,,B010101,5,https://linhkien.cxt.vn/1781-msk-12c02-cong-tac-gat-smd-7p.html
+U1,LQFP-100_14x14mm_P0.5mm,1,STM32H743VITx,,,Không cần mua,,
+U2,Mini560_5A,1,Output 5V,,,Không cần mua,,
+U3,SOT-223-3_TabPin2,1,AMS1117-3.3,,,CL00249,4,https://linhkienchatluong.vn/ic-ho-ams--1117/ams1117-33v-ic-on-ap-33v-1a-sot-223-chinh-hang-umw_sp1008_ct371.aspx
+U4,SSOP-24_5.3x8.2mm_P0.65mm,1,TB6612FNG,,,Không cần mua,,
+Y1,Crystal_SMD_3225-4Pin_3.2x2.5mm,1,Crystal_GND24_Small,,,Không cần mua,,
