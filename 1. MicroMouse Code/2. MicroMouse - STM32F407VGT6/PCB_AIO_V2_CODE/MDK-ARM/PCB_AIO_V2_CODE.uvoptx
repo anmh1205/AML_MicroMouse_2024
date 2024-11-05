@@ -213,7 +213,12 @@
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>IRSensorValue,0x0A</ItemText>
+          <ItemText>IRSensorVoltageValue,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>12</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>IRSensorDistanceValue,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

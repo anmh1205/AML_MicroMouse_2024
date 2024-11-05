@@ -27,6 +27,52 @@ Project File Date:  11/05/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'PCB_AIO_V2_CODE'
+compiling AML_Switch.c...
+../Core/Inc/AML_GlobalVariable.h(48): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_Switch.h(16): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\AML_Switch.c: 2 warnings, 0 errors
+compiling AML_Encoder.c...
+../Core/Inc/AML_GlobalVariable.h(48): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_Encoder.h(16): warning:  #1-D: last line of file ends without a newline
+  #endif // AML_ENCODER_H
+..\Core\Src\AML_Encoder.c(30): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\AML_Encoder.c: 3 warnings, 0 errors
+compiling AML_MotorControl.c...
+../Core/Inc/AML_PID.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif // AML_PID_H
+../Core/Inc/AML_GlobalVariable.h(48): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_Buzzer.h(12): warning:  #1295-D: Deprecated declaration AML_Buzzer_Beep - give arg types
+  void AML_Buzzer_Beep();
+../Core/Inc/AML_Buzzer.h(14): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_Switch.h(16): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Inc/AML_MotorControl.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif // AML_MOTORCONTROL_H
+..\Core\Src\AML_MotorControl.c(3): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern debug[100];
+..\Core\Src\AML_MotorControl.c(115): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(116): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, !LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(121): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, !LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(122): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(148): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(149): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, !RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(154): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, !RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(155): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, RightMotorDirection);
+..\Core\Src\AML_MotorControl.c: 15 warnings, 0 errors
 compiling main.c...
 ../Core/Inc/AML_GlobalVariable.h(48): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -48,9 +94,9 @@ compiling main.c...
     memset(debug, 0, sizeof(debug));
 ../Core/Src/main.c: 9 warnings, 0 errors
 linking...
-Program Size: Code=30434 RO-data=762 RW-data=400 ZI-data=3488  
+Program Size: Code=33770 RO-data=910 RW-data=400 ZI-data=3600  
 FromELF: creating hex file...
-"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 9 Warning(s).
+"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 

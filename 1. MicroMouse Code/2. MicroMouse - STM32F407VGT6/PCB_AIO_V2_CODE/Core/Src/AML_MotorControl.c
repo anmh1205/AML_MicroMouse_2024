@@ -26,9 +26,9 @@ double PID_TurnRight_Tau = 0;
 double PID_TurnRight_Input, PID_TurnRight_Output, PID_TurnRight_Setpoint = 0;
 
 AML_PID_Struct PID_MPUFollow;
-double PID_MPUFollow_Kp = 2;
-double PID_MPUFollow_Ki = 0.1;
-double PID_MPUFollow_Kd = 0.2;
+double PID_MPUFollow_Kp = 1.25;
+double PID_MPUFollow_Ki = 0;
+double PID_MPUFollow_Kd = 0.1;
 double PID_MPUFollow_Tau = 0;
 double PID_MPUFollow_Input, PID_MPUFollow_Output, PID_MPUFollow_Setpoint = 0;
 
