@@ -29,7 +29,7 @@
 #define WheelDiameter 21  // mm
 #define TransmissionRatio 1     // ratio between wheel and encoder
 #define EncoderPulsePerRound 1420 // 1420 pulse per round encoder
-#define MouseSpeed 30 // % of duty cycle
+#define MouseSpeed 20 // % of duty cycle
 
 // define parameter for PID control
 

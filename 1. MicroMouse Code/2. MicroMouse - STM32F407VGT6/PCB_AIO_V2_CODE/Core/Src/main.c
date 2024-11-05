@@ -67,7 +67,7 @@ uint32_t frequency_test = 1000;
 uint32_t leftEncoder = 0;
 uint32_t rightEncoder = 0;
 
-int32_t pwm = 70;
+int32_t pwm = 20;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
