@@ -10,6 +10,7 @@
 "pcb_aio_v2_code\aml_pid.o"
 "pcb_aio_v2_code\aml_motorcontrol.o"
 "pcb_aio_v2_code\aml_encoder.o"
+"pcb_aio_v2_code\aml_irsensor.o"
 "pcb_aio_v2_code\stm32h7xx_hal_adc.o"
 "pcb_aio_v2_code\stm32h7xx_hal_adc_ex.o"
 "pcb_aio_v2_code\stm32h7xx_hal_rcc.o"

@@ -2,13 +2,13 @@
 
 //-------------------------------------------------------------------------------------------------------//
 
-void AML_PID_Init(AML_PID_Struct *pid, uint32_t *input, uint32_t *output, uint32_t *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, double linMinInt, double linMaxInt, uint32_t sampleTime);
+void AML_PID_Init(AML_PID_Struct *pid, double *input, double *output, double *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, double linMinInt, double linMaxInt, uint32_t sampleTime);
 
 double AML_PID_Compute(AML_PID_Struct *pid);
 
 //-------------------------------------------------------------------------------------------------------//
 
-void AML_PID_Init(AML_PID_Struct *pid, uint32_t *input, uint32_t *output, uint32_t *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, double linMinInt, double linMaxInt, uint32_t sampleTime)
+void AML_PID_Init(AML_PID_Struct *pid, double *input, double *output, double *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, double linMinInt, double linMaxInt, uint32_t sampleTime)
 {
     pid->MyInput = input;
     pid->MyOutput = output;
@@ -18,8 +18,11 @@ void AML_PID_Init(AML_PID_Struct *pid, uint32_t *input, uint32_t *output, uint32
     pid->Ki = ki;
     pid->Kd = kd;
     pid->tau = tau;
-    pid->sampleTime = sampleTime;
 
+    pid->limMin = limMin;
+    pid->limMax = limMax;
+
+    pid->sampleTime = sampleTime;
 
     pid->integratol = 0;
     pid->prevError = 0;
@@ -78,7 +81,8 @@ double AML_PID_Compute(AML_PID_Struct *pid)
         // Remember last time for next calculation
         pid->lastTime = now;
     }
-
+    
+    pid->out = *pid->MyOutput;
     return *pid->MyOutput;
 }
 

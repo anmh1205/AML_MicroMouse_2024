@@ -41,6 +41,7 @@ pcb_aio_v2_code\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 pcb_aio_v2_code\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_GlobalVariable.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_MPUSensor.h
+pcb_aio_v2_code\main.o: ../Core/Inc/AML_IRSensor.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_LedDebug.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Buzzer.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Switch.h

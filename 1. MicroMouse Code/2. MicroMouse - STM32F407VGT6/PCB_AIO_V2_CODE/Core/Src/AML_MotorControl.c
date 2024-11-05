@@ -1,6 +1,10 @@
 #include <AML_MotorControl.h>
 
+extern debug[100];
+
 extern TIM_HandleTypeDef htim1; // timer for pwm
+extern TIM_HandleTypeDef htim7; // timer for interrupt
+
 GPIO_TypeDef *MotorDirectionPort = GPIOE;
 
 // TimerClock is 240MHz, Prescaler is 12000, AutoReload is 1, so the frequency is 10kHz
@@ -22,9 +26,9 @@ double PID_TurnRight_Tau = 0;
 double PID_TurnRight_Input, PID_TurnRight_Output, PID_TurnRight_Setpoint = 0;
 
 AML_PID_Struct PID_MPUFollow;
-double PID_MPUFollow_Kp = 1;
+double PID_MPUFollow_Kp = 2;
 double PID_MPUFollow_Ki = 0;
-double PID_MPUFollow_Kd = 0;
+double PID_MPUFollow_Kd = 0.2;
 double PID_MPUFollow_Tau = 0;
 double PID_MPUFollow_Input, PID_MPUFollow_Output, PID_MPUFollow_Setpoint = 0;
 
@@ -49,6 +53,27 @@ void AML_MotorControl_LeftPWM(int32_t DutyCycle);
 void AML_MotorControl_RightPWM(int32_t DutyCycle);
 void AML_MotorControl_Move(int32_t LeftDutyCycle, int32_t RightDutyCycle);
 void AML_MotorControl_Stop(void);
+
+void AML_MotorControl_GoStraghtWithMPU(double setpoint);
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    UNUSED(htim);
+    if (htim->Instance == htim7.Instance) // timer for wall follow
+    {
+        AML_MotorControl_GoStraghtWithMPU(0);
+    }
+}
+
+void AML_MotorControl_TurnOnWallFollow(void)
+{
+    HAL_TIM_Base_Start_IT(&htim7);
+}
+
+void AML_MotorControl_TurnOffWallFollow(void)
+{
+    HAL_TIM_Base_Stop_IT(&htim7);
+}
 
 // PID setup function-------------------------------------------------------------------------------------------------------//
 void AML_MotorControl_AMLPIDSetup(void)
@@ -147,6 +172,17 @@ void AML_MotorControl_Move(int32_t LeftDutyCycle, int32_t RightDutyCycle)
 void AML_MotorControl_Stop(void)
 {
     AML_MotorControl_Move(0, 0);
+}
+//--------------------------------------------------------------------------------------------------------//
+
+void AML_MotorControl_GoStraghtWithMPU(double setpoint)
+{
+    PID_MPUFollow_Input = AML_MPUSensor_GetAngle();
+    PID_MPUFollow_Setpoint = setpoint;
+
+    AML_PID_Compute(&PID_MPUFollow);
+
+    AML_MotorControl_Move(MouseSpeed - (int32_t)PID_MPUFollow_Output, MouseSpeed + (int32_t)PID_MPUFollow_Output);
 }
 
 

@@ -138,7 +138,8 @@
 				31,
 				32,
 				33,
-				34
+				34,
+				35
 			]
 		},
 		{
@@ -185,7 +186,7 @@
 			"language" : "ASM",
 			"sourceIndexes" : 
 			[
-				35
+				36
 			]
 		}
 	],
@@ -257,14 +258,15 @@
 				31,
 				32,
 				33,
-				34
+				34,
+				35
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				35
+				36
 			]
 		}
 	],
@@ -280,6 +282,12 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "Core/Src/AML_Encoder.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Src/AML_IRSensor.c",
 			"sourceGroupIndex" : 0
 		},
 		{
