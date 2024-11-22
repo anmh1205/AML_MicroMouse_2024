@@ -39,3 +39,13 @@ pcb_aio_v2_code\aml_irsensor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ha
 pcb_aio_v2_code\aml_irsensor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h
 pcb_aio_v2_code\aml_irsensor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 pcb_aio_v2_code\aml_irsensor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_GlobalVariable.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_MotorControl.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/main.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_PID.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_GlobalVariable.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_LedDebug.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_Buzzer.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_Switch.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_MPUSensor.h
+pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_IRSensor.h

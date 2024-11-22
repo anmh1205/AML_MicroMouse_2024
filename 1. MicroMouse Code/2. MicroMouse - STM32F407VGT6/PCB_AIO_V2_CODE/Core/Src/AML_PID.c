@@ -2,13 +2,13 @@
 
 //-------------------------------------------------------------------------------------------------------//
 
-void AML_PID_Init(AML_PID_Struct *pid, double *input, double *output, double *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, double linMinInt, double linMaxInt, uint32_t sampleTime);
+void AML_PID_Init(AML_PID_Struct *pid, double *input, double *output, double *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, uint32_t sampleTime);
 
 double AML_PID_Compute(AML_PID_Struct *pid);
 
 //-------------------------------------------------------------------------------------------------------//
 
-void AML_PID_Init(AML_PID_Struct *pid, double *input, double *output, double *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, double linMinInt, double linMaxInt, uint32_t sampleTime)
+void AML_PID_Init(AML_PID_Struct *pid, double *input, double *output, double *setpoint, double kp, double ki, double kd, double tau, double limMin, double limMax, uint32_t sampleTime)
 {
     pid->MyInput = input;
     pid->MyOutput = output;
@@ -44,9 +44,9 @@ double AML_PID_Compute(AML_PID_Struct *pid)
 
         double pTerm = pid->Kp * error;
 
-        pid->integratol += error * pid->sampleTime;
+        pid->integratol += error * timeChange;
 
-        pid->integratol += 0.5f * pid->Ki * pid->sampleTime * (error + pid->prevError);
+        pid->integratol += 0.5f * pid->Ki * timeChange * (error + pid->prevError);
 
         if (pid->integratol > pid->linMaxInt)
         {
@@ -59,10 +59,9 @@ double AML_PID_Compute(AML_PID_Struct *pid)
 
         double iTerm = pid->Ki * pid->integratol;
 
-        pid->differentiator = -(2.0f * pid->Kd * (*pid->MyInput - pid->prevMeasurement) + (2.0f * pid->tau - pid->sampleTime) * pid->differentiator) / (2.0f * pid->tau + pid->sampleTime);
+        pid->differentiator = -(2.0f * pid->Kd * (*pid->MyInput - pid->prevMeasurement) + (2.0f * pid->tau - timeChange) * pid->differentiator) / (2.0f * pid->tau + timeChange);
 
         double dTerm = pid->Kd * pid->differentiator;
-
 
         *pid->MyOutput = pTerm + iTerm + dTerm;
 
@@ -81,7 +80,7 @@ double AML_PID_Compute(AML_PID_Struct *pid)
         // Remember last time for next calculation
         pid->lastTime = now;
     }
-    
+
     pid->out = *pid->MyOutput;
     return *pid->MyOutput;
 }

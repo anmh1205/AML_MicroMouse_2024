@@ -30,6 +30,9 @@
 #include "AML_Switch.h"
 #include "AML_MotorControl.h"
 #include "AML_Encoder.h"
+
+#include "solver.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -88,7 +91,33 @@ static void MX_TIM7_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void StartSolver()
+{
+  // debug_log("Running...");
+  initialize();
+  while (1)
+  {
+    Action nextMove = solver();
 
+    switch (nextMove)
+    {
+    case FORWARD:
+      // API_moveForward();
+      MOVE_FORWARD_FUNCTION;
+      break;
+    case LEFT:
+      // API_turnLeft();
+      TURN_LEFT_FUNCTION;
+      break;
+    case RIGHT:
+      // API_turnRight();
+      TURN_RIGHT_FUNCTION;
+      break;
+    case IDLE:
+      break;
+    }
+  }
+}
 /* USER CODE END 0 */
 
 /**
@@ -152,59 +181,65 @@ int main(void)
 
   AML_MotorControl_Setup();
 
+  AML_IRSensor_Setup();
+
   AML_MPUSensor_ResetAngle();
   AML_MPUSensor_Setup();
 
-  AML_IRSensor_Setup();
 
   AML_Encoder_Setup();
+
+  // StartSolver();
+
+  for (int i = 0; i < 10; i++)
+  {
+    AML_LedDebug_TurnOnLED(YELLOW);
+    HAL_Delay(200);
+    AML_LedDebug_TurnOffLED(YELLOW);
+    AML_LedDebug_TurnOnLED(GREEN);
+    HAL_Delay(200);
+    AML_LedDebug_TurnOffLED(GREEN);
+    AML_LedDebug_TurnOnLED(BLUE);
+    HAL_Delay(200);
+    AML_LedDebug_TurnOffLED(BLUE);
+    AML_LedDebug_TurnOnLED(RED);
+    HAL_Delay(200);
+    AML_LedDebug_TurnOffLED(RED);
+  }
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+    while (1)
+    {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 
-    if (AML_Read_Button(SW_0))
-    {
-      // AML_Buzzer_PlaySong();
-      // AML_MotorControl_Move(pwm, pwm);
-      AML_MotorControl_TurnOnWallFollow();
+      if (AML_Read_Button(SW_0))
+      {
+        // AML_Buzzer_PlaySong();
+        // AML_MotorControl_Move(pwm, pwm);
+        AML_MotorControl_TurnOnWallFollow();
+      }
+      else if (AML_Read_Button(SW_1))
+      {
+        AML_Buzzer_Beep();
+
+        AML_MotorControl_TurnOffWallFollow();
+        AML_MotorControl_Stop();
+      }
+
+      leftEncoder = AML_Encoder_GetLeftValue();
+      rightEncoder = AML_Encoder_GetRightValue();
+
+      CurrentAngle = AML_MPUSensor_GetAngle();
+
+      AML_ReadAll_BitSwitch();
+      AML_ReadAll_Button();
+      HAL_Delay(100);
     }
-    else if (AML_Read_Button(SW_1))
-    {
-      AML_Buzzer_Beep();
-
-      AML_MotorControl_TurnOffWallFollow();
-      AML_MotorControl_Stop();
-    }
-
-    // AML_LedDebug_TurnOnLED(YELLOW);
-    // HAL_Delay(200);
-    // AML_LedDebug_TurnOffLED(YELLOW);
-    // AML_LedDebug_TurnOnLED(GREEN);
-    // HAL_Delay(200);
-    // AML_LedDebug_TurnOffLED(GREEN);
-    // AML_LedDebug_TurnOnLED(BLUE);
-    // HAL_Delay(200);
-    // AML_LedDebug_TurnOffLED(BLUE);
-    // AML_LedDebug_TurnOnLED(RED);
-    // HAL_Delay(200);
-    // AML_LedDebug_TurnOffLED(RED);
-
-    leftEncoder = AML_Encoder_GetLeftValue();
-    rightEncoder = AML_Encoder_GetRightValue();
-
-    CurrentAngle = AML_MPUSensor_GetAngle();
-
-    AML_ReadAll_BitSwitch();
-    AML_ReadAll_Button();
-    HAL_Delay(100);
-  }
   /* USER CODE END 3 */
 }
 
@@ -309,7 +344,7 @@ static void MX_ADC2_Init(void)
   {
     Error_Handler();
   }
-  hadc2.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV32;
+  hadc2.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV256;
   hadc2.Init.Resolution = ADC_RESOLUTION_16B;
   if (HAL_ADC_Init(&hadc2) != HAL_OK)
   {

@@ -1,6 +1,5 @@
 #include "AML_MPUSensor.h"
 
-
 uint8_t ResetCommand[] = {0xFF, 0xAA, 0x52};
 
 extern UART_HandleTypeDef huart1;
