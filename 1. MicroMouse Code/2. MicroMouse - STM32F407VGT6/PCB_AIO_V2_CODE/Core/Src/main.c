@@ -22,7 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "AML_GlobalVariable.h"
-#include "AML_MPUSensor.h"
+#include "AML_IMU.h"
 #include "AML_IRSensor.h"
 
 #include "AML_LedDebug.h"
@@ -148,8 +148,6 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
-
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -183,15 +181,14 @@ int main(void)
 
   AML_IRSensor_Setup();
 
-  AML_MPUSensor_ResetAngle();
-  AML_MPUSensor_Setup();
-
+  AML_MPUSensor_Setup(&huart1);
+  // AML_MPUSensor_ResetAngle();
 
   AML_Encoder_Setup();
 
   // StartSolver();
 
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 2; i++)
   {
     AML_LedDebug_TurnOnLED(YELLOW);
     HAL_Delay(200);
@@ -211,35 +208,36 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    while (1)
-    {
+  while (1)
+  {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 
-      if (AML_Read_Button(SW_0))
-      {
-        // AML_Buzzer_PlaySong();
-        // AML_MotorControl_Move(pwm, pwm);
-        AML_MotorControl_TurnOnWallFollow();
-      }
-      else if (AML_Read_Button(SW_1))
-      {
-        AML_Buzzer_Beep();
-
-        AML_MotorControl_TurnOffWallFollow();
-        AML_MotorControl_Stop();
-      }
-
-      leftEncoder = AML_Encoder_GetLeftValue();
-      rightEncoder = AML_Encoder_GetRightValue();
-
-      CurrentAngle = AML_MPUSensor_GetAngle();
-
-      AML_ReadAll_BitSwitch();
-      AML_ReadAll_Button();
-      HAL_Delay(100);
+    if (AML_Read_Button(SW_0))
+    {
+      // AML_Buzzer_PlaySong();
+      // AML_MotorControl_Move(pwm, pwm);
+      // AML_MotorControl_TurnOnWallFollow();
+      AML_MotorControl_Move(30, -30);
     }
+    else if (AML_Read_Button(SW_1))
+    {
+      AML_Buzzer_Beep();
+
+      AML_MotorControl_TurnOffWallFollow();
+      AML_MotorControl_Stop();
+    }
+
+    leftEncoder = AML_Encoder_GetLeftValue();
+    rightEncoder = AML_Encoder_GetRightValue();
+
+    CurrentAngle = AML_MPUSensor_GetAngle();
+
+    AML_ReadAll_BitSwitch();
+    AML_ReadAll_Button();
+    HAL_Delay(100);
+  }
   /* USER CODE END 3 */
 }
 
@@ -523,11 +521,11 @@ static void MX_TIM2_Init(void)
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
-  sConfig.IC1Polarity = TIM_ICPOLARITY_FALLING;
+  sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC1Filter = 0;
-  sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC2Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC2Filter = 0;
@@ -620,12 +618,12 @@ static void MX_TIM5_Init(void)
   htim5.Init.Period = 4294967295;
   htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim5.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  sConfig.EncoderMode = TIM_ENCODERMODE_TI1;
-  sConfig.IC1Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.EncoderMode = TIM_ENCODERMODE_TI12;
+  sConfig.IC1Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC1Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC1Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC1Filter = 0;
-  sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC2Polarity = TIM_ICPOLARITY_FALLING;
   sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
   sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
   sConfig.IC2Filter = 0;

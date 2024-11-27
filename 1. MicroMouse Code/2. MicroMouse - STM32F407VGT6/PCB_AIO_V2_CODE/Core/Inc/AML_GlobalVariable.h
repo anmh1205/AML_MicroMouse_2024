@@ -69,6 +69,8 @@
 #define WALL_NOT_IN_FRONT_RIGHT 155
 //-------------------------------------------------------------------------------------------------------//
 
+#define ABS(x) ((x) > 0 ? (x) : -(x))
+
 #define CHECK_WALL_FRONT AML_IRSensor_IsFrontWall()
 #define CHECK_WALL_LEFT AML_IRSensor_IsLeftWall()
 #define CHECK_WALL_RIGHT AML_IRSensor_IsRightWall()

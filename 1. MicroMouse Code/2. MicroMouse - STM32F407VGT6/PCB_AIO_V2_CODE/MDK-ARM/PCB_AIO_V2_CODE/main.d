@@ -46,7 +46,7 @@ pcb_aio_v2_code\main.o: ../Core/Inc/AML_GlobalVariable.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_LedDebug.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Buzzer.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Switch.h
-pcb_aio_v2_code\main.o: ../Core/Inc/AML_MPUSensor.h
+pcb_aio_v2_code\main.o: ../Core/Inc/AML_IMU.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_IRSensor.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_Encoder.h
 pcb_aio_v2_code\main.o: ../Core/Inc/solver.h

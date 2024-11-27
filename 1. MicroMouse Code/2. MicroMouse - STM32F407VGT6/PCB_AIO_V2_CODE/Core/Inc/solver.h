@@ -9,7 +9,7 @@
 #include <AML_LedDebug.h>
 #include <AML_Switch.h>
 
-#include <AML_MPUSensor.h>
+#include <AML_IMU.h>
 #include <AML_IRSensor.h>
 #include <AML_Encoder.h>
 

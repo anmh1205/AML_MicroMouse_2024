@@ -276,3 +276,38 @@ void AML_MotorControl_GoStraight(void)
         AML_MotorControl_GoStraghtWithMPU(TempSetpoint + *PID_RightWallFollow.MyOutput);
     }
 }
+
+//--------------------------------------------------------------------------------------------------------//
+
+void AML_MotorControl_TurnLeft(void)
+{
+    uint16_t WaitingTime = 1000;
+
+    PID_TurnLeft_Setpoint = 90;
+
+    uint32_t InitTime = HAL_GetTick();
+    uint32_t CurrentTime = HAL_GetTick();
+    uint32_t PreviousTime = CurrentTime;
+
+    while ((CurrentTime - PreviousTime) < 200 && (HAL_GetTick() - InitTime < WaitingTime))
+    {
+        PID_TurnLeft_Input = AML_MPUSensor_GetAngle();
+
+        AML_PID_Compute(&PID_TurnLeft);
+
+        AML_MotorControl_LeftPWM(-(int32_t)PID_TurnLeft_Output);
+        AML_MotorControl_RightPWM((int32_t)PID_TurnLeft_Output);
+
+        if (ABS(PID_TurnLeft_Input - PID_TurnLeft_Setpoint) < 2.0f)
+        {
+            CurrentTime = HAL_GetTick();
+        }
+        else
+        {
+            CurrentTime = HAL_GetTick();
+            PreviousTime = CurrentTime;
+        }
+    }
+
+    AML_MotorControl_Stop();
+}

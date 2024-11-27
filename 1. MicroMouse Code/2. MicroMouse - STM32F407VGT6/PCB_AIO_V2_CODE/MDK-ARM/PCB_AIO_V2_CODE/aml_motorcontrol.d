@@ -48,4 +48,4 @@ pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_GlobalVariable.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_LedDebug.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_Buzzer.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_Switch.h
-pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_MPUSensor.h
+pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_IMU.h

@@ -316,13 +316,13 @@ Discarded input sections
                 0x00000000        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .bss.LedIndex  0x00000000        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .data.LedPort  0x00000000        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
- .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
- .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+ .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+ .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+ .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .text.HAL_UART_TxHalfCpltCallback
-                0x00000000        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
- .text.handle   0x00000000       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
- .bss.error     0x00000000        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x00000000        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+ .text.handle   0x00000000       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+ .bss.error     0x00000000        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
@@ -1752,7 +1752,7 @@ LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
 LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
 LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
 LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
-LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
 LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
 LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
 LOAD CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
@@ -1855,16 +1855,16 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
                 0x08000830       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
                 0x08000830                AML_LedDebug_TurnOffLED
  .text.AML_MPUSensor_ResetAngle
-                0x08000848       0x84 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x08000848       0x84 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x08000848                AML_MPUSensor_ResetAngle
  .text.AML_MPUSensor_Setup
-                0x080008cc       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x080008cc       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x080008cc                AML_MPUSensor_Setup
  .text.HAL_UART_RxCpltCallback
-                0x080008e8      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x080008e8      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x080008e8                HAL_UART_RxCpltCallback
  .text.AML_MPUSensor_GetAngle
-                0x080009fc       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x080009fc       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x080009fc                AML_MPUSensor_GetAngle
  .text.AML_MotorControl_TurnOnWallFollow
                 0x08000a18       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
@@ -2539,11 +2539,11 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  *fill*         0x20000052        0x2 
  .data.Led      0x20000054        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
                 0x20000054                Led
- .data.buffer   0x2000005c        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+ .data.buffer   0x2000005c        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x2000005c                buffer
  *fill*         0x2000005d        0x3 
  .data.ResetCommand
-                0x20000060        0x3 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x20000060        0x3 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x20000060                ResetCommand
  *fill*         0x20000063        0x5 
  .data.PID_RightWallFollow_Kp
@@ -2634,14 +2634,14 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
                 0x20000280                IRSensorADCValue
  *fill*         0x2000028e        0x2 
  .bss.SaveAngle
-                0x20000290        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x20000290        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x20000290                SaveAngle
  .bss.PreviousAngle
-                0x20000298        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x20000298        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x20000298                PreviousAngle
- .bss.Angle     0x200002a0        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+ .bss.Angle     0x200002a0        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x200002a0                Angle
- .bss.MPUData   0x200002a8       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+ .bss.MPUData   0x200002a8       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x200002a8                MPUData
  *fill*         0x200002cc        0x4 
  .bss.PID_RightWallFollow_Setpoint
@@ -2863,7 +2863,7 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .ARM.attributes
                 0x000001b0       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .ARM.attributes
-                0x000001e2       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+                0x000001e2       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .ARM.attributes
                 0x00000214       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .ARM.attributes
@@ -2946,7 +2946,7 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MPUSensor.c.obj
+ .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .comment       0x00000043       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj

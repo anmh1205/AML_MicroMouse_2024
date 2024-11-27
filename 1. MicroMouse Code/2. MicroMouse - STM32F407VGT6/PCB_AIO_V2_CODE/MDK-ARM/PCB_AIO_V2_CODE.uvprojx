@@ -409,11 +409,6 @@
               <FilePath>../Core/Src/stm32h7xx_hal_msp.c</FilePath>
             </File>
             <File>
-              <FileName>AML_MPUSensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\AML_MPUSensor.c</FilePath>
-            </File>
-            <File>
               <FileName>AML_LedDebug.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\AML_LedDebug.c</FilePath>
@@ -457,6 +452,11 @@
               <FileName>solver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\solver.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_IMU.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_IMU.c</FilePath>
             </File>
           </Files>
         </Group>

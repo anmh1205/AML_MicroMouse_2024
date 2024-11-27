@@ -9,7 +9,7 @@
 #include "AML_LedDebug.h"
 #include "AML_Buzzer.h"
 #include "AML_Switch.h"
-#include "AML_MPUSensor.h"
+#include "AML_IMU.h"
 
 void AML_MotorControl_AMLPIDSetup(void);
 void AML_MotorControl_Setup(void);
