@@ -230,6 +230,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>PID_LeftMotor,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TempSetpoint</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>

@@ -219,7 +219,9 @@ int main(void)
       // AML_Buzzer_PlaySong();
       // AML_MotorControl_Move(pwm, pwm);
       // AML_MotorControl_TurnOnWallFollow();
-      AML_MotorControl_Move(30, -30);
+      // AML_MotorControl_Move(30, -30);
+
+      AML_MotorControl_TurnOnWallFollow();
     }
     else if (AML_Read_Button(SW_1))
     {
