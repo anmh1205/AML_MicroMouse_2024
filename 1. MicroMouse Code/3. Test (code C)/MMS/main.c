@@ -14,6 +14,8 @@
 #define TURN_LEFT_FUNCTION API_turnLeft()
 #define TURN_RIGHT_FUNCTION API_turnRight()
 
+#define debug(x) NULL
+
 // choose which algorithm to use in the beginning of the run
 // int algorithm;
 // struct dist_maze distances;
@@ -31,35 +33,28 @@ int main(int argc, char *argv[])
     initialize();
 
     // start the search
-    debug_log("Starting search");
     searchRun();
 
     // reached the center, now calculate the shortest path
-    debug_log("Reached center");
-    calculateFirstShortestPathDistances();
-
-    API_ackReset();
-
-    // run the shortest path
-    debug_log("Running shortest path");
-    // firstFastRun();
-    fastRunWithVariableVelocity();
+    markCenterWall();
+    calculateShortestPathDistances();
 
     // use hand to move the mouse to the start position, and find the shortest path
+    API_ackReset();
+    setPosition(0, 0, NORTH);
+
+    // run the shortest path
+    fastRunWithVariableVelocity();
 
     while (1)
     {
-        // if (getReachingCenter())
-        // {
-        //     // debug_log("Reaching center");
-        //     fastRun();
-        // }
-        // else
-        // {
-        //     // debug_log("Searching");
-        //     searchRun();
-        // }
+        // run from the center to the start
+        searchCenterToStart();
 
-        // RUN_MODE_1();
+        // updateDistances();
+        calculateShortestPathDistances();
+
+        // run the shortest path
+        fastRunWithVariableVelocity();
     }
 }

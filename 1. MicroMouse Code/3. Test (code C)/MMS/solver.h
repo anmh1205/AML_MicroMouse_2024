@@ -62,11 +62,15 @@ typedef struct Move
 } Move;
 
 void searchRun();
+void searchCenterToStart();
 void firstFastRun();
+void loopRun();
+void setPosition(int x, int y, int direction);
+void markCenterWall();
 void initialize();
 void updateMaze();      // updates the maze array with the walls around the mouse's current position
 void updateDistances(); // the "floodfill" algorithm
-void calculateFirstShortestPathDistances();
+void calculateShortestPathDistances();
 void fastRunWithVariableVelocity();
 void resetDistances();
 int xyToSquare(int x, int y);
@@ -75,10 +79,7 @@ int isWallInDirection(int x, int y, Heading direction);
 void updateHeading(Action nextAction);
 void updatePosition(Action nextAction);
 int getReachingCenter();
-Move fastRunSolver();
 Action solver();
-Action leftWallFollower();
 Action floodFill();
-
 
 #endif
