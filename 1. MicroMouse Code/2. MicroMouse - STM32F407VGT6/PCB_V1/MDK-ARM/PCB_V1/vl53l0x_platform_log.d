@@ -1,0 +1,10 @@
+pcb_v1\vl53l0x_platform_log.o: ..\Core\Src\vl53l0x_platform_log.c
+pcb_v1\vl53l0x_platform_log.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+pcb_v1\vl53l0x_platform_log.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+pcb_v1\vl53l0x_platform_log.o: ../Core/Inc/vl53l0x_def.h
+pcb_v1\vl53l0x_platform_log.o: ../Core/Inc/vl53l0x_device.h
+pcb_v1\vl53l0x_platform_log.o: ../Core/Inc/vl53l0x_types.h
+pcb_v1\vl53l0x_platform_log.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+pcb_v1\vl53l0x_platform_log.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+pcb_v1\vl53l0x_platform_log.o: ../Core/Inc/vl53l0x_platform_log.h
+pcb_v1\vl53l0x_platform_log.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

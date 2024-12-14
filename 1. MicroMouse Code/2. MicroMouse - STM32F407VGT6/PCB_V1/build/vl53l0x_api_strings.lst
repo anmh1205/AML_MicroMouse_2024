@@ -1,0 +1,2988 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"vl53l0x_api_strings.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.VL53L0X_check_part_used,"ax",%progbits
+  18              		.align	1
+  19              		.global	VL53L0X_check_part_used
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	VL53L0X_check_part_used:
+  27              	.LVL0:
+  28              	.LFB133:
+  29              		.file 1 "Core/Src/vl53l0x_api_strings.c"
+   1:Core/Src/vl53l0x_api_strings.c **** /*******************************************************************************
+   2:Core/Src/vl53l0x_api_strings.c ****  Copyright © 2016, STMicroelectronics International N.V.
+   3:Core/Src/vl53l0x_api_strings.c ****  All rights reserved.
+   4:Core/Src/vl53l0x_api_strings.c **** 
+   5:Core/Src/vl53l0x_api_strings.c ****  Redistribution and use in source and binary forms, with or without
+   6:Core/Src/vl53l0x_api_strings.c ****  modification, are permitted provided that the following conditions are met:
+   7:Core/Src/vl53l0x_api_strings.c ****  * Redistributions of source code must retain the above copyright
+   8:Core/Src/vl53l0x_api_strings.c ****  notice, this list of conditions and the following disclaimer.
+   9:Core/Src/vl53l0x_api_strings.c ****  * Redistributions in binary form must reproduce the above copyright
+  10:Core/Src/vl53l0x_api_strings.c ****  notice, this list of conditions and the following disclaimer in the
+  11:Core/Src/vl53l0x_api_strings.c ****  documentation and/or other materials provided with the distribution.
+  12:Core/Src/vl53l0x_api_strings.c ****  * Neither the name of STMicroelectronics nor the
+  13:Core/Src/vl53l0x_api_strings.c ****  names of its contributors may be used to endorse or promote products
+  14:Core/Src/vl53l0x_api_strings.c ****  derived from this software without specific prior written permission.
+  15:Core/Src/vl53l0x_api_strings.c **** 
+  16:Core/Src/vl53l0x_api_strings.c ****  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  17:Core/Src/vl53l0x_api_strings.c ****  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  18:Core/Src/vl53l0x_api_strings.c ****  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+  19:Core/Src/vl53l0x_api_strings.c ****  NON-INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS ARE DISCLAIMED.
+  20:Core/Src/vl53l0x_api_strings.c ****  IN NO EVENT SHALL STMICROELECTRONICS INTERNATIONAL N.V. BE LIABLE FOR ANY
+  21:Core/Src/vl53l0x_api_strings.c ****  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  22:Core/Src/vl53l0x_api_strings.c ****  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  23:Core/Src/vl53l0x_api_strings.c ****  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  24:Core/Src/vl53l0x_api_strings.c ****  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  25:Core/Src/vl53l0x_api_strings.c ****  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  26:Core/Src/vl53l0x_api_strings.c ****  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  27:Core/Src/vl53l0x_api_strings.c ****  ******************************************************************************/
+  28:Core/Src/vl53l0x_api_strings.c **** 
+  29:Core/Src/vl53l0x_api_strings.c **** #include "vl53l0x_api.h"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 2
+
+
+  30:Core/Src/vl53l0x_api_strings.c **** #include "vl53l0x_api_core.h"
+  31:Core/Src/vl53l0x_api_strings.c **** #include "vl53l0x_api_strings.h"
+  32:Core/Src/vl53l0x_api_strings.c **** 
+  33:Core/Src/vl53l0x_api_strings.c **** #ifndef __KERNEL__
+  34:Core/Src/vl53l0x_api_strings.c **** #include <stdlib.h>
+  35:Core/Src/vl53l0x_api_strings.c **** #endif
+  36:Core/Src/vl53l0x_api_strings.c **** 
+  37:Core/Src/vl53l0x_api_strings.c **** #define LOG_FUNCTION_START(fmt, ...) \
+  38:Core/Src/vl53l0x_api_strings.c **** 	_LOG_FUNCTION_START(TRACE_MODULE_API, fmt, ##__VA_ARGS__)
+  39:Core/Src/vl53l0x_api_strings.c **** #define LOG_FUNCTION_END(status, ...) \
+  40:Core/Src/vl53l0x_api_strings.c **** 	_LOG_FUNCTION_END(TRACE_MODULE_API, status, ##__VA_ARGS__)
+  41:Core/Src/vl53l0x_api_strings.c **** #define LOG_FUNCTION_END_FMT(status, fmt, ...) \
+  42:Core/Src/vl53l0x_api_strings.c **** 	_LOG_FUNCTION_END_FMT(TRACE_MODULE_API, status, fmt, ##__VA_ARGS__)
+  43:Core/Src/vl53l0x_api_strings.c **** 
+  44:Core/Src/vl53l0x_api_strings.c **** 
+  45:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_check_part_used(VL53L0X_DEV Dev,
+  46:Core/Src/vl53l0x_api_strings.c **** 		uint8_t *Revision,
+  47:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_DeviceInfo_t *pVL53L0X_DeviceInfo)
+  48:Core/Src/vl53l0x_api_strings.c **** {
+  30              		.loc 1 48 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 48 1 is_stmt 0 view .LVU1
+  35 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 3, -24
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 0446     		mov	r4, r0
+  44 0004 0F46     		mov	r7, r1
+  45 0006 1546     		mov	r5, r2
+  49:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+  46              		.loc 1 49 2 is_stmt 1 view .LVU2
+  47              	.LVL1:
+  50:Core/Src/vl53l0x_api_strings.c **** 	uint8_t ModuleIdInt;
+  48              		.loc 1 50 2 view .LVU3
+  51:Core/Src/vl53l0x_api_strings.c **** 	char *ProductId_tmp;
+  49              		.loc 1 51 2 view .LVU4
+  52:Core/Src/vl53l0x_api_strings.c **** 
+  53:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+  50              		.loc 1 53 2 view .LVU5
+  54:Core/Src/vl53l0x_api_strings.c **** 
+  55:Core/Src/vl53l0x_api_strings.c **** 	Status = VL53L0X_get_info_from_device(Dev, 2);
+  51              		.loc 1 55 2 view .LVU6
+  52              		.loc 1 55 11 is_stmt 0 view .LVU7
+  53 0008 0221     		movs	r1, #2
+  54              	.LVL2:
+  55              		.loc 1 55 11 view .LVU8
+  56 000a FFF7FEFF 		bl	VL53L0X_get_info_from_device
+  57              	.LVL3:
+  56:Core/Src/vl53l0x_api_strings.c **** 
+  57:Core/Src/vl53l0x_api_strings.c **** 	if (Status == VL53L0X_ERROR_NONE) {
+  58              		.loc 1 57 2 is_stmt 1 view .LVU9
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 3
+
+
+  59              		.loc 1 57 5 is_stmt 0 view .LVU10
+  60 000e 0646     		mov	r6, r0
+  61 0010 28B9     		cbnz	r0, .L2
+  58:Core/Src/vl53l0x_api_strings.c **** 		ModuleIdInt = VL53L0X_GETDEVICESPECIFICPARAMETER(Dev, ModuleId);
+  62              		.loc 1 58 3 is_stmt 1 view .LVU11
+  63              		.loc 1 58 15 is_stmt 0 view .LVU12
+  64 0012 94F8F130 		ldrb	r3, [r4, #241]	@ zero_extendqisi2
+  65              	.LVL4:
+  59:Core/Src/vl53l0x_api_strings.c **** 
+  60:Core/Src/vl53l0x_api_strings.c **** 	if (ModuleIdInt == 0) {
+  66              		.loc 1 60 2 is_stmt 1 view .LVU13
+  67              		.loc 1 60 5 is_stmt 0 view .LVU14
+  68 0016 23B9     		cbnz	r3, .L3
+  61:Core/Src/vl53l0x_api_strings.c **** 		*Revision = 0;
+  69              		.loc 1 61 3 is_stmt 1 view .LVU15
+  70              		.loc 1 61 13 is_stmt 0 view .LVU16
+  71 0018 3B70     		strb	r3, [r7]
+  62:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->ProductId, "");
+  72              		.loc 1 62 3 is_stmt 1 view .LVU17
+  73 001a 85F84030 		strb	r3, [r5, #64]
+  74              	.LVL5:
+  75              	.L2:
+  63:Core/Src/vl53l0x_api_strings.c **** 	} else {
+  64:Core/Src/vl53l0x_api_strings.c **** 		*Revision = VL53L0X_GETDEVICESPECIFICPARAMETER(Dev, Revision);
+  65:Core/Src/vl53l0x_api_strings.c **** 		ProductId_tmp = VL53L0X_GETDEVICESPECIFICPARAMETER(Dev,
+  66:Core/Src/vl53l0x_api_strings.c **** 			ProductId);
+  67:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->ProductId, ProductId_tmp);
+  68:Core/Src/vl53l0x_api_strings.c **** 	}
+  69:Core/Src/vl53l0x_api_strings.c **** 	}
+  70:Core/Src/vl53l0x_api_strings.c **** 
+  71:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+  76              		.loc 1 71 2 view .LVU18
+  72:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+  77              		.loc 1 72 2 view .LVU19
+  73:Core/Src/vl53l0x_api_strings.c **** }
+  78              		.loc 1 73 1 is_stmt 0 view .LVU20
+  79 001e 3046     		mov	r0, r6
+  80 0020 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  81              	.LVL6:
+  82              	.L3:
+  64:Core/Src/vl53l0x_api_strings.c **** 		ProductId_tmp = VL53L0X_GETDEVICESPECIFICPARAMETER(Dev,
+  83              		.loc 1 64 3 is_stmt 1 view .LVU21
+  64:Core/Src/vl53l0x_api_strings.c **** 		ProductId_tmp = VL53L0X_GETDEVICESPECIFICPARAMETER(Dev,
+  84              		.loc 1 64 15 is_stmt 0 view .LVU22
+  85 0022 94F8F230 		ldrb	r3, [r4, #242]	@ zero_extendqisi2
+  86              	.LVL7:
+  64:Core/Src/vl53l0x_api_strings.c **** 		ProductId_tmp = VL53L0X_GETDEVICESPECIFICPARAMETER(Dev,
+  87              		.loc 1 64 13 view .LVU23
+  88 0026 3B70     		strb	r3, [r7]
+  89              	.LVL8:
+  65:Core/Src/vl53l0x_api_strings.c **** 			ProductId);
+  90              		.loc 1 65 3 is_stmt 1 view .LVU24
+  67:Core/Src/vl53l0x_api_strings.c **** 	}
+  91              		.loc 1 67 3 view .LVU25
+  92 0028 04F1F301 		add	r1, r4, #243
+  93              	.LVL9:
+  67:Core/Src/vl53l0x_api_strings.c **** 	}
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 4
+
+
+  94              		.loc 1 67 3 is_stmt 0 view .LVU26
+  95 002c 05F14000 		add	r0, r5, #64
+  96              	.LVL10:
+  67:Core/Src/vl53l0x_api_strings.c **** 	}
+  97              		.loc 1 67 3 view .LVU27
+  98 0030 FFF7FEFF 		bl	strcpy
+  99              	.LVL11:
+  67:Core/Src/vl53l0x_api_strings.c **** 	}
+ 100              		.loc 1 67 3 view .LVU28
+ 101 0034 F3E7     		b	.L2
+ 102              		.cfi_endproc
+ 103              	.LFE133:
+ 105              		.section	.rodata.VL53L0X_get_device_info.str1.4,"aMS",%progbits,1
+ 106              		.align	2
+ 107              	.LC0:
+ 108 0000 564C3533 		.ascii	"VL53L0X TS0\000"
+ 108      4C305820 
+ 108      54533000 
+ 109              		.align	2
+ 110              	.LC1:
+ 111 000c 564C3533 		.ascii	"VL53L0X TS1\000"
+ 111      4C305820 
+ 111      54533100 
+ 112              		.align	2
+ 113              	.LC2:
+ 114 0018 564C3533 		.ascii	"VL53L0X TS2\000"
+ 114      4C305820 
+ 114      54533200 
+ 115              		.align	2
+ 116              	.LC3:
+ 117 0024 564C3533 		.ascii	"VL53L0X ES1 or later\000"
+ 117      4C305820 
+ 117      45533120 
+ 117      6F72206C 
+ 117      61746572 
+ 118 0039 000000   		.align	2
+ 119              	.LC4:
+ 120 003c 564C3533 		.ascii	"VL53L0X\000"
+ 120      4C305800 
+ 121              		.section	.text.VL53L0X_get_device_info,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	VL53L0X_get_device_info
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.fpu fpv4-sp-d16
+ 129              	VL53L0X_get_device_info:
+ 130              	.LVL12:
+ 131              	.LFB134:
+  74:Core/Src/vl53l0x_api_strings.c **** 
+  75:Core/Src/vl53l0x_api_strings.c **** 
+  76:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_device_info(VL53L0X_DEV Dev,
+  77:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_DeviceInfo_t *pVL53L0X_DeviceInfo)
+  78:Core/Src/vl53l0x_api_strings.c **** {
+ 132              		.loc 1 78 1 is_stmt 1 view -0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 5
+
+
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		.loc 1 78 1 is_stmt 0 view .LVU30
+ 137 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 138              		.cfi_def_cfa_offset 20
+ 139              		.cfi_offset 4, -20
+ 140              		.cfi_offset 5, -16
+ 141              		.cfi_offset 6, -12
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 83B0     		sub	sp, sp, #12
+ 145              		.cfi_def_cfa_offset 32
+ 146 0004 0646     		mov	r6, r0
+ 147 0006 0C46     		mov	r4, r1
+  79:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 148              		.loc 1 79 2 is_stmt 1 view .LVU31
+ 149              	.LVL13:
+  80:Core/Src/vl53l0x_api_strings.c **** 	uint8_t revision_id;
+ 150              		.loc 1 80 2 view .LVU32
+  81:Core/Src/vl53l0x_api_strings.c **** 	uint8_t Revision;
+ 151              		.loc 1 81 2 view .LVU33
+  82:Core/Src/vl53l0x_api_strings.c **** 
+  83:Core/Src/vl53l0x_api_strings.c **** 	Status = VL53L0X_check_part_used(Dev, &Revision, pVL53L0X_DeviceInfo);
+ 152              		.loc 1 83 2 view .LVU34
+ 153              		.loc 1 83 11 is_stmt 0 view .LVU35
+ 154 0008 0A46     		mov	r2, r1
+ 155 000a 0DF10601 		add	r1, sp, #6
+ 156              	.LVL14:
+ 157              		.loc 1 83 11 view .LVU36
+ 158 000e FFF7FEFF 		bl	VL53L0X_check_part_used
+ 159              	.LVL15:
+  84:Core/Src/vl53l0x_api_strings.c **** 
+  85:Core/Src/vl53l0x_api_strings.c **** 	if (Status == VL53L0X_ERROR_NONE) {
+ 160              		.loc 1 85 2 is_stmt 1 view .LVU37
+ 161              		.loc 1 85 5 is_stmt 0 view .LVU38
+ 162 0012 0546     		mov	r5, r0
+ 163 0014 B8B9     		cbnz	r0, .L6
+  86:Core/Src/vl53l0x_api_strings.c **** 		if (Revision == 0) {
+ 164              		.loc 1 86 3 is_stmt 1 view .LVU39
+ 165              		.loc 1 86 16 is_stmt 0 view .LVU40
+ 166 0016 9DF80630 		ldrb	r3, [sp, #6]	@ zero_extendqisi2
+ 167              		.loc 1 86 6 view .LVU41
+ 168 001a 5BB1     		cbz	r3, .L14
+  87:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Name,
+  88:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_TS0);
+  89:Core/Src/vl53l0x_api_strings.c **** 		} else if ((Revision <= 34) && (Revision != 32)) {
+ 169              		.loc 1 89 10 is_stmt 1 view .LVU42
+ 170              		.loc 1 89 13 is_stmt 0 view .LVU43
+ 171 001c 222B     		cmp	r3, #34
+ 172 001e 01D8     		bhi	.L9
+ 173              		.loc 1 89 31 discriminator 1 view .LVU44
+ 174 0020 202B     		cmp	r3, #32
+ 175 0022 15D1     		bne	.L15
+ 176              	.L9:
+  90:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Name,
+  91:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_TS1);
+  92:Core/Src/vl53l0x_api_strings.c **** 		} else if (Revision < 39) {
+ 177              		.loc 1 92 10 is_stmt 1 view .LVU45
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 6
+
+
+ 178              		.loc 1 92 13 is_stmt 0 view .LVU46
+ 179 0024 262B     		cmp	r3, #38
+ 180 0026 19D8     		bhi	.L10
+  93:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Name,
+ 181              		.loc 1 93 4 is_stmt 1 view .LVU47
+ 182 0028 1E4B     		ldr	r3, .L18
+ 183 002a 07CB     		ldmia	r3!, {r0, r1, r2}
+ 184              	.LVL16:
+ 185              		.loc 1 93 4 is_stmt 0 view .LVU48
+ 186 002c 2060     		str	r0, [r4]	@ unaligned
+ 187 002e 6160     		str	r1, [r4, #4]	@ unaligned
+ 188 0030 A260     		str	r2, [r4, #8]	@ unaligned
+ 189 0032 04E0     		b	.L8
+ 190              	.LVL17:
+ 191              	.L14:
+  87:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Name,
+ 192              		.loc 1 87 4 is_stmt 1 view .LVU49
+ 193 0034 1C4B     		ldr	r3, .L18+4
+ 194 0036 07CB     		ldmia	r3!, {r0, r1, r2}
+ 195              	.LVL18:
+  87:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Name,
+ 196              		.loc 1 87 4 is_stmt 0 view .LVU50
+ 197 0038 2060     		str	r0, [r4]	@ unaligned
+ 198 003a 6160     		str	r1, [r4, #4]	@ unaligned
+ 199 003c A260     		str	r2, [r4, #8]	@ unaligned
+ 200              	.L8:
+  94:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_TS2);
+  95:Core/Src/vl53l0x_api_strings.c **** 		} else {
+  96:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Name,
+  97:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_ES1);
+  98:Core/Src/vl53l0x_api_strings.c **** 		}
+  99:Core/Src/vl53l0x_api_strings.c **** 
+ 100:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pVL53L0X_DeviceInfo->Type,
+ 201              		.loc 1 100 3 is_stmt 1 view .LVU51
+ 202 003e 1B4B     		ldr	r3, .L18+8
+ 203 0040 03CB     		ldmia	r3!, {r0, r1}
+ 204 0042 2062     		str	r0, [r4, #32]	@ unaligned
+ 205 0044 6162     		str	r1, [r4, #36]	@ unaligned
+ 206              	.L6:
+ 101:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_DEVICE_INFO_TYPE);
+ 102:Core/Src/vl53l0x_api_strings.c **** 
+ 103:Core/Src/vl53l0x_api_strings.c **** 	}
+ 104:Core/Src/vl53l0x_api_strings.c **** 
+ 105:Core/Src/vl53l0x_api_strings.c **** 	if (Status == VL53L0X_ERROR_NONE) {
+ 207              		.loc 1 105 2 view .LVU52
+ 208              		.loc 1 105 5 is_stmt 0 view .LVU53
+ 209 0046 A5B1     		cbz	r5, .L16
+ 210              	.L11:
+ 211              	.LVL19:
+ 106:Core/Src/vl53l0x_api_strings.c **** 		Status = VL53L0X_RdByte(Dev, VL53L0X_REG_IDENTIFICATION_MODEL_ID,
+ 107:Core/Src/vl53l0x_api_strings.c **** 				&pVL53L0X_DeviceInfo->ProductType);
+ 108:Core/Src/vl53l0x_api_strings.c **** 	}
+ 109:Core/Src/vl53l0x_api_strings.c **** 
+ 110:Core/Src/vl53l0x_api_strings.c **** 	if (Status == VL53L0X_ERROR_NONE) {
+ 212              		.loc 1 110 2 is_stmt 1 view .LVU54
+ 213              		.loc 1 110 5 is_stmt 0 view .LVU55
+ 214 0048 DDB1     		cbz	r5, .L17
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 7
+
+
+ 215              	.L12:
+ 111:Core/Src/vl53l0x_api_strings.c **** 		Status = VL53L0X_RdByte(Dev,
+ 112:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_REG_IDENTIFICATION_REVISION_ID,
+ 113:Core/Src/vl53l0x_api_strings.c **** 				&revision_id);
+ 114:Core/Src/vl53l0x_api_strings.c **** 		pVL53L0X_DeviceInfo->ProductRevisionMajor = 1;
+ 115:Core/Src/vl53l0x_api_strings.c **** 		pVL53L0X_DeviceInfo->ProductRevisionMinor =
+ 116:Core/Src/vl53l0x_api_strings.c **** 					(revision_id & 0xF0) >> 4;
+ 117:Core/Src/vl53l0x_api_strings.c **** 	}
+ 118:Core/Src/vl53l0x_api_strings.c **** 
+ 119:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 216              		.loc 1 119 2 is_stmt 1 view .LVU56
+ 120:Core/Src/vl53l0x_api_strings.c **** }
+ 217              		.loc 1 120 1 is_stmt 0 view .LVU57
+ 218 004a 2846     		mov	r0, r5
+ 219 004c 03B0     		add	sp, sp, #12
+ 220              		.cfi_remember_state
+ 221              		.cfi_def_cfa_offset 20
+ 222              		@ sp needed
+ 223 004e F0BD     		pop	{r4, r5, r6, r7, pc}
+ 224              	.LVL20:
+ 225              	.L15:
+ 226              		.cfi_restore_state
+  90:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_TS1);
+ 227              		.loc 1 90 4 is_stmt 1 view .LVU58
+ 228 0050 174B     		ldr	r3, .L18+12
+ 229 0052 07CB     		ldmia	r3!, {r0, r1, r2}
+ 230              	.LVL21:
+  90:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_TS1);
+ 231              		.loc 1 90 4 is_stmt 0 view .LVU59
+ 232 0054 2060     		str	r0, [r4]	@ unaligned
+ 233 0056 6160     		str	r1, [r4, #4]	@ unaligned
+ 234 0058 A260     		str	r2, [r4, #8]	@ unaligned
+ 235 005a F0E7     		b	.L8
+ 236              	.LVL22:
+ 237              	.L10:
+  96:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_ES1);
+ 238              		.loc 1 96 4 is_stmt 1 view .LVU60
+ 239 005c 154F     		ldr	r7, .L18+16
+ 240 005e 0FCF     		ldmia	r7!, {r0, r1, r2, r3}
+ 241              	.LVL23:
+  96:Core/Src/vl53l0x_api_strings.c **** 					VL53L0X_STRING_DEVICE_INFO_NAME_ES1);
+ 242              		.loc 1 96 4 is_stmt 0 view .LVU61
+ 243 0060 2060     		str	r0, [r4]	@ unaligned
+ 244 0062 6160     		str	r1, [r4, #4]	@ unaligned
+ 245 0064 A260     		str	r2, [r4, #8]	@ unaligned
+ 246 0066 E360     		str	r3, [r4, #12]	@ unaligned
+ 247 0068 3868     		ldr	r0, [r7]
+ 248 006a 2061     		str	r0, [r4, #16]	@ unaligned
+ 249 006c 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 250 006e 2375     		strb	r3, [r4, #20]
+ 251 0070 E5E7     		b	.L8
+ 252              	.L16:
+ 106:Core/Src/vl53l0x_api_strings.c **** 				&pVL53L0X_DeviceInfo->ProductType);
+ 253              		.loc 1 106 3 is_stmt 1 view .LVU62
+ 106:Core/Src/vl53l0x_api_strings.c **** 				&pVL53L0X_DeviceInfo->ProductType);
+ 254              		.loc 1 106 12 is_stmt 0 view .LVU63
+ 255 0072 04F16002 		add	r2, r4, #96
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 8
+
+
+ 256 0076 C021     		movs	r1, #192
+ 257 0078 3046     		mov	r0, r6
+ 258 007a FFF7FEFF 		bl	VL53L0X_RdByte
+ 259              	.LVL24:
+ 260 007e 0546     		mov	r5, r0
+ 261              	.LVL25:
+ 106:Core/Src/vl53l0x_api_strings.c **** 				&pVL53L0X_DeviceInfo->ProductType);
+ 262              		.loc 1 106 12 view .LVU64
+ 263 0080 E2E7     		b	.L11
+ 264              	.L17:
+ 111:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_REG_IDENTIFICATION_REVISION_ID,
+ 265              		.loc 1 111 3 is_stmt 1 view .LVU65
+ 111:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_REG_IDENTIFICATION_REVISION_ID,
+ 266              		.loc 1 111 12 is_stmt 0 view .LVU66
+ 267 0082 0DF10702 		add	r2, sp, #7
+ 268 0086 C221     		movs	r1, #194
+ 269 0088 3046     		mov	r0, r6
+ 270 008a FFF7FEFF 		bl	VL53L0X_RdByte
+ 271              	.LVL26:
+ 272 008e 0546     		mov	r5, r0
+ 273              	.LVL27:
+ 114:Core/Src/vl53l0x_api_strings.c **** 		pVL53L0X_DeviceInfo->ProductRevisionMinor =
+ 274              		.loc 1 114 3 is_stmt 1 view .LVU67
+ 114:Core/Src/vl53l0x_api_strings.c **** 		pVL53L0X_DeviceInfo->ProductRevisionMinor =
+ 275              		.loc 1 114 45 is_stmt 0 view .LVU68
+ 276 0090 0123     		movs	r3, #1
+ 277 0092 84F86130 		strb	r3, [r4, #97]
+ 115:Core/Src/vl53l0x_api_strings.c **** 					(revision_id & 0xF0) >> 4;
+ 278              		.loc 1 115 3 is_stmt 1 view .LVU69
+ 116:Core/Src/vl53l0x_api_strings.c **** 	}
+ 279              		.loc 1 116 27 is_stmt 0 view .LVU70
+ 280 0096 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 281 009a 1B09     		lsrs	r3, r3, #4
+ 115:Core/Src/vl53l0x_api_strings.c **** 					(revision_id & 0xF0) >> 4;
+ 282              		.loc 1 115 45 view .LVU71
+ 283 009c 84F86230 		strb	r3, [r4, #98]
+ 284 00a0 D3E7     		b	.L12
+ 285              	.L19:
+ 286 00a2 00BF     		.align	2
+ 287              	.L18:
+ 288 00a4 18000000 		.word	.LC2
+ 289 00a8 00000000 		.word	.LC0
+ 290 00ac 3C000000 		.word	.LC4
+ 291 00b0 0C000000 		.word	.LC1
+ 292 00b4 24000000 		.word	.LC3
+ 293              		.cfi_endproc
+ 294              	.LFE134:
+ 296              		.section	.rodata.VL53L0X_get_device_error_string.str1.4,"aMS",%progbits,1
+ 297              		.align	2
+ 298              	.LC5:
+ 299 0000 4E6F2055 		.ascii	"No Update\000"
+ 299      70646174 
+ 299      6500
+ 300 000a 0000     		.align	2
+ 301              	.LC6:
+ 302 000c 56435345 		.ascii	"VCSEL Continuity Test Failure\000"
+ 302      4C20436F 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 9
+
+
+ 302      6E74696E 
+ 302      75697479 
+ 302      20546573 
+ 303 002a 0000     		.align	2
+ 304              	.LC7:
+ 305 002c 56435345 		.ascii	"VCSEL Watchdog Test Failure\000"
+ 305      4C205761 
+ 305      74636864 
+ 305      6F672054 
+ 305      65737420 
+ 306              		.align	2
+ 307              	.LC8:
+ 308 0048 4E6F2056 		.ascii	"No VHV Value found\000"
+ 308      48562056 
+ 308      616C7565 
+ 308      20666F75 
+ 308      6E6400
+ 309 005b 00       		.align	2
+ 310              	.LC9:
+ 311 005c 4D535243 		.ascii	"MSRC No Target Error\000"
+ 311      204E6F20 
+ 311      54617267 
+ 311      65742045 
+ 311      72726F72 
+ 312 0071 000000   		.align	2
+ 313              	.LC10:
+ 314 0074 534E5220 		.ascii	"SNR Check Exit\000"
+ 314      43686563 
+ 314      6B204578 
+ 314      697400
+ 315 0083 00       		.align	2
+ 316              	.LC11:
+ 317 0084 52616E67 		.ascii	"Range Phase Check Error\000"
+ 317      65205068 
+ 317      61736520 
+ 317      43686563 
+ 317      6B204572 
+ 318              		.align	2
+ 319              	.LC12:
+ 320 009c 5369676D 		.ascii	"Sigma Threshold Check Error\000"
+ 320      61205468 
+ 320      72657368 
+ 320      6F6C6420 
+ 320      43686563 
+ 321              		.align	2
+ 322              	.LC13:
+ 323 00b8 54434320 		.ascii	"TCC Error\000"
+ 323      4572726F 
+ 323      7200
+ 324 00c2 0000     		.align	2
+ 325              	.LC14:
+ 326 00c4 50686173 		.ascii	"Phase Consistency Error\000"
+ 326      6520436F 
+ 326      6E736973 
+ 326      74656E63 
+ 326      79204572 
+ 327              		.align	2
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 10
+
+
+ 328              	.LC15:
+ 329 00dc 4D696E20 		.ascii	"Min Clip Error\000"
+ 329      436C6970 
+ 329      20457272 
+ 329      6F7200
+ 330 00eb 00       		.align	2
+ 331              	.LC16:
+ 332 00ec 52616E67 		.ascii	"Range Complete\000"
+ 332      6520436F 
+ 332      6D706C65 
+ 332      746500
+ 333 00fb 00       		.align	2
+ 334              	.LC17:
+ 335 00fc 52616E67 		.ascii	"Range Algo Underflow Error\000"
+ 335      6520416C 
+ 335      676F2055 
+ 335      6E646572 
+ 335      666C6F77 
+ 336 0117 00       		.align	2
+ 337              	.LC18:
+ 338 0118 52616E67 		.ascii	"Range Algo Overlow Error\000"
+ 338      6520416C 
+ 338      676F204F 
+ 338      7665726C 
+ 338      6F772045 
+ 339 0131 000000   		.align	2
+ 340              	.LC19:
+ 341 0134 52616E67 		.ascii	"Range Ignore Threshold Error\000"
+ 341      65204967 
+ 341      6E6F7265 
+ 341      20546872 
+ 341      6573686F 
+ 342 0151 000000   		.align	2
+ 343              	.LC20:
+ 344 0154 556E6B6E 		.ascii	"Unknown Error Code\000"
+ 344      6F776E20 
+ 344      4572726F 
+ 344      7220436F 
+ 344      646500
+ 345              		.section	.text.VL53L0X_get_device_error_string,"ax",%progbits
+ 346              		.align	1
+ 347              		.global	VL53L0X_get_device_error_string
+ 348              		.syntax unified
+ 349              		.thumb
+ 350              		.thumb_func
+ 351              		.fpu fpv4-sp-d16
+ 353              	VL53L0X_get_device_error_string:
+ 354              	.LVL28:
+ 355              	.LFB135:
+ 121:Core/Src/vl53l0x_api_strings.c **** 
+ 122:Core/Src/vl53l0x_api_strings.c **** 
+ 123:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_device_error_string(VL53L0X_DeviceError ErrorCode,
+ 124:Core/Src/vl53l0x_api_strings.c **** 		char *pDeviceErrorString)
+ 125:Core/Src/vl53l0x_api_strings.c **** {
+ 356              		.loc 1 125 1 is_stmt 1 view -0
+ 357              		.cfi_startproc
+ 358              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 11
+
+
+ 359              		@ frame_needed = 0, uses_anonymous_args = 0
+ 360              		@ link register save eliminated.
+ 361              		.loc 1 125 1 is_stmt 0 view .LVU73
+ 362 0000 30B4     		push	{r4, r5}
+ 363              		.cfi_def_cfa_offset 8
+ 364              		.cfi_offset 4, -8
+ 365              		.cfi_offset 5, -4
+ 366 0002 0C46     		mov	r4, r1
+ 126:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 367              		.loc 1 126 2 is_stmt 1 view .LVU74
+ 368              	.LVL29:
+ 127:Core/Src/vl53l0x_api_strings.c **** 
+ 128:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 369              		.loc 1 128 2 view .LVU75
+ 129:Core/Src/vl53l0x_api_strings.c **** 
+ 130:Core/Src/vl53l0x_api_strings.c **** 	switch (ErrorCode) {
+ 370              		.loc 1 130 2 view .LVU76
+ 371 0004 0E28     		cmp	r0, #14
+ 372 0006 00F2AC80 		bhi	.L21
+ 373 000a DFE800F0 		tbb	[pc, r0]
+ 374              	.L23:
+ 375 000e 08       		.byte	(.L37-.L23)/2
+ 376 000f 11       		.byte	(.L36-.L23)/2
+ 377 0010 1E       		.byte	(.L35-.L23)/2
+ 378 0011 29       		.byte	(.L34-.L23)/2
+ 379 0012 34       		.byte	(.L33-.L23)/2
+ 380 0013 3F       		.byte	(.L32-.L23)/2
+ 381 0014 49       		.byte	(.L31-.L23)/2
+ 382 0015 53       		.byte	(.L30-.L23)/2
+ 383 0016 5E       		.byte	(.L29-.L23)/2
+ 384 0017 65       		.byte	(.L28-.L23)/2
+ 385 0018 6F       		.byte	(.L27-.L23)/2
+ 386 0019 79       		.byte	(.L26-.L23)/2
+ 387 001a 83       		.byte	(.L25-.L23)/2
+ 388 001b 91       		.byte	(.L24-.L23)/2
+ 389 001c 9D       		.byte	(.L22-.L23)/2
+ 390 001d 00       		.p2align 1
+ 391              	.L37:
+ 131:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_NONE:
+ 132:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 392              		.loc 1 132 3 view .LVU77
+ 393 001e 564B     		ldr	r3, .L40
+ 394 0020 03CB     		ldmia	r3!, {r0, r1}
+ 395              	.LVL30:
+ 396              		.loc 1 132 3 is_stmt 0 view .LVU78
+ 397 0022 2060     		str	r0, [r4]	@ unaligned
+ 398 0024 6160     		str	r1, [r4, #4]	@ unaligned
+ 399 0026 1B88     		ldrh	r3, [r3]	@ unaligned
+ 400 0028 2381     		strh	r3, [r4, #8]	@ unaligned
+ 133:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_NONE);
+ 134:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 401              		.loc 1 134 2 is_stmt 1 view .LVU79
+ 402              	.L38:
+ 135:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_VCSELCONTINUITYTESTFAILURE:
+ 136:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 137:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_VCSELCONTINUITYTESTFAILURE);
+ 138:Core/Src/vl53l0x_api_strings.c **** 	break;
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 12
+
+
+ 139:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_VCSELWATCHDOGTESTFAILURE:
+ 140:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 141:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_VCSELWATCHDOGTESTFAILURE);
+ 142:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 143:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_NOVHVVALUEFOUND:
+ 144:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 145:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_NOVHVVALUEFOUND);
+ 146:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 147:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_MSRCNOTARGET:
+ 148:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 149:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_MSRCNOTARGET);
+ 150:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 151:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_SNRCHECK:
+ 152:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 153:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_SNRCHECK);
+ 154:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 155:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_RANGEPHASECHECK:
+ 156:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 157:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGEPHASECHECK);
+ 158:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 159:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_SIGMATHRESHOLDCHECK:
+ 160:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 161:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_SIGMATHRESHOLDCHECK);
+ 162:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 163:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_TCC:
+ 164:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 165:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_TCC);
+ 166:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 167:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_PHASECONSISTENCY:
+ 168:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 169:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_PHASECONSISTENCY);
+ 170:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 171:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_MINCLIP:
+ 172:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 173:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_MINCLIP);
+ 174:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 175:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_RANGECOMPLETE:
+ 176:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 177:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGECOMPLETE);
+ 178:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 179:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_ALGOUNDERFLOW:
+ 180:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 181:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_ALGOUNDERFLOW);
+ 182:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 183:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_ALGOOVERFLOW:
+ 184:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 185:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_ALGOOVERFLOW);
+ 186:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 187:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_RANGEIGNORETHRESHOLD:
+ 188:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 189:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGEIGNORETHRESHOLD);
+ 190:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 191:Core/Src/vl53l0x_api_strings.c **** 
+ 192:Core/Src/vl53l0x_api_strings.c **** 	default:
+ 193:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pDeviceErrorString,
+ 194:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 195:Core/Src/vl53l0x_api_strings.c **** 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 13
+
+
+ 196:Core/Src/vl53l0x_api_strings.c **** 	}
+ 197:Core/Src/vl53l0x_api_strings.c **** 
+ 198:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+ 403              		.loc 1 198 2 view .LVU80
+ 199:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 404              		.loc 1 199 2 view .LVU81
+ 200:Core/Src/vl53l0x_api_strings.c **** }
+ 405              		.loc 1 200 1 is_stmt 0 view .LVU82
+ 406 002a 0020     		movs	r0, #0
+ 407 002c 30BC     		pop	{r4, r5}
+ 408              		.cfi_remember_state
+ 409              		.cfi_restore 5
+ 410              		.cfi_restore 4
+ 411              		.cfi_def_cfa_offset 0
+ 412              	.LVL31:
+ 413              		.loc 1 200 1 view .LVU83
+ 414 002e 7047     		bx	lr
+ 415              	.LVL32:
+ 416              	.L36:
+ 417              		.cfi_restore_state
+ 136:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_VCSELCONTINUITYTESTFAILURE);
+ 418              		.loc 1 136 3 is_stmt 1 view .LVU84
+ 419 0030 524D     		ldr	r5, .L40+4
+ 420 0032 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 421              	.LVL33:
+ 136:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_VCSELCONTINUITYTESTFAILURE);
+ 422              		.loc 1 136 3 is_stmt 0 view .LVU85
+ 423 0034 2060     		str	r0, [r4]	@ unaligned
+ 424 0036 6160     		str	r1, [r4, #4]	@ unaligned
+ 425 0038 A260     		str	r2, [r4, #8]	@ unaligned
+ 426 003a E360     		str	r3, [r4, #12]	@ unaligned
+ 427 003c 07CD     		ldmia	r5!, {r0, r1, r2}
+ 428 003e 2061     		str	r0, [r4, #16]	@ unaligned
+ 429 0040 6161     		str	r1, [r4, #20]	@ unaligned
+ 430 0042 A261     		str	r2, [r4, #24]	@ unaligned
+ 431 0044 2B88     		ldrh	r3, [r5]	@ unaligned
+ 432 0046 A383     		strh	r3, [r4, #28]	@ unaligned
+ 138:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_VCSELWATCHDOGTESTFAILURE:
+ 433              		.loc 1 138 2 is_stmt 1 view .LVU86
+ 434 0048 EFE7     		b	.L38
+ 435              	.LVL34:
+ 436              	.L35:
+ 140:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_VCSELWATCHDOGTESTFAILURE);
+ 437              		.loc 1 140 3 view .LVU87
+ 438 004a 4D4D     		ldr	r5, .L40+8
+ 439 004c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 440              	.LVL35:
+ 140:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_VCSELWATCHDOGTESTFAILURE);
+ 441              		.loc 1 140 3 is_stmt 0 view .LVU88
+ 442 004e 2060     		str	r0, [r4]	@ unaligned
+ 443 0050 6160     		str	r1, [r4, #4]	@ unaligned
+ 444 0052 A260     		str	r2, [r4, #8]	@ unaligned
+ 445 0054 E360     		str	r3, [r4, #12]	@ unaligned
+ 446 0056 07CD     		ldmia	r5!, {r0, r1, r2}
+ 447 0058 2061     		str	r0, [r4, #16]	@ unaligned
+ 448 005a 6161     		str	r1, [r4, #20]	@ unaligned
+ 449 005c A261     		str	r2, [r4, #24]	@ unaligned
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 14
+
+
+ 142:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_NOVHVVALUEFOUND:
+ 450              		.loc 1 142 2 is_stmt 1 view .LVU89
+ 451 005e E4E7     		b	.L38
+ 452              	.LVL36:
+ 453              	.L34:
+ 144:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_NOVHVVALUEFOUND);
+ 454              		.loc 1 144 3 view .LVU90
+ 455 0060 484D     		ldr	r5, .L40+12
+ 456 0062 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 457              	.LVL37:
+ 144:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_NOVHVVALUEFOUND);
+ 458              		.loc 1 144 3 is_stmt 0 view .LVU91
+ 459 0064 2060     		str	r0, [r4]	@ unaligned
+ 460 0066 6160     		str	r1, [r4, #4]	@ unaligned
+ 461 0068 A260     		str	r2, [r4, #8]	@ unaligned
+ 462 006a E360     		str	r3, [r4, #12]	@ unaligned
+ 463 006c 2A88     		ldrh	r2, [r5]	@ unaligned
+ 464 006e AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 465 0070 2282     		strh	r2, [r4, #16]	@ unaligned
+ 466 0072 A374     		strb	r3, [r4, #18]
+ 146:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_MSRCNOTARGET:
+ 467              		.loc 1 146 2 is_stmt 1 view .LVU92
+ 468 0074 D9E7     		b	.L38
+ 469              	.LVL38:
+ 470              	.L33:
+ 148:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_MSRCNOTARGET);
+ 471              		.loc 1 148 3 view .LVU93
+ 472 0076 444D     		ldr	r5, .L40+16
+ 473 0078 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 474              	.LVL39:
+ 148:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_MSRCNOTARGET);
+ 475              		.loc 1 148 3 is_stmt 0 view .LVU94
+ 476 007a 2060     		str	r0, [r4]	@ unaligned
+ 477 007c 6160     		str	r1, [r4, #4]	@ unaligned
+ 478 007e A260     		str	r2, [r4, #8]	@ unaligned
+ 479 0080 E360     		str	r3, [r4, #12]	@ unaligned
+ 480 0082 2868     		ldr	r0, [r5]
+ 481 0084 2061     		str	r0, [r4, #16]	@ unaligned
+ 482 0086 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
+ 483 0088 2375     		strb	r3, [r4, #20]
+ 150:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_SNRCHECK:
+ 484              		.loc 1 150 2 is_stmt 1 view .LVU95
+ 485 008a CEE7     		b	.L38
+ 486              	.LVL40:
+ 487              	.L32:
+ 152:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_SNRCHECK);
+ 488              		.loc 1 152 3 view .LVU96
+ 489 008c 3F4B     		ldr	r3, .L40+20
+ 490 008e 07CB     		ldmia	r3!, {r0, r1, r2}
+ 491              	.LVL41:
+ 152:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_SNRCHECK);
+ 492              		.loc 1 152 3 is_stmt 0 view .LVU97
+ 493 0090 2060     		str	r0, [r4]	@ unaligned
+ 494 0092 6160     		str	r1, [r4, #4]	@ unaligned
+ 495 0094 A260     		str	r2, [r4, #8]	@ unaligned
+ 496 0096 1A88     		ldrh	r2, [r3]	@ unaligned
+ 497 0098 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 15
+
+
+ 498 009a A281     		strh	r2, [r4, #12]	@ unaligned
+ 499 009c A373     		strb	r3, [r4, #14]
+ 154:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_RANGEPHASECHECK:
+ 500              		.loc 1 154 2 is_stmt 1 view .LVU98
+ 501 009e C4E7     		b	.L38
+ 502              	.LVL42:
+ 503              	.L31:
+ 156:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGEPHASECHECK);
+ 504              		.loc 1 156 3 view .LVU99
+ 505 00a0 3B4D     		ldr	r5, .L40+24
+ 506 00a2 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 507              	.LVL43:
+ 156:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGEPHASECHECK);
+ 508              		.loc 1 156 3 is_stmt 0 view .LVU100
+ 509 00a4 2060     		str	r0, [r4]	@ unaligned
+ 510 00a6 6160     		str	r1, [r4, #4]	@ unaligned
+ 511 00a8 A260     		str	r2, [r4, #8]	@ unaligned
+ 512 00aa E360     		str	r3, [r4, #12]	@ unaligned
+ 513 00ac 03CD     		ldmia	r5!, {r0, r1}
+ 514 00ae 2061     		str	r0, [r4, #16]	@ unaligned
+ 515 00b0 6161     		str	r1, [r4, #20]	@ unaligned
+ 158:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_SIGMATHRESHOLDCHECK:
+ 516              		.loc 1 158 2 is_stmt 1 view .LVU101
+ 517 00b2 BAE7     		b	.L38
+ 518              	.LVL44:
+ 519              	.L30:
+ 160:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_SIGMATHRESHOLDCHECK);
+ 520              		.loc 1 160 3 view .LVU102
+ 521 00b4 374D     		ldr	r5, .L40+28
+ 522 00b6 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 523              	.LVL45:
+ 160:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_SIGMATHRESHOLDCHECK);
+ 524              		.loc 1 160 3 is_stmt 0 view .LVU103
+ 525 00b8 2060     		str	r0, [r4]	@ unaligned
+ 526 00ba 6160     		str	r1, [r4, #4]	@ unaligned
+ 527 00bc A260     		str	r2, [r4, #8]	@ unaligned
+ 528 00be E360     		str	r3, [r4, #12]	@ unaligned
+ 529 00c0 07CD     		ldmia	r5!, {r0, r1, r2}
+ 530 00c2 2061     		str	r0, [r4, #16]	@ unaligned
+ 531 00c4 6161     		str	r1, [r4, #20]	@ unaligned
+ 532 00c6 A261     		str	r2, [r4, #24]	@ unaligned
+ 162:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_TCC:
+ 533              		.loc 1 162 2 is_stmt 1 view .LVU104
+ 534 00c8 AFE7     		b	.L38
+ 535              	.LVL46:
+ 536              	.L29:
+ 164:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_TCC);
+ 537              		.loc 1 164 3 view .LVU105
+ 538 00ca 334B     		ldr	r3, .L40+32
+ 539 00cc 03CB     		ldmia	r3!, {r0, r1}
+ 540              	.LVL47:
+ 164:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_TCC);
+ 541              		.loc 1 164 3 is_stmt 0 view .LVU106
+ 542 00ce 2060     		str	r0, [r4]	@ unaligned
+ 543 00d0 6160     		str	r1, [r4, #4]	@ unaligned
+ 544 00d2 1B88     		ldrh	r3, [r3]	@ unaligned
+ 545 00d4 2381     		strh	r3, [r4, #8]	@ unaligned
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 16
+
+
+ 166:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_PHASECONSISTENCY:
+ 546              		.loc 1 166 2 is_stmt 1 view .LVU107
+ 547 00d6 A8E7     		b	.L38
+ 548              	.LVL48:
+ 549              	.L28:
+ 168:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_PHASECONSISTENCY);
+ 550              		.loc 1 168 3 view .LVU108
+ 551 00d8 304D     		ldr	r5, .L40+36
+ 552 00da 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 553              	.LVL49:
+ 168:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_PHASECONSISTENCY);
+ 554              		.loc 1 168 3 is_stmt 0 view .LVU109
+ 555 00dc 2060     		str	r0, [r4]	@ unaligned
+ 556 00de 6160     		str	r1, [r4, #4]	@ unaligned
+ 557 00e0 A260     		str	r2, [r4, #8]	@ unaligned
+ 558 00e2 E360     		str	r3, [r4, #12]	@ unaligned
+ 559 00e4 03CD     		ldmia	r5!, {r0, r1}
+ 560 00e6 2061     		str	r0, [r4, #16]	@ unaligned
+ 561 00e8 6161     		str	r1, [r4, #20]	@ unaligned
+ 170:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_MINCLIP:
+ 562              		.loc 1 170 2 is_stmt 1 view .LVU110
+ 563 00ea 9EE7     		b	.L38
+ 564              	.LVL50:
+ 565              	.L27:
+ 172:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_MINCLIP);
+ 566              		.loc 1 172 3 view .LVU111
+ 567 00ec 2C4B     		ldr	r3, .L40+40
+ 568 00ee 07CB     		ldmia	r3!, {r0, r1, r2}
+ 569              	.LVL51:
+ 172:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_MINCLIP);
+ 570              		.loc 1 172 3 is_stmt 0 view .LVU112
+ 571 00f0 2060     		str	r0, [r4]	@ unaligned
+ 572 00f2 6160     		str	r1, [r4, #4]	@ unaligned
+ 573 00f4 A260     		str	r2, [r4, #8]	@ unaligned
+ 574 00f6 1A88     		ldrh	r2, [r3]	@ unaligned
+ 575 00f8 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 576 00fa A281     		strh	r2, [r4, #12]	@ unaligned
+ 577 00fc A373     		strb	r3, [r4, #14]
+ 174:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_RANGECOMPLETE:
+ 578              		.loc 1 174 2 is_stmt 1 view .LVU113
+ 579 00fe 94E7     		b	.L38
+ 580              	.LVL52:
+ 581              	.L26:
+ 176:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGECOMPLETE);
+ 582              		.loc 1 176 3 view .LVU114
+ 583 0100 284B     		ldr	r3, .L40+44
+ 584 0102 07CB     		ldmia	r3!, {r0, r1, r2}
+ 585              	.LVL53:
+ 176:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGECOMPLETE);
+ 586              		.loc 1 176 3 is_stmt 0 view .LVU115
+ 587 0104 2060     		str	r0, [r4]	@ unaligned
+ 588 0106 6160     		str	r1, [r4, #4]	@ unaligned
+ 589 0108 A260     		str	r2, [r4, #8]	@ unaligned
+ 590 010a 1A88     		ldrh	r2, [r3]	@ unaligned
+ 591 010c 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 592 010e A281     		strh	r2, [r4, #12]	@ unaligned
+ 593 0110 A373     		strb	r3, [r4, #14]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 17
+
+
+ 178:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_ALGOUNDERFLOW:
+ 594              		.loc 1 178 2 is_stmt 1 view .LVU116
+ 595 0112 8AE7     		b	.L38
+ 596              	.LVL54:
+ 597              	.L25:
+ 180:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_ALGOUNDERFLOW);
+ 598              		.loc 1 180 3 view .LVU117
+ 599 0114 244D     		ldr	r5, .L40+48
+ 600 0116 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 601              	.LVL55:
+ 180:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_ALGOUNDERFLOW);
+ 602              		.loc 1 180 3 is_stmt 0 view .LVU118
+ 603 0118 2060     		str	r0, [r4]	@ unaligned
+ 604 011a 6160     		str	r1, [r4, #4]	@ unaligned
+ 605 011c A260     		str	r2, [r4, #8]	@ unaligned
+ 606 011e E360     		str	r3, [r4, #12]	@ unaligned
+ 607 0120 03CD     		ldmia	r5!, {r0, r1}
+ 608 0122 2061     		str	r0, [r4, #16]	@ unaligned
+ 609 0124 6161     		str	r1, [r4, #20]	@ unaligned
+ 610 0126 2A88     		ldrh	r2, [r5]	@ unaligned
+ 611 0128 AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 612 012a 2283     		strh	r2, [r4, #24]	@ unaligned
+ 613 012c A376     		strb	r3, [r4, #26]
+ 182:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_ALGOOVERFLOW:
+ 614              		.loc 1 182 2 is_stmt 1 view .LVU119
+ 615 012e 7CE7     		b	.L38
+ 616              	.LVL56:
+ 617              	.L24:
+ 184:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_ALGOOVERFLOW);
+ 618              		.loc 1 184 3 view .LVU120
+ 619 0130 1E4D     		ldr	r5, .L40+52
+ 620 0132 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 621              	.LVL57:
+ 184:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_ALGOOVERFLOW);
+ 622              		.loc 1 184 3 is_stmt 0 view .LVU121
+ 623 0134 2060     		str	r0, [r4]	@ unaligned
+ 624 0136 6160     		str	r1, [r4, #4]	@ unaligned
+ 625 0138 A260     		str	r2, [r4, #8]	@ unaligned
+ 626 013a E360     		str	r3, [r4, #12]	@ unaligned
+ 627 013c 03CD     		ldmia	r5!, {r0, r1}
+ 628 013e 2061     		str	r0, [r4, #16]	@ unaligned
+ 629 0140 6161     		str	r1, [r4, #20]	@ unaligned
+ 630 0142 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 631 0144 2376     		strb	r3, [r4, #24]
+ 186:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_DEVICEERROR_RANGEIGNORETHRESHOLD:
+ 632              		.loc 1 186 2 is_stmt 1 view .LVU122
+ 633 0146 70E7     		b	.L38
+ 634              	.LVL58:
+ 635              	.L22:
+ 188:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGEIGNORETHRESHOLD);
+ 636              		.loc 1 188 3 view .LVU123
+ 637 0148 194D     		ldr	r5, .L40+56
+ 638 014a 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 639              	.LVL59:
+ 188:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_DEVICEERROR_RANGEIGNORETHRESHOLD);
+ 640              		.loc 1 188 3 is_stmt 0 view .LVU124
+ 641 014c 2060     		str	r0, [r4]	@ unaligned
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 18
+
+
+ 642 014e 6160     		str	r1, [r4, #4]	@ unaligned
+ 643 0150 A260     		str	r2, [r4, #8]	@ unaligned
+ 644 0152 E360     		str	r3, [r4, #12]	@ unaligned
+ 645 0154 07CD     		ldmia	r5!, {r0, r1, r2}
+ 646 0156 2061     		str	r0, [r4, #16]	@ unaligned
+ 647 0158 6161     		str	r1, [r4, #20]	@ unaligned
+ 648 015a A261     		str	r2, [r4, #24]	@ unaligned
+ 649 015c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 650 015e 2377     		strb	r3, [r4, #28]
+ 190:Core/Src/vl53l0x_api_strings.c **** 
+ 651              		.loc 1 190 2 is_stmt 1 view .LVU125
+ 652 0160 63E7     		b	.L38
+ 653              	.LVL60:
+ 654              	.L21:
+ 193:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 655              		.loc 1 193 3 view .LVU126
+ 656 0162 144D     		ldr	r5, .L40+60
+ 657 0164 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 658              	.LVL61:
+ 193:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 659              		.loc 1 193 3 is_stmt 0 view .LVU127
+ 660 0166 2060     		str	r0, [r4]	@ unaligned
+ 661 0168 6160     		str	r1, [r4, #4]	@ unaligned
+ 662 016a A260     		str	r2, [r4, #8]	@ unaligned
+ 663 016c E360     		str	r3, [r4, #12]	@ unaligned
+ 664 016e 2A88     		ldrh	r2, [r5]	@ unaligned
+ 665 0170 AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 666 0172 2282     		strh	r2, [r4, #16]	@ unaligned
+ 667 0174 A374     		strb	r3, [r4, #18]
+ 668 0176 58E7     		b	.L38
+ 669              	.L41:
+ 670              		.align	2
+ 671              	.L40:
+ 672 0178 00000000 		.word	.LC5
+ 673 017c 0C000000 		.word	.LC6
+ 674 0180 2C000000 		.word	.LC7
+ 675 0184 48000000 		.word	.LC8
+ 676 0188 5C000000 		.word	.LC9
+ 677 018c 74000000 		.word	.LC10
+ 678 0190 84000000 		.word	.LC11
+ 679 0194 9C000000 		.word	.LC12
+ 680 0198 B8000000 		.word	.LC13
+ 681 019c C4000000 		.word	.LC14
+ 682 01a0 DC000000 		.word	.LC15
+ 683 01a4 EC000000 		.word	.LC16
+ 684 01a8 FC000000 		.word	.LC17
+ 685 01ac 18010000 		.word	.LC18
+ 686 01b0 34010000 		.word	.LC19
+ 687 01b4 54010000 		.word	.LC20
+ 688              		.cfi_endproc
+ 689              	.LFE135:
+ 691              		.section	.rodata.VL53L0X_get_range_status_string.str1.4,"aMS",%progbits,1
+ 692              		.align	2
+ 693              	.LC21:
+ 694 0000 52616E67 		.ascii	"Range Valid\000"
+ 694      65205661 
+ 694      6C696400 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 19
+
+
+ 695              		.align	2
+ 696              	.LC22:
+ 697 000c 5369676D 		.ascii	"Sigma Fail\000"
+ 697      61204661 
+ 697      696C00
+ 698 0017 00       		.align	2
+ 699              	.LC23:
+ 700 0018 5369676E 		.ascii	"Signal Fail\000"
+ 700      616C2046 
+ 700      61696C00 
+ 701              		.align	2
+ 702              	.LC24:
+ 703 0024 4D696E20 		.ascii	"Min Range Fail\000"
+ 703      52616E67 
+ 703      65204661 
+ 703      696C00
+ 704 0033 00       		.align	2
+ 705              	.LC25:
+ 706 0034 50686173 		.ascii	"Phase Fail\000"
+ 706      65204661 
+ 706      696C00
+ 707 003f 00       		.align	2
+ 708              	.LC26:
+ 709 0040 48617264 		.ascii	"Hardware Fail\000"
+ 709      77617265 
+ 709      20466169 
+ 709      6C00
+ 710              		.section	.text.VL53L0X_get_range_status_string,"ax",%progbits
+ 711              		.align	1
+ 712              		.global	VL53L0X_get_range_status_string
+ 713              		.syntax unified
+ 714              		.thumb
+ 715              		.thumb_func
+ 716              		.fpu fpv4-sp-d16
+ 718              	VL53L0X_get_range_status_string:
+ 719              	.LVL62:
+ 720              	.LFB136:
+ 201:Core/Src/vl53l0x_api_strings.c **** 
+ 202:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_range_status_string(uint8_t RangeStatus,
+ 203:Core/Src/vl53l0x_api_strings.c **** 		char *pRangeStatusString)
+ 204:Core/Src/vl53l0x_api_strings.c **** {
+ 721              		.loc 1 204 1 is_stmt 1 view -0
+ 722              		.cfi_startproc
+ 723              		@ args = 0, pretend = 0, frame = 0
+ 724              		@ frame_needed = 0, uses_anonymous_args = 0
+ 725              		@ link register save eliminated.
+ 726              		.loc 1 204 1 is_stmt 0 view .LVU129
+ 727 0000 10B4     		push	{r4}
+ 728              		.cfi_def_cfa_offset 4
+ 729              		.cfi_offset 4, -4
+ 730 0002 0B46     		mov	r3, r1
+ 205:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 731              		.loc 1 205 2 is_stmt 1 view .LVU130
+ 732              	.LVL63:
+ 206:Core/Src/vl53l0x_api_strings.c **** 
+ 207:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 733              		.loc 1 207 2 view .LVU131
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 20
+
+
+ 208:Core/Src/vl53l0x_api_strings.c **** 
+ 209:Core/Src/vl53l0x_api_strings.c **** 	switch (RangeStatus) {
+ 734              		.loc 1 209 2 view .LVU132
+ 735 0004 0528     		cmp	r0, #5
+ 736 0006 37D8     		bhi	.L43
+ 737 0008 DFE800F0 		tbb	[pc, r0]
+ 738              	.L45:
+ 739 000c 03       		.byte	(.L50-.L45)/2
+ 740 000d 0C       		.byte	(.L49-.L45)/2
+ 741 000e 15       		.byte	(.L48-.L45)/2
+ 742 000f 1B       		.byte	(.L47-.L45)/2
+ 743 0010 25       		.byte	(.L46-.L45)/2
+ 744 0011 2E       		.byte	(.L44-.L45)/2
+ 745              		.p2align 1
+ 746              	.L50:
+ 210:Core/Src/vl53l0x_api_strings.c **** 	case 0:
+ 211:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 747              		.loc 1 211 3 view .LVU133
+ 748 0012 1D4C     		ldr	r4, .L53
+ 749 0014 07CC     		ldmia	r4!, {r0, r1, r2}
+ 750              	.LVL64:
+ 751              		.loc 1 211 3 is_stmt 0 view .LVU134
+ 752 0016 1860     		str	r0, [r3]	@ unaligned
+ 753 0018 5960     		str	r1, [r3, #4]	@ unaligned
+ 754 001a 9A60     		str	r2, [r3, #8]	@ unaligned
+ 212:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_RANGEVALID);
+ 213:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 755              		.loc 1 213 2 is_stmt 1 view .LVU135
+ 756              	.L51:
+ 214:Core/Src/vl53l0x_api_strings.c **** 	case 1:
+ 215:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 216:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_SIGMA);
+ 217:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 218:Core/Src/vl53l0x_api_strings.c **** 	case 2:
+ 219:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 220:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_SIGNAL);
+ 221:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 222:Core/Src/vl53l0x_api_strings.c **** 	case 3:
+ 223:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 224:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_MINRANGE);
+ 225:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 226:Core/Src/vl53l0x_api_strings.c **** 	case 4:
+ 227:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 228:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_PHASE);
+ 229:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 230:Core/Src/vl53l0x_api_strings.c **** 	case 5:
+ 231:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 232:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_HW);
+ 233:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 234:Core/Src/vl53l0x_api_strings.c **** 
+ 235:Core/Src/vl53l0x_api_strings.c **** 	default: /**/
+ 236:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pRangeStatusString,
+ 237:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_RANGESTATUS_NONE);
+ 238:Core/Src/vl53l0x_api_strings.c **** 	}
+ 239:Core/Src/vl53l0x_api_strings.c **** 
+ 240:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+ 757              		.loc 1 240 2 view .LVU136
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 21
+
+
+ 241:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 758              		.loc 1 241 2 view .LVU137
+ 242:Core/Src/vl53l0x_api_strings.c **** }
+ 759              		.loc 1 242 1 is_stmt 0 view .LVU138
+ 760 001c 0020     		movs	r0, #0
+ 761 001e 5DF8044B 		ldr	r4, [sp], #4
+ 762              		.cfi_remember_state
+ 763              		.cfi_restore 4
+ 764              		.cfi_def_cfa_offset 0
+ 765 0022 7047     		bx	lr
+ 766              	.LVL65:
+ 767              	.L49:
+ 768              		.cfi_restore_state
+ 215:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_SIGMA);
+ 769              		.loc 1 215 3 is_stmt 1 view .LVU139
+ 770 0024 194A     		ldr	r2, .L53+4
+ 771 0026 03CA     		ldmia	r2!, {r0, r1}
+ 772              	.LVL66:
+ 215:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_SIGMA);
+ 773              		.loc 1 215 3 is_stmt 0 view .LVU140
+ 774 0028 1860     		str	r0, [r3]	@ unaligned
+ 775 002a 5960     		str	r1, [r3, #4]	@ unaligned
+ 776 002c 1188     		ldrh	r1, [r2]	@ unaligned
+ 777 002e 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
+ 778 0030 1981     		strh	r1, [r3, #8]	@ unaligned
+ 779 0032 9A72     		strb	r2, [r3, #10]
+ 217:Core/Src/vl53l0x_api_strings.c **** 	case 2:
+ 780              		.loc 1 217 2 is_stmt 1 view .LVU141
+ 781 0034 F2E7     		b	.L51
+ 782              	.LVL67:
+ 783              	.L48:
+ 219:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_SIGNAL);
+ 784              		.loc 1 219 3 view .LVU142
+ 785 0036 164C     		ldr	r4, .L53+8
+ 786 0038 07CC     		ldmia	r4!, {r0, r1, r2}
+ 787              	.LVL68:
+ 219:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_SIGNAL);
+ 788              		.loc 1 219 3 is_stmt 0 view .LVU143
+ 789 003a 1860     		str	r0, [r3]	@ unaligned
+ 790 003c 5960     		str	r1, [r3, #4]	@ unaligned
+ 791 003e 9A60     		str	r2, [r3, #8]	@ unaligned
+ 221:Core/Src/vl53l0x_api_strings.c **** 	case 3:
+ 792              		.loc 1 221 2 is_stmt 1 view .LVU144
+ 793 0040 ECE7     		b	.L51
+ 794              	.LVL69:
+ 795              	.L47:
+ 223:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_MINRANGE);
+ 796              		.loc 1 223 3 view .LVU145
+ 797 0042 144C     		ldr	r4, .L53+12
+ 798 0044 07CC     		ldmia	r4!, {r0, r1, r2}
+ 799              	.LVL70:
+ 223:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_MINRANGE);
+ 800              		.loc 1 223 3 is_stmt 0 view .LVU146
+ 801 0046 1860     		str	r0, [r3]	@ unaligned
+ 802 0048 5960     		str	r1, [r3, #4]	@ unaligned
+ 803 004a 9A60     		str	r2, [r3, #8]	@ unaligned
+ 804 004c 2188     		ldrh	r1, [r4]	@ unaligned
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 22
+
+
+ 805 004e A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
+ 806 0050 9981     		strh	r1, [r3, #12]	@ unaligned
+ 807 0052 9A73     		strb	r2, [r3, #14]
+ 225:Core/Src/vl53l0x_api_strings.c **** 	case 4:
+ 808              		.loc 1 225 2 is_stmt 1 view .LVU147
+ 809 0054 E2E7     		b	.L51
+ 810              	.LVL71:
+ 811              	.L46:
+ 227:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_PHASE);
+ 812              		.loc 1 227 3 view .LVU148
+ 813 0056 104A     		ldr	r2, .L53+16
+ 814 0058 03CA     		ldmia	r2!, {r0, r1}
+ 815              	.LVL72:
+ 227:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_PHASE);
+ 816              		.loc 1 227 3 is_stmt 0 view .LVU149
+ 817 005a 1860     		str	r0, [r3]	@ unaligned
+ 818 005c 5960     		str	r1, [r3, #4]	@ unaligned
+ 819 005e 1188     		ldrh	r1, [r2]	@ unaligned
+ 820 0060 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
+ 821 0062 1981     		strh	r1, [r3, #8]	@ unaligned
+ 822 0064 9A72     		strb	r2, [r3, #10]
+ 229:Core/Src/vl53l0x_api_strings.c **** 	case 5:
+ 823              		.loc 1 229 2 is_stmt 1 view .LVU150
+ 824 0066 D9E7     		b	.L51
+ 825              	.LVL73:
+ 826              	.L44:
+ 231:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_HW);
+ 827              		.loc 1 231 3 view .LVU151
+ 828 0068 0C4C     		ldr	r4, .L53+20
+ 829 006a 07CC     		ldmia	r4!, {r0, r1, r2}
+ 830              	.LVL74:
+ 231:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_RANGESTATUS_HW);
+ 831              		.loc 1 231 3 is_stmt 0 view .LVU152
+ 832 006c 1860     		str	r0, [r3]	@ unaligned
+ 833 006e 5960     		str	r1, [r3, #4]	@ unaligned
+ 834 0070 9A60     		str	r2, [r3, #8]	@ unaligned
+ 835 0072 2288     		ldrh	r2, [r4]	@ unaligned
+ 836 0074 9A81     		strh	r2, [r3, #12]	@ unaligned
+ 233:Core/Src/vl53l0x_api_strings.c **** 
+ 837              		.loc 1 233 2 is_stmt 1 view .LVU153
+ 838 0076 D1E7     		b	.L51
+ 839              	.LVL75:
+ 840              	.L43:
+ 236:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_RANGESTATUS_NONE);
+ 841              		.loc 1 236 3 view .LVU154
+ 842 0078 094A     		ldr	r2, .L53+24
+ 843 007a 03CA     		ldmia	r2!, {r0, r1}
+ 844              	.LVL76:
+ 236:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_RANGESTATUS_NONE);
+ 845              		.loc 1 236 3 is_stmt 0 view .LVU155
+ 846 007c 1860     		str	r0, [r3]	@ unaligned
+ 847 007e 5960     		str	r1, [r3, #4]	@ unaligned
+ 848 0080 1288     		ldrh	r2, [r2]	@ unaligned
+ 849 0082 1A81     		strh	r2, [r3, #8]	@ unaligned
+ 850 0084 CAE7     		b	.L51
+ 851              	.L54:
+ 852 0086 00BF     		.align	2
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 23
+
+
+ 853              	.L53:
+ 854 0088 00000000 		.word	.LC21
+ 855 008c 0C000000 		.word	.LC22
+ 856 0090 18000000 		.word	.LC23
+ 857 0094 24000000 		.word	.LC24
+ 858 0098 34000000 		.word	.LC25
+ 859 009c 40000000 		.word	.LC26
+ 860 00a0 00000000 		.word	.LC5
+ 861              		.cfi_endproc
+ 862              	.LFE136:
+ 864              		.section	.rodata.VL53L0X_get_pal_error_string.str1.4,"aMS",%progbits,1
+ 865              		.align	2
+ 866              	.LC27:
+ 867 0000 4E6F2045 		.ascii	"No Error\000"
+ 867      72726F72 
+ 867      00
+ 868 0009 000000   		.align	2
+ 869              	.LC28:
+ 870 000c 43616C69 		.ascii	"Calibration Warning Error\000"
+ 870      62726174 
+ 870      696F6E20 
+ 870      5761726E 
+ 870      696E6720 
+ 871 0026 0000     		.align	2
+ 872              	.LC29:
+ 873 0028 4D696E20 		.ascii	"Min clipped error\000"
+ 873      636C6970 
+ 873      70656420 
+ 873      6572726F 
+ 873      7200
+ 874 003a 0000     		.align	2
+ 875              	.LC30:
+ 876 003c 556E6465 		.ascii	"Undefined error\000"
+ 876      66696E65 
+ 876      64206572 
+ 876      726F7200 
+ 877              		.align	2
+ 878              	.LC31:
+ 879 004c 496E7661 		.ascii	"Invalid parameters error\000"
+ 879      6C696420 
+ 879      70617261 
+ 879      6D657465 
+ 879      72732065 
+ 880 0065 000000   		.align	2
+ 881              	.LC32:
+ 882 0068 4E6F7420 		.ascii	"Not supported error\000"
+ 882      73757070 
+ 882      6F727465 
+ 882      64206572 
+ 882      726F7200 
+ 883              		.align	2
+ 884              	.LC33:
+ 885 007c 496E7465 		.ascii	"Interrupt not Cleared\000"
+ 885      72727570 
+ 885      74206E6F 
+ 885      7420436C 
+ 885      65617265 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 24
+
+
+ 886 0092 0000     		.align	2
+ 887              	.LC34:
+ 888 0094 52616E67 		.ascii	"Range error\000"
+ 888      65206572 
+ 888      726F7200 
+ 889              		.align	2
+ 890              	.LC35:
+ 891 00a0 54696D65 		.ascii	"Time out error\000"
+ 891      206F7574 
+ 891      20657272 
+ 891      6F7200
+ 892 00af 00       		.align	2
+ 893              	.LC36:
+ 894 00b0 4D6F6465 		.ascii	"Mode not supported error\000"
+ 894      206E6F74 
+ 894      20737570 
+ 894      706F7274 
+ 894      65642065 
+ 895 00c9 000000   		.align	2
+ 896              	.LC37:
+ 897 00cc 42756666 		.ascii	"Buffer too small\000"
+ 897      65722074 
+ 897      6F6F2073 
+ 897      6D616C6C 
+ 897      00
+ 898 00dd 000000   		.align	2
+ 899              	.LC38:
+ 900 00e0 4750494F 		.ascii	"GPIO not existing\000"
+ 900      206E6F74 
+ 900      20657869 
+ 900      7374696E 
+ 900      6700
+ 901 00f2 0000     		.align	2
+ 902              	.LC39:
+ 903 00f4 4750494F 		.ascii	"GPIO funct not supported\000"
+ 903      2066756E 
+ 903      6374206E 
+ 903      6F742073 
+ 903      7570706F 
+ 904 010d 000000   		.align	2
+ 905              	.LC40:
+ 906 0110 436F6E74 		.ascii	"Control Interface Error\000"
+ 906      726F6C20 
+ 906      496E7465 
+ 906      72666163 
+ 906      65204572 
+ 907              		.align	2
+ 908              	.LC41:
+ 909 0128 496E7661 		.ascii	"Invalid Command Error\000"
+ 909      6C696420 
+ 909      436F6D6D 
+ 909      616E6420 
+ 909      4572726F 
+ 910 013e 0000     		.align	2
+ 911              	.LC42:
+ 912 0140 44697669 		.ascii	"Division by zero Error\000"
+ 912      73696F6E 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 25
+
+
+ 912      20627920 
+ 912      7A65726F 
+ 912      20457272 
+ 913 0157 00       		.align	2
+ 914              	.LC43:
+ 915 0158 52656665 		.ascii	"Reference Spad Init Error\000"
+ 915      72656E63 
+ 915      65205370 
+ 915      61642049 
+ 915      6E697420 
+ 916 0172 0000     		.align	2
+ 917              	.LC44:
+ 918 0174 4E6F7420 		.ascii	"Not implemented error\000"
+ 918      696D706C 
+ 918      656D656E 
+ 918      74656420 
+ 918      6572726F 
+ 919              		.section	.text.VL53L0X_get_pal_error_string,"ax",%progbits
+ 920              		.align	1
+ 921              		.global	VL53L0X_get_pal_error_string
+ 922              		.syntax unified
+ 923              		.thumb
+ 924              		.thumb_func
+ 925              		.fpu fpv4-sp-d16
+ 927              	VL53L0X_get_pal_error_string:
+ 928              	.LVL77:
+ 929              	.LFB137:
+ 243:Core/Src/vl53l0x_api_strings.c **** 
+ 244:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_pal_error_string(VL53L0X_Error PalErrorCode,
+ 245:Core/Src/vl53l0x_api_strings.c **** 		char *pPalErrorString)
+ 246:Core/Src/vl53l0x_api_strings.c **** {
+ 930              		.loc 1 246 1 is_stmt 1 view -0
+ 931              		.cfi_startproc
+ 932              		@ args = 0, pretend = 0, frame = 0
+ 933              		@ frame_needed = 0, uses_anonymous_args = 0
+ 934              		@ link register save eliminated.
+ 935              		.loc 1 246 1 is_stmt 0 view .LVU157
+ 936 0000 30B4     		push	{r4, r5}
+ 937              		.cfi_def_cfa_offset 8
+ 938              		.cfi_offset 4, -8
+ 939              		.cfi_offset 5, -4
+ 940 0002 0C46     		mov	r4, r1
+ 247:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 941              		.loc 1 247 2 is_stmt 1 view .LVU158
+ 942              	.LVL78:
+ 248:Core/Src/vl53l0x_api_strings.c **** 
+ 249:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 943              		.loc 1 249 2 view .LVU159
+ 250:Core/Src/vl53l0x_api_strings.c **** 
+ 251:Core/Src/vl53l0x_api_strings.c **** 	switch (PalErrorCode) {
+ 944              		.loc 1 251 2 view .LVU160
+ 945 0004 6330     		adds	r0, r0, #99
+ 946              	.LVL79:
+ 947              		.loc 1 251 2 is_stmt 0 view .LVU161
+ 948 0006 6328     		cmp	r0, #99
+ 949 0008 00F21E81 		bhi	.L56
+ 950 000c DFE810F0 		tbh	[pc, r0, lsl #1]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 26
+
+
+ 951              	.L58:
+ 952 0010 1101     		.2byte	(.L75-.L58)/2
+ 953 0012 1C01     		.2byte	(.L56-.L58)/2
+ 954 0014 1C01     		.2byte	(.L56-.L58)/2
+ 955 0016 1C01     		.2byte	(.L56-.L58)/2
+ 956 0018 1C01     		.2byte	(.L56-.L58)/2
+ 957 001a 1C01     		.2byte	(.L56-.L58)/2
+ 958 001c 1C01     		.2byte	(.L56-.L58)/2
+ 959 001e 1C01     		.2byte	(.L56-.L58)/2
+ 960 0020 1C01     		.2byte	(.L56-.L58)/2
+ 961 0022 1C01     		.2byte	(.L56-.L58)/2
+ 962 0024 1C01     		.2byte	(.L56-.L58)/2
+ 963 0026 1C01     		.2byte	(.L56-.L58)/2
+ 964 0028 1C01     		.2byte	(.L56-.L58)/2
+ 965 002a 1C01     		.2byte	(.L56-.L58)/2
+ 966 002c 1C01     		.2byte	(.L56-.L58)/2
+ 967 002e 1C01     		.2byte	(.L56-.L58)/2
+ 968 0030 1C01     		.2byte	(.L56-.L58)/2
+ 969 0032 1C01     		.2byte	(.L56-.L58)/2
+ 970 0034 1C01     		.2byte	(.L56-.L58)/2
+ 971 0036 1C01     		.2byte	(.L56-.L58)/2
+ 972 0038 1C01     		.2byte	(.L56-.L58)/2
+ 973 003a 1C01     		.2byte	(.L56-.L58)/2
+ 974 003c 1C01     		.2byte	(.L56-.L58)/2
+ 975 003e 1C01     		.2byte	(.L56-.L58)/2
+ 976 0040 1C01     		.2byte	(.L56-.L58)/2
+ 977 0042 1C01     		.2byte	(.L56-.L58)/2
+ 978 0044 1C01     		.2byte	(.L56-.L58)/2
+ 979 0046 1C01     		.2byte	(.L56-.L58)/2
+ 980 0048 1C01     		.2byte	(.L56-.L58)/2
+ 981 004a 1C01     		.2byte	(.L56-.L58)/2
+ 982 004c 1C01     		.2byte	(.L56-.L58)/2
+ 983 004e 1C01     		.2byte	(.L56-.L58)/2
+ 984 0050 1C01     		.2byte	(.L56-.L58)/2
+ 985 0052 1C01     		.2byte	(.L56-.L58)/2
+ 986 0054 1C01     		.2byte	(.L56-.L58)/2
+ 987 0056 1C01     		.2byte	(.L56-.L58)/2
+ 988 0058 1C01     		.2byte	(.L56-.L58)/2
+ 989 005a 1C01     		.2byte	(.L56-.L58)/2
+ 990 005c 1C01     		.2byte	(.L56-.L58)/2
+ 991 005e 1C01     		.2byte	(.L56-.L58)/2
+ 992 0060 1C01     		.2byte	(.L56-.L58)/2
+ 993 0062 1C01     		.2byte	(.L56-.L58)/2
+ 994 0064 1C01     		.2byte	(.L56-.L58)/2
+ 995 0066 1C01     		.2byte	(.L56-.L58)/2
+ 996 0068 1C01     		.2byte	(.L56-.L58)/2
+ 997 006a 1C01     		.2byte	(.L56-.L58)/2
+ 998 006c 1C01     		.2byte	(.L56-.L58)/2
+ 999 006e 1C01     		.2byte	(.L56-.L58)/2
+ 1000 0070 1C01     		.2byte	(.L56-.L58)/2
+ 1001 0072 0501     		.2byte	(.L74-.L58)/2
+ 1002 0074 1C01     		.2byte	(.L56-.L58)/2
+ 1003 0076 1C01     		.2byte	(.L56-.L58)/2
+ 1004 0078 1C01     		.2byte	(.L56-.L58)/2
+ 1005 007a 1C01     		.2byte	(.L56-.L58)/2
+ 1006 007c 1C01     		.2byte	(.L56-.L58)/2
+ 1007 007e 1C01     		.2byte	(.L56-.L58)/2
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 27
+
+
+ 1008 0080 1C01     		.2byte	(.L56-.L58)/2
+ 1009 0082 1C01     		.2byte	(.L56-.L58)/2
+ 1010 0084 1C01     		.2byte	(.L56-.L58)/2
+ 1011 0086 F800     		.2byte	(.L73-.L58)/2
+ 1012 0088 1C01     		.2byte	(.L56-.L58)/2
+ 1013 008a 1C01     		.2byte	(.L56-.L58)/2
+ 1014 008c 1C01     		.2byte	(.L56-.L58)/2
+ 1015 008e 1C01     		.2byte	(.L56-.L58)/2
+ 1016 0090 1C01     		.2byte	(.L56-.L58)/2
+ 1017 0092 1C01     		.2byte	(.L56-.L58)/2
+ 1018 0094 1C01     		.2byte	(.L56-.L58)/2
+ 1019 0096 1C01     		.2byte	(.L56-.L58)/2
+ 1020 0098 1C01     		.2byte	(.L56-.L58)/2
+ 1021 009a ED00     		.2byte	(.L72-.L58)/2
+ 1022 009c 1C01     		.2byte	(.L56-.L58)/2
+ 1023 009e 1C01     		.2byte	(.L56-.L58)/2
+ 1024 00a0 1C01     		.2byte	(.L56-.L58)/2
+ 1025 00a2 1C01     		.2byte	(.L56-.L58)/2
+ 1026 00a4 1C01     		.2byte	(.L56-.L58)/2
+ 1027 00a6 1C01     		.2byte	(.L56-.L58)/2
+ 1028 00a8 1C01     		.2byte	(.L56-.L58)/2
+ 1029 00aa 1C01     		.2byte	(.L56-.L58)/2
+ 1030 00ac 1C01     		.2byte	(.L56-.L58)/2
+ 1031 00ae E300     		.2byte	(.L71-.L58)/2
+ 1032 00b0 1C01     		.2byte	(.L56-.L58)/2
+ 1033 00b2 1C01     		.2byte	(.L56-.L58)/2
+ 1034 00b4 1C01     		.2byte	(.L56-.L58)/2
+ 1035 00b6 1C01     		.2byte	(.L56-.L58)/2
+ 1036 00b8 1C01     		.2byte	(.L56-.L58)/2
+ 1037 00ba 1C01     		.2byte	(.L56-.L58)/2
+ 1038 00bc 1C01     		.2byte	(.L56-.L58)/2
+ 1039 00be 9E00     		.2byte	(.L70-.L58)/2
+ 1040 00c0 D700     		.2byte	(.L69-.L58)/2
+ 1041 00c2 CE00     		.2byte	(.L68-.L58)/2
+ 1042 00c4 C500     		.2byte	(.L67-.L58)/2
+ 1043 00c6 B900     		.2byte	(.L66-.L58)/2
+ 1044 00c8 AF00     		.2byte	(.L65-.L58)/2
+ 1045 00ca A900     		.2byte	(.L64-.L58)/2
+ 1046 00cc 9500     		.2byte	(.L63-.L58)/2
+ 1047 00ce 8900     		.2byte	(.L62-.L58)/2
+ 1048 00d0 8200     		.2byte	(.L61-.L58)/2
+ 1049 00d2 7900     		.2byte	(.L60-.L58)/2
+ 1050 00d4 6D00     		.2byte	(.L59-.L58)/2
+ 1051 00d6 6400     		.2byte	(.L57-.L58)/2
+ 1052              		.p2align 1
+ 1053              	.L57:
+ 252:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_NONE:
+ 253:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 1054              		.loc 1 253 3 is_stmt 1 view .LVU162
+ 1055 00d8 614B     		ldr	r3, .L78
+ 1056 00da 03CB     		ldmia	r3!, {r0, r1}
+ 1057              	.LVL80:
+ 1058              		.loc 1 253 3 is_stmt 0 view .LVU163
+ 1059 00dc 2060     		str	r0, [r4]	@ unaligned
+ 1060 00de 6160     		str	r1, [r4, #4]	@ unaligned
+ 1061 00e0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1062 00e2 2372     		strb	r3, [r4, #8]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 28
+
+
+ 254:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NONE);
+ 255:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1063              		.loc 1 255 2 is_stmt 1 view .LVU164
+ 1064              	.L76:
+ 256:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_CALIBRATION_WARNING:
+ 257:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 258:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_CALIBRATION_WARNING);
+ 259:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 260:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_MIN_CLIPPED:
+ 261:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 262:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_MIN_CLIPPED);
+ 263:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 264:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_UNDEFINED:
+ 265:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 266:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_UNDEFINED);
+ 267:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 268:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_INVALID_PARAMS:
+ 269:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 270:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INVALID_PARAMS);
+ 271:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 272:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_NOT_SUPPORTED:
+ 273:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 274:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NOT_SUPPORTED);
+ 275:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 276:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_INTERRUPT_NOT_CLEARED:
+ 277:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 278:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INTERRUPT_NOT_CLEARED);
+ 279:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 280:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_RANGE_ERROR:
+ 281:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 282:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_RANGE_ERROR);
+ 283:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 284:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_TIME_OUT:
+ 285:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 286:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_TIME_OUT);
+ 287:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 288:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_MODE_NOT_SUPPORTED:
+ 289:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 290:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_MODE_NOT_SUPPORTED);
+ 291:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 292:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_BUFFER_TOO_SMALL:
+ 293:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 294:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_BUFFER_TOO_SMALL);
+ 295:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 296:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_GPIO_NOT_EXISTING:
+ 297:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 298:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_GPIO_NOT_EXISTING);
+ 299:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 300:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_GPIO_FUNCTIONALITY_NOT_SUPPORTED:
+ 301:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 302:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_GPIO_FUNCTIONALITY_NOT_SUPPORTED);
+ 303:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 304:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_CONTROL_INTERFACE:
+ 305:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 306:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_CONTROL_INTERFACE);
+ 307:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 308:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_INVALID_COMMAND:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 29
+
+
+ 309:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 310:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INVALID_COMMAND);
+ 311:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 312:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_DIVISION_BY_ZERO:
+ 313:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 314:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_DIVISION_BY_ZERO);
+ 315:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 316:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_REF_SPAD_INIT:
+ 317:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 318:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_REF_SPAD_INIT);
+ 319:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 320:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_NOT_IMPLEMENTED:
+ 321:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 322:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NOT_IMPLEMENTED);
+ 323:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 324:Core/Src/vl53l0x_api_strings.c **** 
+ 325:Core/Src/vl53l0x_api_strings.c **** 	default:
+ 326:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalErrorString,
+ 327:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 328:Core/Src/vl53l0x_api_strings.c **** 	}
+ 329:Core/Src/vl53l0x_api_strings.c **** 
+ 330:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+ 1065              		.loc 1 330 2 view .LVU165
+ 331:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 1066              		.loc 1 331 2 view .LVU166
+ 332:Core/Src/vl53l0x_api_strings.c **** }
+ 1067              		.loc 1 332 1 is_stmt 0 view .LVU167
+ 1068 00e4 0020     		movs	r0, #0
+ 1069 00e6 30BC     		pop	{r4, r5}
+ 1070              		.cfi_remember_state
+ 1071              		.cfi_restore 5
+ 1072              		.cfi_restore 4
+ 1073              		.cfi_def_cfa_offset 0
+ 1074              	.LVL81:
+ 1075              		.loc 1 332 1 view .LVU168
+ 1076 00e8 7047     		bx	lr
+ 1077              	.LVL82:
+ 1078              	.L59:
+ 1079              		.cfi_restore_state
+ 257:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_CALIBRATION_WARNING);
+ 1080              		.loc 1 257 3 is_stmt 1 view .LVU169
+ 1081 00ea 5E4D     		ldr	r5, .L78+4
+ 1082 00ec 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1083              	.LVL83:
+ 257:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_CALIBRATION_WARNING);
+ 1084              		.loc 1 257 3 is_stmt 0 view .LVU170
+ 1085 00ee 2060     		str	r0, [r4]	@ unaligned
+ 1086 00f0 6160     		str	r1, [r4, #4]	@ unaligned
+ 1087 00f2 A260     		str	r2, [r4, #8]	@ unaligned
+ 1088 00f4 E360     		str	r3, [r4, #12]	@ unaligned
+ 1089 00f6 03CD     		ldmia	r5!, {r0, r1}
+ 1090 00f8 2061     		str	r0, [r4, #16]	@ unaligned
+ 1091 00fa 6161     		str	r1, [r4, #20]	@ unaligned
+ 1092 00fc 2B88     		ldrh	r3, [r5]	@ unaligned
+ 1093 00fe 2383     		strh	r3, [r4, #24]	@ unaligned
+ 259:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_MIN_CLIPPED:
+ 1094              		.loc 1 259 2 is_stmt 1 view .LVU171
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 30
+
+
+ 1095 0100 F0E7     		b	.L76
+ 1096              	.LVL84:
+ 1097              	.L60:
+ 261:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_MIN_CLIPPED);
+ 1098              		.loc 1 261 3 view .LVU172
+ 1099 0102 594D     		ldr	r5, .L78+8
+ 1100 0104 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1101              	.LVL85:
+ 261:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_MIN_CLIPPED);
+ 1102              		.loc 1 261 3 is_stmt 0 view .LVU173
+ 1103 0106 2060     		str	r0, [r4]	@ unaligned
+ 1104 0108 6160     		str	r1, [r4, #4]	@ unaligned
+ 1105 010a A260     		str	r2, [r4, #8]	@ unaligned
+ 1106 010c E360     		str	r3, [r4, #12]	@ unaligned
+ 1107 010e 2B88     		ldrh	r3, [r5]	@ unaligned
+ 1108 0110 2382     		strh	r3, [r4, #16]	@ unaligned
+ 263:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_UNDEFINED:
+ 1109              		.loc 1 263 2 is_stmt 1 view .LVU174
+ 1110 0112 E7E7     		b	.L76
+ 1111              	.LVL86:
+ 1112              	.L61:
+ 265:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_UNDEFINED);
+ 1113              		.loc 1 265 3 view .LVU175
+ 1114 0114 554D     		ldr	r5, .L78+12
+ 1115 0116 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1116              	.LVL87:
+ 265:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_UNDEFINED);
+ 1117              		.loc 1 265 3 is_stmt 0 view .LVU176
+ 1118 0118 2060     		str	r0, [r4]	@ unaligned
+ 1119 011a 6160     		str	r1, [r4, #4]	@ unaligned
+ 1120 011c A260     		str	r2, [r4, #8]	@ unaligned
+ 1121 011e E360     		str	r3, [r4, #12]	@ unaligned
+ 267:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_INVALID_PARAMS:
+ 1122              		.loc 1 267 2 is_stmt 1 view .LVU177
+ 1123 0120 E0E7     		b	.L76
+ 1124              	.LVL88:
+ 1125              	.L62:
+ 269:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INVALID_PARAMS);
+ 1126              		.loc 1 269 3 view .LVU178
+ 1127 0122 534D     		ldr	r5, .L78+16
+ 1128 0124 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1129              	.LVL89:
+ 269:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INVALID_PARAMS);
+ 1130              		.loc 1 269 3 is_stmt 0 view .LVU179
+ 1131 0126 2060     		str	r0, [r4]	@ unaligned
+ 1132 0128 6160     		str	r1, [r4, #4]	@ unaligned
+ 1133 012a A260     		str	r2, [r4, #8]	@ unaligned
+ 1134 012c E360     		str	r3, [r4, #12]	@ unaligned
+ 1135 012e 03CD     		ldmia	r5!, {r0, r1}
+ 1136 0130 2061     		str	r0, [r4, #16]	@ unaligned
+ 1137 0132 6161     		str	r1, [r4, #20]	@ unaligned
+ 1138 0134 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 1139 0136 2376     		strb	r3, [r4, #24]
+ 271:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_NOT_SUPPORTED:
+ 1140              		.loc 1 271 2 is_stmt 1 view .LVU180
+ 1141 0138 D4E7     		b	.L76
+ 1142              	.LVL90:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 31
+
+
+ 1143              	.L63:
+ 273:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NOT_SUPPORTED);
+ 1144              		.loc 1 273 3 view .LVU181
+ 1145 013a 4E4D     		ldr	r5, .L78+20
+ 1146 013c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1147              	.LVL91:
+ 273:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NOT_SUPPORTED);
+ 1148              		.loc 1 273 3 is_stmt 0 view .LVU182
+ 1149 013e 2060     		str	r0, [r4]	@ unaligned
+ 1150 0140 6160     		str	r1, [r4, #4]	@ unaligned
+ 1151 0142 A260     		str	r2, [r4, #8]	@ unaligned
+ 1152 0144 E360     		str	r3, [r4, #12]	@ unaligned
+ 1153 0146 2868     		ldr	r0, [r5]
+ 1154 0148 2061     		str	r0, [r4, #16]	@ unaligned
+ 275:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_INTERRUPT_NOT_CLEARED:
+ 1155              		.loc 1 275 2 is_stmt 1 view .LVU183
+ 1156 014a CBE7     		b	.L76
+ 1157              	.LVL92:
+ 1158              	.L70:
+ 277:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INTERRUPT_NOT_CLEARED);
+ 1159              		.loc 1 277 3 view .LVU184
+ 1160 014c 4A4D     		ldr	r5, .L78+24
+ 1161 014e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1162              	.LVL93:
+ 277:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INTERRUPT_NOT_CLEARED);
+ 1163              		.loc 1 277 3 is_stmt 0 view .LVU185
+ 1164 0150 2060     		str	r0, [r4]	@ unaligned
+ 1165 0152 6160     		str	r1, [r4, #4]	@ unaligned
+ 1166 0154 A260     		str	r2, [r4, #8]	@ unaligned
+ 1167 0156 E360     		str	r3, [r4, #12]	@ unaligned
+ 1168 0158 2868     		ldr	r0, [r5]
+ 1169 015a 2061     		str	r0, [r4, #16]	@ unaligned
+ 1170 015c AB88     		ldrh	r3, [r5, #4]	@ unaligned
+ 1171 015e A382     		strh	r3, [r4, #20]	@ unaligned
+ 279:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_RANGE_ERROR:
+ 1172              		.loc 1 279 2 is_stmt 1 view .LVU186
+ 1173 0160 C0E7     		b	.L76
+ 1174              	.LVL94:
+ 1175              	.L64:
+ 281:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_RANGE_ERROR);
+ 1176              		.loc 1 281 3 view .LVU187
+ 1177 0162 464B     		ldr	r3, .L78+28
+ 1178 0164 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1179              	.LVL95:
+ 281:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_RANGE_ERROR);
+ 1180              		.loc 1 281 3 is_stmt 0 view .LVU188
+ 1181 0166 2060     		str	r0, [r4]	@ unaligned
+ 1182 0168 6160     		str	r1, [r4, #4]	@ unaligned
+ 1183 016a A260     		str	r2, [r4, #8]	@ unaligned
+ 283:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_TIME_OUT:
+ 1184              		.loc 1 283 2 is_stmt 1 view .LVU189
+ 1185 016c BAE7     		b	.L76
+ 1186              	.LVL96:
+ 1187              	.L65:
+ 285:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_TIME_OUT);
+ 1188              		.loc 1 285 3 view .LVU190
+ 1189 016e 444B     		ldr	r3, .L78+32
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 32
+
+
+ 1190 0170 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1191              	.LVL97:
+ 285:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_TIME_OUT);
+ 1192              		.loc 1 285 3 is_stmt 0 view .LVU191
+ 1193 0172 2060     		str	r0, [r4]	@ unaligned
+ 1194 0174 6160     		str	r1, [r4, #4]	@ unaligned
+ 1195 0176 A260     		str	r2, [r4, #8]	@ unaligned
+ 1196 0178 1A88     		ldrh	r2, [r3]	@ unaligned
+ 1197 017a 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 1198 017c A281     		strh	r2, [r4, #12]	@ unaligned
+ 1199 017e A373     		strb	r3, [r4, #14]
+ 287:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_MODE_NOT_SUPPORTED:
+ 1200              		.loc 1 287 2 is_stmt 1 view .LVU192
+ 1201 0180 B0E7     		b	.L76
+ 1202              	.LVL98:
+ 1203              	.L66:
+ 289:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_MODE_NOT_SUPPORTED);
+ 1204              		.loc 1 289 3 view .LVU193
+ 1205 0182 404D     		ldr	r5, .L78+36
+ 1206 0184 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1207              	.LVL99:
+ 289:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_MODE_NOT_SUPPORTED);
+ 1208              		.loc 1 289 3 is_stmt 0 view .LVU194
+ 1209 0186 2060     		str	r0, [r4]	@ unaligned
+ 1210 0188 6160     		str	r1, [r4, #4]	@ unaligned
+ 1211 018a A260     		str	r2, [r4, #8]	@ unaligned
+ 1212 018c E360     		str	r3, [r4, #12]	@ unaligned
+ 1213 018e 03CD     		ldmia	r5!, {r0, r1}
+ 1214 0190 2061     		str	r0, [r4, #16]	@ unaligned
+ 1215 0192 6161     		str	r1, [r4, #20]	@ unaligned
+ 1216 0194 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 1217 0196 2376     		strb	r3, [r4, #24]
+ 291:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_BUFFER_TOO_SMALL:
+ 1218              		.loc 1 291 2 is_stmt 1 view .LVU195
+ 1219 0198 A4E7     		b	.L76
+ 1220              	.LVL100:
+ 1221              	.L67:
+ 293:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_BUFFER_TOO_SMALL);
+ 1222              		.loc 1 293 3 view .LVU196
+ 1223 019a 3B4D     		ldr	r5, .L78+40
+ 1224 019c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1225              	.LVL101:
+ 293:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_BUFFER_TOO_SMALL);
+ 1226              		.loc 1 293 3 is_stmt 0 view .LVU197
+ 1227 019e 2060     		str	r0, [r4]	@ unaligned
+ 1228 01a0 6160     		str	r1, [r4, #4]	@ unaligned
+ 1229 01a2 A260     		str	r2, [r4, #8]	@ unaligned
+ 1230 01a4 E360     		str	r3, [r4, #12]	@ unaligned
+ 1231 01a6 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 1232 01a8 2374     		strb	r3, [r4, #16]
+ 295:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_GPIO_NOT_EXISTING:
+ 1233              		.loc 1 295 2 is_stmt 1 view .LVU198
+ 1234 01aa 9BE7     		b	.L76
+ 1235              	.LVL102:
+ 1236              	.L68:
+ 297:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_GPIO_NOT_EXISTING);
+ 1237              		.loc 1 297 3 view .LVU199
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 33
+
+
+ 1238 01ac 374D     		ldr	r5, .L78+44
+ 1239 01ae 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1240              	.LVL103:
+ 297:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_GPIO_NOT_EXISTING);
+ 1241              		.loc 1 297 3 is_stmt 0 view .LVU200
+ 1242 01b0 2060     		str	r0, [r4]	@ unaligned
+ 1243 01b2 6160     		str	r1, [r4, #4]	@ unaligned
+ 1244 01b4 A260     		str	r2, [r4, #8]	@ unaligned
+ 1245 01b6 E360     		str	r3, [r4, #12]	@ unaligned
+ 1246 01b8 2B88     		ldrh	r3, [r5]	@ unaligned
+ 1247 01ba 2382     		strh	r3, [r4, #16]	@ unaligned
+ 299:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_GPIO_FUNCTIONALITY_NOT_SUPPORTED:
+ 1248              		.loc 1 299 2 is_stmt 1 view .LVU201
+ 1249 01bc 92E7     		b	.L76
+ 1250              	.LVL104:
+ 1251              	.L69:
+ 301:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_GPIO_FUNCTIONALITY_NOT_SUPPORTED);
+ 1252              		.loc 1 301 3 view .LVU202
+ 1253 01be 344D     		ldr	r5, .L78+48
+ 1254 01c0 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1255              	.LVL105:
+ 301:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_GPIO_FUNCTIONALITY_NOT_SUPPORTED);
+ 1256              		.loc 1 301 3 is_stmt 0 view .LVU203
+ 1257 01c2 2060     		str	r0, [r4]	@ unaligned
+ 1258 01c4 6160     		str	r1, [r4, #4]	@ unaligned
+ 1259 01c6 A260     		str	r2, [r4, #8]	@ unaligned
+ 1260 01c8 E360     		str	r3, [r4, #12]	@ unaligned
+ 1261 01ca 03CD     		ldmia	r5!, {r0, r1}
+ 1262 01cc 2061     		str	r0, [r4, #16]	@ unaligned
+ 1263 01ce 6161     		str	r1, [r4, #20]	@ unaligned
+ 1264 01d0 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 1265 01d2 2376     		strb	r3, [r4, #24]
+ 303:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_CONTROL_INTERFACE:
+ 1266              		.loc 1 303 2 is_stmt 1 view .LVU204
+ 1267 01d4 86E7     		b	.L76
+ 1268              	.LVL106:
+ 1269              	.L71:
+ 305:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_CONTROL_INTERFACE);
+ 1270              		.loc 1 305 3 view .LVU205
+ 1271 01d6 2F4D     		ldr	r5, .L78+52
+ 1272 01d8 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1273              	.LVL107:
+ 305:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_CONTROL_INTERFACE);
+ 1274              		.loc 1 305 3 is_stmt 0 view .LVU206
+ 1275 01da 2060     		str	r0, [r4]	@ unaligned
+ 1276 01dc 6160     		str	r1, [r4, #4]	@ unaligned
+ 1277 01de A260     		str	r2, [r4, #8]	@ unaligned
+ 1278 01e0 E360     		str	r3, [r4, #12]	@ unaligned
+ 1279 01e2 03CD     		ldmia	r5!, {r0, r1}
+ 1280 01e4 2061     		str	r0, [r4, #16]	@ unaligned
+ 1281 01e6 6161     		str	r1, [r4, #20]	@ unaligned
+ 307:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_INVALID_COMMAND:
+ 1282              		.loc 1 307 2 is_stmt 1 view .LVU207
+ 1283 01e8 7CE7     		b	.L76
+ 1284              	.LVL108:
+ 1285              	.L72:
+ 309:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INVALID_COMMAND);
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 34
+
+
+ 1286              		.loc 1 309 3 view .LVU208
+ 1287 01ea 2B4D     		ldr	r5, .L78+56
+ 1288 01ec 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1289              	.LVL109:
+ 309:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_INVALID_COMMAND);
+ 1290              		.loc 1 309 3 is_stmt 0 view .LVU209
+ 1291 01ee 2060     		str	r0, [r4]	@ unaligned
+ 1292 01f0 6160     		str	r1, [r4, #4]	@ unaligned
+ 1293 01f2 A260     		str	r2, [r4, #8]	@ unaligned
+ 1294 01f4 E360     		str	r3, [r4, #12]	@ unaligned
+ 1295 01f6 2868     		ldr	r0, [r5]
+ 1296 01f8 2061     		str	r0, [r4, #16]	@ unaligned
+ 1297 01fa AB88     		ldrh	r3, [r5, #4]	@ unaligned
+ 1298 01fc A382     		strh	r3, [r4, #20]	@ unaligned
+ 311:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_DIVISION_BY_ZERO:
+ 1299              		.loc 1 311 2 is_stmt 1 view .LVU210
+ 1300 01fe 71E7     		b	.L76
+ 1301              	.LVL110:
+ 1302              	.L73:
+ 313:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_DIVISION_BY_ZERO);
+ 1303              		.loc 1 313 3 view .LVU211
+ 1304 0200 264D     		ldr	r5, .L78+60
+ 1305 0202 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1306              	.LVL111:
+ 313:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_DIVISION_BY_ZERO);
+ 1307              		.loc 1 313 3 is_stmt 0 view .LVU212
+ 1308 0204 2060     		str	r0, [r4]	@ unaligned
+ 1309 0206 6160     		str	r1, [r4, #4]	@ unaligned
+ 1310 0208 A260     		str	r2, [r4, #8]	@ unaligned
+ 1311 020a E360     		str	r3, [r4, #12]	@ unaligned
+ 1312 020c 2868     		ldr	r0, [r5]
+ 1313 020e 2061     		str	r0, [r4, #16]	@ unaligned
+ 1314 0210 AA88     		ldrh	r2, [r5, #4]	@ unaligned
+ 1315 0212 AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 1316 0214 A282     		strh	r2, [r4, #20]	@ unaligned
+ 1317 0216 A375     		strb	r3, [r4, #22]
+ 315:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_REF_SPAD_INIT:
+ 1318              		.loc 1 315 2 is_stmt 1 view .LVU213
+ 1319 0218 64E7     		b	.L76
+ 1320              	.LVL112:
+ 1321              	.L74:
+ 317:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_REF_SPAD_INIT);
+ 1322              		.loc 1 317 3 view .LVU214
+ 1323 021a 214D     		ldr	r5, .L78+64
+ 1324 021c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1325              	.LVL113:
+ 317:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_REF_SPAD_INIT);
+ 1326              		.loc 1 317 3 is_stmt 0 view .LVU215
+ 1327 021e 2060     		str	r0, [r4]	@ unaligned
+ 1328 0220 6160     		str	r1, [r4, #4]	@ unaligned
+ 1329 0222 A260     		str	r2, [r4, #8]	@ unaligned
+ 1330 0224 E360     		str	r3, [r4, #12]	@ unaligned
+ 1331 0226 03CD     		ldmia	r5!, {r0, r1}
+ 1332 0228 2061     		str	r0, [r4, #16]	@ unaligned
+ 1333 022a 6161     		str	r1, [r4, #20]	@ unaligned
+ 1334 022c 2B88     		ldrh	r3, [r5]	@ unaligned
+ 1335 022e 2383     		strh	r3, [r4, #24]	@ unaligned
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 35
+
+
+ 319:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_ERROR_NOT_IMPLEMENTED:
+ 1336              		.loc 1 319 2 is_stmt 1 view .LVU216
+ 1337 0230 58E7     		b	.L76
+ 1338              	.LVL114:
+ 1339              	.L75:
+ 321:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NOT_IMPLEMENTED);
+ 1340              		.loc 1 321 3 view .LVU217
+ 1341 0232 1C4D     		ldr	r5, .L78+68
+ 1342 0234 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1343              	.LVL115:
+ 321:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_ERROR_NOT_IMPLEMENTED);
+ 1344              		.loc 1 321 3 is_stmt 0 view .LVU218
+ 1345 0236 2060     		str	r0, [r4]	@ unaligned
+ 1346 0238 6160     		str	r1, [r4, #4]	@ unaligned
+ 1347 023a A260     		str	r2, [r4, #8]	@ unaligned
+ 1348 023c E360     		str	r3, [r4, #12]	@ unaligned
+ 1349 023e 2868     		ldr	r0, [r5]
+ 1350 0240 2061     		str	r0, [r4, #16]	@ unaligned
+ 1351 0242 AB88     		ldrh	r3, [r5, #4]	@ unaligned
+ 1352 0244 A382     		strh	r3, [r4, #20]	@ unaligned
+ 323:Core/Src/vl53l0x_api_strings.c **** 
+ 1353              		.loc 1 323 2 is_stmt 1 view .LVU219
+ 1354 0246 4DE7     		b	.L76
+ 1355              	.LVL116:
+ 1356              	.L56:
+ 326:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 1357              		.loc 1 326 3 view .LVU220
+ 1358 0248 174D     		ldr	r5, .L78+72
+ 1359 024a 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1360              	.LVL117:
+ 326:Core/Src/vl53l0x_api_strings.c **** 				VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 1361              		.loc 1 326 3 is_stmt 0 view .LVU221
+ 1362 024c 2060     		str	r0, [r4]	@ unaligned
+ 1363 024e 6160     		str	r1, [r4, #4]	@ unaligned
+ 1364 0250 A260     		str	r2, [r4, #8]	@ unaligned
+ 1365 0252 E360     		str	r3, [r4, #12]	@ unaligned
+ 1366 0254 2A88     		ldrh	r2, [r5]	@ unaligned
+ 1367 0256 AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 1368 0258 2282     		strh	r2, [r4, #16]	@ unaligned
+ 1369 025a A374     		strb	r3, [r4, #18]
+ 1370 025c 42E7     		b	.L76
+ 1371              	.L79:
+ 1372 025e 00BF     		.align	2
+ 1373              	.L78:
+ 1374 0260 00000000 		.word	.LC27
+ 1375 0264 0C000000 		.word	.LC28
+ 1376 0268 28000000 		.word	.LC29
+ 1377 026c 3C000000 		.word	.LC30
+ 1378 0270 4C000000 		.word	.LC31
+ 1379 0274 68000000 		.word	.LC32
+ 1380 0278 7C000000 		.word	.LC33
+ 1381 027c 94000000 		.word	.LC34
+ 1382 0280 A0000000 		.word	.LC35
+ 1383 0284 B0000000 		.word	.LC36
+ 1384 0288 CC000000 		.word	.LC37
+ 1385 028c E0000000 		.word	.LC38
+ 1386 0290 F4000000 		.word	.LC39
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 36
+
+
+ 1387 0294 10010000 		.word	.LC40
+ 1388 0298 28010000 		.word	.LC41
+ 1389 029c 40010000 		.word	.LC42
+ 1390 02a0 58010000 		.word	.LC43
+ 1391 02a4 74010000 		.word	.LC44
+ 1392 02a8 54010000 		.word	.LC20
+ 1393              		.cfi_endproc
+ 1394              	.LFE137:
+ 1396              		.section	.rodata.VL53L0X_get_pal_state_string.str1.4,"aMS",%progbits,1
+ 1397              		.align	2
+ 1398              	.LC45:
+ 1399 0000 504F5745 		.ascii	"POWERDOWN State\000"
+ 1399      52444F57 
+ 1399      4E205374 
+ 1399      61746500 
+ 1400              		.align	2
+ 1401              	.LC46:
+ 1402 0010 57616974 		.ascii	"Wait for staticinit State\000"
+ 1402      20666F72 
+ 1402      20737461 
+ 1402      74696369 
+ 1402      6E697420 
+ 1403 002a 0000     		.align	2
+ 1404              	.LC47:
+ 1405 002c 5354414E 		.ascii	"STANDBY State\000"
+ 1405      44425920 
+ 1405      53746174 
+ 1405      6500
+ 1406 003a 0000     		.align	2
+ 1407              	.LC48:
+ 1408 003c 49444C45 		.ascii	"IDLE State\000"
+ 1408      20537461 
+ 1408      746500
+ 1409 0047 00       		.align	2
+ 1410              	.LC49:
+ 1411 0048 52554E4E 		.ascii	"RUNNING State\000"
+ 1411      494E4720 
+ 1411      53746174 
+ 1411      6500
+ 1412 0056 0000     		.align	2
+ 1413              	.LC50:
+ 1414 0058 554E4B4E 		.ascii	"UNKNOWN State\000"
+ 1414      4F574E20 
+ 1414      53746174 
+ 1414      6500
+ 1415 0066 0000     		.align	2
+ 1416              	.LC51:
+ 1417 0068 4552524F 		.ascii	"ERROR State\000"
+ 1417      52205374 
+ 1417      61746500 
+ 1418              		.section	.text.VL53L0X_get_pal_state_string,"ax",%progbits
+ 1419              		.align	1
+ 1420              		.global	VL53L0X_get_pal_state_string
+ 1421              		.syntax unified
+ 1422              		.thumb
+ 1423              		.thumb_func
+ 1424              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 37
+
+
+ 1426              	VL53L0X_get_pal_state_string:
+ 1427              	.LVL118:
+ 1428              	.LFB138:
+ 333:Core/Src/vl53l0x_api_strings.c **** 
+ 334:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_pal_state_string(VL53L0X_State PalStateCode,
+ 335:Core/Src/vl53l0x_api_strings.c **** 		char *pPalStateString)
+ 336:Core/Src/vl53l0x_api_strings.c **** {
+ 1429              		.loc 1 336 1 is_stmt 1 view -0
+ 1430              		.cfi_startproc
+ 1431              		@ args = 0, pretend = 0, frame = 0
+ 1432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1433              		@ link register save eliminated.
+ 1434              		.loc 1 336 1 is_stmt 0 view .LVU223
+ 1435 0000 30B4     		push	{r4, r5}
+ 1436              		.cfi_def_cfa_offset 8
+ 1437              		.cfi_offset 4, -8
+ 1438              		.cfi_offset 5, -4
+ 1439 0002 0C46     		mov	r4, r1
+ 337:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 1440              		.loc 1 337 2 is_stmt 1 view .LVU224
+ 1441              	.LVL119:
+ 338:Core/Src/vl53l0x_api_strings.c **** 
+ 339:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1442              		.loc 1 339 2 view .LVU225
+ 340:Core/Src/vl53l0x_api_strings.c **** 
+ 341:Core/Src/vl53l0x_api_strings.c **** 	switch (PalStateCode) {
+ 1443              		.loc 1 341 2 view .LVU226
+ 1444 0004 0428     		cmp	r0, #4
+ 1445 0006 06D8     		bhi	.L81
+ 1446 0008 0428     		cmp	r0, #4
+ 1447 000a 44D8     		bhi	.L82
+ 1448 000c DFE800F0 		tbb	[pc, r0]
+ 1449              	.L84:
+ 1450 0010 0D       		.byte	(.L88-.L84)/2
+ 1451 0011 16       		.byte	(.L87-.L84)/2
+ 1452 0012 22       		.byte	(.L86-.L84)/2
+ 1453 0013 2A       		.byte	(.L85-.L84)/2
+ 1454 0014 33       		.byte	(.L83-.L84)/2
+ 1455 0015 00       		.p2align 1
+ 1456              	.L81:
+ 1457 0016 6228     		cmp	r0, #98
+ 1458 0018 35D0     		beq	.L89
+ 1459 001a 6328     		cmp	r0, #99
+ 1460 001c 3BD1     		bne	.L82
+ 342:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_POWERDOWN:
+ 343:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 344:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_POWERDOWN);
+ 345:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 346:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_WAIT_STATICINIT:
+ 347:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 348:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_WAIT_STATICINIT);
+ 349:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 350:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_STANDBY:
+ 351:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 352:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_STANDBY);
+ 353:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 354:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_IDLE:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 38
+
+
+ 355:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 356:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_IDLE);
+ 357:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 358:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_RUNNING:
+ 359:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 360:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_RUNNING);
+ 361:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 362:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_UNKNOWN:
+ 363:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 364:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_UNKNOWN);
+ 365:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 366:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_ERROR:
+ 367:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 1461              		.loc 1 367 3 view .LVU227
+ 1462 001e 224B     		ldr	r3, .L93
+ 1463 0020 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1464              	.LVL120:
+ 1465              		.loc 1 367 3 is_stmt 0 view .LVU228
+ 1466 0022 2060     		str	r0, [r4]	@ unaligned
+ 1467 0024 6160     		str	r1, [r4, #4]	@ unaligned
+ 1468 0026 A260     		str	r2, [r4, #8]	@ unaligned
+ 368:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_ERROR);
+ 369:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1469              		.loc 1 369 2 is_stmt 1 view .LVU229
+ 1470 0028 05E0     		b	.L91
+ 1471              	.LVL121:
+ 1472              	.L88:
+ 343:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_POWERDOWN);
+ 1473              		.loc 1 343 3 view .LVU230
+ 1474 002a 204D     		ldr	r5, .L93+4
+ 1475 002c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1476              	.LVL122:
+ 343:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_POWERDOWN);
+ 1477              		.loc 1 343 3 is_stmt 0 view .LVU231
+ 1478 002e 2060     		str	r0, [r4]	@ unaligned
+ 1479 0030 6160     		str	r1, [r4, #4]	@ unaligned
+ 1480 0032 A260     		str	r2, [r4, #8]	@ unaligned
+ 1481 0034 E360     		str	r3, [r4, #12]	@ unaligned
+ 345:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_WAIT_STATICINIT:
+ 1482              		.loc 1 345 2 is_stmt 1 view .LVU232
+ 1483              	.L91:
+ 370:Core/Src/vl53l0x_api_strings.c **** 
+ 371:Core/Src/vl53l0x_api_strings.c **** 	default:
+ 372:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pPalStateString,
+ 373:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_UNKNOWN);
+ 374:Core/Src/vl53l0x_api_strings.c **** 	}
+ 375:Core/Src/vl53l0x_api_strings.c **** 
+ 376:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+ 1484              		.loc 1 376 2 view .LVU233
+ 377:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 1485              		.loc 1 377 2 view .LVU234
+ 378:Core/Src/vl53l0x_api_strings.c **** }
+ 1486              		.loc 1 378 1 is_stmt 0 view .LVU235
+ 1487 0036 0020     		movs	r0, #0
+ 1488 0038 30BC     		pop	{r4, r5}
+ 1489              		.cfi_remember_state
+ 1490              		.cfi_restore 5
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 39
+
+
+ 1491              		.cfi_restore 4
+ 1492              		.cfi_def_cfa_offset 0
+ 1493              	.LVL123:
+ 1494              		.loc 1 378 1 view .LVU236
+ 1495 003a 7047     		bx	lr
+ 1496              	.LVL124:
+ 1497              	.L87:
+ 1498              		.cfi_restore_state
+ 347:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_WAIT_STATICINIT);
+ 1499              		.loc 1 347 3 is_stmt 1 view .LVU237
+ 1500 003c 1C4D     		ldr	r5, .L93+8
+ 1501 003e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1502              	.LVL125:
+ 347:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_WAIT_STATICINIT);
+ 1503              		.loc 1 347 3 is_stmt 0 view .LVU238
+ 1504 0040 2060     		str	r0, [r4]	@ unaligned
+ 1505 0042 6160     		str	r1, [r4, #4]	@ unaligned
+ 1506 0044 A260     		str	r2, [r4, #8]	@ unaligned
+ 1507 0046 E360     		str	r3, [r4, #12]	@ unaligned
+ 1508 0048 03CD     		ldmia	r5!, {r0, r1}
+ 1509 004a 2061     		str	r0, [r4, #16]	@ unaligned
+ 1510 004c 6161     		str	r1, [r4, #20]	@ unaligned
+ 1511 004e 2B88     		ldrh	r3, [r5]	@ unaligned
+ 1512 0050 2383     		strh	r3, [r4, #24]	@ unaligned
+ 349:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_STANDBY:
+ 1513              		.loc 1 349 2 is_stmt 1 view .LVU239
+ 1514 0052 F0E7     		b	.L91
+ 1515              	.LVL126:
+ 1516              	.L86:
+ 351:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_STANDBY);
+ 1517              		.loc 1 351 3 view .LVU240
+ 1518 0054 174B     		ldr	r3, .L93+12
+ 1519 0056 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1520              	.LVL127:
+ 351:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_STANDBY);
+ 1521              		.loc 1 351 3 is_stmt 0 view .LVU241
+ 1522 0058 2060     		str	r0, [r4]	@ unaligned
+ 1523 005a 6160     		str	r1, [r4, #4]	@ unaligned
+ 1524 005c A260     		str	r2, [r4, #8]	@ unaligned
+ 1525 005e 1B88     		ldrh	r3, [r3]	@ unaligned
+ 1526 0060 A381     		strh	r3, [r4, #12]	@ unaligned
+ 353:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_IDLE:
+ 1527              		.loc 1 353 2 is_stmt 1 view .LVU242
+ 1528 0062 E8E7     		b	.L91
+ 1529              	.LVL128:
+ 1530              	.L85:
+ 355:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_IDLE);
+ 1531              		.loc 1 355 3 view .LVU243
+ 1532 0064 144B     		ldr	r3, .L93+16
+ 1533 0066 03CB     		ldmia	r3!, {r0, r1}
+ 1534              	.LVL129:
+ 355:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_IDLE);
+ 1535              		.loc 1 355 3 is_stmt 0 view .LVU244
+ 1536 0068 2060     		str	r0, [r4]	@ unaligned
+ 1537 006a 6160     		str	r1, [r4, #4]	@ unaligned
+ 1538 006c 1A88     		ldrh	r2, [r3]	@ unaligned
+ 1539 006e 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 40
+
+
+ 1540 0070 2281     		strh	r2, [r4, #8]	@ unaligned
+ 1541 0072 A372     		strb	r3, [r4, #10]
+ 357:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_RUNNING:
+ 1542              		.loc 1 357 2 is_stmt 1 view .LVU245
+ 1543 0074 DFE7     		b	.L91
+ 1544              	.LVL130:
+ 1545              	.L83:
+ 359:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_RUNNING);
+ 1546              		.loc 1 359 3 view .LVU246
+ 1547 0076 114B     		ldr	r3, .L93+20
+ 1548 0078 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1549              	.LVL131:
+ 359:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_RUNNING);
+ 1550              		.loc 1 359 3 is_stmt 0 view .LVU247
+ 1551 007a 2060     		str	r0, [r4]	@ unaligned
+ 1552 007c 6160     		str	r1, [r4, #4]	@ unaligned
+ 1553 007e A260     		str	r2, [r4, #8]	@ unaligned
+ 1554 0080 1B88     		ldrh	r3, [r3]	@ unaligned
+ 1555 0082 A381     		strh	r3, [r4, #12]	@ unaligned
+ 361:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_UNKNOWN:
+ 1556              		.loc 1 361 2 is_stmt 1 view .LVU248
+ 1557 0084 D7E7     		b	.L91
+ 1558              	.LVL132:
+ 1559              	.L89:
+ 363:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_UNKNOWN);
+ 1560              		.loc 1 363 3 view .LVU249
+ 1561 0086 0E4B     		ldr	r3, .L93+24
+ 1562 0088 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1563              	.LVL133:
+ 363:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_UNKNOWN);
+ 1564              		.loc 1 363 3 is_stmt 0 view .LVU250
+ 1565 008a 2060     		str	r0, [r4]	@ unaligned
+ 1566 008c 6160     		str	r1, [r4, #4]	@ unaligned
+ 1567 008e A260     		str	r2, [r4, #8]	@ unaligned
+ 1568 0090 1B88     		ldrh	r3, [r3]	@ unaligned
+ 1569 0092 A381     		strh	r3, [r4, #12]	@ unaligned
+ 365:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_STATE_ERROR:
+ 1570              		.loc 1 365 2 is_stmt 1 view .LVU251
+ 1571 0094 CFE7     		b	.L91
+ 1572              	.LVL134:
+ 1573              	.L82:
+ 372:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_UNKNOWN);
+ 1574              		.loc 1 372 3 view .LVU252
+ 1575 0096 0A4B     		ldr	r3, .L93+24
+ 1576 0098 07CB     		ldmia	r3!, {r0, r1, r2}
+ 1577              	.LVL135:
+ 372:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_STATE_UNKNOWN);
+ 1578              		.loc 1 372 3 is_stmt 0 view .LVU253
+ 1579 009a 2060     		str	r0, [r4]	@ unaligned
+ 1580 009c 6160     		str	r1, [r4, #4]	@ unaligned
+ 1581 009e A260     		str	r2, [r4, #8]	@ unaligned
+ 1582 00a0 1B88     		ldrh	r3, [r3]	@ unaligned
+ 1583 00a2 A381     		strh	r3, [r4, #12]	@ unaligned
+ 1584 00a4 C7E7     		b	.L91
+ 1585              	.L94:
+ 1586 00a6 00BF     		.align	2
+ 1587              	.L93:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 41
+
+
+ 1588 00a8 68000000 		.word	.LC51
+ 1589 00ac 00000000 		.word	.LC45
+ 1590 00b0 10000000 		.word	.LC46
+ 1591 00b4 2C000000 		.word	.LC47
+ 1592 00b8 3C000000 		.word	.LC48
+ 1593 00bc 48000000 		.word	.LC49
+ 1594 00c0 58000000 		.word	.LC50
+ 1595              		.cfi_endproc
+ 1596              	.LFE138:
+ 1598              		.section	.rodata.VL53L0X_get_sequence_steps_info.str1.4,"aMS",%progbits,1
+ 1599              		.align	2
+ 1600              	.LC52:
+ 1601 0000 54434300 		.ascii	"TCC\000"
+ 1602              		.align	2
+ 1603              	.LC53:
+ 1604 0004 44535300 		.ascii	"DSS\000"
+ 1605              		.align	2
+ 1606              	.LC54:
+ 1607 0008 4D535243 		.ascii	"MSRC\000"
+ 1607      00
+ 1608 000d 000000   		.align	2
+ 1609              	.LC55:
+ 1610 0010 50524520 		.ascii	"PRE RANGE\000"
+ 1610      52414E47 
+ 1610      4500
+ 1611 001a 0000     		.align	2
+ 1612              	.LC56:
+ 1613 001c 46494E41 		.ascii	"FINAL RANGE\000"
+ 1613      4C205241 
+ 1613      4E474500 
+ 1614              		.section	.text.VL53L0X_get_sequence_steps_info,"ax",%progbits
+ 1615              		.align	1
+ 1616              		.global	VL53L0X_get_sequence_steps_info
+ 1617              		.syntax unified
+ 1618              		.thumb
+ 1619              		.thumb_func
+ 1620              		.fpu fpv4-sp-d16
+ 1622              	VL53L0X_get_sequence_steps_info:
+ 1623              	.LVL136:
+ 1624              	.LFB139:
+ 379:Core/Src/vl53l0x_api_strings.c **** 
+ 380:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_sequence_steps_info(
+ 381:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_SequenceStepId SequenceStepId,
+ 382:Core/Src/vl53l0x_api_strings.c **** 		char *pSequenceStepsString)
+ 383:Core/Src/vl53l0x_api_strings.c **** {
+ 1625              		.loc 1 383 1 is_stmt 1 view -0
+ 1626              		.cfi_startproc
+ 1627              		@ args = 0, pretend = 0, frame = 0
+ 1628              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1629              		@ link register save eliminated.
+ 1630              		.loc 1 383 1 is_stmt 0 view .LVU255
+ 1631 0000 0B46     		mov	r3, r1
+ 384:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 1632              		.loc 1 384 2 is_stmt 1 view .LVU256
+ 1633              	.LVL137:
+ 385:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1634              		.loc 1 385 2 view .LVU257
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 42
+
+
+ 386:Core/Src/vl53l0x_api_strings.c **** 
+ 387:Core/Src/vl53l0x_api_strings.c **** 	switch (SequenceStepId) {
+ 1635              		.loc 1 387 2 view .LVU258
+ 1636 0002 0428     		cmp	r0, #4
+ 1637 0004 27D8     		bhi	.L103
+ 1638 0006 DFE800F0 		tbb	[pc, r0]
+ 1639              	.L98:
+ 1640 000a 03       		.byte	(.L102-.L98)/2
+ 1641 000b 08       		.byte	(.L101-.L98)/2
+ 1642 000c 0D       		.byte	(.L100-.L98)/2
+ 1643 000d 14       		.byte	(.L99-.L98)/2
+ 1644 000e 1C       		.byte	(.L97-.L98)/2
+ 1645 000f 00       		.p2align 1
+ 1646              	.L102:
+ 388:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_SEQUENCESTEP_TCC:
+ 389:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pSequenceStepsString,
+ 1647              		.loc 1 389 3 view .LVU259
+ 1648 0010 124A     		ldr	r2, .L107
+ 1649 0012 1068     		ldr	r0, [r2]
+ 1650              	.LVL138:
+ 1651              		.loc 1 389 3 is_stmt 0 view .LVU260
+ 1652 0014 0860     		str	r0, [r1]	@ unaligned
+ 390:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_SEQUENCESTEP_TCC);
+ 391:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1653              		.loc 1 391 2 is_stmt 1 view .LVU261
+ 384:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1654              		.loc 1 384 16 is_stmt 0 view .LVU262
+ 1655 0016 0020     		movs	r0, #0
+ 1656              		.loc 1 391 2 view .LVU263
+ 1657 0018 7047     		bx	lr
+ 1658              	.LVL139:
+ 1659              	.L101:
+ 392:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_SEQUENCESTEP_DSS:
+ 393:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pSequenceStepsString,
+ 1660              		.loc 1 393 3 is_stmt 1 view .LVU264
+ 1661 001a 114A     		ldr	r2, .L107+4
+ 1662 001c 1068     		ldr	r0, [r2]
+ 1663              	.LVL140:
+ 1664              		.loc 1 393 3 is_stmt 0 view .LVU265
+ 1665 001e 0860     		str	r0, [r1]	@ unaligned
+ 394:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_SEQUENCESTEP_DSS);
+ 395:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1666              		.loc 1 395 2 is_stmt 1 view .LVU266
+ 384:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1667              		.loc 1 384 16 is_stmt 0 view .LVU267
+ 1668 0020 0020     		movs	r0, #0
+ 1669              		.loc 1 395 2 view .LVU268
+ 1670 0022 7047     		bx	lr
+ 1671              	.LVL141:
+ 1672              	.L100:
+ 396:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_SEQUENCESTEP_MSRC:
+ 397:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pSequenceStepsString,
+ 1673              		.loc 1 397 3 is_stmt 1 view .LVU269
+ 1674 0024 0F4A     		ldr	r2, .L107+8
+ 1675 0026 1068     		ldr	r0, [r2]
+ 1676              	.LVL142:
+ 1677              		.loc 1 397 3 is_stmt 0 view .LVU270
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 43
+
+
+ 1678 0028 0860     		str	r0, [r1]	@ unaligned
+ 1679 002a 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 1680 002c 0A71     		strb	r2, [r1, #4]
+ 398:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_SEQUENCESTEP_MSRC);
+ 399:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1681              		.loc 1 399 2 is_stmt 1 view .LVU271
+ 384:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1682              		.loc 1 384 16 is_stmt 0 view .LVU272
+ 1683 002e 0020     		movs	r0, #0
+ 1684              		.loc 1 399 2 view .LVU273
+ 1685 0030 7047     		bx	lr
+ 1686              	.LVL143:
+ 1687              	.L99:
+ 400:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_SEQUENCESTEP_PRE_RANGE:
+ 401:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pSequenceStepsString,
+ 1688              		.loc 1 401 3 is_stmt 1 view .LVU274
+ 1689 0032 0D4A     		ldr	r2, .L107+12
+ 1690 0034 03CA     		ldmia	r2!, {r0, r1}
+ 1691              	.LVL144:
+ 1692              		.loc 1 401 3 is_stmt 0 view .LVU275
+ 1693 0036 1860     		str	r0, [r3]	@ unaligned
+ 1694 0038 5960     		str	r1, [r3, #4]	@ unaligned
+ 1695 003a 1288     		ldrh	r2, [r2]	@ unaligned
+ 1696 003c 1A81     		strh	r2, [r3, #8]	@ unaligned
+ 402:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_SEQUENCESTEP_PRE_RANGE);
+ 403:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1697              		.loc 1 403 2 is_stmt 1 view .LVU276
+ 384:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1698              		.loc 1 384 16 is_stmt 0 view .LVU277
+ 1699 003e 0020     		movs	r0, #0
+ 1700              		.loc 1 403 2 view .LVU278
+ 1701 0040 7047     		bx	lr
+ 1702              	.LVL145:
+ 1703              	.L97:
+ 383:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 1704              		.loc 1 383 1 view .LVU279
+ 1705 0042 10B4     		push	{r4}
+ 1706              		.cfi_def_cfa_offset 4
+ 1707              		.cfi_offset 4, -4
+ 404:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_SEQUENCESTEP_FINAL_RANGE:
+ 405:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pSequenceStepsString,
+ 1708              		.loc 1 405 3 is_stmt 1 view .LVU280
+ 1709 0044 094C     		ldr	r4, .L107+16
+ 1710 0046 07CC     		ldmia	r4!, {r0, r1, r2}
+ 1711              	.LVL146:
+ 1712              		.loc 1 405 3 is_stmt 0 view .LVU281
+ 1713 0048 1860     		str	r0, [r3]	@ unaligned
+ 1714 004a 5960     		str	r1, [r3, #4]	@ unaligned
+ 1715 004c 9A60     		str	r2, [r3, #8]	@ unaligned
+ 406:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_SEQUENCESTEP_FINAL_RANGE);
+ 407:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1716              		.loc 1 407 2 is_stmt 1 view .LVU282
+ 384:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1717              		.loc 1 384 16 is_stmt 0 view .LVU283
+ 1718 004e 0020     		movs	r0, #0
+ 1719              	.LVL147:
+ 408:Core/Src/vl53l0x_api_strings.c **** 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 44
+
+
+ 409:Core/Src/vl53l0x_api_strings.c **** 	default:
+ 410:Core/Src/vl53l0x_api_strings.c **** 		Status = VL53L0X_ERROR_INVALID_PARAMS;
+ 411:Core/Src/vl53l0x_api_strings.c **** 	}
+ 412:Core/Src/vl53l0x_api_strings.c **** 
+ 413:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+ 1720              		.loc 1 413 2 is_stmt 1 view .LVU284
+ 414:Core/Src/vl53l0x_api_strings.c **** 
+ 415:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 1721              		.loc 1 415 2 view .LVU285
+ 416:Core/Src/vl53l0x_api_strings.c **** }
+ 1722              		.loc 1 416 1 is_stmt 0 view .LVU286
+ 1723 0050 5DF8044B 		ldr	r4, [sp], #4
+ 1724              		.cfi_restore 4
+ 1725              		.cfi_def_cfa_offset 0
+ 1726 0054 7047     		bx	lr
+ 1727              	.LVL148:
+ 1728              	.L103:
+ 384:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1729              		.loc 1 384 16 view .LVU287
+ 1730 0056 6FF00300 		mvn	r0, #3
+ 1731              	.LVL149:
+ 413:Core/Src/vl53l0x_api_strings.c **** 
+ 1732              		.loc 1 413 2 is_stmt 1 view .LVU288
+ 415:Core/Src/vl53l0x_api_strings.c **** }
+ 1733              		.loc 1 415 2 view .LVU289
+ 1734              		.loc 1 416 1 is_stmt 0 view .LVU290
+ 1735 005a 7047     		bx	lr
+ 1736              	.L108:
+ 1737              		.align	2
+ 1738              	.L107:
+ 1739 005c 00000000 		.word	.LC52
+ 1740 0060 04000000 		.word	.LC53
+ 1741 0064 08000000 		.word	.LC54
+ 1742 0068 10000000 		.word	.LC55
+ 1743 006c 1C000000 		.word	.LC56
+ 1744              		.cfi_endproc
+ 1745              	.LFE139:
+ 1747              		.section	.rodata.VL53L0X_get_limit_check_info.str1.4,"aMS",%progbits,1
+ 1748              		.align	2
+ 1749              	.LC57:
+ 1750 0000 5349474D 		.ascii	"SIGMA FINAL RANGE\000"
+ 1750      41204649 
+ 1750      4E414C20 
+ 1750      52414E47 
+ 1750      4500
+ 1751 0012 0000     		.align	2
+ 1752              	.LC58:
+ 1753 0014 5349474E 		.ascii	"SIGNAL RATE FINAL RANGE\000"
+ 1753      414C2052 
+ 1753      41544520 
+ 1753      46494E41 
+ 1753      4C205241 
+ 1754              		.align	2
+ 1755              	.LC59:
+ 1756 002c 5349474E 		.ascii	"SIGNAL REF CLIP\000"
+ 1756      414C2052 
+ 1756      45462043 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 45
+
+
+ 1756      4C495000 
+ 1757              		.align	2
+ 1758              	.LC60:
+ 1759 003c 52414E47 		.ascii	"RANGE IGNORE THRESHOLD\000"
+ 1759      45204947 
+ 1759      4E4F5245 
+ 1759      20544852 
+ 1759      4553484F 
+ 1760 0053 00       		.align	2
+ 1761              	.LC61:
+ 1762 0054 5349474E 		.ascii	"SIGNAL RATE MSRC\000"
+ 1762      414C2052 
+ 1762      41544520 
+ 1762      4D535243 
+ 1762      00
+ 1763 0065 000000   		.align	2
+ 1764              	.LC62:
+ 1765 0068 5349474E 		.ascii	"SIGNAL RATE PRE RANGE\000"
+ 1765      414C2052 
+ 1765      41544520 
+ 1765      50524520 
+ 1765      52414E47 
+ 1766              		.section	.text.VL53L0X_get_limit_check_info,"ax",%progbits
+ 1767              		.align	1
+ 1768              		.global	VL53L0X_get_limit_check_info
+ 1769              		.syntax unified
+ 1770              		.thumb
+ 1771              		.thumb_func
+ 1772              		.fpu fpv4-sp-d16
+ 1774              	VL53L0X_get_limit_check_info:
+ 1775              	.LVL150:
+ 1776              	.LFB140:
+ 417:Core/Src/vl53l0x_api_strings.c **** 
+ 418:Core/Src/vl53l0x_api_strings.c **** 
+ 419:Core/Src/vl53l0x_api_strings.c **** VL53L0X_Error VL53L0X_get_limit_check_info(VL53L0X_DEV Dev, uint16_t LimitCheckId,
+ 420:Core/Src/vl53l0x_api_strings.c **** 	char *pLimitCheckString)
+ 421:Core/Src/vl53l0x_api_strings.c **** {
+ 1777              		.loc 1 421 1 is_stmt 1 view -0
+ 1778              		.cfi_startproc
+ 1779              		@ args = 0, pretend = 0, frame = 0
+ 1780              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1781              		@ link register save eliminated.
+ 1782              		.loc 1 421 1 is_stmt 0 view .LVU292
+ 1783 0000 30B4     		push	{r4, r5}
+ 1784              		.cfi_def_cfa_offset 8
+ 1785              		.cfi_offset 4, -8
+ 1786              		.cfi_offset 5, -4
+ 1787 0002 1446     		mov	r4, r2
+ 422:Core/Src/vl53l0x_api_strings.c **** 	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 1788              		.loc 1 422 2 is_stmt 1 view .LVU293
+ 1789              	.LVL151:
+ 423:Core/Src/vl53l0x_api_strings.c **** 
+ 424:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_START("");
+ 1790              		.loc 1 424 2 view .LVU294
+ 425:Core/Src/vl53l0x_api_strings.c **** 
+ 426:Core/Src/vl53l0x_api_strings.c **** 	switch (LimitCheckId) {
+ 1791              		.loc 1 426 2 view .LVU295
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 46
+
+
+ 1792 0004 0529     		cmp	r1, #5
+ 1793 0006 41D8     		bhi	.L110
+ 1794 0008 DFE801F0 		tbb	[pc, r1]
+ 1795              	.L112:
+ 1796 000c 03       		.byte	(.L117-.L112)/2
+ 1797 000d 0E       		.byte	(.L116-.L112)/2
+ 1798 000e 18       		.byte	(.L115-.L112)/2
+ 1799 000f 1F       		.byte	(.L114-.L112)/2
+ 1800 0010 2C       		.byte	(.L113-.L112)/2
+ 1801 0011 35       		.byte	(.L111-.L112)/2
+ 1802              		.p2align 1
+ 1803              	.L117:
+ 427:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_SIGMA_FINAL_RANGE:
+ 428:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 1804              		.loc 1 428 3 view .LVU296
+ 1805 0012 244D     		ldr	r5, .L120
+ 1806 0014 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1807              	.LVL152:
+ 1808              		.loc 1 428 3 is_stmt 0 view .LVU297
+ 1809 0016 2060     		str	r0, [r4]	@ unaligned
+ 1810 0018 6160     		str	r1, [r4, #4]	@ unaligned
+ 1811 001a A260     		str	r2, [r4, #8]	@ unaligned
+ 1812 001c E360     		str	r3, [r4, #12]	@ unaligned
+ 1813 001e 2B88     		ldrh	r3, [r5]	@ unaligned
+ 1814 0020 2382     		strh	r3, [r4, #16]	@ unaligned
+ 429:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGMA_FINAL_RANGE);
+ 430:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 1815              		.loc 1 430 2 is_stmt 1 view .LVU298
+ 1816              	.L118:
+ 431:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE:
+ 432:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 433:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE);
+ 434:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 435:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_SIGNAL_REF_CLIP:
+ 436:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 437:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_REF_CLIP);
+ 438:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 439:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_RANGE_IGNORE_THRESHOLD:
+ 440:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 441:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_RANGE_IGNORE_THRESHOLD);
+ 442:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 443:Core/Src/vl53l0x_api_strings.c **** 
+ 444:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_SIGNAL_RATE_MSRC:
+ 445:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 446:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_MSRC);
+ 447:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 448:Core/Src/vl53l0x_api_strings.c **** 
+ 449:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_SIGNAL_RATE_PRE_RANGE:
+ 450:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 451:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_PRE_RANGE);
+ 452:Core/Src/vl53l0x_api_strings.c **** 	break;
+ 453:Core/Src/vl53l0x_api_strings.c **** 
+ 454:Core/Src/vl53l0x_api_strings.c **** 	default:
+ 455:Core/Src/vl53l0x_api_strings.c **** 		VL53L0X_COPYSTRING(pLimitCheckString,
+ 456:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 457:Core/Src/vl53l0x_api_strings.c **** 
+ 458:Core/Src/vl53l0x_api_strings.c **** 	}
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 47
+
+
+ 459:Core/Src/vl53l0x_api_strings.c **** 
+ 460:Core/Src/vl53l0x_api_strings.c **** 	LOG_FUNCTION_END(Status);
+ 1817              		.loc 1 460 2 view .LVU299
+ 461:Core/Src/vl53l0x_api_strings.c **** 	return Status;
+ 1818              		.loc 1 461 2 view .LVU300
+ 462:Core/Src/vl53l0x_api_strings.c **** }
+ 1819              		.loc 1 462 1 is_stmt 0 view .LVU301
+ 1820 0022 0020     		movs	r0, #0
+ 1821 0024 30BC     		pop	{r4, r5}
+ 1822              		.cfi_remember_state
+ 1823              		.cfi_restore 5
+ 1824              		.cfi_restore 4
+ 1825              		.cfi_def_cfa_offset 0
+ 1826              	.LVL153:
+ 1827              		.loc 1 462 1 view .LVU302
+ 1828 0026 7047     		bx	lr
+ 1829              	.LVL154:
+ 1830              	.L116:
+ 1831              		.cfi_restore_state
+ 432:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE);
+ 1832              		.loc 1 432 3 is_stmt 1 view .LVU303
+ 1833 0028 1F4D     		ldr	r5, .L120+4
+ 1834 002a 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1835              	.LVL155:
+ 432:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE);
+ 1836              		.loc 1 432 3 is_stmt 0 view .LVU304
+ 1837 002c 2060     		str	r0, [r4]	@ unaligned
+ 1838 002e 6160     		str	r1, [r4, #4]	@ unaligned
+ 1839 0030 A260     		str	r2, [r4, #8]	@ unaligned
+ 1840 0032 E360     		str	r3, [r4, #12]	@ unaligned
+ 1841 0034 03CD     		ldmia	r5!, {r0, r1}
+ 1842 0036 2061     		str	r0, [r4, #16]	@ unaligned
+ 1843 0038 6161     		str	r1, [r4, #20]	@ unaligned
+ 434:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_SIGNAL_REF_CLIP:
+ 1844              		.loc 1 434 2 is_stmt 1 view .LVU305
+ 1845 003a F2E7     		b	.L118
+ 1846              	.LVL156:
+ 1847              	.L115:
+ 436:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_REF_CLIP);
+ 1848              		.loc 1 436 3 view .LVU306
+ 1849 003c 1B4D     		ldr	r5, .L120+8
+ 1850 003e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1851              	.LVL157:
+ 436:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_REF_CLIP);
+ 1852              		.loc 1 436 3 is_stmt 0 view .LVU307
+ 1853 0040 2060     		str	r0, [r4]	@ unaligned
+ 1854 0042 6160     		str	r1, [r4, #4]	@ unaligned
+ 1855 0044 A260     		str	r2, [r4, #8]	@ unaligned
+ 1856 0046 E360     		str	r3, [r4, #12]	@ unaligned
+ 438:Core/Src/vl53l0x_api_strings.c **** 	case VL53L0X_CHECKENABLE_RANGE_IGNORE_THRESHOLD:
+ 1857              		.loc 1 438 2 is_stmt 1 view .LVU308
+ 1858 0048 EBE7     		b	.L118
+ 1859              	.LVL158:
+ 1860              	.L114:
+ 440:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_RANGE_IGNORE_THRESHOLD);
+ 1861              		.loc 1 440 3 view .LVU309
+ 1862 004a 194D     		ldr	r5, .L120+12
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 48
+
+
+ 1863 004c 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1864              	.LVL159:
+ 440:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_RANGE_IGNORE_THRESHOLD);
+ 1865              		.loc 1 440 3 is_stmt 0 view .LVU310
+ 1866 004e 2060     		str	r0, [r4]	@ unaligned
+ 1867 0050 6160     		str	r1, [r4, #4]	@ unaligned
+ 1868 0052 A260     		str	r2, [r4, #8]	@ unaligned
+ 1869 0054 E360     		str	r3, [r4, #12]	@ unaligned
+ 1870 0056 2868     		ldr	r0, [r5]
+ 1871 0058 2061     		str	r0, [r4, #16]	@ unaligned
+ 1872 005a AA88     		ldrh	r2, [r5, #4]	@ unaligned
+ 1873 005c AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 1874 005e A282     		strh	r2, [r4, #20]	@ unaligned
+ 1875 0060 A375     		strb	r3, [r4, #22]
+ 442:Core/Src/vl53l0x_api_strings.c **** 
+ 1876              		.loc 1 442 2 is_stmt 1 view .LVU311
+ 1877 0062 DEE7     		b	.L118
+ 1878              	.LVL160:
+ 1879              	.L113:
+ 445:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_MSRC);
+ 1880              		.loc 1 445 3 view .LVU312
+ 1881 0064 134D     		ldr	r5, .L120+16
+ 1882 0066 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1883              	.LVL161:
+ 445:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_MSRC);
+ 1884              		.loc 1 445 3 is_stmt 0 view .LVU313
+ 1885 0068 2060     		str	r0, [r4]	@ unaligned
+ 1886 006a 6160     		str	r1, [r4, #4]	@ unaligned
+ 1887 006c A260     		str	r2, [r4, #8]	@ unaligned
+ 1888 006e E360     		str	r3, [r4, #12]	@ unaligned
+ 1889 0070 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 1890 0072 2374     		strb	r3, [r4, #16]
+ 447:Core/Src/vl53l0x_api_strings.c **** 
+ 1891              		.loc 1 447 2 is_stmt 1 view .LVU314
+ 1892 0074 D5E7     		b	.L118
+ 1893              	.LVL162:
+ 1894              	.L111:
+ 450:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_PRE_RANGE);
+ 1895              		.loc 1 450 3 view .LVU315
+ 1896 0076 104D     		ldr	r5, .L120+20
+ 1897 0078 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1898              	.LVL163:
+ 450:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_CHECKENABLE_SIGNAL_RATE_PRE_RANGE);
+ 1899              		.loc 1 450 3 is_stmt 0 view .LVU316
+ 1900 007a 2060     		str	r0, [r4]	@ unaligned
+ 1901 007c 6160     		str	r1, [r4, #4]	@ unaligned
+ 1902 007e A260     		str	r2, [r4, #8]	@ unaligned
+ 1903 0080 E360     		str	r3, [r4, #12]	@ unaligned
+ 1904 0082 2868     		ldr	r0, [r5]
+ 1905 0084 2061     		str	r0, [r4, #16]	@ unaligned
+ 1906 0086 AB88     		ldrh	r3, [r5, #4]	@ unaligned
+ 1907 0088 A382     		strh	r3, [r4, #20]	@ unaligned
+ 452:Core/Src/vl53l0x_api_strings.c **** 
+ 1908              		.loc 1 452 2 is_stmt 1 view .LVU317
+ 1909 008a CAE7     		b	.L118
+ 1910              	.LVL164:
+ 1911              	.L110:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 49
+
+
+ 455:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 1912              		.loc 1 455 3 view .LVU318
+ 1913 008c 0B4D     		ldr	r5, .L120+24
+ 1914 008e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 1915              	.LVL165:
+ 455:Core/Src/vl53l0x_api_strings.c **** 			VL53L0X_STRING_UNKNOW_ERROR_CODE);
+ 1916              		.loc 1 455 3 is_stmt 0 view .LVU319
+ 1917 0090 2060     		str	r0, [r4]	@ unaligned
+ 1918 0092 6160     		str	r1, [r4, #4]	@ unaligned
+ 1919 0094 A260     		str	r2, [r4, #8]	@ unaligned
+ 1920 0096 E360     		str	r3, [r4, #12]	@ unaligned
+ 1921 0098 2A88     		ldrh	r2, [r5]	@ unaligned
+ 1922 009a AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 1923 009c 2282     		strh	r2, [r4, #16]	@ unaligned
+ 1924 009e A374     		strb	r3, [r4, #18]
+ 1925 00a0 BFE7     		b	.L118
+ 1926              	.L121:
+ 1927 00a2 00BF     		.align	2
+ 1928              	.L120:
+ 1929 00a4 00000000 		.word	.LC57
+ 1930 00a8 14000000 		.word	.LC58
+ 1931 00ac 2C000000 		.word	.LC59
+ 1932 00b0 3C000000 		.word	.LC60
+ 1933 00b4 54000000 		.word	.LC61
+ 1934 00b8 68000000 		.word	.LC62
+ 1935 00bc 54010000 		.word	.LC20
+ 1936              		.cfi_endproc
+ 1937              	.LFE140:
+ 1939              		.text
+ 1940              	.Letext0:
+ 1941              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+ 1942              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+ 1943              		.file 4 "Core/Inc/vl53l0x_types.h"
+ 1944              		.file 5 "Core/Inc/vl53l0x_device.h"
+ 1945              		.file 6 "Core/Inc/vl53l0x_def.h"
+ 1946              		.file 7 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\loc
+ 1947              		.file 8 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_ty
+ 1948              		.file 9 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\\
+ 1949              		.file 10 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\re
+ 1950              		.file 11 "Drivers/CMSIS/Include/core_cm4.h"
+ 1951              		.file 12 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1952              		.file 13 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1953              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1954              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1955              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 1956              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1957              		.file 18 "Core/Inc/vl53l0x_platform.h"
+ 1958              		.file 19 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\stdlib.
+ 1959              		.file 20 "Core/Inc/vl53l0x_api_core.h"
+ 1960              		.file 21 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\string.
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s 			page 50
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 vl53l0x_api_strings.c
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:18     .text.VL53L0X_check_part_used:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:26     .text.VL53L0X_check_part_used:00000000 VL53L0X_check_part_used
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:106    .rodata.VL53L0X_get_device_info.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:122    .text.VL53L0X_get_device_info:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:129    .text.VL53L0X_get_device_info:00000000 VL53L0X_get_device_info
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:288    .text.VL53L0X_get_device_info:000000a4 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:297    .rodata.VL53L0X_get_device_error_string.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:346    .text.VL53L0X_get_device_error_string:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:353    .text.VL53L0X_get_device_error_string:00000000 VL53L0X_get_device_error_string
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:375    .text.VL53L0X_get_device_error_string:0000000e $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:672    .text.VL53L0X_get_device_error_string:00000178 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:692    .rodata.VL53L0X_get_range_status_string.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:711    .text.VL53L0X_get_range_status_string:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:718    .text.VL53L0X_get_range_status_string:00000000 VL53L0X_get_range_status_string
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:739    .text.VL53L0X_get_range_status_string:0000000c $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:745    .text.VL53L0X_get_range_status_string:00000012 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:854    .text.VL53L0X_get_range_status_string:00000088 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:865    .rodata.VL53L0X_get_pal_error_string.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:920    .text.VL53L0X_get_pal_error_string:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:927    .text.VL53L0X_get_pal_error_string:00000000 VL53L0X_get_pal_error_string
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:952    .text.VL53L0X_get_pal_error_string:00000010 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1052   .text.VL53L0X_get_pal_error_string:000000d8 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1374   .text.VL53L0X_get_pal_error_string:00000260 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1397   .rodata.VL53L0X_get_pal_state_string.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1419   .text.VL53L0X_get_pal_state_string:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1426   .text.VL53L0X_get_pal_state_string:00000000 VL53L0X_get_pal_state_string
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1450   .text.VL53L0X_get_pal_state_string:00000010 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1588   .text.VL53L0X_get_pal_state_string:000000a8 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1599   .rodata.VL53L0X_get_sequence_steps_info.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1615   .text.VL53L0X_get_sequence_steps_info:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1622   .text.VL53L0X_get_sequence_steps_info:00000000 VL53L0X_get_sequence_steps_info
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1640   .text.VL53L0X_get_sequence_steps_info:0000000a $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1739   .text.VL53L0X_get_sequence_steps_info:0000005c $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1748   .rodata.VL53L0X_get_limit_check_info.str1.4:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1767   .text.VL53L0X_get_limit_check_info:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1774   .text.VL53L0X_get_limit_check_info:00000000 VL53L0X_get_limit_check_info
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1796   .text.VL53L0X_get_limit_check_info:0000000c $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1802   .text.VL53L0X_get_limit_check_info:00000012 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1929   .text.VL53L0X_get_limit_check_info:000000a4 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:390    .text.VL53L0X_get_device_error_string:0000001d $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:390    .text.VL53L0X_get_device_error_string:0000001e $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1455   .text.VL53L0X_get_pal_state_string:00000015 $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1455   .text.VL53L0X_get_pal_state_string:00000016 $t
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1645   .text.VL53L0X_get_sequence_steps_info:0000000f $d
+C:\Users\anmh1\AppData\Local\Temp\cctqPbNI.s:1645   .text.VL53L0X_get_sequence_steps_info:00000010 $t
+
+UNDEFINED SYMBOLS
+VL53L0X_get_info_from_device
+strcpy
+VL53L0X_RdByte

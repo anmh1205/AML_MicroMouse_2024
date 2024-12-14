@@ -8,6 +8,7 @@
     "aml_motorcontrol.h": "c",
     "aml_pid.h": "c",
     "aml_irsensor.h": "c",
-    "solver.h": "c"
+    "solver.h": "c",
+    "stdbool.h": "c"
   }
 }

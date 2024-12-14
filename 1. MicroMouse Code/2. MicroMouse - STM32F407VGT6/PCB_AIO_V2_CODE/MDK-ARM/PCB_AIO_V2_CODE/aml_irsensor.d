@@ -47,5 +47,6 @@ pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_GlobalVariable.h
 pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_LedDebug.h
 pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_Buzzer.h
 pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_Switch.h
+pcb_aio_v2_code\aml_irsensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_IMU.h
 pcb_aio_v2_code\aml_irsensor.o: ../Core/Inc/AML_IRSensor.h

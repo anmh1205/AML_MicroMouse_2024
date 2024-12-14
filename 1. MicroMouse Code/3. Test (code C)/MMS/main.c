@@ -16,19 +16,10 @@
 
 #define debug(x) NULL
 
-// choose which algorithm to use in the beginning of the run
-// int algorithm;
-// struct dist_maze distances;
-// struct wall_maze cell_walls_info;
-// struct stack update_stack;
-// struct stack move_queue;
-
-// You do not need to edit this file.
-// This program just runs your solver and passes the choices
-// to the simulator.
-
 int main(int argc, char *argv[])
 {
+    setPriorityHeading(EAST);
+
     // debug_log("Running...");
     initialize();
 

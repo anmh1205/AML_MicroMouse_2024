@@ -1,0 +1,5 @@
+../Core/Src/AML_LaserSensor.c:20:6:AML_LaserSensor_ScanI2CDevice	24	static
+../Core/Src/AML_LaserSensor.c:33:6:AML_LaserSensor_Init	16	static
+../Core/Src/AML_LaserSensor.c:52:6:AML_LaserSensor_Setup	16	static
+../Core/Src/AML_LaserSensor.c:121:6:AML_LaserSensor_ReadAll	128	static
+../Core/Src/AML_LaserSensor.c:137:10:AML_LaserSensor_ReadSingle	16	static

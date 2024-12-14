@@ -1,0 +1,17 @@
+../Core/Src/AML_MotorControl.c:53:8:ABS	24	static
+../Core/Src/AML_MotorControl.c:69:7:AML_MotorControl_PIDSetTunnings	40	static
+../Core/Src/AML_MotorControl.c:77:6:AML_MotorControl_PIDSetSampleTime	16	static
+../Core/Src/AML_MotorControl.c:89:6:AML_MotorControl_PIDSetOutputLimits	24	static
+../Core/Src/AML_MotorControl.c:107:6:AML_MotorControl_PIDSetMode	16	static
+../Core/Src/AML_MotorControl.c:119:6:AML_MotorControl_PIDSetup	24	static
+../Core/Src/AML_MotorControl.c:145:6:AML_MotorControl_Setup	8	static
+../Core/Src/AML_MotorControl.c:156:6:AML_MotorControl_LeftPWM	16	static
+../Core/Src/AML_MotorControl.c:181:6:AML_MotorControl_RightPWM	16	static
+../Core/Src/AML_MotorControl.c:206:6:AML_MotorControl_SetDirection	16	static
+../Core/Src/AML_MotorControl.c:211:6:AML_MotorControl_ToggleDirection	4	static
+../Core/Src/AML_MotorControl.c:216:6:AML_MotorControl_SetLeftSpeed	24	static
+../Core/Src/AML_MotorControl.c:227:6:AML_MotorControl_SetRightSpeed	24	static
+../Core/Src/AML_MotorControl.c:238:6:AML_MotorControl_Stop	8	static
+../Core/Src/AML_MotorControl.c:244:6:AML_MotorControl_SetLeftWallValue	8	static
+../Core/Src/AML_MotorControl.c:250:6:AML_MotorControl_SetRightWallValue	8	static
+../Core/Src/AML_MotorControl.c:256:6:AML_MotorControl_LeftWallFollow	8	static

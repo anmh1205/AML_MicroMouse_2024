@@ -1,0 +1,805 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"AML_LaserSensor.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.AML_LaserSensor_ScanI2CDevice,"ax",%progbits
+  18              		.align	1
+  19              		.global	AML_LaserSensor_ScanI2CDevice
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	AML_LaserSensor_ScanI2CDevice:
+  27              	.LVL0:
+  28              	.LFB133:
+  29              		.file 1 "Core/Src/AML_LaserSensor.c"
+   1:Core/Src/AML_LaserSensor.c **** #include "AML_LaserSensor.h"
+   2:Core/Src/AML_LaserSensor.c **** 
+   3:Core/Src/AML_LaserSensor.c **** #define I2C_TIMEOUT 100
+   4:Core/Src/AML_LaserSensor.c **** 
+   5:Core/Src/AML_LaserSensor.c **** uint8_t LaserSensorAddress[] = {0x29, 0x59, 0x60, 0x32, 0x57, 0x58};
+   6:Core/Src/AML_LaserSensor.c **** 
+   7:Core/Src/AML_LaserSensor.c **** extern I2C_HandleTypeDef hi2c1;
+   8:Core/Src/AML_LaserSensor.c **** extern int16_t debug[100];
+   9:Core/Src/AML_LaserSensor.c **** 
+  10:Core/Src/AML_LaserSensor.c **** VL53L0X_RangingMeasurementData_t SensorValue[6];
+  11:Core/Src/AML_LaserSensor.c **** VL53L0X_Dev_t Dev_Val[6];
+  12:Core/Src/AML_LaserSensor.c **** VL53L0X_DEV Laser[6];
+  13:Core/Src/AML_LaserSensor.c **** 
+  14:Core/Src/AML_LaserSensor.c **** uint32_t refSpadCount;
+  15:Core/Src/AML_LaserSensor.c **** uint8_t isApertureSpads;
+  16:Core/Src/AML_LaserSensor.c **** uint8_t VhvSettings;
+  17:Core/Src/AML_LaserSensor.c **** uint8_t PhaseCal;
+  18:Core/Src/AML_LaserSensor.c **** 
+  19:Core/Src/AML_LaserSensor.c **** void AML_LaserSensor_ScanI2CDevice(I2C_HandleTypeDef *hi2c)
+  20:Core/Src/AML_LaserSensor.c **** {
+  30              		.loc 1 20 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 20 1 is_stmt 0 view .LVU1
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 3, -16
+  38              		.cfi_offset 4, -12
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 2
+
+
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  41 0002 0546     		mov	r5, r0
+  21:Core/Src/AML_LaserSensor.c ****     uint8_t i;
+  42              		.loc 1 21 5 is_stmt 1 view .LVU2
+  22:Core/Src/AML_LaserSensor.c ****     for (i = 1; i < 128; i++)
+  43              		.loc 1 22 5 view .LVU3
+  44              	.LVL1:
+  45              		.loc 1 22 12 is_stmt 0 view .LVU4
+  46 0004 0124     		movs	r4, #1
+  47              		.loc 1 22 5 view .LVU5
+  48 0006 01E0     		b	.L2
+  49              	.LVL2:
+  50              	.L3:
+  51              		.loc 1 22 26 is_stmt 1 discriminator 2 view .LVU6
+  52              		.loc 1 22 27 is_stmt 0 discriminator 2 view .LVU7
+  53 0008 0134     		adds	r4, r4, #1
+  54              	.LVL3:
+  55              		.loc 1 22 27 discriminator 2 view .LVU8
+  56 000a E4B2     		uxtb	r4, r4
+  57              	.LVL4:
+  58              	.L2:
+  59              		.loc 1 22 17 is_stmt 1 discriminator 1 view .LVU9
+  60              		.loc 1 22 5 is_stmt 0 discriminator 1 view .LVU10
+  61 000c 14F0800F 		tst	r4, #128
+  62 0010 0CD1     		bne	.L6
+  23:Core/Src/AML_LaserSensor.c ****     {
+  24:Core/Src/AML_LaserSensor.c ****         if (HAL_I2C_IsDeviceReady(hi2c, i << 1, 2, I2C_TIMEOUT) == HAL_OK)
+  63              		.loc 1 24 9 is_stmt 1 view .LVU11
+  64              		.loc 1 24 13 is_stmt 0 view .LVU12
+  65 0012 6423     		movs	r3, #100
+  66 0014 0222     		movs	r2, #2
+  67 0016 6100     		lsls	r1, r4, #1
+  68 0018 2846     		mov	r0, r5
+  69 001a FFF7FEFF 		bl	HAL_I2C_IsDeviceReady
+  70              	.LVL5:
+  71              		.loc 1 24 12 view .LVU13
+  72 001e 0028     		cmp	r0, #0
+  73 0020 F2D1     		bne	.L3
+  25:Core/Src/AML_LaserSensor.c ****         {
+  26:Core/Src/AML_LaserSensor.c ****             // printf("I2C device found at address 0x%X\n", i);
+  27:Core/Src/AML_LaserSensor.c ****             debug[i] = 1;
+  74              		.loc 1 27 13 is_stmt 1 view .LVU14
+  75              		.loc 1 27 22 is_stmt 0 view .LVU15
+  76 0022 034B     		ldr	r3, .L7
+  77 0024 0122     		movs	r2, #1
+  78 0026 23F81420 		strh	r2, [r3, r4, lsl #1]	@ movhi
+  79 002a EDE7     		b	.L3
+  80              	.L6:
+  28:Core/Src/AML_LaserSensor.c ****         }
+  29:Core/Src/AML_LaserSensor.c ****     }
+  30:Core/Src/AML_LaserSensor.c **** }
+  81              		.loc 1 30 1 view .LVU16
+  82 002c 38BD     		pop	{r3, r4, r5, pc}
+  83              	.LVL6:
+  84              	.L8:
+  85              		.loc 1 30 1 view .LVU17
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 3
+
+
+  86 002e 00BF     		.align	2
+  87              	.L7:
+  88 0030 00000000 		.word	debug
+  89              		.cfi_endproc
+  90              	.LFE133:
+  92              		.section	.text.AML_LaserSensor_Init,"ax",%progbits
+  93              		.align	1
+  94              		.global	AML_LaserSensor_Init
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  98              		.fpu fpv4-sp-d16
+ 100              	AML_LaserSensor_Init:
+ 101              	.LVL7:
+ 102              	.LFB134:
+  31:Core/Src/AML_LaserSensor.c **** 
+  32:Core/Src/AML_LaserSensor.c **** void AML_LaserSensor_Init(uint8_t i)
+  33:Core/Src/AML_LaserSensor.c **** {
+ 103              		.loc 1 33 1 is_stmt 1 view -0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107              		.loc 1 33 1 is_stmt 0 view .LVU19
+ 108 0000 38B5     		push	{r3, r4, r5, lr}
+ 109              		.cfi_def_cfa_offset 16
+ 110              		.cfi_offset 3, -16
+ 111              		.cfi_offset 4, -12
+ 112              		.cfi_offset 5, -8
+ 113              		.cfi_offset 14, -4
+ 114 0002 0446     		mov	r4, r0
+  34:Core/Src/AML_LaserSensor.c ****     VL53L0X_WaitDeviceBooted(Laser[i]);
+ 115              		.loc 1 34 5 is_stmt 1 view .LVU20
+ 116 0004 254D     		ldr	r5, .L11
+ 117 0006 55F82000 		ldr	r0, [r5, r0, lsl #2]
+ 118              	.LVL8:
+ 119              		.loc 1 34 5 is_stmt 0 view .LVU21
+ 120 000a FFF7FEFF 		bl	VL53L0X_WaitDeviceBooted
+ 121              	.LVL9:
+  35:Core/Src/AML_LaserSensor.c ****     VL53L0X_DataInit(Laser[i]);
+ 122              		.loc 1 35 5 is_stmt 1 view .LVU22
+ 123 000e 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 124 0012 FFF7FEFF 		bl	VL53L0X_DataInit
+ 125              	.LVL10:
+  36:Core/Src/AML_LaserSensor.c ****     VL53L0X_StaticInit(Laser[i]);
+ 126              		.loc 1 36 5 view .LVU23
+ 127 0016 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 128 001a FFF7FEFF 		bl	VL53L0X_StaticInit
+ 129              	.LVL11:
+  37:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformRefCalibration(Laser[i], &VhvSettings, &PhaseCal);
+ 130              		.loc 1 37 5 view .LVU24
+ 131 001e 204A     		ldr	r2, .L11+4
+ 132 0020 2049     		ldr	r1, .L11+8
+ 133 0022 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 134 0026 FFF7FEFF 		bl	VL53L0X_PerformRefCalibration
+ 135              	.LVL12:
+  38:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformRefSpadManagement(Laser[i], &refSpadCount, &isApertureSpads);
+ 136              		.loc 1 38 5 view .LVU25
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 4
+
+
+ 137 002a 1F4A     		ldr	r2, .L11+12
+ 138 002c 1F49     		ldr	r1, .L11+16
+ 139 002e 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 140 0032 FFF7FEFF 		bl	VL53L0X_PerformRefSpadManagement
+ 141              	.LVL13:
+  39:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetDeviceMode(Laser[i], VL53L0X_DEVICEMODE_SINGLE_RANGING);
+ 142              		.loc 1 39 5 view .LVU26
+ 143 0036 0021     		movs	r1, #0
+ 144 0038 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 145 003c FFF7FEFF 		bl	VL53L0X_SetDeviceMode
+ 146              	.LVL14:
+  40:Core/Src/AML_LaserSensor.c **** 
+  41:Core/Src/AML_LaserSensor.c ****     // Enable/Disable Sigma and Signal check
+  42:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetLimitCheckEnable(Laser[i], VL53L0X_CHECKENABLE_SIGMA_FINAL_RANGE, 1);
+ 147              		.loc 1 42 5 view .LVU27
+ 148 0040 0122     		movs	r2, #1
+ 149 0042 0021     		movs	r1, #0
+ 150 0044 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 151 0048 FFF7FEFF 		bl	VL53L0X_SetLimitCheckEnable
+ 152              	.LVL15:
+  43:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetLimitCheckEnable(Laser[i], VL53L0X_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE, 1);
+ 153              		.loc 1 43 5 view .LVU28
+ 154 004c 0122     		movs	r2, #1
+ 155 004e 1146     		mov	r1, r2
+ 156 0050 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 157 0054 FFF7FEFF 		bl	VL53L0X_SetLimitCheckEnable
+ 158              	.LVL16:
+  44:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetLimitCheckValue(Laser[i], VL53L0X_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE, (FixPoint1616
+ 159              		.loc 1 44 5 view .LVU29
+ 160 0058 41F69912 		movw	r2, #6553
+ 161 005c 0121     		movs	r1, #1
+ 162 005e 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 163 0062 FFF7FEFF 		bl	VL53L0X_SetLimitCheckValue
+ 164              	.LVL17:
+  45:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetLimitCheckValue(Laser[i], VL53L0X_CHECKENABLE_SIGMA_FINAL_RANGE, (FixPoint1616_t)(60
+ 165              		.loc 1 45 5 view .LVU30
+ 166 0066 4FF47012 		mov	r2, #3932160
+ 167 006a 0021     		movs	r1, #0
+ 168 006c 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 169 0070 FFF7FEFF 		bl	VL53L0X_SetLimitCheckValue
+ 170              	.LVL18:
+  46:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetMeasurementTimingBudgetMicroSeconds(Laser[i], 20000);
+ 171              		.loc 1 46 5 view .LVU31
+ 172 0074 44F62061 		movw	r1, #20000
+ 173 0078 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 174 007c FFF7FEFF 		bl	VL53L0X_SetMeasurementTimingBudgetMicroSeconds
+ 175              	.LVL19:
+  47:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetVcselPulsePeriod(Laser[i], VL53L0X_VCSEL_PERIOD_PRE_RANGE, 18);
+ 176              		.loc 1 47 5 view .LVU32
+ 177 0080 1222     		movs	r2, #18
+ 178 0082 0021     		movs	r1, #0
+ 179 0084 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 180 0088 FFF7FEFF 		bl	VL53L0X_SetVcselPulsePeriod
+ 181              	.LVL20:
+  48:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetVcselPulsePeriod(Laser[i], VL53L0X_VCSEL_PERIOD_FINAL_RANGE, 14);
+ 182              		.loc 1 48 5 view .LVU33
+ 183 008c 0E22     		movs	r2, #14
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 5
+
+
+ 184 008e 0121     		movs	r1, #1
+ 185 0090 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 186 0094 FFF7FEFF 		bl	VL53L0X_SetVcselPulsePeriod
+ 187              	.LVL21:
+  49:Core/Src/AML_LaserSensor.c **** }
+ 188              		.loc 1 49 1 is_stmt 0 view .LVU34
+ 189 0098 38BD     		pop	{r3, r4, r5, pc}
+ 190              	.L12:
+ 191 009a 00BF     		.align	2
+ 192              	.L11:
+ 193 009c 00000000 		.word	Laser
+ 194 00a0 00000000 		.word	PhaseCal
+ 195 00a4 00000000 		.word	VhvSettings
+ 196 00a8 00000000 		.word	isApertureSpads
+ 197 00ac 00000000 		.word	refSpadCount
+ 198              		.cfi_endproc
+ 199              	.LFE134:
+ 201              		.section	.text.AML_LaserSensor_Setup,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	AML_LaserSensor_Setup
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 207              		.fpu fpv4-sp-d16
+ 209              	AML_LaserSensor_Setup:
+ 210              	.LFB135:
+  50:Core/Src/AML_LaserSensor.c **** 
+  51:Core/Src/AML_LaserSensor.c **** uint8_t AML_LaserSensor_Setup()
+  52:Core/Src/AML_LaserSensor.c **** {
+ 211              		.loc 1 52 1 is_stmt 1 view -0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 216              		.cfi_def_cfa_offset 32
+ 217              		.cfi_offset 3, -32
+ 218              		.cfi_offset 4, -28
+ 219              		.cfi_offset 5, -24
+ 220              		.cfi_offset 6, -20
+ 221              		.cfi_offset 7, -16
+ 222              		.cfi_offset 8, -12
+ 223              		.cfi_offset 9, -8
+ 224              		.cfi_offset 14, -4
+  53:Core/Src/AML_LaserSensor.c ****     uint8_t DelayTime = 50;
+ 225              		.loc 1 53 5 view .LVU36
+ 226              	.LVL22:
+  54:Core/Src/AML_LaserSensor.c ****     // disable all laser
+  55:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_FL_GPIO_Port, XSHUT_FL_Pin, GPIO_PIN_RESET);
+ 227              		.loc 1 55 5 view .LVU37
+ 228 0004 514C     		ldr	r4, .L15
+ 229 0006 0022     		movs	r2, #0
+ 230 0008 0821     		movs	r1, #8
+ 231 000a 2046     		mov	r0, r4
+ 232 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 233              	.LVL23:
+  56:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_FF_GPIO_Port, XSHUT_FF_Pin, GPIO_PIN_RESET);
+ 234              		.loc 1 56 5 view .LVU38
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 6
+
+
+ 235 0010 4F4F     		ldr	r7, .L15+4
+ 236 0012 0022     		movs	r2, #0
+ 237 0014 0121     		movs	r1, #1
+ 238 0016 3846     		mov	r0, r7
+ 239 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 240              	.LVL24:
+  57:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_FR_GPIO_Port, XSHUT_FR_Pin, GPIO_PIN_RESET);
+ 241              		.loc 1 57 5 view .LVU39
+ 242 001c 0022     		movs	r2, #0
+ 243 001e 4021     		movs	r1, #64
+ 244 0020 3846     		mov	r0, r7
+ 245 0022 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 246              	.LVL25:
+  58:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_BR_GPIO_Port, XSHUT_BR_Pin, GPIO_PIN_RESET);
+ 247              		.loc 1 58 5 view .LVU40
+ 248 0026 0022     		movs	r2, #0
+ 249 0028 0421     		movs	r1, #4
+ 250 002a 3846     		mov	r0, r7
+ 251 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 252              	.LVL26:
+  59:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_BL_GPIO_Port, XSHUT_BL_Pin, GPIO_PIN_RESET);
+ 253              		.loc 1 59 5 view .LVU41
+ 254 0030 0022     		movs	r2, #0
+ 255 0032 1021     		movs	r1, #16
+ 256 0034 3846     		mov	r0, r7
+ 257 0036 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 258              	.LVL27:
+  60:Core/Src/AML_LaserSensor.c ****     HAL_Delay(DelayTime);
+ 259              		.loc 1 60 5 view .LVU42
+ 260 003a 3220     		movs	r0, #50
+ 261 003c FFF7FEFF 		bl	HAL_Delay
+ 262              	.LVL28:
+  61:Core/Src/AML_LaserSensor.c **** 
+  62:Core/Src/AML_LaserSensor.c ****     // enable laser FL and init
+  63:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_FL_GPIO_Port, XSHUT_FL_Pin, GPIO_PIN_SET);
+ 263              		.loc 1 63 5 view .LVU43
+ 264 0040 0122     		movs	r2, #1
+ 265 0042 0821     		movs	r1, #8
+ 266 0044 2046     		mov	r0, r4
+ 267 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 268              	.LVL29:
+  64:Core/Src/AML_LaserSensor.c ****     HAL_Delay(DelayTime);
+ 269              		.loc 1 64 5 view .LVU44
+ 270 004a 3220     		movs	r0, #50
+ 271 004c FFF7FEFF 		bl	HAL_Delay
+ 272              	.LVL30:
+  65:Core/Src/AML_LaserSensor.c ****     Laser[FL] = &Dev_Val[FL];
+ 273              		.loc 1 65 5 view .LVU45
+ 274              		.loc 1 65 15 is_stmt 0 view .LVU46
+ 275 0050 404E     		ldr	r6, .L15+8
+ 276 0052 414C     		ldr	r4, .L15+12
+ 277 0054 3460     		str	r4, [r6]
+  66:Core/Src/AML_LaserSensor.c ****     Laser[FL]->I2cHandle = &hi2c1;
+ 278              		.loc 1 66 5 is_stmt 1 view .LVU47
+ 279              		.loc 1 66 26 is_stmt 0 view .LVU48
+ 280 0056 DFF80891 		ldr	r9, .L15+20
+ 281 005a C4F85C91 		str	r9, [r4, #348]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 7
+
+
+  67:Core/Src/AML_LaserSensor.c ****     Laser[FL]->I2cDevAddr = 0x52;
+ 282              		.loc 1 67 5 is_stmt 1 view .LVU49
+ 283              		.loc 1 67 27 is_stmt 0 view .LVU50
+ 284 005e 4FF05208 		mov	r8, #82
+ 285 0062 84F86081 		strb	r8, [r4, #352]
+  68:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetDeviceAddress(Laser[FL], LaserSensorAddress[FL]);
+ 286              		.loc 1 68 5 is_stmt 1 view .LVU51
+ 287 0066 3D4D     		ldr	r5, .L15+16
+ 288 0068 2978     		ldrb	r1, [r5]	@ zero_extendqisi2
+ 289 006a 2046     		mov	r0, r4
+ 290 006c FFF7FEFF 		bl	VL53L0X_SetDeviceAddress
+ 291              	.LVL31:
+  69:Core/Src/AML_LaserSensor.c ****     Laser[FL]->I2cDevAddr = LaserSensorAddress[FL];
+ 292              		.loc 1 69 5 view .LVU52
+ 293              		.loc 1 69 10 is_stmt 0 view .LVU53
+ 294 0070 3368     		ldr	r3, [r6]
+ 295              		.loc 1 69 47 view .LVU54
+ 296 0072 2A78     		ldrb	r2, [r5]	@ zero_extendqisi2
+ 297              		.loc 1 69 27 view .LVU55
+ 298 0074 83F86021 		strb	r2, [r3, #352]
+  70:Core/Src/AML_LaserSensor.c ****     AML_LaserSensor_Init(FL);
+ 299              		.loc 1 70 5 is_stmt 1 view .LVU56
+ 300 0078 0020     		movs	r0, #0
+ 301 007a FFF7FEFF 		bl	AML_LaserSensor_Init
+ 302              	.LVL32:
+  71:Core/Src/AML_LaserSensor.c **** 
+  72:Core/Src/AML_LaserSensor.c ****     // enable laser FF and init
+  73:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_FF_GPIO_Port, XSHUT_FF_Pin, GPIO_PIN_SET);
+ 303              		.loc 1 73 5 view .LVU57
+ 304 007e 0122     		movs	r2, #1
+ 305 0080 1146     		mov	r1, r2
+ 306 0082 3846     		mov	r0, r7
+ 307 0084 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 308              	.LVL33:
+  74:Core/Src/AML_LaserSensor.c ****     HAL_Delay(DelayTime);
+ 309              		.loc 1 74 5 view .LVU58
+ 310 0088 3220     		movs	r0, #50
+ 311 008a FFF7FEFF 		bl	HAL_Delay
+ 312              	.LVL34:
+  75:Core/Src/AML_LaserSensor.c ****     Laser[FF] = &Dev_Val[FF];
+ 313              		.loc 1 75 5 view .LVU59
+ 314              		.loc 1 75 15 is_stmt 0 view .LVU60
+ 315 008e 04F5C870 		add	r0, r4, #400
+ 316 0092 7060     		str	r0, [r6, #4]
+  76:Core/Src/AML_LaserSensor.c ****     Laser[FF]->I2cHandle = &hi2c1;
+ 317              		.loc 1 76 5 is_stmt 1 view .LVU61
+ 318              		.loc 1 76 26 is_stmt 0 view .LVU62
+ 319 0094 C4F8EC92 		str	r9, [r4, #748]
+  77:Core/Src/AML_LaserSensor.c ****     Laser[FF]->I2cDevAddr = 0x52;
+ 320              		.loc 1 77 5 is_stmt 1 view .LVU63
+ 321              		.loc 1 77 27 is_stmt 0 view .LVU64
+ 322 0098 84F8F082 		strb	r8, [r4, #752]
+  78:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetDeviceAddress(Laser[FF], LaserSensorAddress[FF]);
+ 323              		.loc 1 78 5 is_stmt 1 view .LVU65
+ 324 009c 6978     		ldrb	r1, [r5, #1]	@ zero_extendqisi2
+ 325 009e FFF7FEFF 		bl	VL53L0X_SetDeviceAddress
+ 326              	.LVL35:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 8
+
+
+  79:Core/Src/AML_LaserSensor.c ****     Laser[FF]->I2cDevAddr = LaserSensorAddress[FF];
+ 327              		.loc 1 79 5 view .LVU66
+ 328              		.loc 1 79 10 is_stmt 0 view .LVU67
+ 329 00a2 7368     		ldr	r3, [r6, #4]
+ 330              		.loc 1 79 47 view .LVU68
+ 331 00a4 6A78     		ldrb	r2, [r5, #1]	@ zero_extendqisi2
+ 332              		.loc 1 79 27 view .LVU69
+ 333 00a6 83F86021 		strb	r2, [r3, #352]
+  80:Core/Src/AML_LaserSensor.c ****     AML_LaserSensor_Init(FF);
+ 334              		.loc 1 80 5 is_stmt 1 view .LVU70
+ 335 00aa 0120     		movs	r0, #1
+ 336 00ac FFF7FEFF 		bl	AML_LaserSensor_Init
+ 337              	.LVL36:
+  81:Core/Src/AML_LaserSensor.c **** 
+  82:Core/Src/AML_LaserSensor.c ****     // enable laser FR and init
+  83:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_FR_GPIO_Port, XSHUT_FR_Pin, GPIO_PIN_SET);
+ 338              		.loc 1 83 5 view .LVU71
+ 339 00b0 0122     		movs	r2, #1
+ 340 00b2 4021     		movs	r1, #64
+ 341 00b4 3846     		mov	r0, r7
+ 342 00b6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 343              	.LVL37:
+  84:Core/Src/AML_LaserSensor.c ****     HAL_Delay(DelayTime);
+ 344              		.loc 1 84 5 view .LVU72
+ 345 00ba 3220     		movs	r0, #50
+ 346 00bc FFF7FEFF 		bl	HAL_Delay
+ 347              	.LVL38:
+  85:Core/Src/AML_LaserSensor.c ****     Laser[FR] = &Dev_Val[FR];
+ 348              		.loc 1 85 5 view .LVU73
+ 349              		.loc 1 85 15 is_stmt 0 view .LVU74
+ 350 00c0 04F54870 		add	r0, r4, #800
+ 351 00c4 B060     		str	r0, [r6, #8]
+  86:Core/Src/AML_LaserSensor.c ****     Laser[FR]->I2cHandle = &hi2c1;
+ 352              		.loc 1 86 5 is_stmt 1 view .LVU75
+ 353              		.loc 1 86 26 is_stmt 0 view .LVU76
+ 354 00c6 C4F87C94 		str	r9, [r4, #1148]
+  87:Core/Src/AML_LaserSensor.c ****     Laser[FR]->I2cDevAddr = 0x52;
+ 355              		.loc 1 87 5 is_stmt 1 view .LVU77
+ 356              		.loc 1 87 27 is_stmt 0 view .LVU78
+ 357 00ca 84F88084 		strb	r8, [r4, #1152]
+  88:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetDeviceAddress(Laser[FR], LaserSensorAddress[FR]);
+ 358              		.loc 1 88 5 is_stmt 1 view .LVU79
+ 359 00ce A978     		ldrb	r1, [r5, #2]	@ zero_extendqisi2
+ 360 00d0 FFF7FEFF 		bl	VL53L0X_SetDeviceAddress
+ 361              	.LVL39:
+  89:Core/Src/AML_LaserSensor.c ****     Laser[FR]->I2cDevAddr = LaserSensorAddress[FR];
+ 362              		.loc 1 89 5 view .LVU80
+ 363              		.loc 1 89 10 is_stmt 0 view .LVU81
+ 364 00d4 B368     		ldr	r3, [r6, #8]
+ 365              		.loc 1 89 47 view .LVU82
+ 366 00d6 AA78     		ldrb	r2, [r5, #2]	@ zero_extendqisi2
+ 367              		.loc 1 89 27 view .LVU83
+ 368 00d8 83F86021 		strb	r2, [r3, #352]
+  90:Core/Src/AML_LaserSensor.c ****     AML_LaserSensor_Init(FR);
+ 369              		.loc 1 90 5 is_stmt 1 view .LVU84
+ 370 00dc 0220     		movs	r0, #2
+ 371 00de FFF7FEFF 		bl	AML_LaserSensor_Init
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 9
+
+
+ 372              	.LVL40:
+  91:Core/Src/AML_LaserSensor.c **** 
+  92:Core/Src/AML_LaserSensor.c ****     // enable laser BR and init
+  93:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_BR_GPIO_Port, XSHUT_BR_Pin, GPIO_PIN_SET);
+ 373              		.loc 1 93 5 view .LVU85
+ 374 00e2 0122     		movs	r2, #1
+ 375 00e4 0421     		movs	r1, #4
+ 376 00e6 3846     		mov	r0, r7
+ 377 00e8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 378              	.LVL41:
+  94:Core/Src/AML_LaserSensor.c ****     HAL_Delay(DelayTime);
+ 379              		.loc 1 94 5 view .LVU86
+ 380 00ec 3220     		movs	r0, #50
+ 381 00ee FFF7FEFF 		bl	HAL_Delay
+ 382              	.LVL42:
+  95:Core/Src/AML_LaserSensor.c ****     Laser[BR] = &Dev_Val[BR];
+ 383              		.loc 1 95 5 view .LVU87
+ 384              		.loc 1 95 15 is_stmt 0 view .LVU88
+ 385 00f2 04F59660 		add	r0, r4, #1200
+ 386 00f6 F060     		str	r0, [r6, #12]
+  96:Core/Src/AML_LaserSensor.c ****     Laser[BR]->I2cHandle = &hi2c1;
+ 387              		.loc 1 96 5 is_stmt 1 view .LVU89
+ 388              		.loc 1 96 26 is_stmt 0 view .LVU90
+ 389 00f8 C4F80C96 		str	r9, [r4, #1548]
+  97:Core/Src/AML_LaserSensor.c ****     Laser[BR]->I2cDevAddr = 0x52;
+ 390              		.loc 1 97 5 is_stmt 1 view .LVU91
+ 391              		.loc 1 97 27 is_stmt 0 view .LVU92
+ 392 00fc 84F81086 		strb	r8, [r4, #1552]
+  98:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetDeviceAddress(Laser[BR], LaserSensorAddress[BR]);
+ 393              		.loc 1 98 5 is_stmt 1 view .LVU93
+ 394 0100 E978     		ldrb	r1, [r5, #3]	@ zero_extendqisi2
+ 395 0102 FFF7FEFF 		bl	VL53L0X_SetDeviceAddress
+ 396              	.LVL43:
+  99:Core/Src/AML_LaserSensor.c ****     Laser[BR]->I2cDevAddr = LaserSensorAddress[BR];
+ 397              		.loc 1 99 5 view .LVU94
+ 398              		.loc 1 99 10 is_stmt 0 view .LVU95
+ 399 0106 F368     		ldr	r3, [r6, #12]
+ 400              		.loc 1 99 47 view .LVU96
+ 401 0108 EA78     		ldrb	r2, [r5, #3]	@ zero_extendqisi2
+ 402              		.loc 1 99 27 view .LVU97
+ 403 010a 83F86021 		strb	r2, [r3, #352]
+ 100:Core/Src/AML_LaserSensor.c ****     AML_LaserSensor_Init(BR);
+ 404              		.loc 1 100 5 is_stmt 1 view .LVU98
+ 405 010e 0320     		movs	r0, #3
+ 406 0110 FFF7FEFF 		bl	AML_LaserSensor_Init
+ 407              	.LVL44:
+ 101:Core/Src/AML_LaserSensor.c **** 
+ 102:Core/Src/AML_LaserSensor.c ****     // enable laser BL and init
+ 103:Core/Src/AML_LaserSensor.c ****     HAL_GPIO_WritePin(XSHUT_BL_GPIO_Port, XSHUT_BL_Pin, GPIO_PIN_SET);
+ 408              		.loc 1 103 5 view .LVU99
+ 409 0114 0122     		movs	r2, #1
+ 410 0116 1021     		movs	r1, #16
+ 411 0118 3846     		mov	r0, r7
+ 412 011a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 413              	.LVL45:
+ 104:Core/Src/AML_LaserSensor.c ****     HAL_Delay(DelayTime);
+ 414              		.loc 1 104 5 view .LVU100
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 10
+
+
+ 415 011e 3220     		movs	r0, #50
+ 416 0120 FFF7FEFF 		bl	HAL_Delay
+ 417              	.LVL46:
+ 105:Core/Src/AML_LaserSensor.c ****     Laser[BL] = &Dev_Val[BL];
+ 418              		.loc 1 105 5 view .LVU101
+ 419              		.loc 1 105 15 is_stmt 0 view .LVU102
+ 420 0124 04F5C860 		add	r0, r4, #1600
+ 421 0128 3061     		str	r0, [r6, #16]
+ 106:Core/Src/AML_LaserSensor.c ****     Laser[BL]->I2cHandle = &hi2c1;
+ 422              		.loc 1 106 5 is_stmt 1 view .LVU103
+ 423              		.loc 1 106 26 is_stmt 0 view .LVU104
+ 424 012a C4F89C97 		str	r9, [r4, #1948]
+ 107:Core/Src/AML_LaserSensor.c ****     Laser[BL]->I2cDevAddr = 0x52;
+ 425              		.loc 1 107 5 is_stmt 1 view .LVU105
+ 426              		.loc 1 107 27 is_stmt 0 view .LVU106
+ 427 012e 84F8A087 		strb	r8, [r4, #1952]
+ 108:Core/Src/AML_LaserSensor.c ****     VL53L0X_SetDeviceAddress(Laser[BL], LaserSensorAddress[BL]);
+ 428              		.loc 1 108 5 is_stmt 1 view .LVU107
+ 429 0132 2979     		ldrb	r1, [r5, #4]	@ zero_extendqisi2
+ 430 0134 FFF7FEFF 		bl	VL53L0X_SetDeviceAddress
+ 431              	.LVL47:
+ 109:Core/Src/AML_LaserSensor.c ****     Laser[BL]->I2cDevAddr = LaserSensorAddress[BL];
+ 432              		.loc 1 109 5 view .LVU108
+ 433              		.loc 1 109 10 is_stmt 0 view .LVU109
+ 434 0138 3369     		ldr	r3, [r6, #16]
+ 435              		.loc 1 109 47 view .LVU110
+ 436 013a 2A79     		ldrb	r2, [r5, #4]	@ zero_extendqisi2
+ 437              		.loc 1 109 27 view .LVU111
+ 438 013c 83F86021 		strb	r2, [r3, #352]
+ 110:Core/Src/AML_LaserSensor.c ****     AML_LaserSensor_Init(BL);
+ 439              		.loc 1 110 5 is_stmt 1 view .LVU112
+ 440 0140 0420     		movs	r0, #4
+ 441 0142 FFF7FEFF 		bl	AML_LaserSensor_Init
+ 442              	.LVL48:
+ 111:Core/Src/AML_LaserSensor.c **** 
+ 112:Core/Src/AML_LaserSensor.c ****     return 1;
+ 443              		.loc 1 112 5 view .LVU113
+ 113:Core/Src/AML_LaserSensor.c **** }
+ 444              		.loc 1 113 1 is_stmt 0 view .LVU114
+ 445 0146 0120     		movs	r0, #1
+ 446 0148 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 447              	.L16:
+ 448              		.align	2
+ 449              	.L15:
+ 450 014c 00040240 		.word	1073873920
+ 451 0150 000C0240 		.word	1073875968
+ 452 0154 00000000 		.word	Laser
+ 453 0158 00000000 		.word	Dev_Val
+ 454 015c 00000000 		.word	.LANCHOR0
+ 455 0160 00000000 		.word	hi2c1
+ 456              		.cfi_endproc
+ 457              	.LFE135:
+ 459              		.section	.text.AML_LaserSensor_ReadAll,"ax",%progbits
+ 460              		.align	1
+ 461              		.global	AML_LaserSensor_ReadAll
+ 462              		.syntax unified
+ 463              		.thumb
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 11
+
+
+ 464              		.thumb_func
+ 465              		.fpu fpv4-sp-d16
+ 467              	AML_LaserSensor_ReadAll:
+ 468              	.LFB136:
+ 114:Core/Src/AML_LaserSensor.c **** 
+ 115:Core/Src/AML_LaserSensor.c **** void AML_LaserSensor_ReadAll()
+ 116:Core/Src/AML_LaserSensor.c **** {
+ 469              		.loc 1 116 1 is_stmt 1 view -0
+ 470              		.cfi_startproc
+ 471              		@ args = 0, pretend = 0, frame = 0
+ 472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 473 0000 38B5     		push	{r3, r4, r5, lr}
+ 474              		.cfi_def_cfa_offset 16
+ 475              		.cfi_offset 3, -16
+ 476              		.cfi_offset 4, -12
+ 477              		.cfi_offset 5, -8
+ 478              		.cfi_offset 14, -4
+ 117:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformSingleRangingMeasurement(Laser[FL], &SensorValue[FL]);
+ 479              		.loc 1 117 5 view .LVU116
+ 480 0002 0D4D     		ldr	r5, .L19
+ 481 0004 0D4C     		ldr	r4, .L19+4
+ 482 0006 2946     		mov	r1, r5
+ 483 0008 2068     		ldr	r0, [r4]
+ 484 000a FFF7FEFF 		bl	VL53L0X_PerformSingleRangingMeasurement
+ 485              	.LVL49:
+ 118:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformSingleRangingMeasurement(Laser[FF], &SensorValue[FF]);
+ 486              		.loc 1 118 5 view .LVU117
+ 487 000e 05F11C01 		add	r1, r5, #28
+ 488 0012 6068     		ldr	r0, [r4, #4]
+ 489 0014 FFF7FEFF 		bl	VL53L0X_PerformSingleRangingMeasurement
+ 490              	.LVL50:
+ 119:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformSingleRangingMeasurement(Laser[FR], &SensorValue[FR]);
+ 491              		.loc 1 119 5 view .LVU118
+ 492 0018 05F13801 		add	r1, r5, #56
+ 493 001c A068     		ldr	r0, [r4, #8]
+ 494 001e FFF7FEFF 		bl	VL53L0X_PerformSingleRangingMeasurement
+ 495              	.LVL51:
+ 120:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformSingleRangingMeasurement(Laser[BR], &SensorValue[BR]);
+ 496              		.loc 1 120 5 view .LVU119
+ 497 0022 05F15401 		add	r1, r5, #84
+ 498 0026 E068     		ldr	r0, [r4, #12]
+ 499 0028 FFF7FEFF 		bl	VL53L0X_PerformSingleRangingMeasurement
+ 500              	.LVL52:
+ 121:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformSingleRangingMeasurement(Laser[BL], &SensorValue[BL]);
+ 501              		.loc 1 121 5 view .LVU120
+ 502 002c 05F17001 		add	r1, r5, #112
+ 503 0030 2069     		ldr	r0, [r4, #16]
+ 504 0032 FFF7FEFF 		bl	VL53L0X_PerformSingleRangingMeasurement
+ 505              	.LVL53:
+ 122:Core/Src/AML_LaserSensor.c **** }
+ 506              		.loc 1 122 1 is_stmt 0 view .LVU121
+ 507 0036 38BD     		pop	{r3, r4, r5, pc}
+ 508              	.L20:
+ 509              		.align	2
+ 510              	.L19:
+ 511 0038 00000000 		.word	SensorValue
+ 512 003c 00000000 		.word	Laser
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 12
+
+
+ 513              		.cfi_endproc
+ 514              	.LFE136:
+ 516              		.section	.text.AML_LaserSensor_ReadSingle,"ax",%progbits
+ 517              		.align	1
+ 518              		.global	AML_LaserSensor_ReadSingle
+ 519              		.syntax unified
+ 520              		.thumb
+ 521              		.thumb_func
+ 522              		.fpu fpv4-sp-d16
+ 524              	AML_LaserSensor_ReadSingle:
+ 525              	.LVL54:
+ 526              	.LFB137:
+ 123:Core/Src/AML_LaserSensor.c **** 
+ 124:Core/Src/AML_LaserSensor.c **** uint16_t AML_LaserSensor_ReadSingle(uint8_t name)
+ 125:Core/Src/AML_LaserSensor.c **** {
+ 527              		.loc 1 125 1 is_stmt 1 view -0
+ 528              		.cfi_startproc
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              		.loc 1 125 1 is_stmt 0 view .LVU123
+ 532 0000 70B5     		push	{r4, r5, r6, lr}
+ 533              		.cfi_def_cfa_offset 16
+ 534              		.cfi_offset 4, -16
+ 535              		.cfi_offset 5, -12
+ 536              		.cfi_offset 6, -8
+ 537              		.cfi_offset 14, -4
+ 538 0002 0446     		mov	r4, r0
+ 126:Core/Src/AML_LaserSensor.c ****     VL53L0X_PerformSingleRangingMeasurement(Laser[name], &SensorValue[name]);
+ 539              		.loc 1 126 5 is_stmt 1 view .LVU124
+ 540 0004 C600     		lsls	r6, r0, #3
+ 541 0006 C0EBC001 		rsb	r1, r0, r0, lsl #3
+ 542 000a 064D     		ldr	r5, .L23
+ 543 000c 05EB8101 		add	r1, r5, r1, lsl #2
+ 544 0010 054B     		ldr	r3, .L23+4
+ 545 0012 53F82000 		ldr	r0, [r3, r0, lsl #2]
+ 546              	.LVL55:
+ 547              		.loc 1 126 5 is_stmt 0 view .LVU125
+ 548 0016 FFF7FEFF 		bl	VL53L0X_PerformSingleRangingMeasurement
+ 549              	.LVL56:
+ 127:Core/Src/AML_LaserSensor.c ****     return SensorValue[name].RangeMilliMeter;
+ 550              		.loc 1 127 5 is_stmt 1 view .LVU126
+ 551              		.loc 1 127 29 is_stmt 0 view .LVU127
+ 552 001a 341B     		subs	r4, r6, r4
+ 553 001c 05EB8405 		add	r5, r5, r4, lsl #2
+ 128:Core/Src/AML_LaserSensor.c **** }...
+ 554              		.loc 1 128 1 view .LVU128
+ 555 0020 2889     		ldrh	r0, [r5, #8]
+ 556 0022 70BD     		pop	{r4, r5, r6, pc}
+ 557              	.L24:
+ 558              		.align	2
+ 559              	.L23:
+ 560 0024 00000000 		.word	SensorValue
+ 561 0028 00000000 		.word	Laser
+ 562              		.cfi_endproc
+ 563              	.LFE137:
+ 565              		.comm	PhaseCal,1,1
+ 566              		.comm	VhvSettings,1,1
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 13
+
+
+ 567              		.comm	isApertureSpads,1,1
+ 568              		.comm	refSpadCount,4,4
+ 569              		.comm	Laser,24,4
+ 570              		.comm	Dev_Val,2400,4
+ 571              		.comm	SensorValue,168,4
+ 572              		.global	LaserSensorAddress
+ 573              		.section	.data.LaserSensorAddress,"aw"
+ 574              		.align	2
+ 575              		.set	.LANCHOR0,. + 0
+ 578              	LaserSensorAddress:
+ 579 0000 29596032 		.ascii	")Y`2WX"
+ 579      5758
+ 580              		.text
+ 581              	.Letext0:
+ 582              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+ 583              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+ 584              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 585              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 586              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 587              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 588              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 589              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 590              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 591              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 592              		.file 12 "Core/Inc/vl53l0x_types.h"
+ 593              		.file 13 "Core/Inc/vl53l0x_device.h"
+ 594              		.file 14 "Core/Inc/vl53l0x_def.h"
+ 595              		.file 15 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\lo
+ 596              		.file 16 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_t
+ 597              		.file 17 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\
+ 598              		.file 18 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\re
+ 599              		.file 19 "Core/Inc/vl53l0x_platform.h"
+ 600              		.file 20 "Core/Inc/AML_LaserSensor.h"
+ 601              		.file 21 "Core/Inc/vl53l0x_api.h"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 AML_LaserSensor.c
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:18     .text.AML_LaserSensor_ScanI2CDevice:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:26     .text.AML_LaserSensor_ScanI2CDevice:00000000 AML_LaserSensor_ScanI2CDevice
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:88     .text.AML_LaserSensor_ScanI2CDevice:00000030 $d
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:93     .text.AML_LaserSensor_Init:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:100    .text.AML_LaserSensor_Init:00000000 AML_LaserSensor_Init
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:193    .text.AML_LaserSensor_Init:0000009c $d
+                            *COM*:00000018 Laser
+                            *COM*:00000001 PhaseCal
+                            *COM*:00000001 VhvSettings
+                            *COM*:00000001 isApertureSpads
+                            *COM*:00000004 refSpadCount
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:202    .text.AML_LaserSensor_Setup:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:209    .text.AML_LaserSensor_Setup:00000000 AML_LaserSensor_Setup
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:450    .text.AML_LaserSensor_Setup:0000014c $d
+                            *COM*:00000960 Dev_Val
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:460    .text.AML_LaserSensor_ReadAll:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:467    .text.AML_LaserSensor_ReadAll:00000000 AML_LaserSensor_ReadAll
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:511    .text.AML_LaserSensor_ReadAll:00000038 $d
+                            *COM*:000000a8 SensorValue
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:517    .text.AML_LaserSensor_ReadSingle:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:524    .text.AML_LaserSensor_ReadSingle:00000000 AML_LaserSensor_ReadSingle
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:560    .text.AML_LaserSensor_ReadSingle:00000024 $d
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:578    .data.LaserSensorAddress:00000000 LaserSensorAddress
+C:\Users\anmh1\AppData\Local\Temp\cc8ZVv0H.s:574    .data.LaserSensorAddress:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_IsDeviceReady
+debug
+VL53L0X_WaitDeviceBooted
+VL53L0X_DataInit
+VL53L0X_StaticInit
+VL53L0X_PerformRefCalibration
+VL53L0X_PerformRefSpadManagement
+VL53L0X_SetDeviceMode
+VL53L0X_SetLimitCheckEnable
+VL53L0X_SetLimitCheckValue
+VL53L0X_SetMeasurementTimingBudgetMicroSeconds
+VL53L0X_SetVcselPulsePeriod
+HAL_GPIO_WritePin
+HAL_Delay
+VL53L0X_SetDeviceAddress
+hi2c1
+VL53L0X_PerformSingleRangingMeasurement

@@ -3,12 +3,18 @@
 
 #include "stm32h7xx_hal.h"
 #include <AML_GlobalVariable.h>
+#include <stdbool.h>
 
 void AML_IRSensor_Setup(void);
 double AML_IRSensor_GetDistance(uint8_t sensor);
 
-uint8_t AML_IRSensor_IsFrontWall(void);
-uint8_t AML_IRSensor_IsLeftWall(void);
-uint8_t AML_IRSensor_IsRightWall(void);
+bool AML_IRSensor_IsFrontWall(void);
+bool AML_IRSensor_IsLeftWall(void);
+bool AML_IRSensor_IsRightWall(void);
+
+bool AML_IRSensor_IsNoFrontWall(void);
+bool AML_IRSensor_IsNoLeftWall(void);
+bool AML_IRSensor_IsNoRightWall(void);
 
 #endif
+

@@ -22,65 +22,16 @@ Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
 E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE\MDK-ARM\PCB_AIO_V2_CODE.uvprojx
-Project File Date:  11/24/2024
+Project File Date:  12/08/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'PCB_AIO_V2_CODE'
-compiling AML_MotorControl.c...
-../Core/Inc/AML_PID.h(37): warning:  #1-D: last line of file ends without a newline
-  #endif // AML_PID_H
-../Core/Inc/AML_MotorControl.h(27): warning:  #1-D: last line of file ends without a newline
-  #endif // AML_MOTORCONTROL_H
-../Core/Inc/AML_GlobalVariable.h(85): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/AML_IRSensor.h(14): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/AML_GlobalVariable.h(85): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/AML_Buzzer.h(12): warning:  #1295-D: Deprecated declaration AML_Buzzer_Beep - give arg types
-  void AML_Buzzer_Beep();
-../Core/Inc/AML_Buzzer.h(14): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/AML_Switch.h(16): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/AML_MotorControl.h(27): warning:  #1-D: last line of file ends without a newline
-  #endif // AML_MOTORCONTROL_H
-..\Core\Src\AML_MotorControl.c(3): warning:  #260-D: explicit type is missing ("int" assumed)
-  extern debug[100];
-..\Core\Src\AML_MotorControl.c(184): warning:  #223-D: function "AML_MotorControl_LeftMotorSpeed" declared implicitly
-          AML_MotorControl_LeftMotorSpeed(500);
-..\Core\Src\AML_MotorControl.c(229): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, LeftMotorDirection);
-..\Core\Src\AML_MotorControl.c(230): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, !LeftMotorDirection);
-..\Core\Src\AML_MotorControl.c(235): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, !LeftMotorDirection);
-..\Core\Src\AML_MotorControl.c(236): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, LeftMotorDirection);
-..\Core\Src\AML_MotorControl.c(262): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(263): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, !RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(268): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, !RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(269): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(291): warning:  #159-D: declaration is incompatible with previous "AML_MotorControl_LeftMotorSpeed"  (declared at line 184)
-  void AML_MotorControl_LeftMotorSpeed(int32_t rpm)
-..\Core\Src\AML_MotorControl.c(295): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
-      PID_LeftMotor.Input = ((double)AML_Encoder_GetLeftValue() / EncoderPulsePerRound) * 50 * 60; // 50 is the sample time
-..\Core\Src\AML_MotorControl.c(296): warning:  #223-D: function "AML_Encoder_ResetLeftValue" declared implicitly
-      AML_Encoder_ResetLeftValue();
-..\Core\Src\AML_MotorControl.c(307): warning:  #223-D: function "AML_Encoder_GetRightValue" declared implicitly
-      PID_RightMotor.Input = (double)AML_Encoder_GetRightValue() / EncoderPulsePerRound * 50 * 60; // 50 is the sample time
-..\Core\Src\AML_MotorControl.c(308): warning:  #223-D: function "AML_Encoder_ResetRightValue" declared implicitly
-      AML_Encoder_ResetRightValue();
-..\Core\Src\AML_MotorControl.c: 24 warnings, 0 errors
+compiling main.c...
 linking...
-Program Size: Code=33654 RO-data=906 RW-data=908 ZI-data=2892  
+Program Size: Code=33694 RO-data=906 RW-data=908 ZI-data=2892  
 FromELF: creating hex file...
-"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 24 Warning(s).
+"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 

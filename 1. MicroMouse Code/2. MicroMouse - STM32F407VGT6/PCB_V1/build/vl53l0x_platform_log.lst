@@ -1,0 +1,57 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"vl53l0x_platform_log.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	_trace_functions
+  18              		.global	_trace_modules
+  19              		.global	_trace_level
+  20              		.section	.bss._trace_functions,"aw",%nobits
+  21              		.align	2
+  24              	_trace_functions:
+  25 0000 00000000 		.space	4
+  26              		.section	.bss._trace_modules,"aw",%nobits
+  27              		.align	2
+  30              	_trace_modules:
+  31 0000 00000000 		.space	4
+  32              		.section	.data._trace_level,"aw"
+  33              		.align	2
+  36              	_trace_level:
+  37 0000 02000000 		.word	2
+  38              		.text
+  39              	.Letext0:
+  40              		.file 1 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+  41              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\loc
+  42              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_ty
+  43              		.file 4 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\\
+  44              		.file 5 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\ree
+  45              		.file 6 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+  46              		.file 7 "Core/Inc/vl53l0x_platform_log.h"
+  47              		.file 8 "Core/Src/vl53l0x_platform_log.c"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 vl53l0x_platform_log.c
+C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s:24     .bss._trace_functions:00000000 _trace_functions
+C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s:30     .bss._trace_modules:00000000 _trace_modules
+C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s:36     .data._trace_level:00000000 _trace_level
+C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s:21     .bss._trace_functions:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s:27     .bss._trace_modules:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\ccP5UHlP.s:33     .data._trace_level:00000000 $d
+
+NO UNDEFINED SYMBOLS

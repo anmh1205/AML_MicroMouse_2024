@@ -5,6 +5,7 @@
 
 #include <AML_MotorControl.h>
 #include <AML_IRSensor.h>
+#include <stdbool.h>
 
 // DEFINE FOR PINOUT-------------------------------------------------------------------------------------------------------//
 
@@ -32,7 +33,7 @@
 
 
 // DEFINE FOR MOTOR CONTROL-------------------------------------------------------------------------------------------------------//
-#define MotorDirection 0 // use for change direction of motor
+#define MotorDirection GPIO_PIN_RESET // use for change direction of motor
 #define LeftMotorDirection MotorDirection // use for change direction of left motor
 #define RightMotorDirection !MotorDirection // use for change direction of right motor
 
@@ -42,6 +43,8 @@
 #define TransmissionRatio 1     // ratio between wheel and encoder
 #define EncoderPulsePerRound 1420 // 1420 pulse per round encoder
 #define MouseSpeed 25 // % of duty cycle
+#define MouseTurnSpeed 25 // % of duty cycle
+
 
 // define parameter for PID control
 
@@ -71,6 +74,8 @@
 
 #define ABS(x) ((x) > 0 ? (x) : -(x))
 
+
+
 #define CHECK_WALL_FRONT AML_IRSensor_IsFrontWall()
 #define CHECK_WALL_LEFT AML_IRSensor_IsLeftWall()
 #define CHECK_WALL_RIGHT AML_IRSensor_IsRightWall()
@@ -80,6 +85,10 @@
 #define TURN_RIGHT_FUNCTION AML_MotorControl_Stop()
 
 
+
+
 //-------------------------------------------------------------------------------------------------------//
 
 #endif
+
+

@@ -12,19 +12,19 @@ GPIO_TypeDef *MotorDirectionPort = GPIOE;
 
 // PID struct-------------------------------------------------------------------------------------------------------//
 
-double TempSetpoint = 300;
+double TempSetpoint = 0;
 
 AML_PID_Struct PID_LeftMotor =
     {
-        .Kp = 1,
-        .Ki = 0,
+        .Kp = 0.1,
+        .Ki = 2,
         .Kd = 0,
-        .tau = 0,
+        .tau = 0.1,
         .limMin = 8,
         .limMax = 50,
         .linMinInt = 0,
-        .linMaxInt = 15,
-        .sampleTime = 5,
+        .linMaxInt = 25,
+        .sampleTime = 20,
         .lastTime = 0,
         .integratol = 0,
         .prevError = 0,
@@ -62,8 +62,8 @@ AML_PID_Struct PID_TurnLeft =
         .Ki = 0,
         .Kd = 0,
         .tau = 0,
-        .limMin = -MouseSpeed,
-        .limMax = MouseSpeed,
+        .limMin = -MouseTurnSpeed,
+        .limMax = MouseTurnSpeed,
         .linMinInt = -15,
         .linMaxInt = 15,
         .sampleTime = SampleTime,
@@ -83,8 +83,8 @@ AML_PID_Struct PID_TurnRight =
         .Ki = 0,
         .Kd = 0,
         .tau = 0,
-        .limMin = -MouseSpeed,
-        .limMax = MouseSpeed,
+        .limMin = -MouseTurnSpeed,
+        .limMax = MouseTurnSpeed,
         .linMinInt = -15,
         .linMaxInt = 15,
         .sampleTime = SampleTime,
@@ -174,20 +174,9 @@ void AML_MotorControl_LeftWallFollow(void);
 void AML_MotorControl_RightWallFollow(void);
 void AML_MotorControl_GoStraight(void);
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    UNUSED(htim);
-    if (htim->Instance == htim7.Instance) // timer for wall follow
-    {
-        // AML_MotorControl_GoStraghtWithMPU(0);
-
-        AML_MotorControl_LeftMotorSpeed(500);
-    }
-}
-
 void AML_MotorControl_TurnOnWallFollow(void)
 {
-    AML_MPUSensor_ResetAngle();
+    // AML_MPUSensor_ResetAngle();
     HAL_TIM_Base_Start_IT(&htim7);
 }
 
@@ -292,7 +281,7 @@ void AML_MotorControl_LeftMotorSpeed(int32_t rpm)
 {
     PID_LeftMotor.Setpoint = (double)rpm;
 
-    PID_LeftMotor.Input = ((double)AML_Encoder_GetLeftValue() / EncoderPulsePerRound) * 50 * 60; // 50 is the sample time
+    PID_LeftMotor.Input = ((double)AML_Encoder_GetLeftValue() / EncoderPulsePerRound) * (1000 / PID_LeftMotor.sampleTime) * 60; // 50 is the sample time
     AML_Encoder_ResetLeftValue();
 
     AML_PID_Compute(&PID_LeftMotor);
@@ -342,23 +331,23 @@ void AML_MotorControl_RightWallFollow(void)
 
 void AML_MotorControl_GoStraight(void)
 {
-    if (AML_IRSensor_GetDistance(IR_SENSOR_RL) > WALL_NOT_IN_LEFT && AML_IRSensor_GetDistance(IR_SENSOR_RR) > WALL_NOT_IN_RIGHT)
+    if (AML_IRSensor_IsNoLeftWall() && AML_IRSensor_IsNoRightWall())
     {
         AML_MotorControl_GoStraghtWithMPU(TempSetpoint);
     }
-    else if (AML_IRSensor_GetDistance(IR_SENSOR_RL) < WALL_IN_LEFT)
+    else if (AML_IRSensor_IsLeftWall())
     {
         AML_MotorControl_LeftWallFollow();
 
-        // TempSetpoint = -*PID_LeftWallFollow.MyOutput;
+        TempSetpoint = -PID_LeftWallFollow.Output;
 
         AML_MotorControl_GoStraghtWithMPU(TempSetpoint - PID_LeftWallFollow.Output);
     }
-    else if (AML_IRSensor_GetDistance(IR_SENSOR_RR) < WALL_IN_RIGHT)
+    else if (AML_IRSensor_IsRightWall())
     {
         AML_MotorControl_RightWallFollow();
 
-        // TempSetpoint = *PID_RightWallFollow.MyOutput;
+        TempSetpoint = PID_RightWallFollow.Output;
 
         AML_MotorControl_GoStraghtWithMPU(TempSetpoint + PID_RightWallFollow.Output);
     }
@@ -368,9 +357,9 @@ void AML_MotorControl_GoStraight(void)
 
 void AML_MotorControl_TurnLeft(void)
 {
-    uint16_t WaitingTime = 1000;
+    uint16_t WaitingTime = 1500;
 
-    PID_TurnLeft.Setpoint = 90;
+    PID_TurnLeft.Setpoint = AML_MPUSensor_GetAngle() + 90;
 
     uint32_t InitTime = HAL_GetTick();
     uint32_t CurrentTime = HAL_GetTick();
@@ -385,7 +374,7 @@ void AML_MotorControl_TurnLeft(void)
         AML_MotorControl_LeftPWM(-(int32_t)PID_TurnLeft.Output);
         AML_MotorControl_RightPWM((int32_t)PID_TurnLeft.Output);
 
-        if (ABS(PID_TurnLeft.Input - PID_TurnLeft.Setpoint) < 2.0f)
+        if (ABS(PID_TurnLeft.Input - PID_TurnLeft.Setpoint) < 4.0f)
         {
             CurrentTime = HAL_GetTick();
         }

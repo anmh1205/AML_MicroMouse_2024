@@ -48,7 +48,7 @@ void AML_LedDebug_SetAllLED(GPIO_PinState state)
     HAL_GPIO_WritePin(GPIOD, Led[3], state);
 }
 
-void AML_LedDebug_ToggleAllLED()
+void AML_LedDebug_ToggleAllLED(void)
 {
     HAL_GPIO_TogglePin(GPIOD, Led[0]);
     HAL_GPIO_TogglePin(GPIOD, Led[1]);

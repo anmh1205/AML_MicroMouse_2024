@@ -10,7 +10,7 @@ Heading heading;
 
 int reached_center = 0; // "boolean" that stores whether the mouse should start exploring more squares
 
-void initialize()
+void initialize(void)
 {
     // setting the borders
     for (int i = 1; i < MAZE_SIZE - 1; ++i)
@@ -37,7 +37,7 @@ void initialize()
 /*
 Updates the maze's walls based on what the mouse can currently see
 */
-void updateMaze()
+void updateMaze(void)
 {
     int x = position.x;
     int y = position.y;
@@ -175,7 +175,7 @@ struct Coordinate squareToCoord(int square)
     return coord;
 }
 
-void resetDistances()
+void resetDistances(void)
 {
     // initially sets all the distances to -1 (invalid distance)
     for (int x = 0; x < MAZE_SIZE; ++x)
@@ -235,7 +235,7 @@ int isWallInDirection(int x, int y, Heading direction)
     return 0;
 }
 
-void updateDistances()
+void updateDistances(void)
 {
     resetDistances();
     queue squares = queue_create();
@@ -357,7 +357,7 @@ void updatePosition(Action nextAction)
     }
 }
 
-Action solver()
+Action solver(void)
 {
     // if you reached the center, go back to the start
     if (!reached_center && distances[position.x][position.y] == 0)
@@ -381,7 +381,7 @@ Action solver()
 }
 
 // Put your implementation of floodfill here!
-Action floodFill()
+Action floodFill(void)
 {
     unsigned int least_distance = 300; // just some large number, none of the distances will be over 300
     Action optimal_move = IDLE;

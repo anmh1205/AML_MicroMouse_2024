@@ -69,17 +69,17 @@ struct Coordinate
     int y;
 };
 
-void initialize();
-void updateMaze();      // updates the maze array with the walls around the mouse's current position
-void updateDistances(); // the "floodfill" algorithm
-void resetDistances();
+void initialize(void);
+void updateMaze(void);      // updates the maze array with the walls around the mouse's current position
+void updateDistances(void); // the "floodfill" algorithm
+void resetDistances(void);
 int xyToSquare(int x, int y);
 struct Coordinate squareToCoord(int square);
 int isWallInDirection(int x, int y, Heading direction);
 void updateHeading(Action nextAction);
 void updatePosition(Action nextAction);
-Action solver();
-Action leftWallFollower();
-Action floodFill();
+Action solver(void);
+Action leftWallFollower(void);
+Action floodFill(void);
 
 #endif

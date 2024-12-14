@@ -14,9 +14,13 @@
 
 #define SET_WALL_FUNCTION(x, y, direction) API_setWall(x, y, direction)
 
-unsigned int maze[MAZE_SIZE][MAZE_SIZE] = {0};
+// unsigned int maze[MAZE_SIZE][MAZE_SIZE] = {0};
 int distances[MAZE_SIZE][MAZE_SIZE] = {-1}; // 1000 if it hasn't been visited yet
 int visited[MAZE_SIZE][MAZE_SIZE] = {0};
+int wall_maze[MAZE_SIZE][MAZE_SIZE][4] = {0};
+
+int priorityHeading = 0;
+
 struct Coordinate position;
 Heading heading;
 
@@ -24,6 +28,7 @@ int reached_center = 0; // "boolean" that stores whether the mouse should start 
 int change_index = 0;   // "boolean" that stores whether the mouse should run the fastRunSolver
 
 //-------------------------------------------------------------------------------------------------------------------------------//
+void setPriorityHeading(int direction);
 void initialize();
 void updateMaze();
 void updatePosition(Action nextAction);
@@ -37,10 +42,17 @@ int isWallInDirection(int x, int y, Heading direction);
 Action solver();
 Action fastRunSolver();
 Action floodFill();
+Action floodFillPriorityNorth(void);
+void moveForwardWithVariableVelocity(int steps);
 void fastRunWithVariableVelocity();
 int getReachingCenter();
 
 //-------------------------------------------------------------------------------------------------------------------------------//
+void setPriorityHeading(int direction)
+{
+    priorityHeading = direction;
+}
+
 void searchRun()
 {
     while (getReachingCenter() == 0)
@@ -196,54 +208,83 @@ void setPosition(int x, int y, int direction)
 
 void markCenterWall()
 {
-    // mark the walls around 4 cells in the center
-    maze[7][7] = _0011;
-    maze[8][7] = _0110;
-    maze[7][8] = _1001;
-    maze[8][8] = _1100;
+    // set the walls around the center
 
+    wall_maze[7][7][2] = 1;
+    wall_maze[7][6][0] = 1;
+
+    wall_maze[7][7][3] = 1;
+    wall_maze[6][7][1] = 1;
+
+    wall_maze[8][7][1] = 1;
+    wall_maze[9][7][3] = 1;
+
+    wall_maze[8][7][2] = 1;
+    wall_maze[8][6][0] = 1;
+
+    wall_maze[7][8][0] = 1;
+    wall_maze[7][9][2] = 1;
+
+    wall_maze[7][8][3] = 1;
+    wall_maze[6][8][1] = 1;
+
+    wall_maze[8][8][0] = 1;
+    wall_maze[8][9][2] = 1;
+
+    wall_maze[8][8][1] = 1;
+    wall_maze[9][8][3] = 1;
+
+    // clear the walls at the entrance/exit of the center
     if (heading == NORTH)
     {
         if (position.x == 7 && position.y == 7)
         {
-            maze[7][7] = _0001;
+            wall_maze[7][7][2] = 0;
+            wall_maze[7][6][0] = 0;
         }
         else if (position.x == 8 && position.y == 7)
         {
-            maze[8][7] = _0100;
+            wall_maze[8][7][2] = 0;
+            wall_maze[8][6][0] = 0;
         }
     }
     else if (heading == EAST)
     {
         if (position.x == 7 && position.y == 7)
         {
-            maze[7][7] = _0010;
+            wall_maze[7][7][3] = 0;
+            wall_maze[6][7][1] = 0;
         }
         else if (position.x == 7 && position.y == 8)
         {
-            maze[7][8] = _1000;
+            wall_maze[7][8][3] = 0;
+            wall_maze[6][8][1] = 0;
         }
     }
     else if (heading == SOUTH)
     {
         if (position.x == 7 && position.y == 8)
         {
-            maze[7][8] = _0001;
+            wall_maze[7][8][0] = 0;
+            wall_maze[7][9][2] = 0;
         }
         else if (position.x == 8 && position.y == 8)
         {
-            maze[8][8] = _0100;
+            wall_maze[8][8][0] = 0;
+            wall_maze[8][9][2] = 0;
         }
     }
     else if (heading == WEST)
     {
         if (position.x == 8 && position.y == 7)
         {
-            maze[8][7] = _0010;
+            wall_maze[8][7][1] = 0;
+            wall_maze[9][7][3] = 0;
         }
         else if (position.x == 8 && position.y == 8)
         {
-            maze[8][8] = _1000;
+            wall_maze[8][8][1] = 0;
+            wall_maze[9][8][3] = 0;
         }
     }
 
@@ -271,15 +312,33 @@ void initialize()
     // setting the borders
     for (int i = 1; i < MAZE_SIZE - 1; ++i)
     {
-        maze[0][i] = _0001;             // khoi tao tuong huong tay
-        maze[i][0] = _0010;             // khoi tao tuong huong nam
-        maze[i][MAZE_SIZE - 1] = _1000; // khoi tao tuong huong bac
-        maze[MAZE_SIZE - 1][i] = _0100; // khoi tao tuong huong dong
+        // maze[0][i] = _0001;             // khoi tao tuong huong tay
+        // maze[i][0] = _0010;             // khoi tao tuong huong nam
+        // maze[i][MAZE_SIZE - 1] = _1000; // khoi tao tuong huong bac
+        // maze[MAZE_SIZE - 1][i] = _0100; // khoi tao tuong huong dong
+
+        wall_maze[0][i][3] = 1;
+        wall_maze[i][0][2] = 1;
+        wall_maze[i][MAZE_SIZE - 1][0] = 1;
+        wall_maze[MAZE_SIZE - 1][i][1] = 1;
     }
-    maze[0][0] = _0011;                         // khoi tao goc tuong duoi cung ben trai
-    maze[0][MAZE_SIZE - 1] = _1001;             // khoi tao goc tuong duoi cung ben phai
-    maze[MAZE_SIZE - 1][0] = _0110;             // khoi tao goc tuong tren cuong ben trai
-    maze[MAZE_SIZE - 1][MAZE_SIZE - 1] = _1100; // khoi tao goc tuong tren cung ben phai
+
+    // maze[0][0] = _0011;                         // khoi tao goc tuong duoi cung ben trai
+    // maze[0][MAZE_SIZE - 1] = _1001;             // khoi tao goc tuong tren cung ben trai
+    // maze[MAZE_SIZE - 1][0] = _0110;             // khoi tao goc tuong duoi cung ben phai
+    // maze[MAZE_SIZE - 1][MAZE_SIZE - 1] = _1100; // khoi tao goc tuong tren cung ben phai
+
+    wall_maze[0][0][2] = 1;
+    wall_maze[0][0][3] = 1;
+
+    wall_maze[0][MAZE_SIZE - 1][0] = 1;
+    wall_maze[0][MAZE_SIZE - 1][3] = 1;
+
+    wall_maze[MAZE_SIZE - 1][0][1] = 1;
+    wall_maze[MAZE_SIZE - 1][0][2] = 1;
+
+    wall_maze[MAZE_SIZE - 1][MAZE_SIZE - 1][0] = 1;
+    wall_maze[MAZE_SIZE - 1][MAZE_SIZE - 1][1] = 1;
 
     // setting initial distances - cau hinh khoang cach
     resetDistances();
@@ -296,123 +355,212 @@ void updateMaze()
     int x = position.x;
     int y = position.y;
     // start by assuming there are no walls, this variable will be changed based on which walls you see
-    unsigned int walls = _0000;
+    // unsigned int walls = _0000;
 
     switch (heading)
     {
     case NORTH:
         if (CHECK_WALL_FRONT)
         {
-            walls |= _1000; // stores the wall to the north in walls (to be updated at the end of switch statement)
+            // walls |= _1000; // stores the wall to the north in walls (to be updated at the end of switch statement)
+
+            wall_maze[x][y][0] = 1; // stores the wall to the north in wall_maze
+
             // updating neighboring squares as well (if there is one):
             // neu dung thi cap nhat tuong do thanh tuong huong nam cua o tiep theo
             if (y + 1 != MAZE_SIZE)
-                maze[x][y + 1] |= _0010;
+            {
+                // maze[x][y + 1] |= _0010;
+                wall_maze[x][y + 1][2] = 1;
+            }
         }
         if (CHECK_WALL_LEFT)
         {
-            walls |= _0001;
+            // walls |= _0001;
+
+            wall_maze[x][y][3] = 1;
             // neu co tuong ben trai thi dat tuong huong tay
             //  dat tuong do thanh tuong huong ong cua o ben canh
             if (x - 1 >= 0)
-                maze[x - 1][y] |= _0100;
+            {
+                // maze[x - 1][y] |= _1000;
+                wall_maze[x - 1][y][1] = 1;
+            }
         }
         if (CHECK_WALL_RIGHT)
         {
-            walls |= _0100; // dat tuong huong dong
+            // walls |= _0100; // dat tuong huong dong
+
+            wall_maze[x][y][1] = 1;
+
             // dat tuong do thanh tuong huong tay cua o ben canh
             if (x + 1 != MAZE_SIZE)
-                maze[x + 1][y] |= _0001;
+            {
+                // maze[x + 1][y] |= _0001;
+                wall_maze[x + 1][y][3] = 1;
+            }
         }
         break;
         // tuong tu nhu huong bac
     case EAST:
         if (CHECK_WALL_FRONT)
         {
-            walls |= _0100;
+            // walls |= _0100;
+
+            wall_maze[x][y][1] = 1;
+
             if (x + 1 != MAZE_SIZE)
-                maze[x + 1][y] |= _0001;
+            {
+                // maze[x + 1][y] |= _0001;
+                wall_maze[x + 1][y][3] = 1;
+            }
         }
         if (CHECK_WALL_LEFT)
         {
-            walls |= _1000;
+            // walls |= _1000;
+
+            wall_maze[x][y][0] = 1;
+
             if (y + 1 != MAZE_SIZE)
-                maze[x][y + 1] |= _0010;
+            {
+                // maze[x][y + 1] |= _0010;
+                wall_maze[x][y + 1][2] = 1;
+            }
         }
         if (CHECK_WALL_RIGHT)
         {
-            walls |= _0010;
+            // walls |= _0010;
+
+            wall_maze[x][y][2] = 1;
+
             if (y - 1 >= 0)
-                maze[x][y - 1] |= _1000;
+            {
+                // maze[x][y - 1] |= _1000;
+                wall_maze[x][y - 1][0] = 1;
+            }
         }
         break;
     case SOUTH:
         if (CHECK_WALL_FRONT)
         {
-            walls |= _0010;
+            // walls |= _0010;
+
+            wall_maze[x][y][2] = 1;
+
             if (y - 1 >= 0)
-                maze[x][y - 1] |= _1000;
+            {
+                // maze[x][y - 1] |= _1000;
+                wall_maze[x][y - 1][0] = 1;
+            }
         }
         if (CHECK_WALL_LEFT)
         {
-            walls |= _0100;
+            // walls |= _0100;
+
+            wall_maze[x][y][1] = 1;
+
             if (x + 1 != MAZE_SIZE)
-                maze[x + 1][y] |= _0001;
+            {
+                // maze[x + 1][y] |= _0001;
+                wall_maze[x + 1][y][3] = 1;
+            }
         }
         if (CHECK_WALL_RIGHT)
         {
-            walls |= _0001;
+            // walls |= _0001;
+
+            wall_maze[x][y][3] = 1;
+
             if (x - 1 >= 0)
-                maze[x - 1][y] |= _0100;
+            {
+                // maze[x - 1][y] |= _1000;
+                wall_maze[x - 1][y][1] = 1;
+            }
         }
         break;
     case WEST:
         if (CHECK_WALL_FRONT)
         {
-            walls |= _0001;
+            // walls |= _0001;
+
+            wall_maze[x][y][3] = 1;
+
             if (x - 1 >= 0)
-                maze[x - 1][y] |= _0100;
+            {
+                // maze[x - 1][y] |= _1000;
+                wall_maze[x - 1][y][1] = 1;
+            }
         }
         if (CHECK_WALL_LEFT)
         {
-            walls |= _0010;
+            // walls |= _0010;
+
+            wall_maze[x][y][2] = 1;
+
             if (y - 1 >= 0)
-                maze[x][y - 1] |= _1000;
+            {
+                // maze[x][y - 1] |= _1000;
+                wall_maze[x][y - 1][0] = 1;
+            }
         }
         if (CHECK_WALL_RIGHT)
         {
-            walls |= _1000;
+            // walls |= _1000;
+
+            wall_maze[x][y][0] = 1;
+
             if (y + 1 != MAZE_SIZE)
-                maze[x][y + 1] |= _0010;
+            {
+                // maze[x][y + 1] |= _0010;
+                wall_maze[x][y + 1][2] = 1;
+            }
         }
         break;
     }
 
-    maze[x][y] |= walls;
+    // maze[x][y] |= walls;
 
     // setting the walls in the simulator
 #if SIMULATION_BOOL
-    unsigned int north = _1000;
-    if (maze[x][y] >= 8)
+    // unsigned int north = _1000;
+    // if (maze[x][y] >= 8)
+    // {
+    //     API_setWall(x, y, 'n');
+    //     // debug_log("There's a wall to the north");
+    // }
+    // if (maze[x][y] % 8 >= 4)
+    // {
+    //     API_setWall(x, y, 'e');
+    //     // debug_log("There's a wall to the east");
+    // }
+    // if (maze[x][y] % 4 >= 2)
+    // {
+    //     API_setWall(x, y, 's');
+    //     // debug_log("There's a wall to the south");
+    // }
+    // if (maze[x][y] % 2 == 1)
+    // {
+    //     API_setWall(x, y, 'w');
+    //     // debug_log("There's a wall to the west");
+    // }
+
+    if (wall_maze[x][y][0] == 1)
     {
         API_setWall(x, y, 'n');
-        // debug_log("There's a wall to the north");
     }
-    if (maze[x][y] % 8 >= 4)
+    if (wall_maze[x][y][1] == 1)
     {
         API_setWall(x, y, 'e');
-        // debug_log("There's a wall to the east");
     }
-    if (maze[x][y] % 4 >= 2)
+    if (wall_maze[x][y][2] == 1)
     {
         API_setWall(x, y, 's');
-        // debug_log("There's a wall to the south");
     }
-    if (maze[x][y] % 2 == 1)
+    if (wall_maze[x][y][3] == 1)
     {
         API_setWall(x, y, 'w');
-        // debug_log("There's a wall to the west");
     }
+
 #endif
 }
 // chuyen doi mang 2d thanh mang 1d bieu dien boi cac so nguyen
@@ -468,22 +616,43 @@ void resetDistances()
 
 int isWallInDirection(int x, int y, Heading direction)
 {
+    // switch (direction)
+    // {
+    // case NORTH:
+    //     if (maze[x][y] >= 8)
+    //         return 1;
+    //     break;
+    // case EAST:
+    //     if (maze[x][y] % 8 >= 4)
+    //         return 1;
+    //     break;
+    // case SOUTH:
+    //     if (maze[x][y] % 4 >= 2)
+    //         return 1;
+    //     break;
+    // case WEST:
+    //     if (maze[x][y] % 2 == 1)
+    //         return 1;
+    //     break;
+    // }
+    // return 0;
+
     switch (direction)
     {
     case NORTH:
-        if (maze[x][y] >= 8)
+        if (wall_maze[x][y][0] == 1)
             return 1;
         break;
     case EAST:
-        if (maze[x][y] % 8 >= 4)
+        if (wall_maze[x][y][1] == 1)
             return 1;
         break;
     case SOUTH:
-        if (maze[x][y] % 4 >= 2)
+        if (wall_maze[x][y][2] == 1)
             return 1;
         break;
     case WEST:
-        if (maze[x][y] % 2 == 1)
+        if (wall_maze[x][y][3] == 1)
             return 1;
         break;
     }
@@ -617,7 +786,9 @@ void calculateShortestPathDistances()
         }
     }
 
+#if SIMULATION_BOOL
     printFullMazeDistances();
+#endif
 }
 
 void moveForwardWithVariableVelocity(int steps)
@@ -747,8 +918,7 @@ Action fastRunSolver()
     return action;
 }
 
-// Put your implementation of floodfill here!
-Action floodFill()
+Action floodFill(void)
 {
     unsigned int least_distance = 300; // just some large number, none of the distances will be over 300
     Action optimal_move = IDLE;
@@ -764,74 +934,110 @@ Action floodFill()
 
     if (heading == NORTH)
     {
-        if (!isWallInDirection(position.x, position.y, NORTH) && distances[position.x][position.y + 1] < least_distance)
+        if (!isWallInDirection(position.x, position.y, NORTH) && distances[position.x][position.y + 1] <= least_distance)
         {
-            least_distance = distances[position.x][position.y + 1];
-            optimal_move = FORWARD;
+            if (distances[position.x][position.y + 1] < least_distance || priorityHeading == NORTH)
+            {
+                least_distance = distances[position.x][position.y + 1];
+                optimal_move = FORWARD;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, EAST) && distances[position.x + 1][position.y] < least_distance)
+        if (!isWallInDirection(position.x, position.y, EAST) && distances[position.x + 1][position.y] <= least_distance)
         {
-            least_distance = distances[position.x + 1][position.y];
-            optimal_move = RIGHT;
+            if (distances[position.x + 1][position.y] < least_distance || priorityHeading == EAST)
+            {
+                least_distance = distances[position.x + 1][position.y];
+                optimal_move = RIGHT;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, WEST) && distances[position.x - 1][position.y] < least_distance)
+        if (!isWallInDirection(position.x, position.y, WEST) && distances[position.x - 1][position.y] <= least_distance)
         {
-            least_distance = distances[position.x - 1][position.y];
-            optimal_move = LEFT;
+            if (distances[position.x - 1][position.y] < least_distance || priorityHeading == WEST)
+            {
+                least_distance = distances[position.x - 1][position.y];
+                optimal_move = LEFT;
+            }
         }
     }
     else if (heading == EAST)
     {
-        if (!isWallInDirection(position.x, position.y, EAST) && distances[position.x + 1][position.y] < least_distance)
+        if (!isWallInDirection(position.x, position.y, NORTH) && distances[position.x][position.y + 1] <= least_distance)
         {
-            least_distance = distances[position.x + 1][position.y];
-            optimal_move = FORWARD;
+            if (distances[position.x][position.y + 1] < least_distance || priorityHeading == NORTH)
+            {
+                least_distance = distances[position.x][position.y + 1];
+                optimal_move = LEFT;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, SOUTH) && distances[position.x][position.y - 1] < least_distance)
+        if (!isWallInDirection(position.x, position.y, EAST) && distances[position.x + 1][position.y] <= least_distance)
         {
-            least_distance = distances[position.x][position.y - 1];
-            optimal_move = RIGHT;
+            if (distances[position.x + 1][position.y] < least_distance || priorityHeading == EAST)
+            {
+                least_distance = distances[position.x + 1][position.y];
+                optimal_move = FORWARD;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, NORTH) && distances[position.x][position.y + 1] < least_distance)
+        if (!isWallInDirection(position.x, position.y, SOUTH) && distances[position.x][position.y - 1] <= least_distance)
         {
-            least_distance = distances[position.x][position.y + 1];
-            optimal_move = LEFT;
+            if (distances[position.x][position.y - 1] < least_distance || priorityHeading == SOUTH)
+            {
+                least_distance = distances[position.x][position.y - 1];
+                optimal_move = RIGHT;
+            }
         }
     }
     else if (heading == SOUTH)
     {
-        if (!isWallInDirection(position.x, position.y, SOUTH) && distances[position.x][position.y - 1] < least_distance)
+        if (!isWallInDirection(position.x, position.y, EAST) && distances[position.x + 1][position.y] <= least_distance)
         {
-            least_distance = distances[position.x][position.y - 1];
-            optimal_move = FORWARD;
+            if (distances[position.x + 1][position.y] < least_distance || priorityHeading == EAST)
+            {
+                least_distance = distances[position.x + 1][position.y];
+                optimal_move = LEFT;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, WEST) && distances[position.x - 1][position.y] < least_distance)
+        if (!isWallInDirection(position.x, position.y, SOUTH) && distances[position.x][position.y - 1] <= least_distance)
         {
-            least_distance = distances[position.x - 1][position.y];
-            optimal_move = RIGHT;
+            if (distances[position.x][position.y - 1] < least_distance || priorityHeading == SOUTH)
+            {
+                least_distance = distances[position.x][position.y - 1];
+                optimal_move = FORWARD;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, EAST) && distances[position.x + 1][position.y] < least_distance)
+        if (!isWallInDirection(position.x, position.y, WEST) && distances[position.x - 1][position.y] <= least_distance)
         {
-            least_distance = distances[position.x + 1][position.y];
-            optimal_move = LEFT;
+            if (distances[position.x - 1][position.y] < least_distance || priorityHeading == WEST)
+            {
+                least_distance = distances[position.x - 1][position.y];
+                optimal_move = RIGHT;
+            }
         }
     }
     else if (heading == WEST)
     {
-        if (!isWallInDirection(position.x, position.y, WEST) && distances[position.x - 1][position.y] < least_distance)
+        if (!isWallInDirection(position.x, position.y, NORTH) && distances[position.x][position.y + 1] <= least_distance)
         {
-            least_distance = distances[position.x - 1][position.y];
-            optimal_move = FORWARD;
+            if (distances[position.x][position.y + 1] < least_distance || priorityHeading == NORTH)
+            {
+                least_distance = distances[position.x][position.y + 1];
+                optimal_move = RIGHT;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, NORTH) && distances[position.x][position.y + 1] < least_distance)
+        if (!isWallInDirection(position.x, position.y, SOUTH) && distances[position.x][position.y - 1] <= least_distance)
         {
-            least_distance = distances[position.x][position.y + 1];
-            optimal_move = RIGHT;
+            if (distances[position.x][position.y - 1] < least_distance || priorityHeading == SOUTH)
+            {
+                least_distance = distances[position.x][position.y - 1];
+                optimal_move = LEFT;
+            }
         }
-        if (!isWallInDirection(position.x, position.y, SOUTH) && distances[position.x][position.y - 1] < least_distance)
+        if (!isWallInDirection(position.x, position.y, WEST) && distances[position.x - 1][position.y] <= least_distance)
         {
-            least_distance = distances[position.x][position.y - 1];
-            optimal_move = LEFT;
+            if (distances[position.x - 1][position.y] < least_distance || priorityHeading == WEST)
+            {
+                least_distance = distances[position.x - 1][position.y];
+                optimal_move = FORWARD;
+            }
         }
     }
 
@@ -839,8 +1045,5 @@ Action floodFill()
     if (least_distance == 300)
         optimal_move = RIGHT; // arbitrary, can be any turn
 
-    // debug_log("Optimal move:");
-    // debug_int(optimal_move);
-    // debug_log("\n");
     return optimal_move;
 }

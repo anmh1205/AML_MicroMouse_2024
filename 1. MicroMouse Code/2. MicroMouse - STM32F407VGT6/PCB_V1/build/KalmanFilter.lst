@@ -1,0 +1,319 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"KalmanFilter.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SimpleKalmanFilter_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	SimpleKalmanFilter_Init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	SimpleKalmanFilter_Init:
+  27              	.LVL0:
+  28              	.LFB3:
+  29              		.file 1 "Core/Src/KalmanFilter.c"
+   1:Core/Src/KalmanFilter.c **** #include "KalmanFilter.h"
+   2:Core/Src/KalmanFilter.c **** #include <math.h>
+   3:Core/Src/KalmanFilter.c **** 
+   4:Core/Src/KalmanFilter.c **** void SimpleKalmanFilter_Init(SimpleKalmanFilter *filter, float mea_e, float est_e, float q)
+   5:Core/Src/KalmanFilter.c **** {
+  30              		.loc 1 5 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+   6:Core/Src/KalmanFilter.c ****     filter->err_measure = mea_e;
+  35              		.loc 1 6 5 view .LVU1
+  36              		.loc 1 6 25 is_stmt 0 view .LVU2
+  37 0000 80ED000A 		vstr.32	s0, [r0]
+   7:Core/Src/KalmanFilter.c ****     filter->err_estimate = est_e;
+  38              		.loc 1 7 5 is_stmt 1 view .LVU3
+  39              		.loc 1 7 26 is_stmt 0 view .LVU4
+  40 0004 C0ED010A 		vstr.32	s1, [r0, #4]
+   8:Core/Src/KalmanFilter.c ****     filter->q = q;
+  41              		.loc 1 8 5 is_stmt 1 view .LVU5
+  42              		.loc 1 8 15 is_stmt 0 view .LVU6
+  43 0008 80ED021A 		vstr.32	s2, [r0, #8]
+   9:Core/Src/KalmanFilter.c ****     filter->current_estimate = 0;
+  44              		.loc 1 9 5 is_stmt 1 view .LVU7
+  45              		.loc 1 9 30 is_stmt 0 view .LVU8
+  46 000c 0023     		movs	r3, #0
+  47 000e C360     		str	r3, [r0, #12]	@ float
+  10:Core/Src/KalmanFilter.c ****     filter->last_estimate = 0;
+  48              		.loc 1 10 5 is_stmt 1 view .LVU9
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s 			page 2
+
+
+  49              		.loc 1 10 27 is_stmt 0 view .LVU10
+  50 0010 0361     		str	r3, [r0, #16]	@ float
+  11:Core/Src/KalmanFilter.c ****     filter->kalman_gain = 0;
+  51              		.loc 1 11 5 is_stmt 1 view .LVU11
+  52              		.loc 1 11 25 is_stmt 0 view .LVU12
+  53 0012 4361     		str	r3, [r0, #20]	@ float
+  12:Core/Src/KalmanFilter.c **** }
+  54              		.loc 1 12 1 view .LVU13
+  55 0014 7047     		bx	lr
+  56              		.cfi_endproc
+  57              	.LFE3:
+  59              		.section	.text.SimpleKalmanFilter_updateEstimate,"ax",%progbits
+  60              		.align	1
+  61              		.global	SimpleKalmanFilter_updateEstimate
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  65              		.fpu fpv4-sp-d16
+  67              	SimpleKalmanFilter_updateEstimate:
+  68              	.LVL1:
+  69              	.LFB4:
+  13:Core/Src/KalmanFilter.c **** 
+  14:Core/Src/KalmanFilter.c **** float SimpleKalmanFilter_updateEstimate(SimpleKalmanFilter *filter, float mea)
+  15:Core/Src/KalmanFilter.c **** {
+  70              		.loc 1 15 1 is_stmt 1 view -0
+  71              		.cfi_startproc
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  16:Core/Src/KalmanFilter.c ****     filter->kalman_gain = filter->err_estimate / (filter->err_estimate + filter->err_measure);
+  75              		.loc 1 16 5 view .LVU15
+  76              		.loc 1 16 33 is_stmt 0 view .LVU16
+  77 0000 90ED017A 		vldr.32	s14, [r0, #4]
+  78              		.loc 1 16 80 view .LVU17
+  79 0004 D0ED007A 		vldr.32	s15, [r0]
+  80              		.loc 1 16 72 view .LVU18
+  81 0008 77EE277A 		vadd.f32	s15, s14, s15
+  82              		.loc 1 16 48 view .LVU19
+  83 000c 87EE276A 		vdiv.f32	s12, s14, s15
+  84              		.loc 1 16 25 view .LVU20
+  85 0010 80ED056A 		vstr.32	s12, [r0, #20]
+  17:Core/Src/KalmanFilter.c ****     filter->current_estimate = filter->last_estimate + filter->kalman_gain * (mea - filter->last_es
+  86              		.loc 1 17 5 is_stmt 1 view .LVU21
+  87              		.loc 1 17 38 is_stmt 0 view .LVU22
+  88 0014 D0ED047A 		vldr.32	s15, [r0, #16]
+  89              		.loc 1 17 83 view .LVU23
+  90 0018 30EE670A 		vsub.f32	s0, s0, s15
+  91              	.LVL2:
+  92              		.loc 1 17 76 view .LVU24
+  93 001c 26EE000A 		vmul.f32	s0, s12, s0
+  94              		.loc 1 17 54 view .LVU25
+  95 0020 37EE800A 		vadd.f32	s0, s15, s0
+  96              		.loc 1 17 30 view .LVU26
+  97 0024 80ED030A 		vstr.32	s0, [r0, #12]
+  18:Core/Src/KalmanFilter.c ****     filter->err_estimate = (1.0f - filter->kalman_gain) * filter->err_estimate + fabsf(filter->last
+  98              		.loc 1 18 5 is_stmt 1 view .LVU27
+  99              		.loc 1 18 34 is_stmt 0 view .LVU28
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s 			page 3
+
+
+ 100 0028 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 101 002c 76EEC66A 		vsub.f32	s13, s13, s12
+ 102              		.loc 1 18 57 view .LVU29
+ 103 0030 27EE267A 		vmul.f32	s14, s14, s13
+ 104              		.loc 1 18 110 view .LVU30
+ 105 0034 77EEC07A 		vsub.f32	s15, s15, s0
+ 106              		.loc 1 18 82 view .LVU31
+ 107 0038 F0EEE77A 		vabs.f32	s15, s15
+ 108              		.loc 1 18 146 view .LVU32
+ 109 003c D0ED026A 		vldr.32	s13, [r0, #8]
+ 110              		.loc 1 18 138 view .LVU33
+ 111 0040 67EEA67A 		vmul.f32	s15, s15, s13
+ 112              		.loc 1 18 80 view .LVU34
+ 113 0044 77EE277A 		vadd.f32	s15, s14, s15
+ 114              		.loc 1 18 26 view .LVU35
+ 115 0048 C0ED017A 		vstr.32	s15, [r0, #4]
+  19:Core/Src/KalmanFilter.c ****     filter->last_estimate = filter->current_estimate;
+ 116              		.loc 1 19 5 is_stmt 1 view .LVU36
+ 117              		.loc 1 19 27 is_stmt 0 view .LVU37
+ 118 004c 80ED040A 		vstr.32	s0, [r0, #16]
+  20:Core/Src/KalmanFilter.c **** 
+  21:Core/Src/KalmanFilter.c ****     return filter->current_estimate;
+ 119              		.loc 1 21 5 is_stmt 1 view .LVU38
+  22:Core/Src/KalmanFilter.c **** }
+ 120              		.loc 1 22 1 is_stmt 0 view .LVU39
+ 121 0050 7047     		bx	lr
+ 122              		.cfi_endproc
+ 123              	.LFE4:
+ 125              		.section	.text.SimpleKalmanFilter_setMeasurementError,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	SimpleKalmanFilter_setMeasurementError
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 131              		.fpu fpv4-sp-d16
+ 133              	SimpleKalmanFilter_setMeasurementError:
+ 134              	.LVL3:
+ 135              	.LFB5:
+  23:Core/Src/KalmanFilter.c **** 
+  24:Core/Src/KalmanFilter.c **** void SimpleKalmanFilter_setMeasurementError(SimpleKalmanFilter *filter, float mea_e)
+  25:Core/Src/KalmanFilter.c **** {
+ 136              		.loc 1 25 1 is_stmt 1 view -0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+  26:Core/Src/KalmanFilter.c ****     filter->err_measure = mea_e;
+ 141              		.loc 1 26 5 view .LVU41
+ 142              		.loc 1 26 25 is_stmt 0 view .LVU42
+ 143 0000 80ED000A 		vstr.32	s0, [r0]
+  27:Core/Src/KalmanFilter.c **** }
+ 144              		.loc 1 27 1 view .LVU43
+ 145 0004 7047     		bx	lr
+ 146              		.cfi_endproc
+ 147              	.LFE5:
+ 149              		.section	.text.SimpleKalmanFilter_setEstimateError,"ax",%progbits
+ 150              		.align	1
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s 			page 4
+
+
+ 151              		.global	SimpleKalmanFilter_setEstimateError
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.fpu fpv4-sp-d16
+ 157              	SimpleKalmanFilter_setEstimateError:
+ 158              	.LVL4:
+ 159              	.LFB6:
+  28:Core/Src/KalmanFilter.c **** 
+  29:Core/Src/KalmanFilter.c **** void SimpleKalmanFilter_setEstimateError(SimpleKalmanFilter *filter, float est_e)
+  30:Core/Src/KalmanFilter.c **** {
+ 160              		.loc 1 30 1 is_stmt 1 view -0
+ 161              		.cfi_startproc
+ 162              		@ args = 0, pretend = 0, frame = 0
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164              		@ link register save eliminated.
+  31:Core/Src/KalmanFilter.c ****     filter->err_estimate = est_e;
+ 165              		.loc 1 31 5 view .LVU45
+ 166              		.loc 1 31 26 is_stmt 0 view .LVU46
+ 167 0000 80ED010A 		vstr.32	s0, [r0, #4]
+  32:Core/Src/KalmanFilter.c **** }
+ 168              		.loc 1 32 1 view .LVU47
+ 169 0004 7047     		bx	lr
+ 170              		.cfi_endproc
+ 171              	.LFE6:
+ 173              		.section	.text.SimpleKalmanFilter_setProcessNoise,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	SimpleKalmanFilter_setProcessNoise
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.fpu fpv4-sp-d16
+ 181              	SimpleKalmanFilter_setProcessNoise:
+ 182              	.LVL5:
+ 183              	.LFB7:
+  33:Core/Src/KalmanFilter.c **** 
+  34:Core/Src/KalmanFilter.c **** void SimpleKalmanFilter_setProcessNoise(SimpleKalmanFilter *filter, float q)
+  35:Core/Src/KalmanFilter.c **** {
+ 184              		.loc 1 35 1 is_stmt 1 view -0
+ 185              		.cfi_startproc
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188              		@ link register save eliminated.
+  36:Core/Src/KalmanFilter.c ****     filter->q = q;
+ 189              		.loc 1 36 5 view .LVU49
+ 190              		.loc 1 36 15 is_stmt 0 view .LVU50
+ 191 0000 80ED020A 		vstr.32	s0, [r0, #8]
+  37:Core/Src/KalmanFilter.c **** }
+ 192              		.loc 1 37 1 view .LVU51
+ 193 0004 7047     		bx	lr
+ 194              		.cfi_endproc
+ 195              	.LFE7:
+ 197              		.section	.text.SimpleKalmanFilter_getKalmanGain,"ax",%progbits
+ 198              		.align	1
+ 199              		.global	SimpleKalmanFilter_getKalmanGain
+ 200              		.syntax unified
+ 201              		.thumb
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s 			page 5
+
+
+ 202              		.thumb_func
+ 203              		.fpu fpv4-sp-d16
+ 205              	SimpleKalmanFilter_getKalmanGain:
+ 206              	.LVL6:
+ 207              	.LFB8:
+  38:Core/Src/KalmanFilter.c **** 
+  39:Core/Src/KalmanFilter.c **** float SimpleKalmanFilter_getKalmanGain(SimpleKalmanFilter *filter)
+  40:Core/Src/KalmanFilter.c **** {
+ 208              		.loc 1 40 1 is_stmt 1 view -0
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+  41:Core/Src/KalmanFilter.c ****     return filter->kalman_gain;
+ 213              		.loc 1 41 5 view .LVU53
+  42:Core/Src/KalmanFilter.c **** }
+ 214              		.loc 1 42 1 is_stmt 0 view .LVU54
+ 215 0000 90ED050A 		vldr.32	s0, [r0, #20]
+ 216 0004 7047     		bx	lr
+ 217              		.cfi_endproc
+ 218              	.LFE8:
+ 220              		.section	.text.SimpleKalmanFilter_getEstimateError,"ax",%progbits
+ 221              		.align	1
+ 222              		.global	SimpleKalmanFilter_getEstimateError
+ 223              		.syntax unified
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.fpu fpv4-sp-d16
+ 228              	SimpleKalmanFilter_getEstimateError:
+ 229              	.LVL7:
+ 230              	.LFB9:
+  43:Core/Src/KalmanFilter.c **** 
+  44:Core/Src/KalmanFilter.c **** float SimpleKalmanFilter_getEstimateError(SimpleKalmanFilter *filter)
+  45:Core/Src/KalmanFilter.c **** {
+ 231              		.loc 1 45 1 is_stmt 1 view -0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              		@ link register save eliminated.
+  46:Core/Src/KalmanFilter.c ****     return filter->err_estimate;
+ 236              		.loc 1 46 5 view .LVU56
+  47:Core/Src/KalmanFilter.c **** }...
+ 237              		.loc 1 47 1 is_stmt 0 view .LVU57
+ 238 0000 90ED010A 		vldr.32	s0, [r0, #4]
+ 239 0004 7047     		bx	lr
+ 240              		.cfi_endproc
+ 241              	.LFE9:
+ 243              		.text
+ 244              	.Letext0:
+ 245              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\loc
+ 246              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_ty
+ 247              		.file 4 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\\
+ 248              		.file 5 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\ree
+ 249              		.file 6 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\math.h"
+ 250              		.file 7 "Core/Inc/KalmanFilter.h"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 KalmanFilter.c
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:18     .text.SimpleKalmanFilter_Init:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:26     .text.SimpleKalmanFilter_Init:00000000 SimpleKalmanFilter_Init
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:60     .text.SimpleKalmanFilter_updateEstimate:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:67     .text.SimpleKalmanFilter_updateEstimate:00000000 SimpleKalmanFilter_updateEstimate
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:126    .text.SimpleKalmanFilter_setMeasurementError:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:133    .text.SimpleKalmanFilter_setMeasurementError:00000000 SimpleKalmanFilter_setMeasurementError
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:150    .text.SimpleKalmanFilter_setEstimateError:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:157    .text.SimpleKalmanFilter_setEstimateError:00000000 SimpleKalmanFilter_setEstimateError
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:174    .text.SimpleKalmanFilter_setProcessNoise:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:181    .text.SimpleKalmanFilter_setProcessNoise:00000000 SimpleKalmanFilter_setProcessNoise
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:198    .text.SimpleKalmanFilter_getKalmanGain:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:205    .text.SimpleKalmanFilter_getKalmanGain:00000000 SimpleKalmanFilter_getKalmanGain
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:221    .text.SimpleKalmanFilter_getEstimateError:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccbo50XE.s:228    .text.SimpleKalmanFilter_getEstimateError:00000000 SimpleKalmanFilter_getEstimateError
+
+NO UNDEFINED SYMBOLS

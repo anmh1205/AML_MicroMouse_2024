@@ -332,16 +332,7 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .rodata.frequencies
-                0x00000000       0x8c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .rodata.durations
-                0x00000000       0x46 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .text.AML_Buzzer_TurnOn
-                0x00000000       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .text.AML_Buzzer_PlaySong
-                0x00000000       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .text.AML_Buzzer_PlayNoteInSong
-                0x00000000       0x98 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
@@ -672,6 +663,7 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
@@ -682,6 +674,12 @@ Discarded input sections
  .text.AML_IRSensor_IsLeftWall
                 0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .text.AML_IRSensor_IsRightWall
+                0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .text.AML_IRSensor_IsNoFrontWall
+                0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .text.AML_IRSensor_IsNoLeftWall
+                0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .text.AML_IRSensor_IsNoRightWall
                 0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_macro   0x00000000      0xacc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_macro   0x00000000      0x23e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
@@ -747,7 +745,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xa6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_macro   0x00000000      0x5a0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_macro   0x00000000      0x15a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
- .debug_macro   0x00000000      0x12a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .debug_macro   0x00000000      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
@@ -957,10 +956,11 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .bss.TempSetpoint
+ .data.TempSetpoint
                 0x00000000        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .data.PID_RightMotor
                 0x00000000       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
@@ -974,6 +974,8 @@ Discarded input sections
                 0x00000000       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .data.PID_RightWallFollow
                 0x00000000       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .text.AML_MotorControl_TurnOnWallFollow
+                0x00000000       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .text.AML_MotorControl_RightMotorSpeed
                 0x00000000       0x84 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .text.AML_MotorControl_GoStraghtWithMPU
@@ -983,9 +985,9 @@ Discarded input sections
  .text.AML_MotorControl_RightWallFollow
                 0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .text.AML_MotorControl_GoStraight
-                0x00000000       0xd4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x00000000       0xa4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .text.AML_MotorControl_TurnLeft
-                0x00000000      0x110 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x00000000      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_macro   0x00000000      0xacc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_macro   0x00000000      0x23e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_macro   0x00000000       0x2e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
@@ -1050,7 +1052,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xa6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_macro   0x00000000      0x5a0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_macro   0x00000000      0x15a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .debug_macro   0x00000000      0x12a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_macro   0x00000000      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
@@ -1253,11 +1256,24 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .data.BitSwitchPort
+                0x00000000        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .data.BitSwitchPinArray
+                0x00000000        0xa CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .bss.BitSwitchState
+                0x00000000        0x5 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .bss.ButtonState
+                0x00000000        0x2 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .text.AML_ReadAll_BitSwitch
+                0x00000000       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .text.AML_Read_BitSwitch
-                0x00000000       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                0x00000000       0x3c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .text.AML_ReadAll_Button
+                0x00000000       0x5c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .text.HAL_GPIO_EXTI_Callback
                 0x00000000       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .debug_macro   0x00000000      0xacc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
@@ -1324,7 +1340,11 @@ Discarded input sections
  .debug_macro   0x00000000       0xa6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .debug_macro   0x00000000      0x5a0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .debug_macro   0x00000000      0x15a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
- .debug_macro   0x00000000      0x12a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_macro   0x00000000      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
@@ -1472,7 +1492,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xa6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .debug_macro   0x00000000      0x5a0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .debug_macro   0x00000000      0x154 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00000000      0x12a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00000000      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/queue.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/queue.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/queue.c.obj
@@ -1633,6 +1654,7 @@ Discarded input sections
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .group         0x00000000        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .text          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .data          0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .bss           0x00000000        0x0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
@@ -1664,13 +1686,13 @@ Discarded input sections
  .text.solver   0x00000000       0x88 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .text.floodFill
                 0x00000000      0x400 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
- .debug_info    0x00000000      0x50d CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .debug_info    0x00000000      0x4fc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_abbrev  0x00000000      0x285 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_aranges
                 0x00000000       0x70 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_rnglists
                 0x00000000       0x57 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
- .debug_macro   0x00000000      0x3cc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .debug_macro   0x00000000      0x3d5 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_macro   0x00000000      0xacc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_macro   0x00000000       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_macro   0x00000000       0x6e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
@@ -1745,10 +1767,11 @@ Discarded input sections
  .debug_macro   0x00000000       0xa6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_macro   0x00000000      0x5a0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_macro   0x00000000      0x15a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
- .debug_macro   0x00000000      0x12a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .debug_macro   0x00000000      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_macro   0x00000000       0x6a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
- .debug_line    0x00000000     0x1250 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
- .debug_str     0x00000000   0x170764 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .debug_line    0x00000000     0x125d CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
+ .debug_str     0x00000000   0x1707b0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .comment       0x00000000       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .debug_frame   0x00000000      0x1bc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/solver.c.obj
  .ARM.attributes
@@ -5708,6 +5731,8 @@ Discarded input sections
                 0x00000000       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.HAL_TIM_Base_Stop
                 0x00000000       0x4e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .text.HAL_TIM_Base_Start_IT
+                0x00000000       0xf0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.HAL_TIM_Base_Start_DMA
                 0x00000000      0x154 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.HAL_TIM_Base_Stop_DMA
@@ -6684,7 +6709,7 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
                 0x08000000                g_pfnVectors
                 0x08000298                        . = ALIGN (0x4)
 
-.text           0x08000298     0xe9a8
+.text           0x08000298     0xe908
                 0x08000298                        . = ALIGN (0x4)
  *(.text)
  .text          0x08000298       0x40 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
@@ -6701,832 +6726,836 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .text.__libc_init_array
                 0x080005d8       0x48 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-init.o)
                 0x080005d8                __libc_init_array
- .text.AML_Buzzer_TurnOff
+ .text.AML_Buzzer_Setup
                 0x08000620       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
-                0x08000620                AML_Buzzer_TurnOff
+                0x08000620                AML_Buzzer_Setup
+ .text.AML_Buzzer_TurnOff
+                0x08000634       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x08000634                AML_Buzzer_TurnOff
+ .text.AML_Buzzer_PlaySong
+                0x08000658       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x08000658                AML_Buzzer_PlaySong
  .text.AML_Buzzer_PlayNote
-                0x08000634       0xa4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
-                0x08000634                AML_Buzzer_PlayNote
+                0x080006a8       0xac CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x080006a8                AML_Buzzer_PlayNote
+ .text.AML_Buzzer_PlayNoteInSong
+                0x08000754       0xa4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x08000754                AML_Buzzer_PlayNoteInSong
  .text.AML_Buzzer_Beep
-                0x080006d8       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
-                0x080006d8                AML_Buzzer_Beep
+                0x080007f8       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x080007f8                AML_Buzzer_Beep
  .text.AML_Encoder_Setup
-                0x080006f0       0x20 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
-                0x080006f0                AML_Encoder_Setup
+                0x08000810       0x20 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+                0x08000810                AML_Encoder_Setup
  .text.AML_Encoder_GetLeftValue
-                0x08000710       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
-                0x08000710                AML_Encoder_GetLeftValue
+                0x08000830       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+                0x08000830                AML_Encoder_GetLeftValue
  .text.AML_Encoder_ResetLeftValue
-                0x08000728       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
-                0x08000728                AML_Encoder_ResetLeftValue
+                0x08000848       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+                0x08000848                AML_Encoder_ResetLeftValue
  .text.AML_Encoder_GetRightValue
-                0x08000744       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
-                0x08000744                AML_Encoder_GetRightValue
+                0x08000864       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+                0x08000864                AML_Encoder_GetRightValue
  .text.AML_MPUSensor_ResetAngle
-                0x0800075c       0xb8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x0800075c                AML_MPUSensor_ResetAngle
+                0x0800087c       0xb8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x0800087c                AML_MPUSensor_ResetAngle
  .text.AML_MPUSensor_Setup
-                0x08000814       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x08000814                AML_MPUSensor_Setup
- .text.handle   0x08000844       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x08000844                handle
+                0x08000934       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x08000934                AML_MPUSensor_Setup
+ .text.handle   0x08000964       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x08000964                handle
  .text.HAL_UART_RxCpltCallback
-                0x08000888      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x08000888                HAL_UART_RxCpltCallback
+                0x080009a8      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x080009a8                HAL_UART_RxCpltCallback
  .text.AML_MPUSensor_GetAngle
-                0x080009a4       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x080009a4                AML_MPUSensor_GetAngle
+                0x08000ac4       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x08000ac4                AML_MPUSensor_GetAngle
  .text.AML_IRSensor_Setup
-                0x080009cc       0x20 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
-                0x080009cc                AML_IRSensor_Setup
- *fill*         0x080009ec        0x4 
+                0x08000aec       0x20 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x08000aec                AML_IRSensor_Setup
+ *fill*         0x08000b0c        0x4 
  .text.HAL_ADC_ConvCpltCallback
-                0x080009f0      0x208 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
-                0x080009f0                HAL_ADC_ConvCpltCallback
+                0x08000b10      0x208 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x08000b10                HAL_ADC_ConvCpltCallback
  .text.AML_LedDebug_TurnOnLED
-                0x08000bf8       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
-                0x08000bf8                AML_LedDebug_TurnOnLED
+                0x08000d18       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+                0x08000d18                AML_LedDebug_TurnOnLED
  .text.AML_LedDebug_TurnOffLED
-                0x08000c24       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
-                0x08000c24                AML_LedDebug_TurnOffLED
- .text.HAL_TIM_PeriodElapsedCallback
-                0x08000c50       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000c50                HAL_TIM_PeriodElapsedCallback
- .text.AML_MotorControl_TurnOnWallFollow
-                0x08000c78       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000c78                AML_MotorControl_TurnOnWallFollow
+                0x08000d44       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+                0x08000d44                AML_LedDebug_TurnOffLED
  .text.AML_MotorControl_TurnOffWallFollow
-                0x08000c90       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000c90                AML_MotorControl_TurnOffWallFollow
+                0x08000d70       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000d70                AML_MotorControl_TurnOffWallFollow
  .text.AML_MotorControl_AMLPIDSetup
-                0x08000ca4        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000ca4                AML_MotorControl_AMLPIDSetup
- *fill*         0x08000cb2        0x2 
+                0x08000d84        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000d84                AML_MotorControl_AMLPIDSetup
+ *fill*         0x08000d92        0x2 
  .text.AML_MotorControl_Setup
-                0x08000cb4       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000cb4                AML_MotorControl_Setup
+                0x08000d94       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000d94                AML_MotorControl_Setup
  .text.AML_MotorControl_LeftPWM
-                0x08000cdc       0xd4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000cdc                AML_MotorControl_LeftPWM
+                0x08000dbc       0xd4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000dbc                AML_MotorControl_LeftPWM
  .text.AML_MotorControl_RightPWM
-                0x08000db0       0xdc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000db0                AML_MotorControl_RightPWM
+                0x08000e90       0xdc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000e90                AML_MotorControl_RightPWM
  .text.AML_MotorControl_Move
-                0x08000e8c       0x1e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000e8c                AML_MotorControl_Move
+                0x08000f6c       0x1e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000f6c                AML_MotorControl_Move
  .text.AML_MotorControl_Stop
-                0x08000eaa       0x10 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000eaa                AML_MotorControl_Stop
- *fill*         0x08000eba        0x6 
+                0x08000f8a       0x10 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000f8a                AML_MotorControl_Stop
+ *fill*         0x08000f9a        0x6 
  .text.AML_MotorControl_LeftMotorSpeed
-                0x08000ec0       0x84 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                0x08000ec0                AML_MotorControl_LeftMotorSpeed
+                0x08000fa0       0x8c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x08000fa0                AML_MotorControl_LeftMotorSpeed
  .text.AML_PID_Compute
-                0x08000f44      0x212 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
-                0x08000f44                AML_PID_Compute
- *fill*         0x08001156        0x2 
- .text.AML_ReadAll_BitSwitch
-                0x08001158       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x08001158                AML_ReadAll_BitSwitch
- .text.AML_ReadAll_Button
-                0x080011a8       0x5c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x080011a8                AML_ReadAll_Button
+                0x0800102c      0x212 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+                0x0800102c                AML_PID_Compute
+ *fill*         0x0800123e        0x2 
  .text.AML_Read_Button
-                0x08001204       0x3c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x08001204                AML_Read_Button
- .text.main     0x08001240      0x134 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x08001240                main
+                0x08001240       0x3c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                0x08001240                AML_Read_Button
+ .text.HAL_TIM_PeriodElapsedCallback
+                0x0800127c       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x0800127c                HAL_TIM_PeriodElapsedCallback
+ .text.main     0x080012a4      0x124 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x080012a4                main
  .text.SystemClock_Config
-                0x08001374      0x15c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x08001374                SystemClock_Config
+                0x080013c8      0x15c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x080013c8                SystemClock_Config
  .text.MX_ADC2_Init
-                0x080014d0      0x1a8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001524      0x1a8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_TIM1_Init
-                0x08001678      0x138 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x080016cc      0x138 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_TIM2_Init
-                0x080017b0       0xa8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001804       0xa8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_TIM3_Init
-                0x08001858       0xb8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x080018ac       0xb8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_TIM5_Init
-                0x08001910       0xac CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001964       0xac CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_TIM7_Init
-                0x080019bc       0x6c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001a10       0x6c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_USART1_UART_Init
-                0x08001a28       0x98 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001a7c       0x98 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_DMA_Init
-                0x08001ac0       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001b14       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MX_GPIO_Init
-                0x08001b00      0x160 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001b54      0x160 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.MPU_Config
-                0x08001c60       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001cb4       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .text.Error_Handler
-                0x08001cb8        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x08001cb8                Error_Handler
+                0x08001d0c        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x08001d0c                Error_Handler
  .text.HAL_MspInit
-                0x08001cc4       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x08001cc4                HAL_MspInit
+                0x08001d18       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x08001d18                HAL_MspInit
  .text.HAL_ADC_MspInit
-                0x08001cf8      0x178 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x08001cf8                HAL_ADC_MspInit
+                0x08001d4c      0x178 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x08001d4c                HAL_ADC_MspInit
  .text.HAL_TIM_PWM_MspInit
-                0x08001e70       0x74 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x08001e70                HAL_TIM_PWM_MspInit
+                0x08001ec4       0x74 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x08001ec4                HAL_TIM_PWM_MspInit
  .text.HAL_TIM_Encoder_MspInit
-                0x08001ee4      0x140 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x08001ee4                HAL_TIM_Encoder_MspInit
+                0x08001f38      0x140 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x08001f38                HAL_TIM_Encoder_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x08002024       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x08002024                HAL_TIM_Base_MspInit
+                0x08002078       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x08002078                HAL_TIM_Base_MspInit
  .text.HAL_TIM_MspPostInit
-                0x08002074       0xc8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x08002074                HAL_TIM_MspPostInit
+                0x080020c8       0xc8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x080020c8                HAL_TIM_MspPostInit
  .text.HAL_UART_MspInit
-                0x0800213c      0x148 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
-                0x0800213c                HAL_UART_MspInit
+                0x08002190      0x148 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x08002190                HAL_UART_MspInit
  .text.NMI_Handler
-                0x08002284        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x08002284                NMI_Handler
+                0x080022d8        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x080022d8                NMI_Handler
  .text.HardFault_Handler
-                0x0800228c        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x0800228c                HardFault_Handler
+                0x080022e0        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x080022e0                HardFault_Handler
  .text.MemManage_Handler
-                0x08002294        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x08002294                MemManage_Handler
+                0x080022e8        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x080022e8                MemManage_Handler
  .text.BusFault_Handler
-                0x0800229c        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x0800229c                BusFault_Handler
+                0x080022f0        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x080022f0                BusFault_Handler
  .text.UsageFault_Handler
-                0x080022a4        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022a4                UsageFault_Handler
+                0x080022f8        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x080022f8                UsageFault_Handler
  .text.SVC_Handler
-                0x080022ac        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022ac                SVC_Handler
+                0x08002300        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x08002300                SVC_Handler
  .text.DebugMon_Handler
-                0x080022ba        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022ba                DebugMon_Handler
+                0x0800230e        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x0800230e                DebugMon_Handler
  .text.PendSV_Handler
-                0x080022c8        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022c8                PendSV_Handler
+                0x0800231c        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x0800231c                PendSV_Handler
  .text.SysTick_Handler
-                0x080022d6        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022d6                SysTick_Handler
- *fill*         0x080022e2        0x2 
+                0x0800232a        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x0800232a                SysTick_Handler
+ *fill*         0x08002336        0x2 
  .text.DMA1_Stream0_IRQHandler
-                0x080022e4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022e4                DMA1_Stream0_IRQHandler
+                0x08002338       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x08002338                DMA1_Stream0_IRQHandler
  .text.ADC_IRQHandler
-                0x080022f8       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x080022f8                ADC_IRQHandler
+                0x0800234c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x0800234c                ADC_IRQHandler
  .text.USART1_IRQHandler
-                0x0800230c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x0800230c                USART1_IRQHandler
+                0x08002360       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x08002360                USART1_IRQHandler
  .text.TIM7_IRQHandler
-                0x08002320       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
-                0x08002320                TIM7_IRQHandler
+                0x08002374       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x08002374                TIM7_IRQHandler
  .text.SystemInit
-                0x08002334      0x110 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
-                0x08002334                SystemInit
+                0x08002388      0x110 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+                0x08002388                SystemInit
  .text.LL_ADC_SetCommonClock
-                0x08002444       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002498       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_SetCommonPathInternalCh
-                0x0800246a       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080024be       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_GetCommonPathInternalCh
-                0x08002490       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080024e4       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_SetOffset
-                0x080024ac       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002500       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_SetDataRightShift
-                0x080024ec       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002540       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_SetOffsetSignedSaturation
-                0x0800251e       0x36 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002572       0x36 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_REG_IsTriggerSourceSWStart
-                0x08002554       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080025a8       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_REG_SetSequencerRanks
-                0x0800257a       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080025ce       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_INJ_IsTriggerSourceSWStart
-                0x080025d2       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002626       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_SetChannelSamplingTime
-                0x080025f8       0x56 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- *fill*         0x0800264e        0x2 
+                0x0800264c       0x56 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ *fill*         0x080026a2        0x2 
  .text.LL_ADC_SetChannelSingleDiff
-                0x08002650       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080026a4       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_GetMultimode
-                0x08002698       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080026ec       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_GetMultiDMATransfer
-                0x080026b4       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002708       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_DisableDeepPowerDown
-                0x080026d0       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002724       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_IsDeepPowerDownEnabled
-                0x080026f4       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002748       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_EnableInternalRegulator
-                0x0800271c       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002770       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_IsInternalRegulatorEnabled
-                0x08002744       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002798       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_Enable
-                0x0800276c       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080027c0       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_IsEnabled
-                0x08002794       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- *fill*         0x080027ba        0x2 
+                0x080027e8       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ *fill*         0x0800280e        0x2 
  .text.LL_ADC_REG_StartConversion
-                0x080027bc       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002810       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_REG_IsConversionOngoing
-                0x080027e4       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002838       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.LL_ADC_INJ_IsConversionOngoing
-                0x0800280a       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x0800285e       0x26 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .text.HAL_ADC_Init
-                0x08002830      0x344 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08002830                HAL_ADC_Init
+                0x08002884      0x344 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002884                HAL_ADC_Init
  .text.HAL_ADC_Start_IT
-                0x08002b74      0x27c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08002b74                HAL_ADC_Start_IT
+                0x08002bc8      0x27c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002bc8                HAL_ADC_Start_IT
  .text.HAL_ADC_GetValue
-                0x08002df0       0x1a CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08002df0                HAL_ADC_GetValue
- *fill*         0x08002e0a        0x2 
+                0x08002e44       0x1a CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002e44                HAL_ADC_GetValue
+ *fill*         0x08002e5e        0x2 
  .text.HAL_ADC_IRQHandler
-                0x08002e0c      0x474 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08002e0c                HAL_ADC_IRQHandler
+                0x08002e60      0x474 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08002e60                HAL_ADC_IRQHandler
  .text.HAL_ADC_LevelOutOfWindowCallback
-                0x08003280       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08003280                HAL_ADC_LevelOutOfWindowCallback
+                0x080032d4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080032d4                HAL_ADC_LevelOutOfWindowCallback
  .text.HAL_ADC_ErrorCallback
-                0x08003294       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08003294                HAL_ADC_ErrorCallback
+                0x080032e8       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080032e8                HAL_ADC_ErrorCallback
  .text.HAL_ADC_ConfigChannel
-                0x080032a8      0x6b8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x080032a8                HAL_ADC_ConfigChannel
+                0x080032fc      0x6b8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080032fc                HAL_ADC_ConfigChannel
  .text.ADC_Enable
-                0x08003960      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08003960                ADC_Enable
+                0x080039b4      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x080039b4                ADC_Enable
  .text.ADC_ConfigureBoostMode
-                0x08003a74      0x218 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
-                0x08003a74                ADC_ConfigureBoostMode
+                0x08003ac8      0x218 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x08003ac8                ADC_ConfigureBoostMode
  .text.HAL_ADCEx_InjectedConvCpltCallback
-                0x08003c8c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
-                0x08003c8c                HAL_ADCEx_InjectedConvCpltCallback
+                0x08003ce0       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x08003ce0                HAL_ADCEx_InjectedConvCpltCallback
  .text.HAL_ADCEx_InjectedQueueOverflowCallback
-                0x08003ca0       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
-                0x08003ca0                HAL_ADCEx_InjectedQueueOverflowCallback
+                0x08003cf4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x08003cf4                HAL_ADCEx_InjectedQueueOverflowCallback
  .text.HAL_ADCEx_LevelOutOfWindow2Callback
-                0x08003cb4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
-                0x08003cb4                HAL_ADCEx_LevelOutOfWindow2Callback
+                0x08003d08       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x08003d08                HAL_ADCEx_LevelOutOfWindow2Callback
  .text.HAL_ADCEx_LevelOutOfWindow3Callback
-                0x08003cc8       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
-                0x08003cc8                HAL_ADCEx_LevelOutOfWindow3Callback
+                0x08003d1c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x08003d1c                HAL_ADCEx_LevelOutOfWindow3Callback
  .text.HAL_ADCEx_EndOfSamplingCallback
-                0x08003cdc       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
-                0x08003cdc                HAL_ADCEx_EndOfSamplingCallback
+                0x08003d30       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x08003d30                HAL_ADCEx_EndOfSamplingCallback
  .text.HAL_RCC_OscConfig
-                0x08003cf0      0x8b4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
-                0x08003cf0                HAL_RCC_OscConfig
+                0x08003d44      0x8b4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x08003d44                HAL_RCC_OscConfig
  .text.HAL_RCC_ClockConfig
-                0x080045a4      0x36c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
-                0x080045a4                HAL_RCC_ClockConfig
+                0x080045f8      0x36c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x080045f8                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08004910      0x2f4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
-                0x08004910                HAL_RCC_GetSysClockFreq
+                0x08004964      0x2f4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x08004964                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_GetHCLKFreq
-                0x08004c04       0x60 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
-                0x08004c04                HAL_RCC_GetHCLKFreq
+                0x08004c58       0x60 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x08004c58                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08004c64       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
-                0x08004c64                HAL_RCC_GetPCLK1Freq
+                0x08004cb8       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x08004cb8                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_GetPCLK2Freq
-                0x08004c90       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
-                0x08004c90                HAL_RCC_GetPCLK2Freq
+                0x08004ce4       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x08004ce4                HAL_RCC_GetPCLK2Freq
  .text.HAL_RCCEx_PeriphCLKConfig
-                0x08004cbc     0x1414 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
-                0x08004cbc                HAL_RCCEx_PeriphCLKConfig
+                0x08004d10     0x1414 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x08004d10                HAL_RCCEx_PeriphCLKConfig
  .text.HAL_RCCEx_GetPeriphCLKFreq
-                0x080060d0      0xb00 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
-                0x080060d0                HAL_RCCEx_GetPeriphCLKFreq
+                0x08006124      0xb00 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x08006124                HAL_RCCEx_GetPeriphCLKFreq
  .text.HAL_RCCEx_GetD3PCLK1Freq
-                0x08006bd0       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
-                0x08006bd0                HAL_RCCEx_GetD3PCLK1Freq
+                0x08006c24       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x08006c24                HAL_RCCEx_GetD3PCLK1Freq
  .text.HAL_RCCEx_GetPLL2ClockFreq
-                0x08006bfc      0x2a8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
-                0x08006bfc                HAL_RCCEx_GetPLL2ClockFreq
+                0x08006c50      0x2a8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x08006c50                HAL_RCCEx_GetPLL2ClockFreq
  .text.HAL_RCCEx_GetPLL3ClockFreq
-                0x08006ea4      0x2a8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
-                0x08006ea4                HAL_RCCEx_GetPLL3ClockFreq
+                0x08006ef8      0x2a8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x08006ef8                HAL_RCCEx_GetPLL3ClockFreq
  .text.HAL_RCCEx_GetPLL1ClockFreq
-                0x0800714c      0x2a4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
-                0x0800714c                HAL_RCCEx_GetPLL1ClockFreq
+                0x080071a0      0x2a4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x080071a0                HAL_RCCEx_GetPLL1ClockFreq
  .text.RCCEx_PLL2_Config
-                0x080073f0      0x164 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x08007444      0x164 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
  .text.RCCEx_PLL3_Config
-                0x08007554      0x164 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x080075a8      0x164 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
  .text.HAL_GPIO_Init
-                0x080076b8      0x360 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
-                0x080076b8                HAL_GPIO_Init
+                0x0800770c      0x360 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+                0x0800770c                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x08007a18       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
-                0x08007a18                HAL_GPIO_ReadPin
+                0x08007a6c       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+                0x08007a6c                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x08007a48       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
-                0x08007a48                HAL_GPIO_WritePin
- *fill*         0x08007a7a        0x2 
+                0x08007a9c       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+                0x08007a9c                HAL_GPIO_WritePin
+ *fill*         0x08007ace        0x2 
  .text.HAL_DMA_Init
-                0x08007a7c      0x6b8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
-                0x08007a7c                HAL_DMA_Init
+                0x08007ad0      0x6b8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x08007ad0                HAL_DMA_Init
  .text.HAL_DMA_Start_IT
-                0x08008134      0x4d4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
-                0x08008134                HAL_DMA_Start_IT
+                0x08008188      0x4d4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x08008188                HAL_DMA_Start_IT
  .text.HAL_DMA_Abort
-                0x08008608      0x63c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
-                0x08008608                HAL_DMA_Abort
+                0x0800865c      0x63c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x0800865c                HAL_DMA_Abort
  .text.HAL_DMA_Abort_IT
-                0x08008c44      0x48c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
-                0x08008c44                HAL_DMA_Abort_IT
+                0x08008c98      0x48c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x08008c98                HAL_DMA_Abort_IT
  .text.HAL_DMA_IRQHandler
-                0x080090d0      0xe54 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
-                0x080090d0                HAL_DMA_IRQHandler
+                0x08009124      0xe54 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x08009124                HAL_DMA_IRQHandler
  .text.HAL_DMA_GetError
-                0x08009f24       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
-                0x08009f24                HAL_DMA_GetError
+                0x08009f78       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x08009f78                HAL_DMA_GetError
  .text.DMA_SetConfig
-                0x08009f3c      0x358 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x08009f90      0x358 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .text.DMA_CalcBaseAndBitshift
-                0x0800a294      0x164 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x0800a2e8      0x164 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .text.DMA_CheckFifoParam
-                0x0800a3f8       0xf8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x0800a44c       0xf8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .text.DMA_CalcDMAMUXChannelBaseAndMask
-                0x0800a4f0      0x134 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x0800a544      0x134 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .text.DMA_CalcDMAMUXRequestGenBaseAndMask
-                0x0800a624       0xe8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x0800a678       0xe8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .text.HAL_PWREx_ConfigSupply
-                0x0800a70c       0x74 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
-                0x0800a70c                HAL_PWREx_ConfigSupply
+                0x0800a760       0x74 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+                0x0800a760                HAL_PWREx_ConfigSupply
  .text.__NVIC_SetPriorityGrouping
-                0x0800a780       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a7d4       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .text.__NVIC_GetPriorityGrouping
-                0x0800a7c8       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a81c       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .text.__NVIC_EnableIRQ
-                0x0800a7e4       0x3c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a838       0x3c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .text.__NVIC_SetPriority
-                0x0800a820       0x54 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a874       0x54 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .text.NVIC_EncodePriority
-                0x0800a874       0x66 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
- *fill*         0x0800a8da        0x2 
+                0x0800a8c8       0x66 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ *fill*         0x0800a92e        0x2 
  .text.SysTick_Config
-                0x0800a8dc       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a930       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .text.HAL_NVIC_SetPriorityGrouping
-                0x0800a920       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800a920                HAL_NVIC_SetPriorityGrouping
+                0x0800a974       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a974                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x0800a936       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800a936                HAL_NVIC_SetPriority
+                0x0800a98a       0x34 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a98a                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x0800a96a       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800a96a                HAL_NVIC_EnableIRQ
+                0x0800a9be       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a9be                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x0800a986       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800a986                HAL_SYSTICK_Config
- *fill*         0x0800a99e        0x2 
+                0x0800a9da       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a9da                HAL_SYSTICK_Config
+ *fill*         0x0800a9f2        0x2 
  .text.HAL_MPU_Disable
-                0x0800a9a0       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800a9a0                HAL_MPU_Disable
+                0x0800a9f4       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800a9f4                HAL_MPU_Disable
  .text.HAL_MPU_Enable
-                0x0800a9d0       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800a9d0                HAL_MPU_Enable
+                0x0800aa24       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800aa24                HAL_MPU_Enable
  .text.HAL_MPU_ConfigRegion
-                0x0800aa10       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
-                0x0800aa10                HAL_MPU_ConfigRegion
+                0x0800aa64       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x0800aa64                HAL_MPU_ConfigRegion
  .text.HAL_Init
-                0x0800aa90       0x78 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x0800aa90                HAL_Init
+                0x0800aae4       0x78 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x0800aae4                HAL_Init
  .text.HAL_InitTick
-                0x0800ab08       0x6c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x0800ab08                HAL_InitTick
+                0x0800ab5c       0x6c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x0800ab5c                HAL_InitTick
  .text.HAL_IncTick
-                0x0800ab74       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x0800ab74                HAL_IncTick
+                0x0800abc8       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x0800abc8                HAL_IncTick
  .text.HAL_GetTick
-                0x0800ab9c       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x0800ab9c                HAL_GetTick
+                0x0800abf0       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x0800abf0                HAL_GetTick
  .text.HAL_Delay
-                0x0800abb4       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x0800abb4                HAL_Delay
+                0x0800ac08       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x0800ac08                HAL_Delay
  .text.HAL_GetREVID
-                0x0800abfc       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x0800abfc                HAL_GetREVID
+                0x0800ac50       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x0800ac50                HAL_GetREVID
  .text.HAL_TIM_Base_Init
-                0x0800ac14       0xae CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800ac14                HAL_TIM_Base_Init
- *fill*         0x0800acc2        0x2 
+                0x0800ac68       0xae CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800ac68                HAL_TIM_Base_Init
+ *fill*         0x0800ad16        0x2 
  .text.HAL_TIM_Base_Start
-                0x0800acc4       0xe0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800acc4                HAL_TIM_Base_Start
- .text.HAL_TIM_Base_Start_IT
-                0x0800ada4       0xf0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800ada4                HAL_TIM_Base_Start_IT
+                0x0800ad18       0xe0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800ad18                HAL_TIM_Base_Start
  .text.HAL_TIM_Base_Stop_IT
-                0x0800ae94       0x5e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800ae94                HAL_TIM_Base_Stop_IT
+                0x0800adf8       0x5e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800adf8                HAL_TIM_Base_Stop_IT
  .text.HAL_TIM_PWM_Init
-                0x0800aef2       0xae CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800aef2                HAL_TIM_PWM_Init
+                0x0800ae56       0xae CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800ae56                HAL_TIM_PWM_Init
  .text.HAL_TIM_PWM_Start
-                0x0800afa0      0x21c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800afa0                HAL_TIM_PWM_Start
+                0x0800af04      0x21c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800af04                HAL_TIM_PWM_Start
  .text.HAL_TIM_PWM_Stop
-                0x0800b1bc      0x12c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b1bc                HAL_TIM_PWM_Stop
+                0x0800b120      0x12c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b120                HAL_TIM_PWM_Stop
  .text.HAL_TIM_Encoder_Init
-                0x0800b2e8      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b2e8                HAL_TIM_Encoder_Init
+                0x0800b24c      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b24c                HAL_TIM_Encoder_Init
  .text.HAL_TIM_Encoder_Start
-                0x0800b434      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b434                HAL_TIM_Encoder_Start
+                0x0800b398      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b398                HAL_TIM_Encoder_Start
  .text.HAL_TIM_IRQHandler
-                0x0800b550      0x20e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b550                HAL_TIM_IRQHandler
- *fill*         0x0800b75e        0x2 
+                0x0800b4b4      0x20e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b4b4                HAL_TIM_IRQHandler
+ *fill*         0x0800b6c2        0x2 
  .text.HAL_TIM_PWM_ConfigChannel
-                0x0800b760      0x228 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b760                HAL_TIM_PWM_ConfigChannel
+                0x0800b6c4      0x228 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b6c4                HAL_TIM_PWM_ConfigChannel
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x0800b988       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b988                HAL_TIM_OC_DelayElapsedCallback
+                0x0800b8ec       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b8ec                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x0800b99c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b99c                HAL_TIM_IC_CaptureCallback
+                0x0800b900       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b900                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x0800b9b0       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b9b0                HAL_TIM_PWM_PulseFinishedCallback
+                0x0800b914       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b914                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x0800b9c4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b9c4                HAL_TIM_TriggerCallback
+                0x0800b928       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b928                HAL_TIM_TriggerCallback
  .text.TIM_Base_SetConfig
-                0x0800b9d8      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800b9d8                TIM_Base_SetConfig
+                0x0800b93c      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800b93c                TIM_Base_SetConfig
  .text.TIM_OC1_SetConfig
-                0x0800bb24      0x120 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800ba88      0x120 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.TIM_OC2_SetConfig
-                0x0800bc44      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800bc44                TIM_OC2_SetConfig
+                0x0800bba8      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800bba8                TIM_OC2_SetConfig
  .text.TIM_OC3_SetConfig
-                0x0800bd58      0x110 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800bcbc      0x110 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.TIM_OC4_SetConfig
-                0x0800be68       0xd4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800bdcc       0xd4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.TIM_OC5_SetConfig
-                0x0800bf3c       0xc8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800bea0       0xc8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.TIM_OC6_SetConfig
-                0x0800c004       0xcc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800bf68       0xcc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .text.TIM_CCxChannelCmd
-                0x0800c0d0       0x4a CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
-                0x0800c0d0                TIM_CCxChannelCmd
- *fill*         0x0800c11a        0x2 
+                0x0800c034       0x4a CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x0800c034                TIM_CCxChannelCmd
+ *fill*         0x0800c07e        0x2 
  .text.HAL_TIMEx_MasterConfigSynchronization
-                0x0800c11c      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
-                0x0800c11c                HAL_TIMEx_MasterConfigSynchronization
+                0x0800c080      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x0800c080                HAL_TIMEx_MasterConfigSynchronization
  .text.HAL_TIMEx_ConfigBreakDeadTime
-                0x0800c238       0xfc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
-                0x0800c238                HAL_TIMEx_ConfigBreakDeadTime
+                0x0800c19c       0xfc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x0800c19c                HAL_TIMEx_ConfigBreakDeadTime
  .text.HAL_TIMEx_CommutCallback
-                0x0800c334       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
-                0x0800c334                HAL_TIMEx_CommutCallback
+                0x0800c298       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x0800c298                HAL_TIMEx_CommutCallback
  .text.HAL_TIMEx_BreakCallback
-                0x0800c348       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
-                0x0800c348                HAL_TIMEx_BreakCallback
+                0x0800c2ac       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x0800c2ac                HAL_TIMEx_BreakCallback
  .text.HAL_TIMEx_Break2Callback
-                0x0800c35c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
-                0x0800c35c                HAL_TIMEx_Break2Callback
+                0x0800c2c0       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x0800c2c0                HAL_TIMEx_Break2Callback
  .text.HAL_UART_Init
-                0x0800c370       0xa0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800c370                HAL_UART_Init
+                0x0800c2d4       0xa0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800c2d4                HAL_UART_Init
  .text.HAL_UART_Transmit
-                0x0800c410      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800c410                HAL_UART_Transmit
+                0x0800c374      0x11c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800c374                HAL_UART_Transmit
  .text.HAL_UART_Receive
-                0x0800c52c      0x190 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800c52c                HAL_UART_Receive
+                0x0800c490      0x190 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800c490                HAL_UART_Receive
  .text.HAL_UART_Receive_DMA
-                0x0800c6bc       0x98 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800c6bc                HAL_UART_Receive_DMA
+                0x0800c620       0x98 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800c620                HAL_UART_Receive_DMA
  .text.HAL_UART_DMAStop
-                0x0800c754      0x12c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800c754                HAL_UART_DMAStop
+                0x0800c6b8      0x12c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800c6b8                HAL_UART_DMAStop
  .text.HAL_UART_IRQHandler
-                0x0800c880      0x774 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800c880                HAL_UART_IRQHandler
+                0x0800c7e4      0x774 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800c7e4                HAL_UART_IRQHandler
  .text.HAL_UART_TxCpltCallback
-                0x0800cff4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800cff4                HAL_UART_TxCpltCallback
+                0x0800cf58       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800cf58                HAL_UART_TxCpltCallback
  .text.HAL_UART_RxHalfCpltCallback
-                0x0800d008       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800d008                HAL_UART_RxHalfCpltCallback
+                0x0800cf6c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800cf6c                HAL_UART_RxHalfCpltCallback
  .text.HAL_UART_ErrorCallback
-                0x0800d01c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800d01c                HAL_UART_ErrorCallback
+                0x0800cf80       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800cf80                HAL_UART_ErrorCallback
  .text.HAL_UARTEx_RxEventCallback
-                0x0800d030       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800d030                HAL_UARTEx_RxEventCallback
+                0x0800cf94       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800cf94                HAL_UARTEx_RxEventCallback
  .text.UART_SetConfig
-                0x0800d048      0xad0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800d048                UART_SetConfig
+                0x0800cfac      0xad0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800cfac                UART_SetConfig
  .text.UART_AdvFeatureConfig
-                0x0800db18      0x144 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800db18                UART_AdvFeatureConfig
+                0x0800da7c      0x144 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800da7c                UART_AdvFeatureConfig
  .text.UART_CheckIdleState
-                0x0800dc5c      0x154 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800dc5c                UART_CheckIdleState
+                0x0800dbc0      0x154 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800dbc0                UART_CheckIdleState
  .text.UART_WaitOnFlagUntilTimeout
-                0x0800ddb0       0xda CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800ddb0                UART_WaitOnFlagUntilTimeout
- *fill*         0x0800de8a        0x2 
+                0x0800dd14       0xda CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800dd14                UART_WaitOnFlagUntilTimeout
+ *fill*         0x0800ddee        0x2 
  .text.UART_Start_Receive_DMA
-                0x0800de8c      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800de8c                UART_Start_Receive_DMA
+                0x0800ddf0      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800ddf0                UART_Start_Receive_DMA
  .text.UART_EndTxTransfer
-                0x0800dfd8       0x82 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
- *fill*         0x0800e05a        0x2 
+                0x0800df3c       0x82 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ *fill*         0x0800dfbe        0x2 
  .text.UART_EndRxTransfer
-                0x0800e05c       0xcc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800dfc0       0xcc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .text.UART_DMAReceiveCplt
-                0x0800e128      0x128 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800e08c      0x128 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .text.UART_DMARxHalfCplt
-                0x0800e250       0x3e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800e1b4       0x3e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .text.UART_DMAError
-                0x0800e28e       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800e1f2       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .text.UART_DMAAbortOnError
-                0x0800e30e       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800e272       0x2c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .text.UART_EndTransmit_IT
-                0x0800e33a       0x56 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800e29e       0x56 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .text.HAL_UARTEx_WakeupCallback
-                0x0800e390       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
-                0x0800e390                HAL_UARTEx_WakeupCallback
+                0x0800e2f4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e2f4                HAL_UARTEx_WakeupCallback
  .text.HAL_UARTEx_RxFifoFullCallback
-                0x0800e3a4       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
-                0x0800e3a4                HAL_UARTEx_RxFifoFullCallback
+                0x0800e308       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e308                HAL_UARTEx_RxFifoFullCallback
  .text.HAL_UARTEx_TxFifoEmptyCallback
-                0x0800e3b8       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
-                0x0800e3b8                HAL_UARTEx_TxFifoEmptyCallback
+                0x0800e31c       0x14 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e31c                HAL_UARTEx_TxFifoEmptyCallback
  .text.HAL_UARTEx_DisableFifoMode
-                0x0800e3cc       0x72 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
-                0x0800e3cc                HAL_UARTEx_DisableFifoMode
+                0x0800e330       0x72 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e330                HAL_UARTEx_DisableFifoMode
  .text.HAL_UARTEx_SetTxFifoThreshold
-                0x0800e43e       0x7c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
-                0x0800e43e                HAL_UARTEx_SetTxFifoThreshold
+                0x0800e3a2       0x7c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e3a2                HAL_UARTEx_SetTxFifoThreshold
  .text.HAL_UARTEx_SetRxFifoThreshold
-                0x0800e4ba       0x7c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
-                0x0800e4ba                HAL_UARTEx_SetRxFifoThreshold
- *fill*         0x0800e536        0x2 
+                0x0800e41e       0x7c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e41e                HAL_UARTEx_SetRxFifoThreshold
+ *fill*         0x0800e49a        0x2 
  .text.UARTEx_SetNbDataToProcess
-                0x0800e538       0x9c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800e49c       0x9c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
  .text.Reset_Handler
-                0x0800e5d4       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
-                0x0800e5d4                Reset_Handler
+                0x0800e538       0x50 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+                0x0800e538                Reset_Handler
  .text.Default_Handler
-                0x0800e624        0x2 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
-                0x0800e624                RTC_Alarm_IRQHandler
-                0x0800e624                EXTI2_IRQHandler
-                0x0800e624                TIM8_CC_IRQHandler
-                0x0800e624                HRTIM1_Master_IRQHandler
-                0x0800e624                UART8_IRQHandler
-                0x0800e624                SPI4_IRQHandler
-                0x0800e624                TIM1_CC_IRQHandler
-                0x0800e624                BDMA_Channel6_IRQHandler
-                0x0800e624                DMA2_Stream5_IRQHandler
-                0x0800e624                HRTIM1_FLT_IRQHandler
-                0x0800e624                JPEG_IRQHandler
-                0x0800e624                DMA1_Stream5_IRQHandler
-                0x0800e624                BDMA_Channel1_IRQHandler
-                0x0800e624                HRTIM1_TIMD_IRQHandler
-                0x0800e624                TAMP_STAMP_IRQHandler
-                0x0800e624                EXTI3_IRQHandler
-                0x0800e624                LPTIM4_IRQHandler
-                0x0800e624                TIM8_TRG_COM_TIM14_IRQHandler
-                0x0800e624                LPTIM2_IRQHandler
-                0x0800e624                DFSDM1_FLT1_IRQHandler
-                0x0800e624                DMAMUX2_OVR_IRQHandler
-                0x0800e624                TIM8_UP_TIM13_IRQHandler
-                0x0800e624                I2C3_ER_IRQHandler
-                0x0800e624                DFSDM1_FLT2_IRQHandler
-                0x0800e624                MDMA_IRQHandler
-                0x0800e624                LPTIM3_IRQHandler
-                0x0800e624                HSEM1_IRQHandler
-                0x0800e624                EXTI0_IRQHandler
-                0x0800e624                I2C2_EV_IRQHandler
-                0x0800e624                DMA1_Stream2_IRQHandler
-                0x0800e624                FPU_IRQHandler
-                0x0800e624                OTG_HS_WKUP_IRQHandler
-                0x0800e624                FDCAN1_IT1_IRQHandler
-                0x0800e624                LTDC_ER_IRQHandler
-                0x0800e624                DMA2_Stream2_IRQHandler
-                0x0800e624                HRTIM1_TIME_IRQHandler
-                0x0800e624                SPI1_IRQHandler
-                0x0800e624                TIM6_DAC_IRQHandler
-                0x0800e624                DCMI_IRQHandler
-                0x0800e624                HRTIM1_TIMC_IRQHandler
-                0x0800e624                DMA2_Stream3_IRQHandler
-                0x0800e624                SAI2_IRQHandler
-                0x0800e624                DFSDM1_FLT3_IRQHandler
-                0x0800e624                USART6_IRQHandler
-                0x0800e624                TIM17_IRQHandler
-                0x0800e624                USART3_IRQHandler
-                0x0800e624                BDMA_Channel7_IRQHandler
-                0x0800e624                LPTIM5_IRQHandler
-                0x0800e624                UART5_IRQHandler
-                0x0800e624                ADC3_IRQHandler
-                0x0800e624                DMA2_Stream0_IRQHandler
-                0x0800e624                TIM4_IRQHandler
-                0x0800e624                BDMA_Channel2_IRQHandler
-                0x0800e624                QUADSPI_IRQHandler
-                0x0800e624                I2C1_EV_IRQHandler
-                0x0800e624                DMA1_Stream6_IRQHandler
-                0x0800e624                DMAMUX1_OVR_IRQHandler
-                0x0800e624                DMA1_Stream1_IRQHandler
-                0x0800e624                TIM16_IRQHandler
-                0x0800e624                UART4_IRQHandler
-                0x0800e624                BDMA_Channel5_IRQHandler
-                0x0800e624                TIM3_IRQHandler
-                0x0800e624                RCC_IRQHandler
-                0x0800e624                TIM8_BRK_TIM12_IRQHandler
-                0x0800e624                TIM1_TRG_COM_IRQHandler
-                0x0800e624                Default_Handler
-                0x0800e624                ECC_IRQHandler
-                0x0800e624                CEC_IRQHandler
-                0x0800e624                EXTI15_10_IRQHandler
-                0x0800e624                BDMA_Channel0_IRQHandler
-                0x0800e624                DMA1_Stream7_IRQHandler
-                0x0800e624                HRTIM1_TIMA_IRQHandler
-                0x0800e624                SPI5_IRQHandler
-                0x0800e624                SDMMC1_IRQHandler
-                0x0800e624                TIM5_IRQHandler
-                0x0800e624                DMA2_Stream7_IRQHandler
-                0x0800e624                TIM15_IRQHandler
-                0x0800e624                PVD_AVD_IRQHandler
-                0x0800e624                I2C3_EV_IRQHandler
-                0x0800e624                EXTI9_5_IRQHandler
-                0x0800e624                RTC_WKUP_IRQHandler
-                0x0800e624                LTDC_IRQHandler
-                0x0800e624                SAI3_IRQHandler
-                0x0800e624                ETH_WKUP_IRQHandler
-                0x0800e624                SPDIF_RX_IRQHandler
-                0x0800e624                SPI2_IRQHandler
-                0x0800e624                OTG_HS_EP1_IN_IRQHandler
-                0x0800e624                CRS_IRQHandler
-                0x0800e624                EXTI4_IRQHandler
-                0x0800e624                RNG_IRQHandler
-                0x0800e624                HRTIM1_TIMB_IRQHandler
-                0x0800e624                FDCAN2_IT1_IRQHandler
-                0x0800e624                ETH_IRQHandler
-                0x0800e624                TIM1_UP_IRQHandler
-                0x0800e624                BDMA_Channel4_IRQHandler
-                0x0800e624                OTG_HS_EP1_OUT_IRQHandler
-                0x0800e624                WWDG_IRQHandler
-                0x0800e624                SPI6_IRQHandler
-                0x0800e624                MDIOS_IRQHandler
-                0x0800e624                I2C4_EV_IRQHandler
-                0x0800e624                FDCAN2_IT0_IRQHandler
-                0x0800e624                LPUART1_IRQHandler
-                0x0800e624                FDCAN1_IT0_IRQHandler
-                0x0800e624                TIM2_IRQHandler
-                0x0800e624                OTG_FS_WKUP_IRQHandler
-                0x0800e624                OTG_HS_IRQHandler
-                0x0800e624                DMA2D_IRQHandler
-                0x0800e624                TIM1_BRK_IRQHandler
-                0x0800e624                EXTI1_IRQHandler
-                0x0800e624                SDMMC2_IRQHandler
-                0x0800e624                OTG_FS_EP1_OUT_IRQHandler
-                0x0800e624                BDMA_Channel3_IRQHandler
-                0x0800e624                UART7_IRQHandler
-                0x0800e624                MDIOS_WKUP_IRQHandler
-                0x0800e624                USART2_IRQHandler
-                0x0800e624                DFSDM1_FLT0_IRQHandler
-                0x0800e624                SAI4_IRQHandler
-                0x0800e624                I2C2_ER_IRQHandler
-                0x0800e624                DMA2_Stream1_IRQHandler
-                0x0800e624                FLASH_IRQHandler
-                0x0800e624                DMA2_Stream4_IRQHandler
-                0x0800e624                OTG_FS_IRQHandler
-                0x0800e624                SPI3_IRQHandler
-                0x0800e624                WAKEUP_PIN_IRQHandler
-                0x0800e624                DMA1_Stream4_IRQHandler
-                0x0800e624                OTG_FS_EP1_IN_IRQHandler
-                0x0800e624                I2C1_ER_IRQHandler
-                0x0800e624                FMC_IRQHandler
-                0x0800e624                FDCAN_CAL_IRQHandler
-                0x0800e624                SWPMI1_IRQHandler
-                0x0800e624                COMP1_IRQHandler
-                0x0800e624                LPTIM1_IRQHandler
-                0x0800e624                I2C4_ER_IRQHandler
-                0x0800e624                DMA2_Stream6_IRQHandler
-                0x0800e624                SAI1_IRQHandler
-                0x0800e624                DMA1_Stream3_IRQHandler
- *fill*         0x0800e626        0x2 
- .text.__errno  0x0800e628        0xc D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
-                0x0800e628                __errno
+                0x0800e588        0x2 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+                0x0800e588                RTC_Alarm_IRQHandler
+                0x0800e588                EXTI2_IRQHandler
+                0x0800e588                TIM8_CC_IRQHandler
+                0x0800e588                HRTIM1_Master_IRQHandler
+                0x0800e588                UART8_IRQHandler
+                0x0800e588                SPI4_IRQHandler
+                0x0800e588                TIM1_CC_IRQHandler
+                0x0800e588                BDMA_Channel6_IRQHandler
+                0x0800e588                DMA2_Stream5_IRQHandler
+                0x0800e588                HRTIM1_FLT_IRQHandler
+                0x0800e588                JPEG_IRQHandler
+                0x0800e588                DMA1_Stream5_IRQHandler
+                0x0800e588                BDMA_Channel1_IRQHandler
+                0x0800e588                HRTIM1_TIMD_IRQHandler
+                0x0800e588                TAMP_STAMP_IRQHandler
+                0x0800e588                EXTI3_IRQHandler
+                0x0800e588                LPTIM4_IRQHandler
+                0x0800e588                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0800e588                LPTIM2_IRQHandler
+                0x0800e588                DFSDM1_FLT1_IRQHandler
+                0x0800e588                DMAMUX2_OVR_IRQHandler
+                0x0800e588                TIM8_UP_TIM13_IRQHandler
+                0x0800e588                I2C3_ER_IRQHandler
+                0x0800e588                DFSDM1_FLT2_IRQHandler
+                0x0800e588                MDMA_IRQHandler
+                0x0800e588                LPTIM3_IRQHandler
+                0x0800e588                HSEM1_IRQHandler
+                0x0800e588                EXTI0_IRQHandler
+                0x0800e588                I2C2_EV_IRQHandler
+                0x0800e588                DMA1_Stream2_IRQHandler
+                0x0800e588                FPU_IRQHandler
+                0x0800e588                OTG_HS_WKUP_IRQHandler
+                0x0800e588                FDCAN1_IT1_IRQHandler
+                0x0800e588                LTDC_ER_IRQHandler
+                0x0800e588                DMA2_Stream2_IRQHandler
+                0x0800e588                HRTIM1_TIME_IRQHandler
+                0x0800e588                SPI1_IRQHandler
+                0x0800e588                TIM6_DAC_IRQHandler
+                0x0800e588                DCMI_IRQHandler
+                0x0800e588                HRTIM1_TIMC_IRQHandler
+                0x0800e588                DMA2_Stream3_IRQHandler
+                0x0800e588                SAI2_IRQHandler
+                0x0800e588                DFSDM1_FLT3_IRQHandler
+                0x0800e588                USART6_IRQHandler
+                0x0800e588                TIM17_IRQHandler
+                0x0800e588                USART3_IRQHandler
+                0x0800e588                BDMA_Channel7_IRQHandler
+                0x0800e588                LPTIM5_IRQHandler
+                0x0800e588                UART5_IRQHandler
+                0x0800e588                ADC3_IRQHandler
+                0x0800e588                DMA2_Stream0_IRQHandler
+                0x0800e588                TIM4_IRQHandler
+                0x0800e588                BDMA_Channel2_IRQHandler
+                0x0800e588                QUADSPI_IRQHandler
+                0x0800e588                I2C1_EV_IRQHandler
+                0x0800e588                DMA1_Stream6_IRQHandler
+                0x0800e588                DMAMUX1_OVR_IRQHandler
+                0x0800e588                DMA1_Stream1_IRQHandler
+                0x0800e588                TIM16_IRQHandler
+                0x0800e588                UART4_IRQHandler
+                0x0800e588                BDMA_Channel5_IRQHandler
+                0x0800e588                TIM3_IRQHandler
+                0x0800e588                RCC_IRQHandler
+                0x0800e588                TIM8_BRK_TIM12_IRQHandler
+                0x0800e588                TIM1_TRG_COM_IRQHandler
+                0x0800e588                Default_Handler
+                0x0800e588                ECC_IRQHandler
+                0x0800e588                CEC_IRQHandler
+                0x0800e588                EXTI15_10_IRQHandler
+                0x0800e588                BDMA_Channel0_IRQHandler
+                0x0800e588                DMA1_Stream7_IRQHandler
+                0x0800e588                HRTIM1_TIMA_IRQHandler
+                0x0800e588                SPI5_IRQHandler
+                0x0800e588                SDMMC1_IRQHandler
+                0x0800e588                TIM5_IRQHandler
+                0x0800e588                DMA2_Stream7_IRQHandler
+                0x0800e588                TIM15_IRQHandler
+                0x0800e588                PVD_AVD_IRQHandler
+                0x0800e588                I2C3_EV_IRQHandler
+                0x0800e588                EXTI9_5_IRQHandler
+                0x0800e588                RTC_WKUP_IRQHandler
+                0x0800e588                LTDC_IRQHandler
+                0x0800e588                SAI3_IRQHandler
+                0x0800e588                ETH_WKUP_IRQHandler
+                0x0800e588                SPDIF_RX_IRQHandler
+                0x0800e588                SPI2_IRQHandler
+                0x0800e588                OTG_HS_EP1_IN_IRQHandler
+                0x0800e588                CRS_IRQHandler
+                0x0800e588                EXTI4_IRQHandler
+                0x0800e588                RNG_IRQHandler
+                0x0800e588                HRTIM1_TIMB_IRQHandler
+                0x0800e588                FDCAN2_IT1_IRQHandler
+                0x0800e588                ETH_IRQHandler
+                0x0800e588                TIM1_UP_IRQHandler
+                0x0800e588                BDMA_Channel4_IRQHandler
+                0x0800e588                OTG_HS_EP1_OUT_IRQHandler
+                0x0800e588                WWDG_IRQHandler
+                0x0800e588                SPI6_IRQHandler
+                0x0800e588                MDIOS_IRQHandler
+                0x0800e588                I2C4_EV_IRQHandler
+                0x0800e588                FDCAN2_IT0_IRQHandler
+                0x0800e588                LPUART1_IRQHandler
+                0x0800e588                FDCAN1_IT0_IRQHandler
+                0x0800e588                TIM2_IRQHandler
+                0x0800e588                OTG_FS_WKUP_IRQHandler
+                0x0800e588                OTG_HS_IRQHandler
+                0x0800e588                DMA2D_IRQHandler
+                0x0800e588                TIM1_BRK_IRQHandler
+                0x0800e588                EXTI1_IRQHandler
+                0x0800e588                SDMMC2_IRQHandler
+                0x0800e588                OTG_FS_EP1_OUT_IRQHandler
+                0x0800e588                BDMA_Channel3_IRQHandler
+                0x0800e588                UART7_IRQHandler
+                0x0800e588                MDIOS_WKUP_IRQHandler
+                0x0800e588                USART2_IRQHandler
+                0x0800e588                DFSDM1_FLT0_IRQHandler
+                0x0800e588                SAI4_IRQHandler
+                0x0800e588                I2C2_ER_IRQHandler
+                0x0800e588                DMA2_Stream1_IRQHandler
+                0x0800e588                FLASH_IRQHandler
+                0x0800e588                DMA2_Stream4_IRQHandler
+                0x0800e588                OTG_FS_IRQHandler
+                0x0800e588                SPI3_IRQHandler
+                0x0800e588                WAKEUP_PIN_IRQHandler
+                0x0800e588                DMA1_Stream4_IRQHandler
+                0x0800e588                OTG_FS_EP1_IN_IRQHandler
+                0x0800e588                I2C1_ER_IRQHandler
+                0x0800e588                FMC_IRQHandler
+                0x0800e588                FDCAN_CAL_IRQHandler
+                0x0800e588                SWPMI1_IRQHandler
+                0x0800e588                COMP1_IRQHandler
+                0x0800e588                LPTIM1_IRQHandler
+                0x0800e588                I2C4_ER_IRQHandler
+                0x0800e588                DMA2_Stream6_IRQHandler
+                0x0800e588                SAI1_IRQHandler
+                0x0800e588                DMA1_Stream3_IRQHandler
+ *fill*         0x0800e58a        0x2 
+ .text.__errno  0x0800e58c        0xc D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+                0x0800e58c                __errno
  .text.checkint
-                0x0800e634       0x68 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow.o)
- *fill*         0x0800e69c        0x4 
- .text.pow      0x0800e6a0      0x4a0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow.o)
-                0x0800e6a0                pow
+                0x0800e598       0x68 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow.o)
+ .text.pow      0x0800e600      0x4a0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow.o)
+                0x0800e600                pow
  .text.with_errno
-                0x0800eb40       0x1c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
- .text.xflow    0x0800eb5c       0x22 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
- *fill*         0x0800eb7e        0x2 
+                0x0800eaa0       0x1c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+ .text.xflow    0x0800eabc       0x22 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+ *fill*         0x0800eade        0x2 
  .text.__math_uflow
-                0x0800eb80       0x10 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
-                0x0800eb80                __math_uflow
+                0x0800eae0       0x10 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+                0x0800eae0                __math_uflow
  .text.__math_oflow
-                0x0800eb90       0x10 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
-                0x0800eb90                __math_oflow
+                0x0800eaf0       0x10 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+                0x0800eaf0                __math_oflow
  .text.__math_divzero
-                0x0800eba0       0x30 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
-                0x0800eba0                __math_divzero
+                0x0800eb00       0x30 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+                0x0800eb00                __math_divzero
  .text.__math_invalid
-                0x0800ebd0       0x1e D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
-                0x0800ebd0                __math_invalid
+                0x0800eb30       0x1e D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+                0x0800eb30                __math_invalid
  .text.__math_check_uflow
-                0x0800ebee       0x12 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
-                0x0800ebee                __math_check_uflow
+                0x0800eb4e       0x12 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+                0x0800eb4e                __math_check_uflow
  .text.__math_check_oflow
-                0x0800ec00       0x28 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
-                0x0800ec00                __math_check_oflow
+                0x0800eb60       0x28 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+                0x0800eb60                __math_check_oflow
  *(.glue_7)
- .glue_7        0x0800ec28        0x0 linker stubs
+ .glue_7        0x0800eb88        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800ec28        0x0 linker stubs
+ .glue_7t       0x0800eb88        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800ec28        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+ .eh_frame      0x0800eb88        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
  *(.init)
- .init          0x0800ec28        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crti.o
-                0x0800ec28                _init
- .init          0x0800ec2c        0x8 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtn.o
+ .init          0x0800eb88        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crti.o
+                0x0800eb88                _init
+ .init          0x0800eb8c        0x8 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtn.o
  *(.fini)
- .fini          0x0800ec34        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crti.o
-                0x0800ec34                _fini
- .fini          0x0800ec38        0x8 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtn.o
-                0x0800ec40                        . = ALIGN (0x4)
-                0x0800ec40                        _etext = .
+ .fini          0x0800eb94        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crti.o
+                0x0800eb94                _fini
+ .fini          0x0800eb98        0x8 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtn.o
+                0x0800eba0                        . = ALIGN (0x4)
+                0x0800eba0                        _etext = .
 
-.vfp11_veneer   0x0800ec40        0x0
- .vfp11_veneer  0x0800ec40        0x0 linker stubs
+.vfp11_veneer   0x0800eba0        0x0
+ .vfp11_veneer  0x0800eba0        0x0 linker stubs
 
-.v4_bx          0x0800ec40        0x0
- .v4_bx         0x0800ec40        0x0 linker stubs
+.v4_bx          0x0800eba0        0x0
+ .v4_bx         0x0800eba0        0x0 linker stubs
 
-.iplt           0x0800ec40        0x0
- .iplt          0x0800ec40        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+.iplt           0x0800eba0        0x0
+ .iplt          0x0800eba0        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
 
-.rodata         0x0800ec40     0x18f8
-                0x0800ec40                        . = ALIGN (0x4)
+.rodata         0x0800eba0     0x19d0
+                0x0800eba0                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
+ .rodata.frequencies
+                0x0800eba0       0x8c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x0800eba0                frequencies
+ .rodata.durations
+                0x0800ec2c       0x46 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                0x0800ec2c                durations
+ *fill*         0x0800ec72        0x2 
  .rodata.D1CorePrescTable
-                0x0800ec40       0x10 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
-                0x0800ec40                D1CorePrescTable
+                0x0800ec74       0x10 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+                0x0800ec74                D1CorePrescTable
  .rodata.flagBitshiftOffset.0
-                0x0800ec50        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x0800ec84        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .rodata.UARTPrescTable
-                0x0800ec58       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
-                0x0800ec58                UARTPrescTable
+                0x0800ec8c       0x18 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x0800ec8c                UARTPrescTable
  .rodata.numerator.1
-                0x0800ec70        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800eca4        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
  .rodata.denominator.0
-                0x0800ec78        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0800ecac        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ *fill*         0x0800ecb4        0x4 
  .rodata.__pow_log_data
-                0x0800ec80     0x1048 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow_log_data.o)
-                0x0800ec80                __pow_log_data
+                0x0800ecb8     0x1048 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow_log_data.o)
+                0x0800ecb8                __pow_log_data
  .rodata.__exp_data
-                0x0800fcc8      0x870 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-exp_data.o)
-                0x0800fcc8                __exp_data
-                0x08010538                        . = ALIGN (0x4)
+                0x0800fd00      0x870 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-exp_data.o)
+                0x0800fd00                __exp_data
+                0x08010570                        . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x08010538        0x8
-                0x08010538                        __exidx_start = .
+.ARM            0x08010570        0x8
+                0x08010570                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x08010538        0x8 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
-                0x08010540                        __exidx_end = .
+ .ARM.exidx     0x08010570        0x8 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
+                0x08010578                        __exidx_end = .
 
-.rel.dyn        0x08010540        0x0
- .rel.iplt      0x08010540        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+.rel.dyn        0x08010578        0x0
+ .rel.iplt      0x08010578        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
 
-.preinit_array  0x08010540        0x0
-                0x08010540                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08010578        0x0
+                0x08010578                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08010540                        PROVIDE (__preinit_array_end = .)
+                0x08010578                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x08010540        0x4
-                0x08010540                        PROVIDE (__init_array_start = .)
+.init_array     0x08010578        0x4
+                0x08010578                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08010540        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
-                0x08010544                        PROVIDE (__init_array_end = .)
+ .init_array    0x08010578        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+                0x0801057c                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x08010544        0x4
+.fini_array     0x0801057c        0x4
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08010544        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+ .fini_array    0x0801057c        0x4 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x08010548                        _sidata = LOADADDR (.data)
+                0x08010580                        _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x110 load address 0x08010548
+.data           0x20000000      0x100 load address 0x08010580
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -7555,125 +7584,109 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .data.PID_LeftMotor
                 0x20000068       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
                 0x20000068                PID_LeftMotor
- .data.BitSwitchPort
-                0x200000e8        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x200000e8                BitSwitchPort
- .data.BitSwitchPinArray
-                0x200000ec        0xa CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x200000ec                BitSwitchPinArray
- *fill*         0x200000f6        0x2 
  .data.ButtonPort
-                0x200000f8        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x200000f8                ButtonPort
+                0x200000e8        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                0x200000e8                ButtonPort
  .data.ButtonPinArray
-                0x200000fc        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x200000fc                ButtonPinArray
+                0x200000ec        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                0x200000ec                ButtonPinArray
  .data.SystemCoreClock
-                0x20000100        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
-                0x20000100                SystemCoreClock
+                0x200000f0        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+                0x200000f0                SystemCoreClock
  .data.SystemD2Clock
-                0x20000104        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
-                0x20000104                SystemD2Clock
+                0x200000f4        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+                0x200000f4                SystemD2Clock
  .data.uwTickPrio
-                0x20000108        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x20000108                uwTickPrio
+                0x200000f8        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x200000f8                uwTickPrio
  .data.uwTickFreq
-                0x2000010c        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x2000010c                uwTickFreq
-                0x20000110                        . = ALIGN (0x4)
- *fill*         0x2000010d        0x3 
-                0x20000110                        _edata = .
+                0x200000fc        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x200000fc                uwTickFreq
+                0x20000100                        . = ALIGN (0x4)
+ *fill*         0x200000fd        0x3 
+                0x20000100                        _edata = .
 
-.igot.plt       0x20000110        0x0 load address 0x08010658
- .igot.plt      0x20000110        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
-                0x20000110                        . = ALIGN (0x4)
+.igot.plt       0x20000100        0x0 load address 0x08010680
+ .igot.plt      0x20000100        0x0 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+                0x20000100                        . = ALIGN (0x4)
 
-.bss            0x20000110      0x684 load address 0x08010658
-                0x20000110                        _sbss = .
-                0x20000110                        __bss_start__ = _sbss
+.bss            0x20000100      0x674 load address 0x08010680
+                0x20000100                        _sbss = .
+                0x20000100                        __bss_start__ = _sbss
  *(.bss)
- .bss           0x20000110       0x1c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+ .bss           0x20000100       0x1c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
  *(.bss*)
- .bss.__sf      0x2000012c      0x138 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
-                0x2000012c                __sf
- .bss.IMU_UART  0x20000264        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x20000264                IMU_UART
- .bss.MPUData   0x20000268       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x20000268                MPUData
- *fill*         0x2000028c        0x4 
- .bss.Angle     0x20000290        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x20000290                Angle
+ .bss.__sf      0x2000011c      0x138 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x2000011c                __sf
+ .bss.IMU_UART  0x20000254        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x20000254                IMU_UART
+ .bss.MPUData   0x20000258       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x20000258                MPUData
+ *fill*         0x2000027c        0x4 
+ .bss.Angle     0x20000280        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x20000280                Angle
  .bss.PreviousAngle
-                0x20000298        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x20000298                PreviousAngle
+                0x20000288        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x20000288                PreviousAngle
  .bss.SaveAngle
-                0x200002a0        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x200002a0                SaveAngle
+                0x20000290        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+                0x20000290                SaveAngle
  .bss.IRSensorADCValue
-                0x200002a8        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
-                0x200002a8                IRSensorADCValue
- *fill*         0x200002b6        0x2 
+                0x20000298        0xe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x20000298                IRSensorADCValue
+ *fill*         0x200002a6        0x2 
  .bss.IRSensorDistanceValue
-                0x200002b8       0x38 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
-                0x200002b8                IRSensorDistanceValue
- .bss.ADCIndex  0x200002f0        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
-                0x200002f0                ADCIndex
- *fill*         0x200002f1        0x3 
- .bss.BitSwitchState
-                0x200002f4        0x5 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x200002f4                BitSwitchState
- *fill*         0x200002f9        0x3 
- .bss.ButtonState
-                0x200002fc        0x2 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                0x200002fc                ButtonState
- *fill*         0x200002fe        0x2 
- .bss.hadc2     0x20000300       0x64 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000300                hadc2
- .bss.htim1     0x20000364       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000364                htim1
- .bss.htim2     0x200003b0       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x200003b0                htim2
- .bss.htim3     0x200003fc       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x200003fc                htim3
- .bss.htim5     0x20000448       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000448                htim5
- .bss.htim7     0x20000494       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000494                htim7
- .bss.huart1    0x200004e0       0x94 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x200004e0                huart1
+                0x200002a8       0x38 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x200002a8                IRSensorDistanceValue
+ .bss.ADCIndex  0x200002e0        0x1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x200002e0                ADCIndex
+ *fill*         0x200002e1        0x3 
+ .bss.hadc2     0x200002e4       0x64 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x200002e4                hadc2
+ .bss.htim1     0x20000348       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x20000348                htim1
+ .bss.htim2     0x20000394       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x20000394                htim2
+ .bss.htim3     0x200003e0       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x200003e0                htim3
+ .bss.htim5     0x2000042c       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x2000042c                htim5
+ .bss.htim7     0x20000478       0x4c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x20000478                htim7
+ .bss.huart1    0x200004c4       0x94 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x200004c4                huart1
  .bss.hdma_usart1_rx
-                0x20000574       0x78 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000574                hdma_usart1_rx
- .bss.debug     0x200005ec      0x190 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x200005ec                debug
- *fill*         0x2000077c        0x4 
+                0x20000558       0x78 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x20000558                hdma_usart1_rx
+ .bss.debug     0x200005d0      0x190 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x200005d0                debug
  .bss.CurrentAngle
-                0x20000780        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000780                CurrentAngle
+                0x20000760        0x8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x20000760                CurrentAngle
  .bss.leftEncoder
-                0x20000788        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x20000788                leftEncoder
+                0x20000768        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x20000768                leftEncoder
  .bss.rightEncoder
-                0x2000078c        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                0x2000078c                rightEncoder
- .bss.uwTick    0x20000790        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
-                0x20000790                uwTick
+                0x2000076c        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x2000076c                rightEncoder
+ .bss.uwTick    0x20000770        0x4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x20000770                uwTick
  *(COMMON)
-                0x20000794                        . = ALIGN (0x4)
-                0x20000794                        _ebss = .
-                0x20000794                        __bss_end__ = _ebss
+                0x20000774                        . = ALIGN (0x4)
+                0x20000774                        _ebss = .
+                0x20000774                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000794      0x604 load address 0x08010658
-                0x20000798                        . = ALIGN (0x8)
- *fill*         0x20000794        0x4 
+                0x20000774      0x604 load address 0x08010680
+                0x20000778                        . = ALIGN (0x8)
+ *fill*         0x20000774        0x4 
                 [!provide]                        PROVIDE (end = .)
-                0x20000798                        PROVIDE (_end = .)
-                0x20000998                        . = (. + _Min_Heap_Size)
- *fill*         0x20000798      0x200 
-                0x20000d98                        . = (. + _Min_Stack_Size)
- *fill*         0x20000998      0x400 
-                0x20000d98                        . = ALIGN (0x8)
+                0x20000778                        PROVIDE (_end = .)
+                0x20000978                        . = (. + _Min_Heap_Size)
+ *fill*         0x20000778      0x200 
+                0x20000d78                        . = (. + _Min_Stack_Size)
+ *fill*         0x20000978      0x400 
+                0x20000d78                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -7771,100 +7784,100 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
 LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a
 LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a
 
-.debug_frame    0x00000000     0x65c0
+.debug_frame    0x00000000     0x6620
  .debug_frame   0x00000000      0x144 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
  .debug_frame   0x00000144       0x20 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memset.o)
  .debug_frame   0x00000164       0x2c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-init.o)
  .debug_frame   0x00000190       0xd0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_frame   0x00000260       0xac CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .debug_frame   0x0000030c       0xd8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
- .debug_frame   0x000003e4       0xe8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
- .debug_frame   0x000004cc       0xe0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .debug_frame   0x000005ac      0x214 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .debug_frame   0x000007c0       0xb0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
- .debug_frame   0x00000870       0xc8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
- .debug_frame   0x00000938      0x1f0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_frame   0x00000b28      0x1d4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
- .debug_frame   0x00000cfc      0x174 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
- .debug_frame   0x00000e70       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
- .debug_frame   0x00000ec8      0xa28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- .debug_frame   0x000018f0      0x88c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
- .debug_frame   0x0000217c      0x1f8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
- .debug_frame   0x00002374      0x414 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
- .debug_frame   0x00002788      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
- .debug_frame   0x000028d4      0x2b4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
- .debug_frame   0x00002b88      0x580 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
- .debug_frame   0x00003108      0x508 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
- .debug_frame   0x00003610      0x690 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
- .debug_frame   0x00003ca0     0x121c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
- .debug_frame   0x00004ebc      0x6d8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
- .debug_frame   0x00005594      0xa94 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
- .debug_frame   0x00006028      0x2c0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
- .debug_frame   0x000062e8       0x2c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00006314       0x34 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00006348       0x20 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
- .debug_frame   0x00006368      0x18c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow.o)
- .debug_frame   0x000064f4       0xcc D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
+ .debug_frame   0x000003e4      0x148 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .debug_frame   0x0000052c       0xe0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+ .debug_frame   0x0000060c      0x1f0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_frame   0x000007fc       0xb0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+ .debug_frame   0x000008ac       0xc8 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_frame   0x00000974      0x214 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_frame   0x00000b88      0x1d4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+ .debug_frame   0x00000d5c      0x174 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+ .debug_frame   0x00000ed0       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+ .debug_frame   0x00000f28      0xa28 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ .debug_frame   0x00001950      0x88c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+ .debug_frame   0x000021dc      0x1f8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+ .debug_frame   0x000023d4      0x414 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+ .debug_frame   0x000027e8      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+ .debug_frame   0x00002934      0x2b4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+ .debug_frame   0x00002be8      0x580 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+ .debug_frame   0x00003168      0x508 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ .debug_frame   0x00003670      0x690 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+ .debug_frame   0x00003d00     0x121c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .debug_frame   0x00004f1c      0x6d8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+ .debug_frame   0x000055f4      0xa94 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ .debug_frame   0x00006088      0x2c0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ .debug_frame   0x00006348       0x2c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00006374       0x34 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x000063a8       0x20 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_frame   0x000063c8      0x18c D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-pow.o)
+ .debug_frame   0x00006554       0xcc D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a(libm_a-math_err.o)
 
-.debug_info     0x00000000    0x1f413
+.debug_info     0x00000000    0x1f48d
  .debug_info    0x00000000      0x937 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_info    0x00000937      0x827 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .debug_info    0x0000115e      0x97b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
- .debug_info    0x00001ad9      0x9d6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
- .debug_info    0x000024af      0x331 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .debug_info    0x000027e0      0xd73 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .debug_info    0x00003553      0x2e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
- .debug_info    0x00003833      0x329 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
- .debug_info    0x00003b5c     0x2805 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_info    0x00006361     0x1fd9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
- .debug_info    0x0000833a     0x10c3 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
- .debug_info    0x000093fd      0xcef CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
- .debug_info    0x0000a0ec     0x1ed2 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- .debug_info    0x0000bfbe     0x1fed CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
- .debug_info    0x0000dfab      0xe5b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
- .debug_info    0x0000ee06     0x1216 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
- .debug_info    0x0001001c      0xc4b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
- .debug_info    0x00010c67      0xc27 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
- .debug_info    0x0001188e     0x1008 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
- .debug_info    0x00012896     0x10ac CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
- .debug_info    0x00013942     0x153b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
- .debug_info    0x00014e7d     0x2bae CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
- .debug_info    0x00017a2b     0x17eb CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
- .debug_info    0x00019216     0x4b13 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
- .debug_info    0x0001dd29      0xfbf CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
- .debug_info    0x0001ece8       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
- .debug_info    0x0001ed18      0x6fb D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_info    0x00001ad9      0xa19 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .debug_info    0x000024f2      0x331 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+ .debug_info    0x00002823      0xd71 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_info    0x00003594      0x2e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+ .debug_info    0x00003874      0x330 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_info    0x00003ba4     0x2837 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_info    0x000063db     0x1fd9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+ .debug_info    0x000083b4     0x10c3 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+ .debug_info    0x00009477      0xcef CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+ .debug_info    0x0000a166     0x1ed2 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ .debug_info    0x0000c038     0x1fed CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+ .debug_info    0x0000e025      0xe5b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+ .debug_info    0x0000ee80     0x1216 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+ .debug_info    0x00010096      0xc4b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+ .debug_info    0x00010ce1      0xc27 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+ .debug_info    0x00011908     0x1008 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+ .debug_info    0x00012910     0x10ac CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ .debug_info    0x000139bc     0x153b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+ .debug_info    0x00014ef7     0x2bae CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .debug_info    0x00017aa5     0x17eb CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+ .debug_info    0x00019290     0x4b13 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ .debug_info    0x0001dda3      0xfbf CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ .debug_info    0x0001ed62       0x30 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+ .debug_info    0x0001ed92      0x6fb D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_abbrev   0x00000000     0x3c71
+.debug_abbrev   0x00000000     0x3c52
  .debug_abbrev  0x00000000      0x226 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_abbrev  0x00000226      0x19c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
  .debug_abbrev  0x000003c2      0x1d1 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .debug_abbrev  0x00000593      0x205 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_abbrev  0x00000798      0x16f CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .debug_abbrev  0x00000907      0x315 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .debug_abbrev  0x00000c1c      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
- .debug_abbrev  0x00000d30      0x18b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
- .debug_abbrev  0x00000ebb      0x3af CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_abbrev  0x0000126a      0x2ad CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
- .debug_abbrev  0x00001517      0x1ac CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
- .debug_abbrev  0x000016c3      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
- .debug_abbrev  0x0000180f      0x2d3 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- .debug_abbrev  0x00001ae2      0x31b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
- .debug_abbrev  0x00001dfd      0x2c8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
- .debug_abbrev  0x000020c5      0x269 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
- .debug_abbrev  0x0000232e      0x1fe CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
- .debug_abbrev  0x0000252c      0x248 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
- .debug_abbrev  0x00002774      0x2a7 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
- .debug_abbrev  0x00002a1b      0x339 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
- .debug_abbrev  0x00002d54      0x295 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
- .debug_abbrev  0x00002fe9      0x276 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
- .debug_abbrev  0x0000325f      0x281 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
- .debug_abbrev  0x000034e0      0x33d CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
- .debug_abbrev  0x0000381d      0x2d2 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
- .debug_abbrev  0x00003aef       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
- .debug_abbrev  0x00003b13      0x15e D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_abbrev  0x00000907      0x2e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_abbrev  0x00000be7      0x114 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+ .debug_abbrev  0x00000cfb      0x18b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_abbrev  0x00000e86      0x3c5 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_abbrev  0x0000124b      0x2ad CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+ .debug_abbrev  0x000014f8      0x1ac CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+ .debug_abbrev  0x000016a4      0x14c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+ .debug_abbrev  0x000017f0      0x2d3 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ .debug_abbrev  0x00001ac3      0x31b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+ .debug_abbrev  0x00001dde      0x2c8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+ .debug_abbrev  0x000020a6      0x269 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+ .debug_abbrev  0x0000230f      0x1fe CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+ .debug_abbrev  0x0000250d      0x248 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+ .debug_abbrev  0x00002755      0x2a7 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+ .debug_abbrev  0x000029fc      0x339 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ .debug_abbrev  0x00002d35      0x295 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+ .debug_abbrev  0x00002fca      0x276 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .debug_abbrev  0x00003240      0x281 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+ .debug_abbrev  0x000034c1      0x33d CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ .debug_abbrev  0x000037fe      0x2d2 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ .debug_abbrev  0x00003ad0       0x24 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+ .debug_abbrev  0x00003af4      0x15e D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_aranges  0x00000000     0x1750
+.debug_aranges  0x00000000     0x1768
  .debug_aranges
                 0x00000000       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_aranges
@@ -7872,56 +7885,56 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .debug_aranges
                 0x00000088       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .debug_aranges
-                0x000000d0       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x000000d0       0x60 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_aranges
-                0x00000118       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+                0x00000130       0x48 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .debug_aranges
-                0x00000160       0x98 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x00000178       0x90 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_aranges
-                0x000001f8       0x38 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+                0x00000208       0x38 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .debug_aranges
-                0x00000230       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                0x00000240       0x40 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .debug_aranges
-                0x00000270       0x88 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x00000280       0x90 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .debug_aranges
-                0x000002f8       0x78 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x00000310       0x78 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
  .debug_aranges
-                0x00000370       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x00000388       0x80 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
  .debug_aranges
-                0x000003f0       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+                0x00000408       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
  .debug_aranges
-                0x00000418      0x228 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x00000430      0x228 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .debug_aranges
-                0x00000640      0x1d8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x00000658      0x1d8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
  .debug_aranges
-                0x00000818       0x88 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x00000830       0x88 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
  .debug_aranges
-                0x000008a0       0xf8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x000008b8       0xf8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
  .debug_aranges
-                0x00000998       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+                0x000009b0       0x58 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
  .debug_aranges
-                0x000009f0       0xa0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x00000a08       0xa0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .debug_aranges
-                0x00000a90      0x158 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+                0x00000aa8      0x158 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
  .debug_aranges
-                0x00000be8      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x00000c00      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .debug_aranges
-                0x00000d18      0x198 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x00000d30      0x198 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
  .debug_aranges
-                0x00000eb0      0x3e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x00000ec8      0x3e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .debug_aranges
-                0x00001290      0x188 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x000012a8      0x188 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
  .debug_aranges
-                0x00001418      0x248 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x00001430      0x248 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .debug_aranges
-                0x00001660       0xa8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x00001678       0xa8 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
  .debug_aranges
-                0x00001708       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+                0x00001720       0x28 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
  .debug_aranges
-                0x00001730       0x20 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+                0x00001748       0x20 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
 
 .debug_rnglists
-                0x00000000     0x1213
+                0x00000000     0x1225
  .debug_rnglists
                 0x00000000       0x33 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_rnglists
@@ -7929,55 +7942,55 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .debug_rnglists
                 0x0000005e       0x33 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
  .debug_rnglists
-                0x00000091       0x32 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                0x00000091       0x44 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
  .debug_rnglists
-                0x000000c3       0x31 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+                0x000000d5       0x31 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
  .debug_rnglists
-                0x000000f4       0x73 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                0x00000106       0x6d CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
  .debug_rnglists
-                0x00000167       0x27 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+                0x00000173       0x27 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
  .debug_rnglists
-                0x0000018e       0x2b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                0x0000019a       0x2b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
  .debug_rnglists
-                0x000001b9       0x6a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                0x000001c5       0x70 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
  .debug_rnglists
-                0x00000223       0x59 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+                0x00000235       0x59 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
  .debug_rnglists
-                0x0000027c       0x5b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+                0x0000028e       0x5b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
  .debug_rnglists
-                0x000002d7       0x1b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+                0x000002e9       0x1b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
  .debug_rnglists
-                0x000002f2      0x1a9 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+                0x00000304      0x1a9 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
  .debug_rnglists
-                0x0000049b      0x16f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+                0x000004ad      0x16f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
  .debug_rnglists
-                0x0000060a       0x68 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+                0x0000061c       0x68 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
  .debug_rnglists
-                0x00000672       0xc0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+                0x00000684       0xc0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
  .debug_rnglists
-                0x00000732       0x3f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+                0x00000744       0x3f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
  .debug_rnglists
-                0x00000771       0x82 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+                0x00000783       0x82 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
  .debug_rnglists
-                0x000007f3      0x103 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+                0x00000805      0x103 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
  .debug_rnglists
-                0x000008f6       0xe0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+                0x00000908       0xe0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
  .debug_rnglists
-                0x000009d6      0x131 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+                0x000009e8      0x131 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
  .debug_rnglists
-                0x00000b07      0x328 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+                0x00000b19      0x328 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
  .debug_rnglists
-                0x00000e2f      0x13f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+                0x00000e41      0x13f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
  .debug_rnglists
-                0x00000f6e      0x1fa CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+                0x00000f80      0x1fa CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
  .debug_rnglists
-                0x00001168       0x7f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+                0x0000117a       0x7f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
  .debug_rnglists
-                0x000011e7       0x19 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+                0x000011f9       0x19 CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
  .debug_rnglists
-                0x00001200       0x13 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+                0x00001212       0x13 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_macro    0x00000000    0x3abcf
+.debug_macro    0x00000000    0x3ac8a
  .debug_macro   0x00000000      0x2ce CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_macro   0x000002ce      0xacc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_macro   0x00000d9a      0x23e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
@@ -8043,126 +8056,129 @@ LOAD D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.
  .debug_macro   0x000358a8       0xa6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_macro   0x0003594e      0x5a0 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
  .debug_macro   0x00035eee      0x15a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .debug_macro   0x00036048      0x335 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
- .debug_macro   0x0003637d      0x154 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
- .debug_macro   0x000364d1      0x12a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
- .debug_macro   0x000365fb      0x2c9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
- .debug_macro   0x000368c4      0x34f CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
- .debug_macro   0x00036c13      0x2ce CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .debug_macro   0x00036ee1      0x32b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .debug_macro   0x0003720c      0x2ce CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
- .debug_macro   0x000374da      0x329 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
- .debug_macro   0x00037803      0x3ca CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037bcd       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037be9       0x35 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037c1e       0x10 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037c2e       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037c4a       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037c60      0x170 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037dd0       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037de6       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037dfc       0x29 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037e25       0x6a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_macro   0x00037e8f      0x2ca CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
- .debug_macro   0x00038159      0x2d4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
- .debug_macro   0x0003842d      0x2bb CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
- .debug_macro   0x000386e8      0x2df CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- .debug_macro   0x000389c7      0x2c7 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
- .debug_macro   0x00038c8e      0x2df CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
- .debug_macro   0x00038f6d      0x2d9 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
- .debug_macro   0x00039246      0x2c2 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
- .debug_macro   0x00039508      0x30f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
- .debug_macro   0x00039817      0x2f4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
- .debug_macro   0x00039b0b      0x2bb CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
- .debug_macro   0x00039dc6      0x2e5 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
- .debug_macro   0x0003a0ab      0x2bc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
- .debug_macro   0x0003a367      0x2bb CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
- .debug_macro   0x0003a622      0x2e6 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
- .debug_macro   0x0003a908      0x2c7 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ .debug_macro   0x00036048      0x33e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+ .debug_macro   0x00036386      0x154 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+ .debug_macro   0x000364da       0x22 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+ .debug_macro   0x000364fc      0x130 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+ .debug_macro   0x0003662c      0x2c9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+ .debug_macro   0x000368f5      0x358 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .debug_macro   0x00036c4d      0x2ce CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+ .debug_macro   0x00036f1b      0x334 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_macro   0x0003724f      0x2ce CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+ .debug_macro   0x0003751d      0x332 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_macro   0x0003784f      0x403 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037c52       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037c68       0x35 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037c9d       0x20 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037cbd       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037cd9       0x10 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037ce9       0x1c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037d05       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037d1b      0x170 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037e8b       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037ea1       0x16 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037eb7       0x29 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037ee0       0x6a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_macro   0x00037f4a      0x2ca CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+ .debug_macro   0x00038214      0x2d4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+ .debug_macro   0x000384e8      0x2bb CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+ .debug_macro   0x000387a3      0x2df CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ .debug_macro   0x00038a82      0x2c7 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+ .debug_macro   0x00038d49      0x2df CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+ .debug_macro   0x00039028      0x2d9 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+ .debug_macro   0x00039301      0x2c2 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+ .debug_macro   0x000395c3      0x30f CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+ .debug_macro   0x000398d2      0x2f4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+ .debug_macro   0x00039bc6      0x2bb CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ .debug_macro   0x00039e81      0x2e5 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+ .debug_macro   0x0003a166      0x2bc CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .debug_macro   0x0003a422      0x2bb CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+ .debug_macro   0x0003a6dd      0x2e6 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ .debug_macro   0x0003a9c3      0x2c7 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
 
-.debug_line     0x00000000    0x224a8
- .debug_line    0x00000000      0xaf4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
- .debug_line    0x00000af4      0xafe CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
- .debug_line    0x000015f2      0xadd CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
- .debug_line    0x000020cf      0xb67 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
- .debug_line    0x00002c36      0xa92 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
- .debug_line    0x000036c8      0xd94 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
- .debug_line    0x0000445c      0xb6e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
- .debug_line    0x00004fca      0xb41 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
- .debug_line    0x00005b0b     0x1027 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
- .debug_line    0x00006b32      0xc95 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
- .debug_line    0x000077c7      0xb30 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
- .debug_line    0x000082f7      0xbc9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
- .debug_line    0x00008ec0     0x250d CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
- .debug_line    0x0000b3cd     0x210b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
- .debug_line    0x0000d4d8     0x158e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
- .debug_line    0x0000ea66     0x1ea6 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
- .debug_line    0x0001090c      0xe96 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
- .debug_line    0x000117a2     0x2921 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
- .debug_line    0x000140c3     0x10e1 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
- .debug_line    0x000151a4      0xfed CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
- .debug_line    0x00016191      0xfbe CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
- .debug_line    0x0001714f     0x4154 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
- .debug_line    0x0001b2a3     0x1f5e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
- .debug_line    0x0001d201     0x404c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
- .debug_line    0x0002124d     0x105c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
- .debug_line    0x000222a9       0x7a CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
- .debug_line    0x00022323      0x185 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+.debug_line     0x00000000    0x2257c
+ .debug_line    0x00000000      0xafc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+ .debug_line    0x00000afc      0xb0b CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+ .debug_line    0x00001607      0xadd CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+ .debug_line    0x000020e4      0xbc5 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+ .debug_line    0x00002ca9      0xa92 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+ .debug_line    0x0000373b      0xd98 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+ .debug_line    0x000044d3      0xb6e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+ .debug_line    0x00005041      0xb4e CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+ .debug_line    0x00005b8f     0x1077 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+ .debug_line    0x00006c06      0xc95 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+ .debug_line    0x0000789b      0xb30 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+ .debug_line    0x000083cb      0xbc9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+ .debug_line    0x00008f94     0x250d CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ .debug_line    0x0000b4a1     0x210b CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+ .debug_line    0x0000d5ac     0x158e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+ .debug_line    0x0000eb3a     0x1ea6 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+ .debug_line    0x000109e0      0xe96 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+ .debug_line    0x00011876     0x2921 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+ .debug_line    0x00014197     0x10e1 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+ .debug_line    0x00015278      0xfed CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ .debug_line    0x00016265      0xfbe CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+ .debug_line    0x00017223     0x4154 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .debug_line    0x0001b377     0x1f5e CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+ .debug_line    0x0001d2d5     0x404c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ .debug_line    0x00021321     0x105c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ .debug_line    0x0002237d       0x7a CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+ .debug_line    0x000223f7      0x185 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
 
-.debug_str      0x00000000   0x17925c
- .debug_str     0x00000000   0x16f8da CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
-                             0x170011 (size before relaxing)
- .debug_str     0x0016f8da      0x597 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
-                             0x170428 (size before relaxing)
- .debug_str     0x0016fe71      0x3ec CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
+.debug_str      0x00000000   0x17937c
+ .debug_str     0x00000000   0x16f8d9 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Buzzer.c.obj
+                             0x170010 (size before relaxing)
+ .debug_str     0x0016f8d9      0x5ef CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
+                             0x170480 (size before relaxing)
+ .debug_str     0x0016fec8      0x3ec CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                              0x16f988 (size before relaxing)
- .debug_str     0x0017025d      0x58c CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
-                             0x1705f3 (size before relaxing)
- .debug_str     0x001707e9      0x1e6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
+ .debug_str     0x001702b4      0x5dc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IRSensor.c.obj
+                             0x1706a1 (size before relaxing)
+ .debug_str     0x00170890      0x1e6 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_LedDebug.c.obj
                              0x16fa19 (size before relaxing)
- .debug_str     0x001709cf      0x44d CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
-                             0x1708ad (size before relaxing)
- .debug_str     0x00170e1c       0xfc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
+ .debug_str     0x00170a76      0x42a CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_MotorControl.c.obj
+                             0x17094e (size before relaxing)
+ .debug_str     0x00170ea0       0xfc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_PID.c.obj
                              0x16f9af (size before relaxing)
- .debug_str     0x00170f18      0x165 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
-                             0x16fe4c (size before relaxing)
- .debug_str     0x0017107d     0x1a87 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
-                             0x172642 (size before relaxing)
- .debug_str     0x00172b04      0x507 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
+ .debug_str     0x00170f9c      0x165 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Switch.c.obj
+                             0x16feaa (size before relaxing)
+ .debug_str     0x00171101     0x1b23 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/main.c.obj
+                             0x172731 (size before relaxing)
+ .debug_str     0x00172c24      0x507 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_hal_msp.c.obj
                              0x171420 (size before relaxing)
- .debug_str     0x0017300b      0x1ca CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
+ .debug_str     0x0017312b      0x1ca CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/stm32h7xx_it.c.obj
                              0x170595 (size before relaxing)
- .debug_str     0x001731d5      0x3b4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
+ .debug_str     0x001732f5      0x3b4 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/system_stm32h7xx.c.obj
                              0x16f7f8 (size before relaxing)
- .debug_str     0x00173589      0xb5c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
+ .debug_str     0x001736a9      0xb5c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c.obj
                              0x170597 (size before relaxing)
- .debug_str     0x001740e5      0x89c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
+ .debug_str     0x00174205      0x89c CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c.obj
                              0x1705d6 (size before relaxing)
- .debug_str     0x00174981      0x2c4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
+ .debug_str     0x00174aa1      0x2c4 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj
                              0x16fb93 (size before relaxing)
- .debug_str     0x00174c45      0x749 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
+ .debug_str     0x00174d65      0x749 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj
                              0x170074 (size before relaxing)
- .debug_str     0x0017538e      0x134 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
+ .debug_str     0x001754ae      0x134 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj
                              0x16f7af (size before relaxing)
- .debug_str     0x001754c2      0x8af CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
+ .debug_str     0x001755e2      0x8af CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c.obj
                              0x16ff32 (size before relaxing)
- .debug_str     0x00175d71      0x6aa CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
+ .debug_str     0x00175e91      0x6aa CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj
                              0x16fc70 (size before relaxing)
- .debug_str     0x0017641b      0x365 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
+ .debug_str     0x0017653b      0x365 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj
                              0x170149 (size before relaxing)
- .debug_str     0x00176780      0x713 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
+ .debug_str     0x001768a0      0x713 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj
                              0x17070e (size before relaxing)
- .debug_str     0x00176e93      0xcde CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
+ .debug_str     0x00176fb3      0xcde CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c.obj
                              0x170932 (size before relaxing)
- .debug_str     0x00177b71      0x527 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
+ .debug_str     0x00177c91      0x527 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
                              0x17025a (size before relaxing)
- .debug_str     0x00178098      0x9dd CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
+ .debug_str     0x001781b8      0x9dd CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
                              0x1706d4 (size before relaxing)
- .debug_str     0x00178a75      0x2e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+ .debug_str     0x00178b95      0x2e0 CMakeFiles/PCB_AIO_V2_CODE.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
                              0x16fc94 (size before relaxing)
- .debug_str     0x00178d55       0xaf CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
+ .debug_str     0x00178e75       0xaf CMakeFiles/PCB_AIO_V2_CODE.dir/startup_stm32h743xx.s.obj
                                 0x138 (size before relaxing)
- .debug_str     0x00178e04      0x458 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
+ .debug_str     0x00178f24      0x458 D:/STM32CubeCLT_1.15.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libg_nano.a(libc_a-errno.o)
                                 0x52e (size before relaxing)
 
 .comment        0x00000000       0x43

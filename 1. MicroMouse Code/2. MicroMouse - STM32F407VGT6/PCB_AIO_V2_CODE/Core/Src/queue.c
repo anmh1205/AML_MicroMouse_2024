@@ -1,6 +1,6 @@
 #include "queue.h"
 
-queue queue_create()
+queue queue_create(void)
 {
     queue q = (queue)malloc(sizeof(struct _queue));
     if (q == NULL)

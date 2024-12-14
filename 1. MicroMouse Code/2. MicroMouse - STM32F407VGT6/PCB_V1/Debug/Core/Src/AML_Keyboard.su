@@ -1,0 +1,2 @@
+../Core/Src/AML_Keyboard.c:14:9:AML_Keyboard_GetKey	16	static
+../Core/Src/AML_Keyboard.c:19:6:AML_Keyboard_Setup	4	static

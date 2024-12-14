@@ -23,3 +23,4 @@ void AML_LedDebug_SetAllLED(GPIO_PinState state);
 void AML_LedDebug_ToggleAllLED(void);
 
 #endif // AML_DEBUGDEVICE_H
+

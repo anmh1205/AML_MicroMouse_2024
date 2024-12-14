@@ -1,0 +1,1794 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"pid.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_dcmpgt
+  18              		.global	__aeabi_dcmplt
+  19              		.section	.text.PID_Init,"ax",%progbits
+  20              		.align	1
+  21              		.global	PID_Init
+  22              		.arch armv7e-m
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  26              		.fpu fpv4-sp-d16
+  28              	PID_Init:
+  29              	.LVL0:
+  30              	.LFB130:
+  31              		.file 1 "Core/Src/pid.c"
+   1:Core/Src/pid.c **** ﻿ /*
+   2:Core/Src/pid.c **** ------------------------------------------------------------------------------
+   3:Core/Src/pid.c **** ~ File   : pid.c
+   4:Core/Src/pid.c **** ~ Author : Majid Derhambakhsh
+   5:Core/Src/pid.c **** ~ Version: V1.0.0
+   6:Core/Src/pid.c **** ~ Created: 02/11/2021 03:43:00 AM
+   7:Core/Src/pid.c **** ~ Brief  :
+   8:Core/Src/pid.c **** ~ Support:
+   9:Core/Src/pid.c **** 		   E-Mail : Majid.do16@gmail.com (subject : Embedded Library Support)
+  10:Core/Src/pid.c **** 
+  11:Core/Src/pid.c **** 		   Github : https://github.com/Majid-Derhambakhsh
+  12:Core/Src/pid.c **** ------------------------------------------------------------------------------
+  13:Core/Src/pid.c **** ~ Description:
+  14:Core/Src/pid.c **** 
+  15:Core/Src/pid.c **** ~ Attention  :
+  16:Core/Src/pid.c **** 
+  17:Core/Src/pid.c **** ~ Changes    :
+  18:Core/Src/pid.c **** ------------------------------------------------------------------------------
+  19:Core/Src/pid.c **** */
+  20:Core/Src/pid.c **** 
+  21:Core/Src/pid.c **** #include "pid.h"
+  22:Core/Src/pid.c **** 
+  23:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  24:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~~~ Initialize ~~~~~~~~~~~~~~~~ */
+  25:Core/Src/pid.c **** void PID_Init(PID_TypeDef *uPID)
+  26:Core/Src/pid.c **** {
+  32              		.loc 1 26 1 view -0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 2
+
+
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36              		.loc 1 26 1 is_stmt 0 view .LVU1
+  37 0000 2DE9D043 		push	{r4, r6, r7, r8, r9, lr}
+  38              		.cfi_def_cfa_offset 24
+  39              		.cfi_offset 4, -24
+  40              		.cfi_offset 6, -20
+  41              		.cfi_offset 7, -16
+  42              		.cfi_offset 8, -12
+  43              		.cfi_offset 9, -8
+  44              		.cfi_offset 14, -4
+  45 0004 0446     		mov	r4, r0
+  27:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Set parameter ~~~~~~~~~~ */
+  28:Core/Src/pid.c **** 	uPID->OutputSum = *uPID->MyOutput;
+  46              		.loc 1 28 2 is_stmt 1 view .LVU2
+  47              		.loc 1 28 25 is_stmt 0 view .LVU3
+  48 0006 436C     		ldr	r3, [r0, #68]
+  49              		.loc 1 28 20 view .LVU4
+  50 0008 D3E90067 		ldrd	r6, [r3]
+  51              		.loc 1 28 18 view .LVU5
+  52 000c C0E91467 		strd	r6, [r0, #80]
+  29:Core/Src/pid.c **** 	uPID->LastInput = *uPID->MyInput;
+  53              		.loc 1 29 2 is_stmt 1 view .LVU6
+  54              		.loc 1 29 25 is_stmt 0 view .LVU7
+  55 0010 036C     		ldr	r3, [r0, #64]
+  56              		.loc 1 29 20 view .LVU8
+  57 0012 D3E90023 		ldrd	r2, [r3]
+  58              		.loc 1 29 18 view .LVU9
+  59 0016 C0E91623 		strd	r2, [r0, #88]
+  30:Core/Src/pid.c **** 	
+  31:Core/Src/pid.c **** 	if (uPID->OutputSum > uPID->OutMax)
+  60              		.loc 1 31 2 is_stmt 1 view .LVU10
+  61              		.loc 1 31 28 is_stmt 0 view .LVU11
+  62 001a D0E91A89 		ldrd	r8, [r0, #104]
+  63              		.loc 1 31 5 view .LVU12
+  64 001e 4246     		mov	r2, r8
+  65 0020 4B46     		mov	r3, r9
+  66 0022 3046     		mov	r0, r6
+  67              	.LVL1:
+  68              		.loc 1 31 5 view .LVU13
+  69 0024 3946     		mov	r1, r7
+  70 0026 FFF7FEFF 		bl	__aeabi_dcmpgt
+  71              	.LVL2:
+  72 002a 18B1     		cbz	r0, .L8
+  32:Core/Src/pid.c **** 	{
+  33:Core/Src/pid.c **** 		uPID->OutputSum = uPID->OutMax;
+  73              		.loc 1 33 3 is_stmt 1 view .LVU14
+  74              		.loc 1 33 19 is_stmt 0 view .LVU15
+  75 002c C4E91489 		strd	r8, [r4, #80]
+  76              	.L1:
+  34:Core/Src/pid.c **** 	}
+  35:Core/Src/pid.c **** 	else if (uPID->OutputSum < uPID->OutMin)
+  36:Core/Src/pid.c **** 	{
+  37:Core/Src/pid.c **** 		uPID->OutputSum = uPID->OutMin;
+  38:Core/Src/pid.c **** 	}
+  39:Core/Src/pid.c **** 	else { }
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 3
+
+
+  40:Core/Src/pid.c **** 	
+  41:Core/Src/pid.c **** }
+  77              		.loc 1 41 1 view .LVU16
+  78 0030 BDE8D083 		pop	{r4, r6, r7, r8, r9, pc}
+  79              	.LVL3:
+  80              	.L8:
+  35:Core/Src/pid.c **** 	{
+  81              		.loc 1 35 7 is_stmt 1 view .LVU17
+  35:Core/Src/pid.c **** 	{
+  82              		.loc 1 35 33 is_stmt 0 view .LVU18
+  83 0034 D4E91889 		ldrd	r8, [r4, #96]
+  35:Core/Src/pid.c **** 	{
+  84              		.loc 1 35 10 view .LVU19
+  85 0038 4246     		mov	r2, r8
+  86 003a 4B46     		mov	r3, r9
+  87 003c 3046     		mov	r0, r6
+  88 003e 3946     		mov	r1, r7
+  89 0040 FFF7FEFF 		bl	__aeabi_dcmplt
+  90              	.LVL4:
+  91 0044 0028     		cmp	r0, #0
+  92 0046 F3D0     		beq	.L1
+  37:Core/Src/pid.c **** 	}
+  93              		.loc 1 37 3 is_stmt 1 view .LVU20
+  37:Core/Src/pid.c **** 	}
+  94              		.loc 1 37 19 is_stmt 0 view .LVU21
+  95 0048 C4E91489 		strd	r8, [r4, #80]
+  39:Core/Src/pid.c **** 	
+  96              		.loc 1 39 9 is_stmt 1 view .LVU22
+  97              		.loc 1 41 1 is_stmt 0 view .LVU23
+  98 004c F0E7     		b	.L1
+  99              		.cfi_endproc
+ 100              	.LFE130:
+ 102              		.global	__aeabi_dsub
+ 103              		.global	__aeabi_dmul
+ 104              		.global	__aeabi_dadd
+ 105              		.section	.text.PID_Compute,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	PID_Compute
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 111              		.fpu fpv4-sp-d16
+ 113              	PID_Compute:
+ 114              	.LVL5:
+ 115              	.LFB133:
+  42:Core/Src/pid.c **** 
+  43:Core/Src/pid.c **** void PID(PID_TypeDef *uPID, double *Input, double *Output, double *Setpoint, double Kp, double Ki, 
+  44:Core/Src/pid.c **** {
+  45:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Set parameter ~~~~~~~~~~ */
+  46:Core/Src/pid.c **** 	uPID->MyOutput   = Output;
+  47:Core/Src/pid.c **** 	uPID->MyInput    = Input;
+  48:Core/Src/pid.c **** 	uPID->MySetpoint = Setpoint;
+  49:Core/Src/pid.c **** 	uPID->InAuto     = (PIDMode_TypeDef)_FALSE;
+  50:Core/Src/pid.c **** 	
+  51:Core/Src/pid.c **** 	PID_SetOutputLimits(uPID, 0, _PID_8BIT_PWM_MAX);
+  52:Core/Src/pid.c **** 	
+  53:Core/Src/pid.c **** 	uPID->SampleTime = _PID_SAMPLE_TIME_MS_DEF; /* default Controller Sample Time is 0.1 seconds */
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 4
+
+
+  54:Core/Src/pid.c **** 	
+  55:Core/Src/pid.c **** 	PID_SetControllerDirection(uPID, ControllerDirection);
+  56:Core/Src/pid.c **** 	PID_SetTunings2(uPID, Kp, Ki, Kd, POn);
+  57:Core/Src/pid.c **** 	
+  58:Core/Src/pid.c **** 	uPID->LastTime = GetTime() - uPID->SampleTime;
+  59:Core/Src/pid.c **** 	
+  60:Core/Src/pid.c **** }
+  61:Core/Src/pid.c **** 
+  62:Core/Src/pid.c **** void PID2(PID_TypeDef *uPID, double *Input, double *Output, double *Setpoint, double Kp, double Ki,
+  63:Core/Src/pid.c **** {
+  64:Core/Src/pid.c **** 	PID(uPID, Input, Output, Setpoint, Kp, Ki, Kd, _PID_P_ON_E, ControllerDirection);
+  65:Core/Src/pid.c **** }
+  66:Core/Src/pid.c **** 
+  67:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~~~ Computing ~~~~~~~~~~~~~~~~~ */
+  68:Core/Src/pid.c **** uint8_t PID_Compute(PID_TypeDef *uPID)
+  69:Core/Src/pid.c **** {
+ 116              		.loc 1 69 1 is_stmt 1 view -0
+ 117              		.cfi_startproc
+ 118              		@ args = 0, pretend = 0, frame = 16
+ 119              		@ frame_needed = 0, uses_anonymous_args = 0
+ 120              		.loc 1 69 1 is_stmt 0 view .LVU25
+ 121 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 122              		.cfi_def_cfa_offset 36
+ 123              		.cfi_offset 4, -36
+ 124              		.cfi_offset 5, -32
+ 125              		.cfi_offset 6, -28
+ 126              		.cfi_offset 7, -24
+ 127              		.cfi_offset 8, -20
+ 128              		.cfi_offset 9, -16
+ 129              		.cfi_offset 10, -12
+ 130              		.cfi_offset 11, -8
+ 131              		.cfi_offset 14, -4
+ 132 0004 2DED04AB 		vpush.64	{d10, d11}
+ 133              		.cfi_def_cfa_offset 52
+ 134              		.cfi_offset 84, -52
+ 135              		.cfi_offset 85, -48
+ 136              		.cfi_offset 86, -44
+ 137              		.cfi_offset 87, -40
+ 138 0008 85B0     		sub	sp, sp, #20
+ 139              		.cfi_def_cfa_offset 72
+ 140 000a 0446     		mov	r4, r0
+  70:Core/Src/pid.c **** 	
+  71:Core/Src/pid.c **** 	uint32_t now;
+ 141              		.loc 1 71 2 is_stmt 1 view .LVU26
+  72:Core/Src/pid.c **** 	uint32_t timeChange;
+ 142              		.loc 1 72 2 view .LVU27
+  73:Core/Src/pid.c **** 	
+  74:Core/Src/pid.c **** 	double input;
+ 143              		.loc 1 74 2 view .LVU28
+  75:Core/Src/pid.c **** 	double error;
+ 144              		.loc 1 75 2 view .LVU29
+  76:Core/Src/pid.c **** 	double dInput;
+ 145              		.loc 1 76 2 view .LVU30
+  77:Core/Src/pid.c **** 	double output;
+ 146              		.loc 1 77 2 view .LVU31
+  78:Core/Src/pid.c **** 	
+  79:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Check PID mode ~~~~~~~~~~ */
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 5
+
+
+  80:Core/Src/pid.c **** 	if (!uPID->InAuto)
+ 147              		.loc 1 80 2 view .LVU32
+ 148              		.loc 1 80 11 is_stmt 0 view .LVU33
+ 149 000c 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
+ 150              	.LVL6:
+ 151              		.loc 1 80 5 view .LVU34
+ 152 000e 20B9     		cbnz	r0, .L25
+ 153              	.L11:
+  81:Core/Src/pid.c **** 	{
+  82:Core/Src/pid.c **** 		return _FALSE;
+  83:Core/Src/pid.c **** 	}
+  84:Core/Src/pid.c **** 	
+  85:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Calculate time ~~~~~~~~~~ */
+  86:Core/Src/pid.c **** 	now        = GetTime();
+  87:Core/Src/pid.c **** 	timeChange = (now - uPID->LastTime);
+  88:Core/Src/pid.c **** 	
+  89:Core/Src/pid.c **** 	if (timeChange >= uPID->SampleTime)
+  90:Core/Src/pid.c **** 	{
+  91:Core/Src/pid.c **** 		/* ..... Compute all the working error variables ..... */
+  92:Core/Src/pid.c **** 		input   = *uPID->MyInput;
+  93:Core/Src/pid.c **** 		error   = *uPID->MySetpoint - input;
+  94:Core/Src/pid.c **** 		dInput  = (input - uPID->LastInput);
+  95:Core/Src/pid.c **** 		
+  96:Core/Src/pid.c **** 		uPID->OutputSum     += (uPID->Ki * error);
+  97:Core/Src/pid.c **** 		
+  98:Core/Src/pid.c **** 		/* ..... Add Proportional on Measurement, if P_ON_M is specified ..... */
+  99:Core/Src/pid.c **** 		if (!uPID->POnE)
+ 100:Core/Src/pid.c **** 		{
+ 101:Core/Src/pid.c **** 			uPID->OutputSum -= uPID->Kp * dInput;
+ 102:Core/Src/pid.c **** 		}
+ 103:Core/Src/pid.c **** 		
+ 104:Core/Src/pid.c **** 		if (uPID->OutputSum > uPID->OutMax)
+ 105:Core/Src/pid.c **** 		{
+ 106:Core/Src/pid.c **** 			uPID->OutputSum = uPID->OutMax;
+ 107:Core/Src/pid.c **** 		}
+ 108:Core/Src/pid.c **** 		else if (uPID->OutputSum < uPID->OutMin)
+ 109:Core/Src/pid.c **** 		{
+ 110:Core/Src/pid.c **** 			uPID->OutputSum = uPID->OutMin;
+ 111:Core/Src/pid.c **** 		}
+ 112:Core/Src/pid.c **** 		else { }
+ 113:Core/Src/pid.c **** 		
+ 114:Core/Src/pid.c **** 		/* ..... Add Proportional on Error, if P_ON_E is specified ..... */
+ 115:Core/Src/pid.c **** 		if (uPID->POnE)
+ 116:Core/Src/pid.c **** 		{
+ 117:Core/Src/pid.c **** 			output = uPID->Kp * error;
+ 118:Core/Src/pid.c **** 		}
+ 119:Core/Src/pid.c **** 		else
+ 120:Core/Src/pid.c **** 		{
+ 121:Core/Src/pid.c **** 			output = 0;
+ 122:Core/Src/pid.c **** 		}
+ 123:Core/Src/pid.c **** 		
+ 124:Core/Src/pid.c **** 		/* ..... Compute Rest of PID Output ..... */
+ 125:Core/Src/pid.c **** 		output += uPID->OutputSum - uPID->Kd * dInput;
+ 126:Core/Src/pid.c **** 		
+ 127:Core/Src/pid.c **** 		if (output > uPID->OutMax)
+ 128:Core/Src/pid.c **** 		{
+ 129:Core/Src/pid.c **** 			output = uPID->OutMax;
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 6
+
+
+ 130:Core/Src/pid.c **** 		}
+ 131:Core/Src/pid.c **** 		else if (output < uPID->OutMin)
+ 132:Core/Src/pid.c **** 		{
+ 133:Core/Src/pid.c **** 			output = uPID->OutMin;
+ 134:Core/Src/pid.c **** 		}
+ 135:Core/Src/pid.c **** 		else { }
+ 136:Core/Src/pid.c **** 		
+ 137:Core/Src/pid.c **** 		*uPID->MyOutput = output;
+ 138:Core/Src/pid.c **** 		
+ 139:Core/Src/pid.c **** 		/* ..... Remember some variables for next time ..... */
+ 140:Core/Src/pid.c **** 		uPID->LastInput = input;
+ 141:Core/Src/pid.c **** 		uPID->LastTime = now;
+ 142:Core/Src/pid.c **** 		
+ 143:Core/Src/pid.c **** 		return _TRUE;
+ 144:Core/Src/pid.c **** 		
+ 145:Core/Src/pid.c **** 	}
+ 146:Core/Src/pid.c **** 	else
+ 147:Core/Src/pid.c **** 	{
+ 148:Core/Src/pid.c **** 		return _FALSE;
+ 149:Core/Src/pid.c **** 	}
+ 150:Core/Src/pid.c **** 	
+ 151:Core/Src/pid.c **** }
+ 154              		.loc 1 151 1 view .LVU35
+ 155 0010 05B0     		add	sp, sp, #20
+ 156              		.cfi_remember_state
+ 157              		.cfi_def_cfa_offset 52
+ 158              		@ sp needed
+ 159 0012 BDEC04AB 		vldm	sp!, {d10-d11}
+ 160              		.cfi_restore 86
+ 161              		.cfi_restore 87
+ 162              		.cfi_restore 84
+ 163              		.cfi_restore 85
+ 164              		.cfi_def_cfa_offset 36
+ 165 0016 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 166              	.LVL7:
+ 167              	.L25:
+ 168              		.cfi_restore_state
+  86:Core/Src/pid.c **** 	timeChange = (now - uPID->LastTime);
+ 169              		.loc 1 86 2 is_stmt 1 view .LVU36
+  86:Core/Src/pid.c **** 	timeChange = (now - uPID->LastTime);
+ 170              		.loc 1 86 15 is_stmt 0 view .LVU37
+ 171 001a FFF7FEFF 		bl	HAL_GetTick
+ 172              	.LVL8:
+ 173 001e 0546     		mov	r5, r0
+ 174              	.LVL9:
+  87:Core/Src/pid.c **** 	
+ 175              		.loc 1 87 2 is_stmt 1 view .LVU38
+  87:Core/Src/pid.c **** 	
+ 176              		.loc 1 87 26 is_stmt 0 view .LVU39
+ 177 0020 6368     		ldr	r3, [r4, #4]
+  87:Core/Src/pid.c **** 	
+ 178              		.loc 1 87 13 view .LVU40
+ 179 0022 C31A     		subs	r3, r0, r3
+ 180              	.LVL10:
+  89:Core/Src/pid.c **** 	{
+ 181              		.loc 1 89 2 is_stmt 1 view .LVU41
+  89:Core/Src/pid.c **** 	{
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 7
+
+
+ 182              		.loc 1 89 24 is_stmt 0 view .LVU42
+ 183 0024 A268     		ldr	r2, [r4, #8]
+  89:Core/Src/pid.c **** 	{
+ 184              		.loc 1 89 5 view .LVU43
+ 185 0026 9A42     		cmp	r2, r3
+ 186 0028 00F29080 		bhi	.L19
+  92:Core/Src/pid.c **** 		error   = *uPID->MySetpoint - input;
+ 187              		.loc 1 92 3 is_stmt 1 view .LVU44
+  92:Core/Src/pid.c **** 		error   = *uPID->MySetpoint - input;
+ 188              		.loc 1 92 18 is_stmt 0 view .LVU45
+ 189 002c 236C     		ldr	r3, [r4, #64]
+ 190              	.LVL11:
+  92:Core/Src/pid.c **** 		error   = *uPID->MySetpoint - input;
+ 191              		.loc 1 92 11 view .LVU46
+ 192 002e D3E90089 		ldrd	r8, [r3]
+ 193              	.LVL12:
+  93:Core/Src/pid.c **** 		dInput  = (input - uPID->LastInput);
+ 194              		.loc 1 93 3 is_stmt 1 view .LVU47
+  93:Core/Src/pid.c **** 		dInput  = (input - uPID->LastInput);
+ 195              		.loc 1 93 18 is_stmt 0 view .LVU48
+ 196 0032 A16C     		ldr	r1, [r4, #72]
+  93:Core/Src/pid.c **** 		dInput  = (input - uPID->LastInput);
+ 197              		.loc 1 93 11 view .LVU49
+ 198 0034 4246     		mov	r2, r8
+ 199 0036 4B46     		mov	r3, r9
+ 200 0038 D1E90001 		ldrd	r0, [r1]
+ 201              	.LVL13:
+  93:Core/Src/pid.c **** 		dInput  = (input - uPID->LastInput);
+ 202              		.loc 1 93 11 view .LVU50
+ 203 003c FFF7FEFF 		bl	__aeabi_dsub
+ 204              	.LVL14:
+  93:Core/Src/pid.c **** 		dInput  = (input - uPID->LastInput);
+ 205              		.loc 1 93 11 view .LVU51
+ 206 0040 0646     		mov	r6, r0
+ 207 0042 0F46     		mov	r7, r1
+ 208 0044 CDE90267 		strd	r6, [sp, #8]
+ 209              	.LVL15:
+  94:Core/Src/pid.c **** 		
+ 210              		.loc 1 94 3 is_stmt 1 view .LVU52
+  94:Core/Src/pid.c **** 		
+ 211              		.loc 1 94 11 is_stmt 0 view .LVU53
+ 212 0048 D4E91623 		ldrd	r2, [r4, #88]
+ 213 004c 4046     		mov	r0, r8
+ 214 004e 4946     		mov	r1, r9
+ 215 0050 FFF7FEFF 		bl	__aeabi_dsub
+ 216              	.LVL16:
+ 217 0054 CDE90001 		strd	r0, [sp]
+ 218              	.LVL17:
+  96:Core/Src/pid.c **** 		
+ 219              		.loc 1 96 3 is_stmt 1 view .LVU54
+  96:Core/Src/pid.c **** 		
+ 220              		.loc 1 96 36 is_stmt 0 view .LVU55
+ 221 0058 3246     		mov	r2, r6
+ 222 005a 3B46     		mov	r3, r7
+ 223 005c D4E90C01 		ldrd	r0, [r4, #48]
+ 224              	.LVL18:
+  96:Core/Src/pid.c **** 		
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 8
+
+
+ 225              		.loc 1 96 36 view .LVU56
+ 226 0060 FFF7FEFF 		bl	__aeabi_dmul
+ 227              	.LVL19:
+  96:Core/Src/pid.c **** 		
+ 228              		.loc 1 96 23 view .LVU57
+ 229 0064 D4E91423 		ldrd	r2, [r4, #80]
+ 230 0068 FFF7FEFF 		bl	__aeabi_dadd
+ 231              	.LVL20:
+ 232 006c 0646     		mov	r6, r0
+ 233              	.LVL21:
+  96:Core/Src/pid.c **** 		
+ 234              		.loc 1 96 23 view .LVU58
+ 235 006e 0F46     		mov	r7, r1
+ 236 0070 C4E91467 		strd	r6, [r4, #80]
+  99:Core/Src/pid.c **** 		{
+ 237              		.loc 1 99 3 is_stmt 1 view .LVU59
+  99:Core/Src/pid.c **** 		{
+ 238              		.loc 1 99 12 is_stmt 0 view .LVU60
+ 239 0074 94F800A0 		ldrb	r10, [r4]	@ zero_extendqisi2
+  99:Core/Src/pid.c **** 		{
+ 240              		.loc 1 99 6 view .LVU61
+ 241 0078 BAF1000F 		cmp	r10, #0
+ 242 007c 0DD1     		bne	.L12
+ 101:Core/Src/pid.c **** 		}
+ 243              		.loc 1 101 4 is_stmt 1 view .LVU62
+ 101:Core/Src/pid.c **** 		}
+ 244              		.loc 1 101 32 is_stmt 0 view .LVU63
+ 245 007e DDE90023 		ldrd	r2, [sp]
+ 246 0082 D4E90A01 		ldrd	r0, [r4, #40]
+ 247 0086 FFF7FEFF 		bl	__aeabi_dmul
+ 248              	.LVL22:
+ 249 008a 0246     		mov	r2, r0
+ 250 008c 0B46     		mov	r3, r1
+ 101:Core/Src/pid.c **** 		}
+ 251              		.loc 1 101 20 view .LVU64
+ 252 008e 3046     		mov	r0, r6
+ 253 0090 3946     		mov	r1, r7
+ 254 0092 FFF7FEFF 		bl	__aeabi_dsub
+ 255              	.LVL23:
+ 256 0096 C4E91401 		strd	r0, [r4, #80]
+ 257              	.L12:
+ 104:Core/Src/pid.c **** 		{
+ 258              		.loc 1 104 3 is_stmt 1 view .LVU65
+ 104:Core/Src/pid.c **** 		{
+ 259              		.loc 1 104 11 is_stmt 0 view .LVU66
+ 260 009a 94ED14AB 		vldr.64	d10, [r4, #80]
+ 104:Core/Src/pid.c **** 		{
+ 261              		.loc 1 104 29 view .LVU67
+ 262 009e D4E91A67 		ldrd	r6, [r4, #104]
+ 104:Core/Src/pid.c **** 		{
+ 263              		.loc 1 104 6 view .LVU68
+ 264 00a2 3246     		mov	r2, r6
+ 265 00a4 3B46     		mov	r3, r7
+ 266 00a6 51EC1A0B 		vmov	r0, r1, d10
+ 267 00aa FFF7FEFF 		bl	__aeabi_dcmpgt
+ 268              	.LVL24:
+ 269 00ae 0028     		cmp	r0, #0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 9
+
+
+ 270 00b0 3AD0     		beq	.L23
+ 106:Core/Src/pid.c **** 		}
+ 271              		.loc 1 106 4 is_stmt 1 view .LVU69
+ 106:Core/Src/pid.c **** 		}
+ 272              		.loc 1 106 20 is_stmt 0 view .LVU70
+ 273 00b2 C4E91467 		strd	r6, [r4, #80]
+ 274              	.L15:
+ 112:Core/Src/pid.c **** 		
+ 275              		.loc 1 112 10 is_stmt 1 view .LVU71
+ 115:Core/Src/pid.c **** 		{
+ 276              		.loc 1 115 3 view .LVU72
+ 115:Core/Src/pid.c **** 		{
+ 277              		.loc 1 115 6 is_stmt 0 view .LVU73
+ 278 00b6 BAF1000F 		cmp	r10, #0
+ 279 00ba 42D0     		beq	.L20
+ 117:Core/Src/pid.c **** 		}
+ 280              		.loc 1 117 4 is_stmt 1 view .LVU74
+ 117:Core/Src/pid.c **** 		}
+ 281              		.loc 1 117 11 is_stmt 0 view .LVU75
+ 282 00bc DDE90223 		ldrd	r2, [sp, #8]
+ 283 00c0 D4E90A01 		ldrd	r0, [r4, #40]
+ 284 00c4 FFF7FEFF 		bl	__aeabi_dmul
+ 285              	.LVL25:
+ 286 00c8 CDE90201 		strd	r0, [sp, #8]
+ 287              	.LVL26:
+ 288              	.L17:
+ 125:Core/Src/pid.c **** 		
+ 289              		.loc 1 125 3 is_stmt 1 view .LVU76
+ 125:Core/Src/pid.c **** 		
+ 290              		.loc 1 125 17 is_stmt 0 view .LVU77
+ 291 00cc D4E914AB 		ldrd	r10, [r4, #80]
+ 125:Core/Src/pid.c **** 		
+ 292              		.loc 1 125 40 view .LVU78
+ 293 00d0 DDE90023 		ldrd	r2, [sp]
+ 294 00d4 D4E90E01 		ldrd	r0, [r4, #56]
+ 295 00d8 FFF7FEFF 		bl	__aeabi_dmul
+ 296              	.LVL27:
+ 297 00dc 0246     		mov	r2, r0
+ 298 00de 0B46     		mov	r3, r1
+ 125:Core/Src/pid.c **** 		
+ 299              		.loc 1 125 29 view .LVU79
+ 300 00e0 5046     		mov	r0, r10
+ 301 00e2 5946     		mov	r1, fp
+ 302 00e4 FFF7FEFF 		bl	__aeabi_dsub
+ 303              	.LVL28:
+ 125:Core/Src/pid.c **** 		
+ 304              		.loc 1 125 10 view .LVU80
+ 305 00e8 DDE90223 		ldrd	r2, [sp, #8]
+ 306 00ec FFF7FEFF 		bl	__aeabi_dadd
+ 307              	.LVL29:
+ 308 00f0 8246     		mov	r10, r0
+ 309 00f2 8B46     		mov	fp, r1
+ 310              	.LVL30:
+ 127:Core/Src/pid.c **** 		{
+ 311              		.loc 1 127 3 is_stmt 1 view .LVU81
+ 127:Core/Src/pid.c **** 		{
+ 312              		.loc 1 127 6 is_stmt 0 view .LVU82
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 10
+
+
+ 313 00f4 0246     		mov	r2, r0
+ 314 00f6 0B46     		mov	r3, r1
+ 315 00f8 3046     		mov	r0, r6
+ 316 00fa 3946     		mov	r1, r7
+ 317 00fc FFF7FEFF 		bl	__aeabi_dcmplt
+ 318              	.LVL31:
+ 319 0100 50B9     		cbnz	r0, .L18
+ 131:Core/Src/pid.c **** 		{
+ 320              		.loc 1 131 8 is_stmt 1 view .LVU83
+ 131:Core/Src/pid.c **** 		{
+ 321              		.loc 1 131 25 is_stmt 0 view .LVU84
+ 322 0102 D4E91867 		ldrd	r6, [r4, #96]
+ 131:Core/Src/pid.c **** 		{
+ 323              		.loc 1 131 11 view .LVU85
+ 324 0106 5246     		mov	r2, r10
+ 325 0108 5B46     		mov	r3, fp
+ 326 010a 3046     		mov	r0, r6
+ 327 010c 3946     		mov	r1, r7
+ 328 010e FFF7FEFF 		bl	__aeabi_dcmpgt
+ 329              	.LVL32:
+ 330 0112 08B9     		cbnz	r0, .L18
+ 125:Core/Src/pid.c **** 		
+ 331              		.loc 1 125 10 view .LVU86
+ 332 0114 5646     		mov	r6, r10
+ 333 0116 5F46     		mov	r7, fp
+ 334              	.L18:
+ 335              	.LVL33:
+ 135:Core/Src/pid.c **** 		
+ 336              		.loc 1 135 10 is_stmt 1 view .LVU87
+ 137:Core/Src/pid.c **** 		
+ 337              		.loc 1 137 3 view .LVU88
+ 137:Core/Src/pid.c **** 		
+ 338              		.loc 1 137 8 is_stmt 0 view .LVU89
+ 339 0118 636C     		ldr	r3, [r4, #68]
+ 137:Core/Src/pid.c **** 		
+ 340              		.loc 1 137 19 view .LVU90
+ 341 011a C3E90067 		strd	r6, [r3]
+ 140:Core/Src/pid.c **** 		uPID->LastTime = now;
+ 342              		.loc 1 140 3 is_stmt 1 view .LVU91
+ 140:Core/Src/pid.c **** 		uPID->LastTime = now;
+ 343              		.loc 1 140 19 is_stmt 0 view .LVU92
+ 344 011e C4E91689 		strd	r8, [r4, #88]
+ 141:Core/Src/pid.c **** 		
+ 345              		.loc 1 141 3 is_stmt 1 view .LVU93
+ 141:Core/Src/pid.c **** 		
+ 346              		.loc 1 141 18 is_stmt 0 view .LVU94
+ 347 0122 6560     		str	r5, [r4, #4]
+ 143:Core/Src/pid.c **** 		
+ 348              		.loc 1 143 3 is_stmt 1 view .LVU95
+ 143:Core/Src/pid.c **** 		
+ 349              		.loc 1 143 10 is_stmt 0 view .LVU96
+ 350 0124 0120     		movs	r0, #1
+ 351 0126 73E7     		b	.L11
+ 352              	.LVL34:
+ 353              	.L23:
+ 108:Core/Src/pid.c **** 		{
+ 354              		.loc 1 108 8 is_stmt 1 view .LVU97
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 11
+
+
+ 108:Core/Src/pid.c **** 		{
+ 355              		.loc 1 108 34 is_stmt 0 view .LVU98
+ 356 0128 94ED18BB 		vldr.64	d11, [r4, #96]
+ 108:Core/Src/pid.c **** 		{
+ 357              		.loc 1 108 11 view .LVU99
+ 358 012c 53EC1B2B 		vmov	r2, r3, d11
+ 359 0130 51EC1A0B 		vmov	r0, r1, d10
+ 360 0134 FFF7FEFF 		bl	__aeabi_dcmplt
+ 361              	.LVL35:
+ 362 0138 0028     		cmp	r0, #0
+ 363 013a BCD0     		beq	.L15
+ 110:Core/Src/pid.c **** 		}
+ 364              		.loc 1 110 4 is_stmt 1 view .LVU100
+ 110:Core/Src/pid.c **** 		}
+ 365              		.loc 1 110 20 is_stmt 0 view .LVU101
+ 366 013c 84ED14BB 		vstr.64	d11, [r4, #80]
+ 367 0140 B9E7     		b	.L15
+ 368              	.L20:
+ 121:Core/Src/pid.c **** 		}
+ 369              		.loc 1 121 11 view .LVU102
+ 370 0142 9FED037B 		vldr.64	d7, .L26
+ 371 0146 8DED027B 		vstr.64	d7, [sp, #8]
+ 372              	.LVL36:
+ 121:Core/Src/pid.c **** 		}
+ 373              		.loc 1 121 11 view .LVU103
+ 374 014a BFE7     		b	.L17
+ 375              	.LVL37:
+ 376              	.L19:
+ 148:Core/Src/pid.c **** 	}
+ 377              		.loc 1 148 10 view .LVU104
+ 378 014c 0020     		movs	r0, #0
+ 379              	.LVL38:
+ 148:Core/Src/pid.c **** 	}
+ 380              		.loc 1 148 10 view .LVU105
+ 381 014e 5FE7     		b	.L11
+ 382              	.L27:
+ 383              		.align	3
+ 384              	.L26:
+ 385 0150 00000000 		.word	0
+ 386 0154 00000000 		.word	0
+ 387              		.cfi_endproc
+ 388              	.LFE133:
+ 390              		.section	.text.PID_SetMode,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	PID_SetMode
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 396              		.fpu fpv4-sp-d16
+ 398              	PID_SetMode:
+ 399              	.LVL39:
+ 400              	.LFB134:
+ 152:Core/Src/pid.c **** 
+ 153:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~~~ PID Mode ~~~~~~~~~~~~~~~~~~ */
+ 154:Core/Src/pid.c **** void            PID_SetMode(PID_TypeDef *uPID, PIDMode_TypeDef Mode)
+ 155:Core/Src/pid.c **** {
+ 401              		.loc 1 155 1 is_stmt 1 view -0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 12
+
+
+ 402              		.cfi_startproc
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405              		.loc 1 155 1 is_stmt 0 view .LVU107
+ 406 0000 38B5     		push	{r3, r4, r5, lr}
+ 407              		.cfi_def_cfa_offset 16
+ 408              		.cfi_offset 3, -16
+ 409              		.cfi_offset 4, -12
+ 410              		.cfi_offset 5, -8
+ 411              		.cfi_offset 14, -4
+ 412 0002 0446     		mov	r4, r0
+ 156:Core/Src/pid.c **** 	
+ 157:Core/Src/pid.c **** 	uint8_t newAuto = (Mode == _PID_MODE_AUTOMATIC);
+ 413              		.loc 1 157 2 is_stmt 1 view .LVU108
+ 414              		.loc 1 157 26 is_stmt 0 view .LVU109
+ 415 0004 0129     		cmp	r1, #1
+ 416 0006 0CBF     		ite	eq
+ 417 0008 0125     		moveq	r5, #1
+ 418 000a 0025     		movne	r5, #0
+ 419              	.LVL40:
+ 158:Core/Src/pid.c **** 	
+ 159:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Initialize the PID ~~~~~~~~~~ */
+ 160:Core/Src/pid.c **** 	if (newAuto && !uPID->InAuto)
+ 420              		.loc 1 160 2 is_stmt 1 view .LVU110
+ 421              		.loc 1 160 5 is_stmt 0 view .LVU111
+ 422 000c 01D0     		beq	.L31
+ 423              	.LVL41:
+ 424              	.L29:
+ 161:Core/Src/pid.c **** 	{
+ 162:Core/Src/pid.c **** 		PID_Init(uPID);
+ 163:Core/Src/pid.c **** 	}
+ 164:Core/Src/pid.c **** 	
+ 165:Core/Src/pid.c **** 	uPID->InAuto = (PIDMode_TypeDef)newAuto;
+ 425              		.loc 1 165 2 is_stmt 1 view .LVU112
+ 426              		.loc 1 165 15 is_stmt 0 view .LVU113
+ 427 000e 6570     		strb	r5, [r4, #1]
+ 166:Core/Src/pid.c **** 	
+ 167:Core/Src/pid.c **** }
+ 428              		.loc 1 167 1 view .LVU114
+ 429 0010 38BD     		pop	{r3, r4, r5, pc}
+ 430              	.LVL42:
+ 431              	.L31:
+ 160:Core/Src/pid.c **** 	{
+ 432              		.loc 1 160 22 discriminator 1 view .LVU115
+ 433 0012 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
+ 160:Core/Src/pid.c **** 	{
+ 434              		.loc 1 160 14 discriminator 1 view .LVU116
+ 435 0014 002B     		cmp	r3, #0
+ 436 0016 FAD1     		bne	.L29
+ 162:Core/Src/pid.c **** 	}
+ 437              		.loc 1 162 3 is_stmt 1 view .LVU117
+ 438 0018 FFF7FEFF 		bl	PID_Init
+ 439              	.LVL43:
+ 162:Core/Src/pid.c **** 	}
+ 440              		.loc 1 162 3 is_stmt 0 view .LVU118
+ 441 001c F7E7     		b	.L29
+ 442              		.cfi_endproc
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 13
+
+
+ 443              	.LFE134:
+ 445              		.section	.text.PID_GetMode,"ax",%progbits
+ 446              		.align	1
+ 447              		.global	PID_GetMode
+ 448              		.syntax unified
+ 449              		.thumb
+ 450              		.thumb_func
+ 451              		.fpu fpv4-sp-d16
+ 453              	PID_GetMode:
+ 454              	.LVL44:
+ 455              	.LFB135:
+ 168:Core/Src/pid.c **** PIDMode_TypeDef PID_GetMode(PID_TypeDef *uPID)
+ 169:Core/Src/pid.c **** {
+ 456              		.loc 1 169 1 is_stmt 1 view -0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 460              		@ link register save eliminated.
+ 170:Core/Src/pid.c **** 	return uPID->InAuto ? _PID_MODE_AUTOMATIC : _PID_MODE_MANUAL;
+ 461              		.loc 1 170 2 view .LVU120
+ 462              		.loc 1 170 13 is_stmt 0 view .LVU121
+ 463 0000 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
+ 464              	.LVL45:
+ 171:Core/Src/pid.c **** }
+ 465              		.loc 1 171 1 view .LVU122
+ 466 0002 0038     		subs	r0, r0, #0
+ 467 0004 18BF     		it	ne
+ 468 0006 0120     		movne	r0, #1
+ 469 0008 7047     		bx	lr
+ 470              		.cfi_endproc
+ 471              	.LFE135:
+ 473              		.global	__aeabi_dcmpge
+ 474              		.section	.text.PID_SetOutputLimits,"ax",%progbits
+ 475              		.align	1
+ 476              		.global	PID_SetOutputLimits
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 480              		.fpu fpv4-sp-d16
+ 482              	PID_SetOutputLimits:
+ 483              	.LVL46:
+ 484              	.LFB136:
+ 172:Core/Src/pid.c **** 
+ 173:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~~ PID Limits ~~~~~~~~~~~~~~~~~ */
+ 174:Core/Src/pid.c **** void PID_SetOutputLimits(PID_TypeDef *uPID, double Min, double Max)
+ 175:Core/Src/pid.c **** {
+ 485              		.loc 1 175 1 is_stmt 1 view -0
+ 486              		.cfi_startproc
+ 487              		@ args = 0, pretend = 0, frame = 0
+ 488              		@ frame_needed = 0, uses_anonymous_args = 0
+ 489              		.loc 1 175 1 is_stmt 0 view .LVU124
+ 490 0000 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 491              		.cfi_def_cfa_offset 40
+ 492              		.cfi_offset 3, -40
+ 493              		.cfi_offset 4, -36
+ 494              		.cfi_offset 5, -32
+ 495              		.cfi_offset 6, -28
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 14
+
+
+ 496              		.cfi_offset 7, -24
+ 497              		.cfi_offset 8, -20
+ 498              		.cfi_offset 9, -16
+ 499              		.cfi_offset 10, -12
+ 500              		.cfi_offset 11, -8
+ 501              		.cfi_offset 14, -4
+ 502 0004 0446     		mov	r4, r0
+ 503 0006 59EC108B 		vmov	r8, r9, d0
+ 504 000a 57EC116B 		vmov	r6, r7, d1
+ 176:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Check value ~~~~~~~~~~ */
+ 177:Core/Src/pid.c **** 	if (Min >= Max)
+ 505              		.loc 1 177 2 is_stmt 1 view .LVU125
+ 506              		.loc 1 177 5 is_stmt 0 view .LVU126
+ 507 000e 11EE102A 		vmov	r2, s2	@ int
+ 508 0012 3B46     		mov	r3, r7
+ 509 0014 10EE100A 		vmov	r0, s0	@ int
+ 510              	.LVL47:
+ 511              		.loc 1 177 5 view .LVU127
+ 512 0018 4946     		mov	r1, r9
+ 513 001a FFF7FEFF 		bl	__aeabi_dcmpge
+ 514              	.LVL48:
+ 515              		.loc 1 177 5 view .LVU128
+ 516 001e F0B9     		cbnz	r0, .L33
+ 178:Core/Src/pid.c **** 	{
+ 179:Core/Src/pid.c **** 		return;
+ 180:Core/Src/pid.c **** 	}
+ 181:Core/Src/pid.c **** 	
+ 182:Core/Src/pid.c **** 	uPID->OutMin = Min;
+ 517              		.loc 1 182 2 is_stmt 1 view .LVU129
+ 518              		.loc 1 182 15 is_stmt 0 view .LVU130
+ 519 0020 C4E91889 		strd	r8, [r4, #96]
+ 183:Core/Src/pid.c **** 	uPID->OutMax = Max;
+ 520              		.loc 1 183 2 is_stmt 1 view .LVU131
+ 521              		.loc 1 183 15 is_stmt 0 view .LVU132
+ 522 0024 C4E91A67 		strd	r6, [r4, #104]
+ 184:Core/Src/pid.c **** 	
+ 185:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Check PID Mode ~~~~~~~~~~ */
+ 186:Core/Src/pid.c **** 	if (uPID->InAuto)
+ 523              		.loc 1 186 2 is_stmt 1 view .LVU133
+ 524              		.loc 1 186 10 is_stmt 0 view .LVU134
+ 525 0028 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 526              		.loc 1 186 5 view .LVU135
+ 527 002a C3B1     		cbz	r3, .L33
+ 187:Core/Src/pid.c **** 	{
+ 188:Core/Src/pid.c **** 		
+ 189:Core/Src/pid.c **** 		/* ..... Check out value ..... */
+ 190:Core/Src/pid.c **** 		if (*uPID->MyOutput > uPID->OutMax)
+ 528              		.loc 1 190 3 is_stmt 1 view .LVU136
+ 529              		.loc 1 190 12 is_stmt 0 view .LVU137
+ 530 002c 656C     		ldr	r5, [r4, #68]
+ 531              		.loc 1 190 7 view .LVU138
+ 532 002e D5E900AB 		ldrd	r10, [r5]
+ 533              		.loc 1 190 6 view .LVU139
+ 534 0032 3246     		mov	r2, r6
+ 535 0034 3B46     		mov	r3, r7
+ 536 0036 5046     		mov	r0, r10
+ 537 0038 5946     		mov	r1, fp
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 15
+
+
+ 538 003a FFF7FEFF 		bl	__aeabi_dcmpgt
+ 539              	.LVL49:
+ 540 003e 80B1     		cbz	r0, .L46
+ 191:Core/Src/pid.c **** 		{
+ 192:Core/Src/pid.c **** 			*uPID->MyOutput = uPID->OutMax;
+ 541              		.loc 1 192 4 is_stmt 1 view .LVU140
+ 542              		.loc 1 192 20 is_stmt 0 view .LVU141
+ 543 0040 C5E90067 		strd	r6, [r5]
+ 544              	.L37:
+ 193:Core/Src/pid.c **** 		}
+ 194:Core/Src/pid.c **** 		else if (*uPID->MyOutput < uPID->OutMin)
+ 195:Core/Src/pid.c **** 		{
+ 196:Core/Src/pid.c **** 			*uPID->MyOutput = uPID->OutMin;
+ 197:Core/Src/pid.c **** 		}
+ 198:Core/Src/pid.c **** 		else { }
+ 545              		.loc 1 198 10 is_stmt 1 view .LVU142
+ 199:Core/Src/pid.c **** 		
+ 200:Core/Src/pid.c **** 		/* ..... Check out value ..... */
+ 201:Core/Src/pid.c **** 		if (uPID->OutputSum > uPID->OutMax)
+ 546              		.loc 1 201 3 view .LVU143
+ 547              		.loc 1 201 11 is_stmt 0 view .LVU144
+ 548 0044 D4E91467 		ldrd	r6, [r4, #80]
+ 549              	.LVL50:
+ 550              		.loc 1 201 29 view .LVU145
+ 551 0048 D4E91A89 		ldrd	r8, [r4, #104]
+ 552              	.LVL51:
+ 553              		.loc 1 201 6 view .LVU146
+ 554 004c 4246     		mov	r2, r8
+ 555 004e 4B46     		mov	r3, r9
+ 556 0050 3046     		mov	r0, r6
+ 557 0052 3946     		mov	r1, r7
+ 558 0054 FFF7FEFF 		bl	__aeabi_dcmpgt
+ 559              	.LVL52:
+ 560 0058 70B1     		cbz	r0, .L47
+ 202:Core/Src/pid.c **** 		{
+ 203:Core/Src/pid.c **** 			uPID->OutputSum = uPID->OutMax;
+ 561              		.loc 1 203 4 is_stmt 1 view .LVU147
+ 562              		.loc 1 203 20 is_stmt 0 view .LVU148
+ 563 005a C4E91489 		strd	r8, [r4, #80]
+ 564              	.L33:
+ 204:Core/Src/pid.c **** 		}
+ 205:Core/Src/pid.c **** 		else if (uPID->OutputSum < uPID->OutMin)
+ 206:Core/Src/pid.c **** 		{
+ 207:Core/Src/pid.c **** 			uPID->OutputSum = uPID->OutMin;
+ 208:Core/Src/pid.c **** 		}
+ 209:Core/Src/pid.c **** 		else { }
+ 210:Core/Src/pid.c **** 		
+ 211:Core/Src/pid.c **** 	}
+ 212:Core/Src/pid.c **** 	
+ 213:Core/Src/pid.c **** }
+ 565              		.loc 1 213 1 view .LVU149
+ 566 005e BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 567              	.LVL53:
+ 568              	.L46:
+ 194:Core/Src/pid.c **** 		{
+ 569              		.loc 1 194 8 is_stmt 1 view .LVU150
+ 194:Core/Src/pid.c **** 		{
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 16
+
+
+ 570              		.loc 1 194 11 is_stmt 0 view .LVU151
+ 571 0062 4246     		mov	r2, r8
+ 572 0064 4B46     		mov	r3, r9
+ 573 0066 5046     		mov	r0, r10
+ 574 0068 5946     		mov	r1, fp
+ 575 006a FFF7FEFF 		bl	__aeabi_dcmplt
+ 576              	.LVL54:
+ 577 006e 0028     		cmp	r0, #0
+ 578 0070 E8D0     		beq	.L37
+ 196:Core/Src/pid.c **** 		}
+ 579              		.loc 1 196 4 is_stmt 1 view .LVU152
+ 196:Core/Src/pid.c **** 		}
+ 580              		.loc 1 196 20 is_stmt 0 view .LVU153
+ 581 0072 C5E90089 		strd	r8, [r5]
+ 582 0076 E5E7     		b	.L37
+ 583              	.LVL55:
+ 584              	.L47:
+ 205:Core/Src/pid.c **** 		{
+ 585              		.loc 1 205 8 is_stmt 1 view .LVU154
+ 205:Core/Src/pid.c **** 		{
+ 586              		.loc 1 205 34 is_stmt 0 view .LVU155
+ 587 0078 D4E91889 		ldrd	r8, [r4, #96]
+ 205:Core/Src/pid.c **** 		{
+ 588              		.loc 1 205 11 view .LVU156
+ 589 007c 4246     		mov	r2, r8
+ 590 007e 4B46     		mov	r3, r9
+ 591 0080 3046     		mov	r0, r6
+ 592 0082 3946     		mov	r1, r7
+ 593 0084 FFF7FEFF 		bl	__aeabi_dcmplt
+ 594              	.LVL56:
+ 595 0088 0028     		cmp	r0, #0
+ 596 008a E8D0     		beq	.L33
+ 207:Core/Src/pid.c **** 		}
+ 597              		.loc 1 207 4 is_stmt 1 view .LVU157
+ 207:Core/Src/pid.c **** 		}
+ 598              		.loc 1 207 20 is_stmt 0 view .LVU158
+ 599 008c C4E91489 		strd	r8, [r4, #80]
+ 209:Core/Src/pid.c **** 		
+ 600              		.loc 1 209 10 is_stmt 1 view .LVU159
+ 601 0090 E5E7     		b	.L33
+ 602              		.cfi_endproc
+ 603              	.LFE136:
+ 605              		.global	__aeabi_ui2d
+ 606              		.global	__aeabi_ddiv
+ 607              		.section	.text.PID_SetTunings2,"ax",%progbits
+ 608              		.align	1
+ 609              		.global	PID_SetTunings2
+ 610              		.syntax unified
+ 611              		.thumb
+ 612              		.thumb_func
+ 613              		.fpu fpv4-sp-d16
+ 615              	PID_SetTunings2:
+ 616              	.LVL57:
+ 617              	.LFB138:
+ 214:Core/Src/pid.c **** 
+ 215:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~~ PID Tunings ~~~~~~~~~~~~~~~~ */
+ 216:Core/Src/pid.c **** void PID_SetTunings(PID_TypeDef *uPID, double Kp, double Ki, double Kd)
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 17
+
+
+ 217:Core/Src/pid.c **** {
+ 218:Core/Src/pid.c **** 	PID_SetTunings2(uPID, Kp, Ki, Kd, uPID->POn);
+ 219:Core/Src/pid.c **** }
+ 220:Core/Src/pid.c **** void PID_SetTunings2(PID_TypeDef *uPID, double Kp, double Ki, double Kd, PIDPON_TypeDef POn)
+ 221:Core/Src/pid.c **** {
+ 618              		.loc 1 221 1 view -0
+ 619              		.cfi_startproc
+ 620              		@ args = 0, pretend = 0, frame = 8
+ 621              		@ frame_needed = 0, uses_anonymous_args = 0
+ 622              		.loc 1 221 1 is_stmt 0 view .LVU161
+ 623 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 624              		.cfi_def_cfa_offset 36
+ 625              		.cfi_offset 4, -36
+ 626              		.cfi_offset 5, -32
+ 627              		.cfi_offset 6, -28
+ 628              		.cfi_offset 7, -24
+ 629              		.cfi_offset 8, -20
+ 630              		.cfi_offset 9, -16
+ 631              		.cfi_offset 10, -12
+ 632              		.cfi_offset 11, -8
+ 633              		.cfi_offset 14, -4
+ 634 0004 2DED029B 		vpush.64	{d9}
+ 635              		.cfi_def_cfa_offset 44
+ 636              		.cfi_offset 82, -44
+ 637              		.cfi_offset 83, -40
+ 638 0008 83B0     		sub	sp, sp, #12
+ 639              		.cfi_def_cfa_offset 56
+ 640 000a 0446     		mov	r4, r0
+ 641 000c 5BEC10AB 		vmov	r10, fp, d0
+ 642 0010 57EC116B 		vmov	r6, r7, d1
+ 643 0014 59EC128B 		vmov	r8, r9, d2
+ 644 0018 0D46     		mov	r5, r1
+ 222:Core/Src/pid.c **** 	
+ 223:Core/Src/pid.c **** 	double SampleTimeInSec;
+ 645              		.loc 1 223 2 is_stmt 1 view .LVU162
+ 224:Core/Src/pid.c **** 	
+ 225:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Check value ~~~~~~~~~~ */
+ 226:Core/Src/pid.c **** 	if (Kp < 0 || Ki < 0 || Kd < 0)
+ 646              		.loc 1 226 2 view .LVU163
+ 647              		.loc 1 226 5 is_stmt 0 view .LVU164
+ 648 001a 0022     		movs	r2, #0
+ 649 001c 0023     		movs	r3, #0
+ 650 001e 10EE100A 		vmov	r0, s0	@ int
+ 651              	.LVL58:
+ 652              		.loc 1 226 5 view .LVU165
+ 653 0022 5946     		mov	r1, fp
+ 654              	.LVL59:
+ 655              		.loc 1 226 5 view .LVU166
+ 656 0024 FFF7FEFF 		bl	__aeabi_dcmplt
+ 657              	.LVL60:
+ 658              		.loc 1 226 5 view .LVU167
+ 659 0028 0028     		cmp	r0, #0
+ 660 002a 3DD1     		bne	.L49
+ 661              		.loc 1 226 13 discriminator 1 view .LVU168
+ 662 002c 0022     		movs	r2, #0
+ 663 002e 0023     		movs	r3, #0
+ 664 0030 3046     		mov	r0, r6
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 18
+
+
+ 665 0032 3946     		mov	r1, r7
+ 666 0034 FFF7FEFF 		bl	__aeabi_dcmplt
+ 667              	.LVL61:
+ 668 0038 0028     		cmp	r0, #0
+ 669 003a 35D1     		bne	.L49
+ 670              		.loc 1 226 23 discriminator 2 view .LVU169
+ 671 003c 0022     		movs	r2, #0
+ 672 003e 0023     		movs	r3, #0
+ 673 0040 4046     		mov	r0, r8
+ 674 0042 4946     		mov	r1, r9
+ 675 0044 FFF7FEFF 		bl	__aeabi_dcmplt
+ 676              	.LVL62:
+ 677 0048 0028     		cmp	r0, #0
+ 678 004a 2DD1     		bne	.L49
+ 227:Core/Src/pid.c **** 	{
+ 228:Core/Src/pid.c **** 		return;
+ 229:Core/Src/pid.c **** 	}
+ 230:Core/Src/pid.c **** 	
+ 231:Core/Src/pid.c **** 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ 232:Core/Src/pid.c **** 	uPID->POn    = POn;
+ 679              		.loc 1 232 2 is_stmt 1 view .LVU170
+ 680              		.loc 1 232 15 is_stmt 0 view .LVU171
+ 681 004c A570     		strb	r5, [r4, #2]
+ 233:Core/Src/pid.c **** 	uPID->POnE   = (PIDPON_TypeDef)(POn == _PID_P_ON_E);
+ 682              		.loc 1 233 2 is_stmt 1 view .LVU172
+ 683              		.loc 1 233 17 is_stmt 0 view .LVU173
+ 684 004e 012D     		cmp	r5, #1
+ 685 0050 14BF     		ite	ne
+ 686 0052 0025     		movne	r5, #0
+ 687 0054 0125     		moveq	r5, #1
+ 688              		.loc 1 233 15 view .LVU174
+ 689 0056 2570     		strb	r5, [r4]
+ 234:Core/Src/pid.c **** 
+ 235:Core/Src/pid.c **** 	uPID->DispKp = Kp;
+ 690              		.loc 1 235 2 is_stmt 1 view .LVU175
+ 691              		.loc 1 235 15 is_stmt 0 view .LVU176
+ 692 0058 C4E904AB 		strd	r10, [r4, #16]
+ 236:Core/Src/pid.c **** 	uPID->DispKi = Ki;
+ 693              		.loc 1 236 2 is_stmt 1 view .LVU177
+ 694              		.loc 1 236 15 is_stmt 0 view .LVU178
+ 695 005c C4E90667 		strd	r6, [r4, #24]
+ 237:Core/Src/pid.c **** 	uPID->DispKd = Kd;
+ 696              		.loc 1 237 2 is_stmt 1 view .LVU179
+ 697              		.loc 1 237 15 is_stmt 0 view .LVU180
+ 698 0060 C4E90889 		strd	r8, [r4, #32]
+ 238:Core/Src/pid.c **** 	
+ 239:Core/Src/pid.c **** 	/* ~~~~~~~~~ Calculate time ~~~~~~~~ */
+ 240:Core/Src/pid.c **** 	SampleTimeInSec = ((double)uPID->SampleTime) / 1000;
+ 699              		.loc 1 240 2 is_stmt 1 view .LVU181
+ 700              		.loc 1 240 21 is_stmt 0 view .LVU182
+ 701 0064 A068     		ldr	r0, [r4, #8]
+ 702 0066 FFF7FEFF 		bl	__aeabi_ui2d
+ 703              	.LVL63:
+ 704              		.loc 1 240 18 view .LVU183
+ 705 006a 0022     		movs	r2, #0
+ 706 006c 1D4B     		ldr	r3, .L53
+ 707 006e FFF7FEFF 		bl	__aeabi_ddiv
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 19
+
+
+ 708              	.LVL64:
+ 241:Core/Src/pid.c **** 	
+ 242:Core/Src/pid.c **** 	uPID->Kp = Kp;
+ 709              		.loc 1 242 2 is_stmt 1 view .LVU184
+ 710              		.loc 1 242 11 is_stmt 0 view .LVU185
+ 711 0072 C4E90AAB 		strd	r10, [r4, #40]
+ 243:Core/Src/pid.c **** 	uPID->Ki = Ki * SampleTimeInSec;
+ 712              		.loc 1 243 2 is_stmt 1 view .LVU186
+ 713              		.loc 1 243 16 is_stmt 0 view .LVU187
+ 714 0076 CDE90001 		strd	r0, [sp]
+ 715 007a 0246     		mov	r2, r0
+ 716 007c 0B46     		mov	r3, r1
+ 717 007e 3046     		mov	r0, r6
+ 718              	.LVL65:
+ 719              		.loc 1 243 16 view .LVU188
+ 720 0080 3946     		mov	r1, r7
+ 721 0082 FFF7FEFF 		bl	__aeabi_dmul
+ 722              	.LVL66:
+ 723 0086 41EC190B 		vmov	d9, r0, r1
+ 724              		.loc 1 243 11 view .LVU189
+ 725 008a C4E90C01 		strd	r0, [r4, #48]
+ 244:Core/Src/pid.c **** 	uPID->Kd = Kd / SampleTimeInSec;
+ 726              		.loc 1 244 2 is_stmt 1 view .LVU190
+ 727              		.loc 1 244 16 is_stmt 0 view .LVU191
+ 728 008e DDE90023 		ldrd	r2, [sp]
+ 729 0092 4046     		mov	r0, r8
+ 730 0094 4946     		mov	r1, r9
+ 731 0096 FFF7FEFF 		bl	__aeabi_ddiv
+ 732              	.LVL67:
+ 733 009a 0646     		mov	r6, r0
+ 734              	.LVL68:
+ 735              		.loc 1 244 16 view .LVU192
+ 736 009c 0F46     		mov	r7, r1
+ 737              		.loc 1 244 11 view .LVU193
+ 738 009e C4E90E67 		strd	r6, [r4, #56]
+ 245:Core/Src/pid.c **** 	
+ 246:Core/Src/pid.c **** 	/* ~~~~~~~~ Check direction ~~~~~~~~ */
+ 247:Core/Src/pid.c **** 	if (uPID->ControllerDirection == _PID_CD_REVERSE)
+ 739              		.loc 1 247 2 is_stmt 1 view .LVU194
+ 740              		.loc 1 247 10 is_stmt 0 view .LVU195
+ 741 00a2 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 742              		.loc 1 247 5 view .LVU196
+ 743 00a4 012B     		cmp	r3, #1
+ 744 00a6 04D0     		beq	.L52
+ 745              	.LVL69:
+ 746              	.L49:
+ 248:Core/Src/pid.c **** 	{
+ 249:Core/Src/pid.c **** 		
+ 250:Core/Src/pid.c **** 		uPID->Kp = (0 - uPID->Kp);
+ 251:Core/Src/pid.c **** 		uPID->Ki = (0 - uPID->Ki);
+ 252:Core/Src/pid.c **** 		uPID->Kd = (0 - uPID->Kd);
+ 253:Core/Src/pid.c **** 		
+ 254:Core/Src/pid.c **** 	}
+ 255:Core/Src/pid.c **** 	
+ 256:Core/Src/pid.c **** }
+ 747              		.loc 1 256 1 view .LVU197
+ 748 00a8 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 20
+
+
+ 749              		.cfi_remember_state
+ 750              		.cfi_def_cfa_offset 44
+ 751              		@ sp needed
+ 752 00aa BDEC029B 		vldm	sp!, {d9}
+ 753              		.cfi_restore 82
+ 754              		.cfi_restore 83
+ 755              		.cfi_def_cfa_offset 36
+ 756 00ae BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 757              	.LVL70:
+ 758              	.L52:
+ 759              		.cfi_restore_state
+ 250:Core/Src/pid.c **** 		uPID->Ki = (0 - uPID->Ki);
+ 760              		.loc 1 250 3 is_stmt 1 view .LVU198
+ 250:Core/Src/pid.c **** 		uPID->Ki = (0 - uPID->Ki);
+ 761              		.loc 1 250 17 is_stmt 0 view .LVU199
+ 762 00b2 5246     		mov	r2, r10
+ 763 00b4 5B46     		mov	r3, fp
+ 764 00b6 0020     		movs	r0, #0
+ 765 00b8 0021     		movs	r1, #0
+ 766 00ba FFF7FEFF 		bl	__aeabi_dsub
+ 767              	.LVL71:
+ 250:Core/Src/pid.c **** 		uPID->Ki = (0 - uPID->Ki);
+ 768              		.loc 1 250 12 view .LVU200
+ 769 00be C4E90A01 		strd	r0, [r4, #40]
+ 251:Core/Src/pid.c **** 		uPID->Kd = (0 - uPID->Kd);
+ 770              		.loc 1 251 3 is_stmt 1 view .LVU201
+ 251:Core/Src/pid.c **** 		uPID->Kd = (0 - uPID->Kd);
+ 771              		.loc 1 251 17 is_stmt 0 view .LVU202
+ 772 00c2 53EC192B 		vmov	r2, r3, d9
+ 773 00c6 0020     		movs	r0, #0
+ 774 00c8 0021     		movs	r1, #0
+ 775 00ca FFF7FEFF 		bl	__aeabi_dsub
+ 776              	.LVL72:
+ 251:Core/Src/pid.c **** 		uPID->Kd = (0 - uPID->Kd);
+ 777              		.loc 1 251 12 view .LVU203
+ 778 00ce C4E90C01 		strd	r0, [r4, #48]
+ 252:Core/Src/pid.c **** 		
+ 779              		.loc 1 252 3 is_stmt 1 view .LVU204
+ 252:Core/Src/pid.c **** 		
+ 780              		.loc 1 252 17 is_stmt 0 view .LVU205
+ 781 00d2 3246     		mov	r2, r6
+ 782 00d4 3B46     		mov	r3, r7
+ 783 00d6 0020     		movs	r0, #0
+ 784 00d8 0021     		movs	r1, #0
+ 785 00da FFF7FEFF 		bl	__aeabi_dsub
+ 786              	.LVL73:
+ 252:Core/Src/pid.c **** 		
+ 787              		.loc 1 252 12 view .LVU206
+ 788 00de C4E90E01 		strd	r0, [r4, #56]
+ 789 00e2 E1E7     		b	.L49
+ 790              	.L54:
+ 791              		.align	2
+ 792              	.L53:
+ 793 00e4 00408F40 		.word	1083129856
+ 794              		.cfi_endproc
+ 795              	.LFE138:
+ 797              		.section	.text.PID_SetTunings,"ax",%progbits
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 21
+
+
+ 798              		.align	1
+ 799              		.global	PID_SetTunings
+ 800              		.syntax unified
+ 801              		.thumb
+ 802              		.thumb_func
+ 803              		.fpu fpv4-sp-d16
+ 805              	PID_SetTunings:
+ 806              	.LVL74:
+ 807              	.LFB137:
+ 217:Core/Src/pid.c **** 	PID_SetTunings2(uPID, Kp, Ki, Kd, uPID->POn);
+ 808              		.loc 1 217 1 is_stmt 1 view -0
+ 809              		.cfi_startproc
+ 810              		@ args = 0, pretend = 0, frame = 0
+ 811              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217:Core/Src/pid.c **** 	PID_SetTunings2(uPID, Kp, Ki, Kd, uPID->POn);
+ 812              		.loc 1 217 1 is_stmt 0 view .LVU208
+ 813 0000 08B5     		push	{r3, lr}
+ 814              		.cfi_def_cfa_offset 8
+ 815              		.cfi_offset 3, -8
+ 816              		.cfi_offset 14, -4
+ 218:Core/Src/pid.c **** }
+ 817              		.loc 1 218 2 is_stmt 1 view .LVU209
+ 818 0002 8178     		ldrb	r1, [r0, #2]	@ zero_extendqisi2
+ 819 0004 FFF7FEFF 		bl	PID_SetTunings2
+ 820              	.LVL75:
+ 219:Core/Src/pid.c **** void PID_SetTunings2(PID_TypeDef *uPID, double Kp, double Ki, double Kd, PIDPON_TypeDef POn)
+ 821              		.loc 1 219 1 is_stmt 0 view .LVU210
+ 822 0008 08BD     		pop	{r3, pc}
+ 823              		.cfi_endproc
+ 824              	.LFE137:
+ 826              		.section	.text.PID_SetControllerDirection,"ax",%progbits
+ 827              		.align	1
+ 828              		.global	PID_SetControllerDirection
+ 829              		.syntax unified
+ 830              		.thumb
+ 831              		.thumb_func
+ 832              		.fpu fpv4-sp-d16
+ 834              	PID_SetControllerDirection:
+ 835              	.LVL76:
+ 836              	.LFB139:
+ 257:Core/Src/pid.c **** 
+ 258:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~ PID Direction ~~~~~~~~~~~~~~~ */
+ 259:Core/Src/pid.c **** void          PID_SetControllerDirection(PID_TypeDef *uPID, PIDCD_TypeDef Direction)
+ 260:Core/Src/pid.c **** {
+ 837              		.loc 1 260 1 is_stmt 1 view -0
+ 838              		.cfi_startproc
+ 839              		@ args = 0, pretend = 0, frame = 0
+ 840              		@ frame_needed = 0, uses_anonymous_args = 0
+ 841              		.loc 1 260 1 is_stmt 0 view .LVU212
+ 842 0000 38B5     		push	{r3, r4, r5, lr}
+ 843              		.cfi_def_cfa_offset 16
+ 844              		.cfi_offset 3, -16
+ 845              		.cfi_offset 4, -12
+ 846              		.cfi_offset 5, -8
+ 847              		.cfi_offset 14, -4
+ 848 0002 0446     		mov	r4, r0
+ 849 0004 0D46     		mov	r5, r1
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 22
+
+
+ 261:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Check parameters ~~~~~~~~~~ */
+ 262:Core/Src/pid.c **** 	if ((uPID->InAuto) && (Direction !=uPID->ControllerDirection))
+ 850              		.loc 1 262 2 is_stmt 1 view .LVU213
+ 851              		.loc 1 262 11 is_stmt 0 view .LVU214
+ 852 0006 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
+ 853              		.loc 1 262 5 view .LVU215
+ 854 0008 D3B1     		cbz	r3, .L58
+ 855              		.loc 1 262 41 discriminator 1 view .LVU216
+ 856 000a C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
+ 857              		.loc 1 262 21 discriminator 1 view .LVU217
+ 858 000c 8B42     		cmp	r3, r1
+ 859 000e 17D0     		beq	.L58
+ 263:Core/Src/pid.c **** 	{
+ 264:Core/Src/pid.c **** 		
+ 265:Core/Src/pid.c **** 		uPID->Kp = (0 - uPID->Kp);
+ 860              		.loc 1 265 3 is_stmt 1 view .LVU218
+ 861              		.loc 1 265 17 is_stmt 0 view .LVU219
+ 862 0010 D0E90A23 		ldrd	r2, [r0, #40]
+ 863 0014 0020     		movs	r0, #0
+ 864              	.LVL77:
+ 865              		.loc 1 265 17 view .LVU220
+ 866 0016 0021     		movs	r1, #0
+ 867              	.LVL78:
+ 868              		.loc 1 265 17 view .LVU221
+ 869 0018 FFF7FEFF 		bl	__aeabi_dsub
+ 870              	.LVL79:
+ 871              		.loc 1 265 12 view .LVU222
+ 872 001c C4E90A01 		strd	r0, [r4, #40]
+ 266:Core/Src/pid.c **** 		uPID->Ki = (0 - uPID->Ki);
+ 873              		.loc 1 266 3 is_stmt 1 view .LVU223
+ 874              		.loc 1 266 17 is_stmt 0 view .LVU224
+ 875 0020 D4E90C23 		ldrd	r2, [r4, #48]
+ 876 0024 0020     		movs	r0, #0
+ 877 0026 0021     		movs	r1, #0
+ 878 0028 FFF7FEFF 		bl	__aeabi_dsub
+ 879              	.LVL80:
+ 880              		.loc 1 266 12 view .LVU225
+ 881 002c C4E90C01 		strd	r0, [r4, #48]
+ 267:Core/Src/pid.c **** 		uPID->Kd = (0 - uPID->Kd);
+ 882              		.loc 1 267 3 is_stmt 1 view .LVU226
+ 883              		.loc 1 267 17 is_stmt 0 view .LVU227
+ 884 0030 D4E90E23 		ldrd	r2, [r4, #56]
+ 885 0034 0020     		movs	r0, #0
+ 886 0036 0021     		movs	r1, #0
+ 887 0038 FFF7FEFF 		bl	__aeabi_dsub
+ 888              	.LVL81:
+ 889              		.loc 1 267 12 view .LVU228
+ 890 003c C4E90E01 		strd	r0, [r4, #56]
+ 891              	.L58:
+ 268:Core/Src/pid.c **** 		
+ 269:Core/Src/pid.c **** 	}
+ 270:Core/Src/pid.c **** 	
+ 271:Core/Src/pid.c **** 	uPID->ControllerDirection = Direction;
+ 892              		.loc 1 271 2 is_stmt 1 view .LVU229
+ 893              		.loc 1 271 28 is_stmt 0 view .LVU230
+ 894 0040 E570     		strb	r5, [r4, #3]
+ 272:Core/Src/pid.c **** 	
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 23
+
+
+ 273:Core/Src/pid.c **** }
+ 895              		.loc 1 273 1 view .LVU231
+ 896 0042 38BD     		pop	{r3, r4, r5, pc}
+ 897              		.loc 1 273 1 view .LVU232
+ 898              		.cfi_endproc
+ 899              	.LFE139:
+ 901              		.section	.text.PID,"ax",%progbits
+ 902              		.align	1
+ 903              		.global	PID
+ 904              		.syntax unified
+ 905              		.thumb
+ 906              		.thumb_func
+ 907              		.fpu fpv4-sp-d16
+ 909              	PID:
+ 910              	.LVL82:
+ 911              	.LFB131:
+  44:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Set parameter ~~~~~~~~~~ */
+ 912              		.loc 1 44 1 is_stmt 1 view -0
+ 913              		.cfi_startproc
+ 914              		@ args = 8, pretend = 0, frame = 0
+ 915              		@ frame_needed = 0, uses_anonymous_args = 0
+  44:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Set parameter ~~~~~~~~~~ */
+ 916              		.loc 1 44 1 is_stmt 0 view .LVU234
+ 917 0000 10B5     		push	{r4, lr}
+ 918              		.cfi_def_cfa_offset 8
+ 919              		.cfi_offset 4, -8
+ 920              		.cfi_offset 14, -4
+ 921 0002 2DED068B 		vpush.64	{d8, d9, d10}
+ 922              		.cfi_def_cfa_offset 32
+ 923              		.cfi_offset 80, -32
+ 924              		.cfi_offset 81, -28
+ 925              		.cfi_offset 82, -24
+ 926              		.cfi_offset 83, -20
+ 927              		.cfi_offset 84, -16
+ 928              		.cfi_offset 85, -12
+ 929 0006 0446     		mov	r4, r0
+ 930 0008 B0EE408A 		vmov.f32	s16, s0
+ 931 000c F0EE608A 		vmov.f32	s17, s1
+ 932 0010 B0EE419A 		vmov.f32	s18, s2
+ 933 0014 F0EE619A 		vmov.f32	s19, s3
+ 934 0018 B0EE42AA 		vmov.f32	s20, s4
+ 935 001c F0EE62AA 		vmov.f32	s21, s5
+  46:Core/Src/pid.c **** 	uPID->MyInput    = Input;
+ 936              		.loc 1 46 2 is_stmt 1 view .LVU235
+  46:Core/Src/pid.c **** 	uPID->MyInput    = Input;
+ 937              		.loc 1 46 19 is_stmt 0 view .LVU236
+ 938 0020 4264     		str	r2, [r0, #68]
+  47:Core/Src/pid.c **** 	uPID->MySetpoint = Setpoint;
+ 939              		.loc 1 47 2 is_stmt 1 view .LVU237
+  47:Core/Src/pid.c **** 	uPID->MySetpoint = Setpoint;
+ 940              		.loc 1 47 19 is_stmt 0 view .LVU238
+ 941 0022 0164     		str	r1, [r0, #64]
+  48:Core/Src/pid.c **** 	uPID->InAuto     = (PIDMode_TypeDef)_FALSE;
+ 942              		.loc 1 48 2 is_stmt 1 view .LVU239
+  48:Core/Src/pid.c **** 	uPID->InAuto     = (PIDMode_TypeDef)_FALSE;
+ 943              		.loc 1 48 19 is_stmt 0 view .LVU240
+ 944 0024 8364     		str	r3, [r0, #72]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 24
+
+
+  49:Core/Src/pid.c **** 	
+ 945              		.loc 1 49 2 is_stmt 1 view .LVU241
+  49:Core/Src/pid.c **** 	
+ 946              		.loc 1 49 19 is_stmt 0 view .LVU242
+ 947 0026 0023     		movs	r3, #0
+ 948              	.LVL83:
+  49:Core/Src/pid.c **** 	
+ 949              		.loc 1 49 19 view .LVU243
+ 950 0028 4370     		strb	r3, [r0, #1]
+  51:Core/Src/pid.c **** 	
+ 951              		.loc 1 51 2 is_stmt 1 view .LVU244
+ 952 002a 9FED131B 		vldr.64	d1, .L62
+ 953              	.LVL84:
+  51:Core/Src/pid.c **** 	
+ 954              		.loc 1 51 2 is_stmt 0 view .LVU245
+ 955 002e 9FED140B 		vldr.64	d0, .L62+8
+ 956              	.LVL85:
+  51:Core/Src/pid.c **** 	
+ 957              		.loc 1 51 2 view .LVU246
+ 958 0032 FFF7FEFF 		bl	PID_SetOutputLimits
+ 959              	.LVL86:
+  53:Core/Src/pid.c **** 	
+ 960              		.loc 1 53 2 is_stmt 1 view .LVU247
+  53:Core/Src/pid.c **** 	
+ 961              		.loc 1 53 19 is_stmt 0 view .LVU248
+ 962 0036 6423     		movs	r3, #100
+ 963 0038 A360     		str	r3, [r4, #8]
+  55:Core/Src/pid.c **** 	PID_SetTunings2(uPID, Kp, Ki, Kd, POn);
+ 964              		.loc 1 55 2 is_stmt 1 view .LVU249
+ 965 003a 9DF82410 		ldrb	r1, [sp, #36]	@ zero_extendqisi2
+ 966 003e 2046     		mov	r0, r4
+ 967 0040 FFF7FEFF 		bl	PID_SetControllerDirection
+ 968              	.LVL87:
+  56:Core/Src/pid.c **** 	
+ 969              		.loc 1 56 2 view .LVU250
+ 970 0044 9DF82010 		ldrb	r1, [sp, #32]	@ zero_extendqisi2
+ 971 0048 B0EE4A2A 		vmov.f32	s4, s20
+ 972 004c F0EE6A2A 		vmov.f32	s5, s21
+ 973 0050 B0EE491A 		vmov.f32	s2, s18
+ 974 0054 F0EE691A 		vmov.f32	s3, s19
+ 975 0058 B0EE480A 		vmov.f32	s0, s16
+ 976 005c F0EE680A 		vmov.f32	s1, s17
+ 977 0060 2046     		mov	r0, r4
+ 978 0062 FFF7FEFF 		bl	PID_SetTunings2
+ 979              	.LVL88:
+  58:Core/Src/pid.c **** 	
+ 980              		.loc 1 58 2 view .LVU251
+  58:Core/Src/pid.c **** 	
+ 981              		.loc 1 58 19 is_stmt 0 view .LVU252
+ 982 0066 FFF7FEFF 		bl	HAL_GetTick
+ 983              	.LVL89:
+  58:Core/Src/pid.c **** 	
+ 984              		.loc 1 58 35 view .LVU253
+ 985 006a A368     		ldr	r3, [r4, #8]
+  58:Core/Src/pid.c **** 	
+ 986              		.loc 1 58 29 view .LVU254
+ 987 006c C01A     		subs	r0, r0, r3
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 25
+
+
+  58:Core/Src/pid.c **** 	
+ 988              		.loc 1 58 17 view .LVU255
+ 989 006e 6060     		str	r0, [r4, #4]
+  60:Core/Src/pid.c **** 
+ 990              		.loc 1 60 1 view .LVU256
+ 991 0070 BDEC068B 		vldm	sp!, {d8-d10}
+ 992              		.cfi_restore 84
+ 993              		.cfi_restore 85
+ 994              		.cfi_restore 82
+ 995              		.cfi_restore 83
+ 996              		.cfi_restore 80
+ 997              		.cfi_restore 81
+ 998              		.cfi_def_cfa_offset 8
+ 999              	.LVL90:
+  60:Core/Src/pid.c **** 
+ 1000              		.loc 1 60 1 view .LVU257
+ 1001 0074 10BD     		pop	{r4, pc}
+ 1002              	.LVL91:
+ 1003              	.L63:
+  60:Core/Src/pid.c **** 
+ 1004              		.loc 1 60 1 view .LVU258
+ 1005 0076 00BF     		.align	3
+ 1006              	.L62:
+ 1007 0078 00000000 		.word	0
+ 1008 007c 00E06F40 		.word	1081073664
+ 1009 0080 00000000 		.word	0
+ 1010 0084 00000000 		.word	0
+ 1011              		.cfi_endproc
+ 1012              	.LFE131:
+ 1014              		.section	.text.PID2,"ax",%progbits
+ 1015              		.align	1
+ 1016              		.global	PID2
+ 1017              		.syntax unified
+ 1018              		.thumb
+ 1019              		.thumb_func
+ 1020              		.fpu fpv4-sp-d16
+ 1022              	PID2:
+ 1023              	.LVL92:
+ 1024              	.LFB132:
+  63:Core/Src/pid.c **** 	PID(uPID, Input, Output, Setpoint, Kp, Ki, Kd, _PID_P_ON_E, ControllerDirection);
+ 1025              		.loc 1 63 1 is_stmt 1 view -0
+ 1026              		.cfi_startproc
+ 1027              		@ args = 4, pretend = 0, frame = 0
+ 1028              		@ frame_needed = 0, uses_anonymous_args = 0
+  63:Core/Src/pid.c **** 	PID(uPID, Input, Output, Setpoint, Kp, Ki, Kd, _PID_P_ON_E, ControllerDirection);
+ 1029              		.loc 1 63 1 is_stmt 0 view .LVU260
+ 1030 0000 10B5     		push	{r4, lr}
+ 1031              		.cfi_def_cfa_offset 8
+ 1032              		.cfi_offset 4, -8
+ 1033              		.cfi_offset 14, -4
+ 1034 0002 82B0     		sub	sp, sp, #8
+ 1035              		.cfi_def_cfa_offset 16
+  64:Core/Src/pid.c **** }
+ 1036              		.loc 1 64 2 is_stmt 1 view .LVU261
+ 1037 0004 9DF81040 		ldrb	r4, [sp, #16]	@ zero_extendqisi2
+ 1038 0008 0194     		str	r4, [sp, #4]
+ 1039 000a 0124     		movs	r4, #1
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 26
+
+
+ 1040 000c 0094     		str	r4, [sp]
+ 1041 000e FFF7FEFF 		bl	PID
+ 1042              	.LVL93:
+  65:Core/Src/pid.c **** 
+ 1043              		.loc 1 65 1 is_stmt 0 view .LVU262
+ 1044 0012 02B0     		add	sp, sp, #8
+ 1045              		.cfi_def_cfa_offset 8
+ 1046              		@ sp needed
+ 1047 0014 10BD     		pop	{r4, pc}
+  65:Core/Src/pid.c **** 
+ 1048              		.loc 1 65 1 view .LVU263
+ 1049              		.cfi_endproc
+ 1050              	.LFE132:
+ 1052              		.section	.text.PID_GetDirection,"ax",%progbits
+ 1053              		.align	1
+ 1054              		.global	PID_GetDirection
+ 1055              		.syntax unified
+ 1056              		.thumb
+ 1057              		.thumb_func
+ 1058              		.fpu fpv4-sp-d16
+ 1060              	PID_GetDirection:
+ 1061              	.LVL94:
+ 1062              	.LFB140:
+ 274:Core/Src/pid.c **** PIDCD_TypeDef PID_GetDirection(PID_TypeDef *uPID)
+ 275:Core/Src/pid.c **** {
+ 1063              		.loc 1 275 1 is_stmt 1 view -0
+ 1064              		.cfi_startproc
+ 1065              		@ args = 0, pretend = 0, frame = 0
+ 1066              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1067              		@ link register save eliminated.
+ 276:Core/Src/pid.c **** 	return uPID->ControllerDirection;
+ 1068              		.loc 1 276 2 view .LVU265
+ 277:Core/Src/pid.c **** }
+ 1069              		.loc 1 277 1 is_stmt 0 view .LVU266
+ 1070 0000 C078     		ldrb	r0, [r0, #3]	@ zero_extendqisi2
+ 1071              	.LVL95:
+ 1072              		.loc 1 277 1 view .LVU267
+ 1073 0002 7047     		bx	lr
+ 1074              		.cfi_endproc
+ 1075              	.LFE140:
+ 1077              		.global	__aeabi_i2d
+ 1078              		.section	.text.PID_SetSampleTime,"ax",%progbits
+ 1079              		.align	1
+ 1080              		.global	PID_SetSampleTime
+ 1081              		.syntax unified
+ 1082              		.thumb
+ 1083              		.thumb_func
+ 1084              		.fpu fpv4-sp-d16
+ 1086              	PID_SetSampleTime:
+ 1087              	.LVL96:
+ 1088              	.LFB141:
+ 278:Core/Src/pid.c **** 
+ 279:Core/Src/pid.c **** /* ~~~~~~~~~~~~~~~ PID Sampling ~~~~~~~~~~~~~~~~ */
+ 280:Core/Src/pid.c **** void PID_SetSampleTime(PID_TypeDef *uPID, int32_t NewSampleTime)
+ 281:Core/Src/pid.c **** {
+ 1089              		.loc 1 281 1 is_stmt 1 view -0
+ 1090              		.cfi_startproc
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 27
+
+
+ 1091              		@ args = 0, pretend = 0, frame = 0
+ 1092              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1093              		.loc 1 281 1 is_stmt 0 view .LVU269
+ 1094 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1095              		.cfi_def_cfa_offset 24
+ 1096              		.cfi_offset 3, -24
+ 1097              		.cfi_offset 4, -20
+ 1098              		.cfi_offset 5, -16
+ 1099              		.cfi_offset 6, -12
+ 1100              		.cfi_offset 7, -8
+ 1101              		.cfi_offset 14, -4
+ 282:Core/Src/pid.c **** 	
+ 283:Core/Src/pid.c **** 	double ratio;
+ 1102              		.loc 1 283 2 is_stmt 1 view .LVU270
+ 284:Core/Src/pid.c **** 	
+ 285:Core/Src/pid.c **** 	/* ~~~~~~~~~~ Check value ~~~~~~~~~~ */
+ 286:Core/Src/pid.c **** 	if (NewSampleTime > 0)
+ 1103              		.loc 1 286 2 view .LVU271
+ 1104              		.loc 1 286 5 is_stmt 0 view .LVU272
+ 1105 0002 0D1E     		subs	r5, r1, #0
+ 1106 0004 21DD     		ble	.L67
+ 1107 0006 0446     		mov	r4, r0
+ 287:Core/Src/pid.c **** 	{
+ 288:Core/Src/pid.c **** 		
+ 289:Core/Src/pid.c **** 		ratio = (double)NewSampleTime / (double)uPID->SampleTime;
+ 1108              		.loc 1 289 3 is_stmt 1 view .LVU273
+ 1109              		.loc 1 289 11 is_stmt 0 view .LVU274
+ 1110 0008 2846     		mov	r0, r5
+ 1111              	.LVL97:
+ 1112              		.loc 1 289 11 view .LVU275
+ 1113 000a FFF7FEFF 		bl	__aeabi_i2d
+ 1114              	.LVL98:
+ 1115              		.loc 1 289 11 view .LVU276
+ 1116 000e 0646     		mov	r6, r0
+ 1117 0010 0F46     		mov	r7, r1
+ 1118              		.loc 1 289 35 view .LVU277
+ 1119 0012 A068     		ldr	r0, [r4, #8]
+ 1120 0014 FFF7FEFF 		bl	__aeabi_ui2d
+ 1121              	.LVL99:
+ 1122 0018 0246     		mov	r2, r0
+ 1123 001a 0B46     		mov	r3, r1
+ 1124              		.loc 1 289 9 view .LVU278
+ 1125 001c 3046     		mov	r0, r6
+ 1126 001e 3946     		mov	r1, r7
+ 1127 0020 FFF7FEFF 		bl	__aeabi_ddiv
+ 1128              	.LVL100:
+ 1129 0024 0646     		mov	r6, r0
+ 1130 0026 0F46     		mov	r7, r1
+ 1131              	.LVL101:
+ 290:Core/Src/pid.c **** 		
+ 291:Core/Src/pid.c **** 		uPID->Ki *= ratio;
+ 1132              		.loc 1 291 3 is_stmt 1 view .LVU279
+ 1133              		.loc 1 291 12 is_stmt 0 view .LVU280
+ 1134 0028 0246     		mov	r2, r0
+ 1135 002a 0B46     		mov	r3, r1
+ 1136 002c D4E90C01 		ldrd	r0, [r4, #48]
+ 1137 0030 FFF7FEFF 		bl	__aeabi_dmul
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 28
+
+
+ 1138              	.LVL102:
+ 1139 0034 C4E90C01 		strd	r0, [r4, #48]
+ 292:Core/Src/pid.c **** 		uPID->Kd /= ratio;
+ 1140              		.loc 1 292 3 is_stmt 1 view .LVU281
+ 1141              		.loc 1 292 12 is_stmt 0 view .LVU282
+ 1142 0038 3246     		mov	r2, r6
+ 1143 003a 3B46     		mov	r3, r7
+ 1144 003c D4E90E01 		ldrd	r0, [r4, #56]
+ 1145 0040 FFF7FEFF 		bl	__aeabi_ddiv
+ 1146              	.LVL103:
+ 1147 0044 C4E90E01 		strd	r0, [r4, #56]
+ 293:Core/Src/pid.c **** 		uPID->SampleTime = (uint32_t)NewSampleTime;
+ 1148              		.loc 1 293 3 is_stmt 1 view .LVU283
+ 1149              		.loc 1 293 20 is_stmt 0 view .LVU284
+ 1150 0048 A560     		str	r5, [r4, #8]
+ 1151              	.LVL104:
+ 1152              	.L67:
+ 294:Core/Src/pid.c **** 		
+ 295:Core/Src/pid.c **** 	}
+ 296:Core/Src/pid.c **** 	
+ 297:Core/Src/pid.c **** }
+ 1153              		.loc 1 297 1 view .LVU285
+ 1154 004a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1155              		.loc 1 297 1 view .LVU286
+ 1156              		.cfi_endproc
+ 1157              	.LFE141:
+ 1159              		.section	.text.PID_GetKp,"ax",%progbits
+ 1160              		.align	1
+ 1161              		.global	PID_GetKp
+ 1162              		.syntax unified
+ 1163              		.thumb
+ 1164              		.thumb_func
+ 1165              		.fpu fpv4-sp-d16
+ 1167              	PID_GetKp:
+ 1168              	.LVL105:
+ 1169              	.LFB142:
+ 298:Core/Src/pid.c **** 
+ 299:Core/Src/pid.c **** /* ~~~~~~~~~~~~~ Get Tunings Param ~~~~~~~~~~~~~ */
+ 300:Core/Src/pid.c **** double PID_GetKp(PID_TypeDef *uPID)
+ 301:Core/Src/pid.c **** {
+ 1170              		.loc 1 301 1 is_stmt 1 view -0
+ 1171              		.cfi_startproc
+ 1172              		@ args = 0, pretend = 0, frame = 0
+ 1173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1174              		@ link register save eliminated.
+ 302:Core/Src/pid.c **** 	return uPID->DispKp;
+ 1175              		.loc 1 302 2 view .LVU288
+ 303:Core/Src/pid.c **** }
+ 1176              		.loc 1 303 1 is_stmt 0 view .LVU289
+ 1177 0000 90ED040B 		vldr.64	d0, [r0, #16]
+ 1178 0004 7047     		bx	lr
+ 1179              		.cfi_endproc
+ 1180              	.LFE142:
+ 1182              		.section	.text.PID_GetKi,"ax",%progbits
+ 1183              		.align	1
+ 1184              		.global	PID_GetKi
+ 1185              		.syntax unified
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 29
+
+
+ 1186              		.thumb
+ 1187              		.thumb_func
+ 1188              		.fpu fpv4-sp-d16
+ 1190              	PID_GetKi:
+ 1191              	.LVL106:
+ 1192              	.LFB143:
+ 304:Core/Src/pid.c **** double PID_GetKi(PID_TypeDef *uPID)
+ 305:Core/Src/pid.c **** {
+ 1193              		.loc 1 305 1 is_stmt 1 view -0
+ 1194              		.cfi_startproc
+ 1195              		@ args = 0, pretend = 0, frame = 0
+ 1196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1197              		@ link register save eliminated.
+ 306:Core/Src/pid.c **** 	return uPID->DispKi;
+ 1198              		.loc 1 306 2 view .LVU291
+ 307:Core/Src/pid.c **** }
+ 1199              		.loc 1 307 1 is_stmt 0 view .LVU292
+ 1200 0000 90ED060B 		vldr.64	d0, [r0, #24]
+ 1201 0004 7047     		bx	lr
+ 1202              		.cfi_endproc
+ 1203              	.LFE143:
+ 1205              		.section	.text.PID_GetKd,"ax",%progbits
+ 1206              		.align	1
+ 1207              		.global	PID_GetKd
+ 1208              		.syntax unified
+ 1209              		.thumb
+ 1210              		.thumb_func
+ 1211              		.fpu fpv4-sp-d16
+ 1213              	PID_GetKd:
+ 1214              	.LVL107:
+ 1215              	.LFB144:
+ 308:Core/Src/pid.c **** double PID_GetKd(PID_TypeDef *uPID)
+ 309:Core/Src/pid.c **** {
+ 1216              		.loc 1 309 1 is_stmt 1 view -0
+ 1217              		.cfi_startproc
+ 1218              		@ args = 0, pretend = 0, frame = 0
+ 1219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1220              		@ link register save eliminated.
+ 310:Core/Src/pid.c **** 	return uPID->DispKd;
+ 1221              		.loc 1 310 2 view .LVU294
+ 311:Core/Src/pid.c **** }
+ 1222              		.loc 1 311 1 is_stmt 0 view .LVU295
+ 1223 0000 90ED080B 		vldr.64	d0, [r0, #32]
+ 1224 0004 7047     		bx	lr
+ 1225              		.cfi_endproc
+ 1226              	.LFE144:
+ 1228              		.text
+ 1229              	.Letext0:
+ 1230              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+ 1231              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+ 1232              		.file 4 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\loc
+ 1233              		.file 5 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_ty
+ 1234              		.file 6 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\\
+ 1235              		.file 7 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\ree
+ 1236              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
+ 1237              		.file 9 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1238              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 30
+
+
+ 1239              		.file 11 "Core/Inc/pid.h"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccne166M.s 			page 31
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 pid.c
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:20     .text.PID_Init:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:28     .text.PID_Init:00000000 PID_Init
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:106    .text.PID_Compute:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:113    .text.PID_Compute:00000000 PID_Compute
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:385    .text.PID_Compute:00000150 $d
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:391    .text.PID_SetMode:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:398    .text.PID_SetMode:00000000 PID_SetMode
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:446    .text.PID_GetMode:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:453    .text.PID_GetMode:00000000 PID_GetMode
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:475    .text.PID_SetOutputLimits:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:482    .text.PID_SetOutputLimits:00000000 PID_SetOutputLimits
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:608    .text.PID_SetTunings2:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:615    .text.PID_SetTunings2:00000000 PID_SetTunings2
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:793    .text.PID_SetTunings2:000000e4 $d
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:798    .text.PID_SetTunings:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:805    .text.PID_SetTunings:00000000 PID_SetTunings
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:827    .text.PID_SetControllerDirection:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:834    .text.PID_SetControllerDirection:00000000 PID_SetControllerDirection
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:902    .text.PID:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:909    .text.PID:00000000 PID
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1007   .text.PID:00000078 $d
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1015   .text.PID2:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1022   .text.PID2:00000000 PID2
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1053   .text.PID_GetDirection:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1060   .text.PID_GetDirection:00000000 PID_GetDirection
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1079   .text.PID_SetSampleTime:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1086   .text.PID_SetSampleTime:00000000 PID_SetSampleTime
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1160   .text.PID_GetKp:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1167   .text.PID_GetKp:00000000 PID_GetKp
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1183   .text.PID_GetKi:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1190   .text.PID_GetKi:00000000 PID_GetKi
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1206   .text.PID_GetKd:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccne166M.s:1213   .text.PID_GetKd:00000000 PID_GetKd
+
+UNDEFINED SYMBOLS
+__aeabi_dcmpgt
+__aeabi_dcmplt
+__aeabi_dsub
+__aeabi_dmul
+__aeabi_dadd
+HAL_GetTick
+__aeabi_dcmpge
+__aeabi_ui2d
+__aeabi_ddiv
+__aeabi_i2d
