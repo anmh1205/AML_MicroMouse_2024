@@ -1,0 +1,5 @@
+../Core/Src/AML_MPUSensor.c:14:9:AML_MPUSensor_ResetAngle	4	static
+../Core/Src/AML_MPUSensor.c:20:6:AML_MPUSensor_Setup	8	static
+../Core/Src/AML_MPUSensor.c:26:6:handle	8	static
+../Core/Src/AML_MPUSensor.c:36:6:HAL_UART_RxCpltCallback	16	static
+../Core/Src/AML_MPUSensor.c:72:8:AML_MPUSensor_GetAngle	8	static

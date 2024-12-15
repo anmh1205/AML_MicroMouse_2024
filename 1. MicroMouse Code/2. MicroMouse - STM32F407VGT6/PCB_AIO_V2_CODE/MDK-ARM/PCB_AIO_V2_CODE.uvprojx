@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4107</DriverSelection>
+            <DriverSelection>4101</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -409,11 +409,6 @@
               <FilePath>../Core/Src/stm32h7xx_hal_msp.c</FilePath>
             </File>
             <File>
-              <FileName>AML_MPUSensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\AML_MPUSensor.c</FilePath>
-            </File>
-            <File>
               <FileName>AML_LedDebug.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\AML_LedDebug.c</FilePath>
@@ -447,6 +442,21 @@
               <FileName>AML_IRSensor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\AML_IRSensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>solver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\solver.c</FilePath>
+            </File>
+            <File>
+              <FileName>AML_IMU.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\AML_IMU.c</FilePath>
             </File>
           </Files>
         </Group>

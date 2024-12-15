@@ -42,7 +42,11 @@ pcb_aio_v2_code\aml_motorcontrol.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7x
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/main.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_PID.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_GlobalVariable.h
+pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_MotorControl.h
+pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_IRSensor.h
+pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_GlobalVariable.h
+pcb_aio_v2_code\aml_motorcontrol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_LedDebug.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_Buzzer.h
 pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_Switch.h
-pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_MPUSensor.h
+pcb_aio_v2_code\aml_motorcontrol.o: ../Core/Inc/AML_IMU.h

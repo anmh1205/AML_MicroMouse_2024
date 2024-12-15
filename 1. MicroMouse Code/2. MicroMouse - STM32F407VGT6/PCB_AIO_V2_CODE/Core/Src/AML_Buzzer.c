@@ -20,28 +20,37 @@ const uint16_t durations[] = {
 };
 
 //-------------------------------------------------------------------------------------------------//
-void AML_Buzzer_TurnOn(void);
+void AML_Buzzer_Setup(void);
 void AML_Buzzer_TurnOff(void);
-int AML_Buzzer_PlaySong(void);
+void AML_Buzzer_PlaySong(void);
 void AML_Buzzer_PlayNote(float frequency, uint16_t duration);
 void AML_Buzzer_PlayNoteInSong(float frequency, uint16_t duration);
-void AML_Buzzer_Beep();
+void AML_Buzzer_Beep(void);
 
 //-------------------------------------------------------------------------------------------------//
 
-void AML_Buzzer_TurnOn(void)
+void AML_Buzzer_Setup(void)
 {
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 }
 
 void AML_Buzzer_TurnOff(void)
 {
+    // HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
+
+    // Stop PWM
     HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
+
+    // set 100% duty cycle
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+
+    // Start PWM
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 }
 
-int AML_Buzzer_PlaySong(void)
+void AML_Buzzer_PlaySong(void)
 {
-    AML_Buzzer_TurnOn();
+    AML_Buzzer_Setup();
 
     for (uint16_t i = 0; i < sizeof(frequencies) / sizeof(frequencies[0]); i++)
     {
@@ -57,10 +66,13 @@ void AML_Buzzer_PlayNote(float frequency, uint16_t duration)
     {
         frequency = 10000;
     }
-    else if (frequency <  30)
+    else if (frequency < 30)
     {
         frequency = 30;
     }
+
+    // Stop PWM
+    HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
 
     // Compute the value of ARR register
     uint32_t ARR_value = (uint32_t)(ClockAfterPrescal / frequency) - 1;
@@ -105,10 +117,19 @@ void AML_Buzzer_PlayNoteInSong(float frequency, uint16_t duration)
 
     // Wait for the note to play
     HAL_Delay(duration);
+
+    // Turn off buzzer
+    AML_Buzzer_TurnOff();
+
+    // Wait for the note to play
+    HAL_Delay(50);
 }
 
-void AML_Buzzer_Beep()
+/**
+ * @brief: Beep once
+ * @params: None
+ */
+void AML_Buzzer_Beep(void)
 {
     AML_Buzzer_PlayNote(3000, 100);
 }
-

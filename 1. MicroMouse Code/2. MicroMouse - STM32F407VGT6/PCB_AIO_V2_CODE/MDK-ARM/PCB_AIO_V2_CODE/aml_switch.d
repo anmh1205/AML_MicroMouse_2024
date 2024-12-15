@@ -41,3 +41,12 @@ pcb_aio_v2_code\aml_switch.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_
 pcb_aio_v2_code\aml_switch.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 pcb_aio_v2_code\aml_switch.o: ../Core/Inc/main.h
 pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_GlobalVariable.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_MotorControl.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_PID.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_GlobalVariable.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_LedDebug.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_Buzzer.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_Switch.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_IMU.h
+pcb_aio_v2_code\aml_switch.o: ../Core/Inc/AML_IRSensor.h
+pcb_aio_v2_code\aml_switch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

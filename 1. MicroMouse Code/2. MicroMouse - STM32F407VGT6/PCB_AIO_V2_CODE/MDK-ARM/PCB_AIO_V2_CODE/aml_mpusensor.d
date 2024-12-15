@@ -1,5 +1,5 @@
-pcb_aio_v2_code\aml_mpusensor.o: ..\Core\Src\AML_MPUSensor.c
-pcb_aio_v2_code\aml_mpusensor.o: ../Core/Inc/AML_MPUSensor.h
+pcb_aio_v2_code\aml_mpusensor.o: ..\Core\Src\AML_IMU.c
+pcb_aio_v2_code\aml_mpusensor.o: ../Core/Inc/AML_IMU.h
 pcb_aio_v2_code\aml_mpusensor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
 pcb_aio_v2_code\aml_mpusensor.o: ../Core/Inc/stm32h7xx_hal_conf.h
 pcb_aio_v2_code\aml_mpusensor.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h

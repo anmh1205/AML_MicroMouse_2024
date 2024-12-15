@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "e:/1. Phenikaa University/AML/0. Project/7. MicroMouse_2024/1. MicroMouse Code/3. Test (code C)/MMS_Source",
+      "program": "e:/1. Phenikaa University/AML/0. Project/7. MicroMouse_2024/1. MicroMouse Code/3. Test (code C)/MMS_Source/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

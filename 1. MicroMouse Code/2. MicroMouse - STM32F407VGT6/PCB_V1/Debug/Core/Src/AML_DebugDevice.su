@@ -1,0 +1,6 @@
+../Core/Src/AML_DebugDevice.c:5:6:AML_DebugDevice_BuzzerBeep	8	static
+../Core/Src/AML_DebugDevice.c:12:6:AML_DebugDevice_TurnOnLED	16	static
+../Core/Src/AML_DebugDevice.c:17:6:AML_DebugDevice_TurnOffLED	16	static
+../Core/Src/AML_DebugDevice.c:22:6:AML_DebugDevice_ToggleLED	16	static
+../Core/Src/AML_DebugDevice.c:27:6:AML_DebugDevice_SetLED	16	static
+../Core/Src/AML_DebugDevice.c:32:6:AML_DebugDevice_SetAllLED	16	static

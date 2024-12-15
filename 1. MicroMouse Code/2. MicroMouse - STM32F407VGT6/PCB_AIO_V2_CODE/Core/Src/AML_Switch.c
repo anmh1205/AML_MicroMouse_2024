@@ -11,10 +11,10 @@ uint8_t ButtonState[2] = {0, 0};
 //-------------------------------------------------------------------------------------------------------//
 
 void AML_ReadAll_BitSwitch(void);
-uint8_t AML_Read_BitSwitch(uint8_t index);
+bool AML_Read_BitSwitch(uint8_t index);
 
 void AML_ReadAll_Button(void);
-uint8_t AML_Read_Button(uint8_t index);
+bool AML_Read_Button(uint8_t index);
 
 //-------------------------------------------------------------------------------------------------------//
 // Function of Bit Switch
@@ -27,7 +27,7 @@ void AML_ReadAll_BitSwitch(void)
     }
 }
 
-uint8_t AML_Read_BitSwitch(uint8_t index)
+bool AML_Read_BitSwitch(uint8_t index)
 {
     return HAL_GPIO_ReadPin(BitSwitchPort, BitSwitchPinArray[index]);
 }
@@ -43,7 +43,7 @@ void AML_ReadAll_Button(void)
     }
 }
 
-uint8_t AML_Read_Button(uint8_t index)
+bool AML_Read_Button(uint8_t index)
 {
     return !HAL_GPIO_ReadPin(ButtonPort, ButtonPinArray[index]);
 }

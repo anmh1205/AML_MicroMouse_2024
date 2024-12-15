@@ -1,0 +1,1296 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"vl53l0x_platform.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text._I2CWrite,"ax",%progbits
+  18              		.align	1
+  19              		.global	_I2CWrite
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	_I2CWrite:
+  27              	.LVL0:
+  28              	.LFB133:
+  29              		.file 1 "Core/Src/vl53l0x_platform.c"
+   1:Core/Src/vl53l0x_platform.c **** //?????#include "hal.h"
+   2:Core/Src/vl53l0x_platform.c **** #include "vl53l0x_platform.h"
+   3:Core/Src/vl53l0x_platform.c **** #include "vl53l0x_api.h"
+   4:Core/Src/vl53l0x_platform.c **** 
+   5:Core/Src/vl53l0x_platform.c **** #include "stm32f4xx_hal.h"
+   6:Core/Src/vl53l0x_platform.c **** #include <string.h>
+   7:Core/Src/vl53l0x_platform.c **** 
+   8:Core/Src/vl53l0x_platform.c **** #define I2C_TIME_OUT_BASE   10
+   9:Core/Src/vl53l0x_platform.c **** #define I2C_TIME_OUT_BYTE   1
+  10:Core/Src/vl53l0x_platform.c **** #define VL53L0X_OsDelay(...) HAL_Delay(2)
+  11:Core/Src/vl53l0x_platform.c **** 
+  12:Core/Src/vl53l0x_platform.c **** 
+  13:Core/Src/vl53l0x_platform.c **** #ifndef HAL_I2C_MODULE_ENABLED
+  14:Core/Src/vl53l0x_platform.c **** #warning "HAL I2C module must be enable "
+  15:Core/Src/vl53l0x_platform.c **** #endif
+  16:Core/Src/vl53l0x_platform.c **** //extern I2C_HandleTypeDef hi2c1;
+  17:Core/Src/vl53l0x_platform.c **** //#define VL53L0X_pI2cHandle    (&hi2c1)
+  18:Core/Src/vl53l0x_platform.c **** 
+  19:Core/Src/vl53l0x_platform.c **** /* when not customized by application define dummy one */
+  20:Core/Src/vl53l0x_platform.c **** #ifndef VL53L0X_GetI2cBus
+  21:Core/Src/vl53l0x_platform.c **** /** This macro can be overloaded by user to enforce i2c sharing in RTOS context
+  22:Core/Src/vl53l0x_platform.c ****  */
+  23:Core/Src/vl53l0x_platform.c **** #   define VL53L0X_GetI2cBus(...) (void)0
+  24:Core/Src/vl53l0x_platform.c **** #endif
+  25:Core/Src/vl53l0x_platform.c **** 
+  26:Core/Src/vl53l0x_platform.c **** #ifndef VL53L0X_PutI2cBus
+  27:Core/Src/vl53l0x_platform.c **** /** This macro can be overloaded by user to enforce i2c sharing in RTOS context
+  28:Core/Src/vl53l0x_platform.c ****  */
+  29:Core/Src/vl53l0x_platform.c **** #   define VL53L0X_PutI2cBus(...) (void)0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 2
+
+
+  30:Core/Src/vl53l0x_platform.c **** #endif
+  31:Core/Src/vl53l0x_platform.c **** 
+  32:Core/Src/vl53l0x_platform.c **** #ifndef VL53L0X_OsDelay
+  33:Core/Src/vl53l0x_platform.c **** #   define  VL53L0X_OsDelay(...) (void)0
+  34:Core/Src/vl53l0x_platform.c **** #endif
+  35:Core/Src/vl53l0x_platform.c **** 
+  36:Core/Src/vl53l0x_platform.c **** 
+  37:Core/Src/vl53l0x_platform.c **** uint8_t _I2CBuffer[64];
+  38:Core/Src/vl53l0x_platform.c **** 
+  39:Core/Src/vl53l0x_platform.c **** int _I2CWrite(VL53L0X_DEV Dev, uint8_t *pdata, uint32_t count) {
+  30              		.loc 1 39 64 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 39 64 is_stmt 0 view .LVU1
+  35 0000 00B5     		push	{lr}
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 83B0     		sub	sp, sp, #12
+  39              		.cfi_def_cfa_offset 16
+  40:Core/Src/vl53l0x_platform.c ****     int status;
+  40              		.loc 1 40 5 is_stmt 1 view .LVU2
+  41:Core/Src/vl53l0x_platform.c ****     int i2c_time_out = I2C_TIME_OUT_BASE+ count* I2C_TIME_OUT_BYTE;
+  41              		.loc 1 41 5 view .LVU3
+  42              		.loc 1 41 41 is_stmt 0 view .LVU4
+  43 0004 02F10A03 		add	r3, r2, #10
+  44              	.LVL1:
+  42:Core/Src/vl53l0x_platform.c **** 
+  43:Core/Src/vl53l0x_platform.c ****     status = HAL_I2C_Master_Transmit(Dev->I2cHandle, Dev->I2cDevAddr, pdata, count, i2c_time_out);
+  45              		.loc 1 43 5 is_stmt 1 view .LVU5
+  46              		.loc 1 43 14 is_stmt 0 view .LVU6
+  47 0008 0093     		str	r3, [sp]
+  48 000a 93B2     		uxth	r3, r2
+  49              	.LVL2:
+  50              		.loc 1 43 14 view .LVU7
+  51 000c 0A46     		mov	r2, r1
+  52              	.LVL3:
+  53              		.loc 1 43 14 view .LVU8
+  54 000e 90F86011 		ldrb	r1, [r0, #352]	@ zero_extendqisi2
+  55              	.LVL4:
+  56              		.loc 1 43 14 view .LVU9
+  57 0012 D0F85C01 		ldr	r0, [r0, #348]
+  58              	.LVL5:
+  59              		.loc 1 43 14 view .LVU10
+  60 0016 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+  61              	.LVL6:
+  44:Core/Src/vl53l0x_platform.c ****     if (status) {
+  62              		.loc 1 44 5 is_stmt 1 view .LVU11
+  45:Core/Src/vl53l0x_platform.c ****         //VL6180x_ErrLog("I2C error 0x%x %d len", dev->I2cAddr, len);
+  46:Core/Src/vl53l0x_platform.c ****         //XNUCLEO6180XA1_I2C1_Init(&hi2c1);
+  47:Core/Src/vl53l0x_platform.c ****     }
+  63              		.loc 1 47 5 view .LVU12
+  48:Core/Src/vl53l0x_platform.c ****     return status;
+  64              		.loc 1 48 5 view .LVU13
+  49:Core/Src/vl53l0x_platform.c **** }
+  65              		.loc 1 49 1 is_stmt 0 view .LVU14
+  66 001a 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 3
+
+
+  67              		.cfi_def_cfa_offset 4
+  68              		@ sp needed
+  69 001c 5DF804FB 		ldr	pc, [sp], #4
+  70              		.cfi_endproc
+  71              	.LFE133:
+  73              		.section	.text._I2CRead,"ax",%progbits
+  74              		.align	1
+  75              		.global	_I2CRead
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  79              		.fpu fpv4-sp-d16
+  81              	_I2CRead:
+  82              	.LVL7:
+  83              	.LFB134:
+  50:Core/Src/vl53l0x_platform.c **** 
+  51:Core/Src/vl53l0x_platform.c **** int _I2CRead(VL53L0X_DEV Dev, uint8_t *pdata, uint32_t count) {
+  84              		.loc 1 51 63 is_stmt 1 view -0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		.loc 1 51 63 is_stmt 0 view .LVU16
+  89 0000 10B5     		push	{r4, lr}
+  90              		.cfi_def_cfa_offset 8
+  91              		.cfi_offset 4, -8
+  92              		.cfi_offset 14, -4
+  93 0002 82B0     		sub	sp, sp, #8
+  94              		.cfi_def_cfa_offset 16
+  52:Core/Src/vl53l0x_platform.c ****     int status;
+  95              		.loc 1 52 5 is_stmt 1 view .LVU17
+  53:Core/Src/vl53l0x_platform.c ****     int i2c_time_out = I2C_TIME_OUT_BASE+ count* I2C_TIME_OUT_BYTE;
+  96              		.loc 1 53 5 view .LVU18
+  97              		.loc 1 53 41 is_stmt 0 view .LVU19
+  98 0004 02F10A03 		add	r3, r2, #10
+  99              	.LVL8:
+  54:Core/Src/vl53l0x_platform.c **** 
+  55:Core/Src/vl53l0x_platform.c ****     status = HAL_I2C_Master_Receive(Dev->I2cHandle, Dev->I2cDevAddr|1, pdata, count, i2c_time_out);
+ 100              		.loc 1 55 5 is_stmt 1 view .LVU20
+ 101              		.loc 1 55 56 is_stmt 0 view .LVU21
+ 102 0008 90F86041 		ldrb	r4, [r0, #352]	@ zero_extendqisi2
+ 103              		.loc 1 55 14 view .LVU22
+ 104 000c 0093     		str	r3, [sp]
+ 105 000e 93B2     		uxth	r3, r2
+ 106              	.LVL9:
+ 107              		.loc 1 55 14 view .LVU23
+ 108 0010 0A46     		mov	r2, r1
+ 109              	.LVL10:
+ 110              		.loc 1 55 14 view .LVU24
+ 111 0012 44F00101 		orr	r1, r4, #1
+ 112              	.LVL11:
+ 113              		.loc 1 55 14 view .LVU25
+ 114 0016 D0F85C01 		ldr	r0, [r0, #348]
+ 115              	.LVL12:
+ 116              		.loc 1 55 14 view .LVU26
+ 117 001a FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 118              	.LVL13:
+  56:Core/Src/vl53l0x_platform.c ****     if (status) {
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 4
+
+
+ 119              		.loc 1 56 5 is_stmt 1 view .LVU27
+  57:Core/Src/vl53l0x_platform.c ****         //VL6180x_ErrLog("I2C error 0x%x %d len", dev->I2cAddr, len);
+  58:Core/Src/vl53l0x_platform.c ****         //XNUCLEO6180XA1_I2C1_Init(&hi2c1);
+  59:Core/Src/vl53l0x_platform.c ****     }
+ 120              		.loc 1 59 5 view .LVU28
+  60:Core/Src/vl53l0x_platform.c ****     return status;
+ 121              		.loc 1 60 5 view .LVU29
+  61:Core/Src/vl53l0x_platform.c **** }
+ 122              		.loc 1 61 1 is_stmt 0 view .LVU30
+ 123 001e 02B0     		add	sp, sp, #8
+ 124              		.cfi_def_cfa_offset 8
+ 125              		@ sp needed
+ 126 0020 10BD     		pop	{r4, pc}
+ 127              		.cfi_endproc
+ 128              	.LFE134:
+ 130              		.section	.text.VL53L0X_WriteMulti,"ax",%progbits
+ 131              		.align	1
+ 132              		.global	VL53L0X_WriteMulti
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 136              		.fpu fpv4-sp-d16
+ 138              	VL53L0X_WriteMulti:
+ 139              	.LVL14:
+ 140              	.LFB135:
+  62:Core/Src/vl53l0x_platform.c **** 
+  63:Core/Src/vl53l0x_platform.c **** // the ranging_sensor_comms.dll will take care of the page selection
+  64:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_WriteMulti(VL53L0X_DEV Dev, uint8_t index, uint8_t *pdata, uint32_t count) {
+ 141              		.loc 1 64 98 is_stmt 1 view -0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+  65:Core/Src/vl53l0x_platform.c ****     int status_int;
+ 145              		.loc 1 65 5 view .LVU32
+  66:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 146              		.loc 1 66 5 view .LVU33
+  67:Core/Src/vl53l0x_platform.c ****     if (count > sizeof(_I2CBuffer) - 1) {
+ 147              		.loc 1 67 5 view .LVU34
+ 148              		.loc 1 67 8 is_stmt 0 view .LVU35
+ 149 0000 3F2B     		cmp	r3, #63
+ 150 0002 12D8     		bhi	.L7
+  64:Core/Src/vl53l0x_platform.c ****     int status_int;
+ 151              		.loc 1 64 98 view .LVU36
+ 152 0004 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 153              		.cfi_def_cfa_offset 24
+ 154              		.cfi_offset 3, -24
+ 155              		.cfi_offset 4, -20
+ 156              		.cfi_offset 5, -16
+ 157              		.cfi_offset 6, -12
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0006 0546     		mov	r5, r0
+ 161 0008 0E46     		mov	r6, r1
+ 162 000a 1146     		mov	r1, r2
+ 163              	.LVL15:
+  64:Core/Src/vl53l0x_platform.c ****     int status_int;
+ 164              		.loc 1 64 98 view .LVU37
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 5
+
+
+ 165 000c 1C46     		mov	r4, r3
+  68:Core/Src/vl53l0x_platform.c ****         return VL53L0X_ERROR_INVALID_PARAMS;
+  69:Core/Src/vl53l0x_platform.c ****     }
+  70:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[0] = index;
+ 166              		.loc 1 70 5 is_stmt 1 view .LVU38
+ 167              		.loc 1 70 19 is_stmt 0 view .LVU39
+ 168 000e 0A4F     		ldr	r7, .L13
+ 169 0010 3846     		mov	r0, r7
+ 170              	.LVL16:
+ 171              		.loc 1 70 19 view .LVU40
+ 172 0012 00F8016B 		strb	r6, [r0], #1
+  71:Core/Src/vl53l0x_platform.c ****     memcpy(&_I2CBuffer[1], pdata, count);
+ 173              		.loc 1 71 5 is_stmt 1 view .LVU41
+ 174 0016 1A46     		mov	r2, r3
+ 175              	.LVL17:
+ 176              		.loc 1 71 5 is_stmt 0 view .LVU42
+ 177 0018 FFF7FEFF 		bl	memcpy
+ 178              	.LVL18:
+  72:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 179              		.loc 1 72 5 is_stmt 1 view .LVU43
+  73:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, _I2CBuffer, count + 1);
+ 180              		.loc 1 73 5 view .LVU44
+ 181              		.loc 1 73 18 is_stmt 0 view .LVU45
+ 182 001c 621C     		adds	r2, r4, #1
+ 183 001e 3946     		mov	r1, r7
+ 184 0020 2846     		mov	r0, r5
+ 185 0022 FFF7FEFF 		bl	_I2CWrite
+ 186              	.LVL19:
+  74:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 187              		.loc 1 74 5 is_stmt 1 view .LVU46
+ 188              		.loc 1 74 8 is_stmt 0 view .LVU47
+ 189 0026 18B9     		cbnz	r0, .L8
+ 190              	.LVL20:
+ 191              	.L6:
+  75:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+  76:Core/Src/vl53l0x_platform.c ****     }
+  77:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+  78:Core/Src/vl53l0x_platform.c ****     return Status;
+  79:Core/Src/vl53l0x_platform.c **** }
+ 192              		.loc 1 79 1 view .LVU48
+ 193 0028 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 194              	.LVL21:
+ 195              	.L7:
+ 196              		.cfi_def_cfa_offset 0
+ 197              		.cfi_restore 3
+ 198              		.cfi_restore 4
+ 199              		.cfi_restore 5
+ 200              		.cfi_restore 6
+ 201              		.cfi_restore 7
+ 202              		.cfi_restore 14
+  68:Core/Src/vl53l0x_platform.c ****     }
+ 203              		.loc 1 68 16 view .LVU49
+ 204 002a 6FF00300 		mvn	r0, #3
+ 205              	.LVL22:
+ 206              		.loc 1 79 1 view .LVU50
+ 207 002e 7047     		bx	lr
+ 208              	.LVL23:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 6
+
+
+ 209              	.L8:
+ 210              		.cfi_def_cfa_offset 24
+ 211              		.cfi_offset 3, -24
+ 212              		.cfi_offset 4, -20
+ 213              		.cfi_offset 5, -16
+ 214              		.cfi_offset 6, -12
+ 215              		.cfi_offset 7, -8
+ 216              		.cfi_offset 14, -4
+  75:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 217              		.loc 1 75 16 view .LVU51
+ 218 0030 6FF01300 		mvn	r0, #19
+ 219              	.LVL24:
+  75:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 220              		.loc 1 75 16 view .LVU52
+ 221 0034 F8E7     		b	.L6
+ 222              	.L14:
+ 223 0036 00BF     		.align	2
+ 224              	.L13:
+ 225 0038 00000000 		.word	_I2CBuffer
+ 226              		.cfi_endproc
+ 227              	.LFE135:
+ 229              		.section	.text.VL53L0X_ReadMulti,"ax",%progbits
+ 230              		.align	1
+ 231              		.global	VL53L0X_ReadMulti
+ 232              		.syntax unified
+ 233              		.thumb
+ 234              		.thumb_func
+ 235              		.fpu fpv4-sp-d16
+ 237              	VL53L0X_ReadMulti:
+ 238              	.LVL25:
+ 239              	.LFB136:
+  80:Core/Src/vl53l0x_platform.c **** 
+  81:Core/Src/vl53l0x_platform.c **** // the ranging_sensor_comms.dll will take care of the page selection
+  82:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_ReadMulti(VL53L0X_DEV Dev, uint8_t index, uint8_t *pdata, uint32_t count) {
+ 240              		.loc 1 82 97 is_stmt 1 view -0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 8
+ 243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 244              		.loc 1 82 97 is_stmt 0 view .LVU54
+ 245 0000 70B5     		push	{r4, r5, r6, lr}
+ 246              		.cfi_def_cfa_offset 16
+ 247              		.cfi_offset 4, -16
+ 248              		.cfi_offset 5, -12
+ 249              		.cfi_offset 6, -8
+ 250              		.cfi_offset 14, -4
+ 251 0002 82B0     		sub	sp, sp, #8
+ 252              		.cfi_def_cfa_offset 24
+ 253 0004 0446     		mov	r4, r0
+ 254 0006 1546     		mov	r5, r2
+ 255 0008 1E46     		mov	r6, r3
+ 256 000a 8DF80710 		strb	r1, [sp, #7]
+  83:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 257              		.loc 1 83 5 is_stmt 1 view .LVU55
+ 258              	.LVL26:
+  84:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 259              		.loc 1 84 5 view .LVU56
+  85:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 7
+
+
+ 260              		.loc 1 85 5 view .LVU57
+  86:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, &index, 1);
+ 261              		.loc 1 86 5 view .LVU58
+ 262              		.loc 1 86 18 is_stmt 0 view .LVU59
+ 263 000e 0122     		movs	r2, #1
+ 264              	.LVL27:
+ 265              		.loc 1 86 18 view .LVU60
+ 266 0010 0DF10701 		add	r1, sp, #7
+ 267              	.LVL28:
+ 268              		.loc 1 86 18 view .LVU61
+ 269 0014 FFF7FEFF 		bl	_I2CWrite
+ 270              	.LVL29:
+  87:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 271              		.loc 1 87 5 is_stmt 1 view .LVU62
+ 272              		.loc 1 87 8 is_stmt 0 view .LVU63
+ 273 0018 38B9     		cbnz	r0, .L17
+  88:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+  89:Core/Src/vl53l0x_platform.c ****         goto done;
+  90:Core/Src/vl53l0x_platform.c ****     }
+  91:Core/Src/vl53l0x_platform.c ****     status_int = _I2CRead(Dev, pdata, count);
+ 274              		.loc 1 91 5 is_stmt 1 view .LVU64
+ 275              		.loc 1 91 18 is_stmt 0 view .LVU65
+ 276 001a 3246     		mov	r2, r6
+ 277 001c 2946     		mov	r1, r5
+ 278 001e 2046     		mov	r0, r4
+ 279              	.LVL30:
+ 280              		.loc 1 91 18 view .LVU66
+ 281 0020 FFF7FEFF 		bl	_I2CRead
+ 282              	.LVL31:
+  92:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 283              		.loc 1 92 5 is_stmt 1 view .LVU67
+ 284              		.loc 1 92 8 is_stmt 0 view .LVU68
+ 285 0024 20B9     		cbnz	r0, .L18
+ 286              	.LVL32:
+ 287              	.L16:
+  93:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+  94:Core/Src/vl53l0x_platform.c ****     }
+  95:Core/Src/vl53l0x_platform.c **** done:
+  96:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 288              		.loc 1 96 5 is_stmt 1 view .LVU69
+  97:Core/Src/vl53l0x_platform.c ****     return Status;
+ 289              		.loc 1 97 5 view .LVU70
+  98:Core/Src/vl53l0x_platform.c **** }
+ 290              		.loc 1 98 1 is_stmt 0 view .LVU71
+ 291 0026 02B0     		add	sp, sp, #8
+ 292              		.cfi_remember_state
+ 293              		.cfi_def_cfa_offset 16
+ 294              		@ sp needed
+ 295 0028 70BD     		pop	{r4, r5, r6, pc}
+ 296              	.LVL33:
+ 297              	.L17:
+ 298              		.cfi_restore_state
+  88:Core/Src/vl53l0x_platform.c ****         goto done;
+ 299              		.loc 1 88 16 view .LVU72
+ 300 002a 6FF01300 		mvn	r0, #19
+ 301              	.LVL34:
+  88:Core/Src/vl53l0x_platform.c ****         goto done;
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 8
+
+
+ 302              		.loc 1 88 16 view .LVU73
+ 303 002e FAE7     		b	.L16
+ 304              	.LVL35:
+ 305              	.L18:
+  93:Core/Src/vl53l0x_platform.c ****     }
+ 306              		.loc 1 93 16 view .LVU74
+ 307 0030 6FF01300 		mvn	r0, #19
+ 308              	.LVL36:
+  93:Core/Src/vl53l0x_platform.c ****     }
+ 309              		.loc 1 93 16 view .LVU75
+ 310 0034 F7E7     		b	.L16
+ 311              		.cfi_endproc
+ 312              	.LFE136:
+ 314              		.section	.text.VL53L0X_WrByte,"ax",%progbits
+ 315              		.align	1
+ 316              		.global	VL53L0X_WrByte
+ 317              		.syntax unified
+ 318              		.thumb
+ 319              		.thumb_func
+ 320              		.fpu fpv4-sp-d16
+ 322              	VL53L0X_WrByte:
+ 323              	.LVL37:
+ 324              	.LFB137:
+  99:Core/Src/vl53l0x_platform.c **** 
+ 100:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_WrByte(VL53L0X_DEV Dev, uint8_t index, uint8_t data) {
+ 325              		.loc 1 100 76 is_stmt 1 view -0
+ 326              		.cfi_startproc
+ 327              		@ args = 0, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329              		.loc 1 100 76 is_stmt 0 view .LVU77
+ 330 0000 08B5     		push	{r3, lr}
+ 331              		.cfi_def_cfa_offset 8
+ 332              		.cfi_offset 3, -8
+ 333              		.cfi_offset 14, -4
+ 101:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 334              		.loc 1 101 5 is_stmt 1 view .LVU78
+ 335              	.LVL38:
+ 102:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 336              		.loc 1 102 5 view .LVU79
+ 103:Core/Src/vl53l0x_platform.c **** 
+ 104:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[0] = index;
+ 337              		.loc 1 104 5 view .LVU80
+ 338              		.loc 1 104 19 is_stmt 0 view .LVU81
+ 339 0002 064B     		ldr	r3, .L25
+ 340 0004 1970     		strb	r1, [r3]
+ 105:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[1] = data;
+ 341              		.loc 1 105 5 is_stmt 1 view .LVU82
+ 342              		.loc 1 105 19 is_stmt 0 view .LVU83
+ 343 0006 5A70     		strb	r2, [r3, #1]
+ 106:Core/Src/vl53l0x_platform.c **** 
+ 107:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 344              		.loc 1 107 5 is_stmt 1 view .LVU84
+ 108:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, _I2CBuffer, 2);
+ 345              		.loc 1 108 5 view .LVU85
+ 346              		.loc 1 108 18 is_stmt 0 view .LVU86
+ 347 0008 0222     		movs	r2, #2
+ 348              	.LVL39:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 9
+
+
+ 349              		.loc 1 108 18 view .LVU87
+ 350 000a 1946     		mov	r1, r3
+ 351              	.LVL40:
+ 352              		.loc 1 108 18 view .LVU88
+ 353 000c FFF7FEFF 		bl	_I2CWrite
+ 354              	.LVL41:
+ 109:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 355              		.loc 1 109 5 is_stmt 1 view .LVU89
+ 356              		.loc 1 109 8 is_stmt 0 view .LVU90
+ 357 0010 00B9     		cbnz	r0, .L24
+ 358              	.LVL42:
+ 359              	.L21:
+ 110:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 111:Core/Src/vl53l0x_platform.c ****     }
+ 112:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 360              		.loc 1 112 5 is_stmt 1 view .LVU91
+ 113:Core/Src/vl53l0x_platform.c ****     return Status;
+ 361              		.loc 1 113 5 view .LVU92
+ 114:Core/Src/vl53l0x_platform.c **** }
+ 362              		.loc 1 114 1 is_stmt 0 view .LVU93
+ 363 0012 08BD     		pop	{r3, pc}
+ 364              	.LVL43:
+ 365              	.L24:
+ 110:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 366              		.loc 1 110 16 view .LVU94
+ 367 0014 6FF01300 		mvn	r0, #19
+ 368              	.LVL44:
+ 110:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 369              		.loc 1 110 16 view .LVU95
+ 370 0018 FBE7     		b	.L21
+ 371              	.L26:
+ 372 001a 00BF     		.align	2
+ 373              	.L25:
+ 374 001c 00000000 		.word	_I2CBuffer
+ 375              		.cfi_endproc
+ 376              	.LFE137:
+ 378              		.section	.text.VL53L0X_WrWord,"ax",%progbits
+ 379              		.align	1
+ 380              		.global	VL53L0X_WrWord
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 384              		.fpu fpv4-sp-d16
+ 386              	VL53L0X_WrWord:
+ 387              	.LVL45:
+ 388              	.LFB138:
+ 115:Core/Src/vl53l0x_platform.c **** 
+ 116:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_WrWord(VL53L0X_DEV Dev, uint8_t index, uint16_t data) {
+ 389              		.loc 1 116 77 is_stmt 1 view -0
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393              		.loc 1 116 77 is_stmt 0 view .LVU97
+ 394 0000 08B5     		push	{r3, lr}
+ 395              		.cfi_def_cfa_offset 8
+ 396              		.cfi_offset 3, -8
+ 397              		.cfi_offset 14, -4
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 10
+
+
+ 117:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 398              		.loc 1 117 5 is_stmt 1 view .LVU98
+ 399              	.LVL46:
+ 118:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 400              		.loc 1 118 5 view .LVU99
+ 119:Core/Src/vl53l0x_platform.c **** 
+ 120:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[0] = index;
+ 401              		.loc 1 120 5 view .LVU100
+ 402              		.loc 1 120 19 is_stmt 0 view .LVU101
+ 403 0002 074B     		ldr	r3, .L32
+ 404 0004 1970     		strb	r1, [r3]
+ 121:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[1] = data >> 8;
+ 405              		.loc 1 121 5 is_stmt 1 view .LVU102
+ 406              		.loc 1 121 19 is_stmt 0 view .LVU103
+ 407 0006 110A     		lsrs	r1, r2, #8
+ 408              	.LVL47:
+ 409              		.loc 1 121 19 view .LVU104
+ 410 0008 5970     		strb	r1, [r3, #1]
+ 122:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[2] = data & 0x00FF;
+ 411              		.loc 1 122 5 is_stmt 1 view .LVU105
+ 412              		.loc 1 122 19 is_stmt 0 view .LVU106
+ 413 000a 9A70     		strb	r2, [r3, #2]
+ 123:Core/Src/vl53l0x_platform.c **** 
+ 124:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 414              		.loc 1 124 5 is_stmt 1 view .LVU107
+ 125:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, _I2CBuffer, 3);
+ 415              		.loc 1 125 5 view .LVU108
+ 416              		.loc 1 125 18 is_stmt 0 view .LVU109
+ 417 000c 0322     		movs	r2, #3
+ 418              	.LVL48:
+ 419              		.loc 1 125 18 view .LVU110
+ 420 000e 1946     		mov	r1, r3
+ 421 0010 FFF7FEFF 		bl	_I2CWrite
+ 422              	.LVL49:
+ 126:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 423              		.loc 1 126 5 is_stmt 1 view .LVU111
+ 424              		.loc 1 126 8 is_stmt 0 view .LVU112
+ 425 0014 00B9     		cbnz	r0, .L31
+ 426              	.LVL50:
+ 427              	.L28:
+ 127:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 128:Core/Src/vl53l0x_platform.c ****     }
+ 129:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 428              		.loc 1 129 5 is_stmt 1 view .LVU113
+ 130:Core/Src/vl53l0x_platform.c ****     return Status;
+ 429              		.loc 1 130 5 view .LVU114
+ 131:Core/Src/vl53l0x_platform.c **** }
+ 430              		.loc 1 131 1 is_stmt 0 view .LVU115
+ 431 0016 08BD     		pop	{r3, pc}
+ 432              	.LVL51:
+ 433              	.L31:
+ 127:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 434              		.loc 1 127 16 view .LVU116
+ 435 0018 6FF01300 		mvn	r0, #19
+ 436              	.LVL52:
+ 127:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 437              		.loc 1 127 16 view .LVU117
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 11
+
+
+ 438 001c FBE7     		b	.L28
+ 439              	.L33:
+ 440 001e 00BF     		.align	2
+ 441              	.L32:
+ 442 0020 00000000 		.word	_I2CBuffer
+ 443              		.cfi_endproc
+ 444              	.LFE138:
+ 446              		.section	.text.VL53L0X_WrDWord,"ax",%progbits
+ 447              		.align	1
+ 448              		.global	VL53L0X_WrDWord
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 452              		.fpu fpv4-sp-d16
+ 454              	VL53L0X_WrDWord:
+ 455              	.LVL53:
+ 456              	.LFB139:
+ 132:Core/Src/vl53l0x_platform.c **** 
+ 133:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_WrDWord(VL53L0X_DEV Dev, uint8_t index, uint32_t data) {
+ 457              		.loc 1 133 78 is_stmt 1 view -0
+ 458              		.cfi_startproc
+ 459              		@ args = 0, pretend = 0, frame = 0
+ 460              		@ frame_needed = 0, uses_anonymous_args = 0
+ 461              		.loc 1 133 78 is_stmt 0 view .LVU119
+ 462 0000 08B5     		push	{r3, lr}
+ 463              		.cfi_def_cfa_offset 8
+ 464              		.cfi_offset 3, -8
+ 465              		.cfi_offset 14, -4
+ 134:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 466              		.loc 1 134 5 is_stmt 1 view .LVU120
+ 467              	.LVL54:
+ 135:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 468              		.loc 1 135 5 view .LVU121
+ 136:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[0] = index;
+ 469              		.loc 1 136 5 view .LVU122
+ 470              		.loc 1 136 19 is_stmt 0 view .LVU123
+ 471 0002 094B     		ldr	r3, .L39
+ 472 0004 1970     		strb	r1, [r3]
+ 137:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[1] = (data >> 24) & 0xFF;
+ 473              		.loc 1 137 5 is_stmt 1 view .LVU124
+ 474              		.loc 1 137 27 is_stmt 0 view .LVU125
+ 475 0006 110E     		lsrs	r1, r2, #24
+ 476              	.LVL55:
+ 477              		.loc 1 137 19 view .LVU126
+ 478 0008 5970     		strb	r1, [r3, #1]
+ 138:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[2] = (data >> 16) & 0xFF;
+ 479              		.loc 1 138 5 is_stmt 1 view .LVU127
+ 480              		.loc 1 138 27 is_stmt 0 view .LVU128
+ 481 000a 110C     		lsrs	r1, r2, #16
+ 482              		.loc 1 138 19 view .LVU129
+ 483 000c 9970     		strb	r1, [r3, #2]
+ 139:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[3] = (data >> 8)  & 0xFF;
+ 484              		.loc 1 139 5 is_stmt 1 view .LVU130
+ 485              		.loc 1 139 27 is_stmt 0 view .LVU131
+ 486 000e 110A     		lsrs	r1, r2, #8
+ 487              		.loc 1 139 19 view .LVU132
+ 488 0010 D970     		strb	r1, [r3, #3]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 12
+
+
+ 140:Core/Src/vl53l0x_platform.c ****     _I2CBuffer[4] = (data >> 0 ) & 0xFF;
+ 489              		.loc 1 140 5 is_stmt 1 view .LVU133
+ 490              		.loc 1 140 19 is_stmt 0 view .LVU134
+ 491 0012 1A71     		strb	r2, [r3, #4]
+ 141:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 492              		.loc 1 141 5 is_stmt 1 view .LVU135
+ 142:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, _I2CBuffer, 5);
+ 493              		.loc 1 142 5 view .LVU136
+ 494              		.loc 1 142 18 is_stmt 0 view .LVU137
+ 495 0014 0522     		movs	r2, #5
+ 496              	.LVL56:
+ 497              		.loc 1 142 18 view .LVU138
+ 498 0016 1946     		mov	r1, r3
+ 499 0018 FFF7FEFF 		bl	_I2CWrite
+ 500              	.LVL57:
+ 143:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 501              		.loc 1 143 5 is_stmt 1 view .LVU139
+ 502              		.loc 1 143 8 is_stmt 0 view .LVU140
+ 503 001c 00B9     		cbnz	r0, .L38
+ 504              	.LVL58:
+ 505              	.L35:
+ 144:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 145:Core/Src/vl53l0x_platform.c ****     }
+ 146:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 506              		.loc 1 146 5 is_stmt 1 view .LVU141
+ 147:Core/Src/vl53l0x_platform.c ****     return Status;
+ 507              		.loc 1 147 5 view .LVU142
+ 148:Core/Src/vl53l0x_platform.c **** }
+ 508              		.loc 1 148 1 is_stmt 0 view .LVU143
+ 509 001e 08BD     		pop	{r3, pc}
+ 510              	.LVL59:
+ 511              	.L38:
+ 144:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 512              		.loc 1 144 16 view .LVU144
+ 513 0020 6FF01300 		mvn	r0, #19
+ 514              	.LVL60:
+ 144:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 515              		.loc 1 144 16 view .LVU145
+ 516 0024 FBE7     		b	.L35
+ 517              	.L40:
+ 518 0026 00BF     		.align	2
+ 519              	.L39:
+ 520 0028 00000000 		.word	_I2CBuffer
+ 521              		.cfi_endproc
+ 522              	.LFE139:
+ 524              		.section	.text.VL53L0X_RdByte,"ax",%progbits
+ 525              		.align	1
+ 526              		.global	VL53L0X_RdByte
+ 527              		.syntax unified
+ 528              		.thumb
+ 529              		.thumb_func
+ 530              		.fpu fpv4-sp-d16
+ 532              	VL53L0X_RdByte:
+ 533              	.LVL61:
+ 534              	.LFB141:
+ 149:Core/Src/vl53l0x_platform.c **** 
+ 150:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_UpdateByte(VL53L0X_DEV Dev, uint8_t index, uint8_t AndData, uint8_t OrData) {
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 13
+
+
+ 151:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 152:Core/Src/vl53l0x_platform.c ****     uint8_t data;
+ 153:Core/Src/vl53l0x_platform.c **** 
+ 154:Core/Src/vl53l0x_platform.c ****     Status = VL53L0X_RdByte(Dev, index, &data);
+ 155:Core/Src/vl53l0x_platform.c ****     if (Status) {
+ 156:Core/Src/vl53l0x_platform.c ****         goto done;
+ 157:Core/Src/vl53l0x_platform.c ****     }
+ 158:Core/Src/vl53l0x_platform.c ****     data = (data & AndData) | OrData;
+ 159:Core/Src/vl53l0x_platform.c ****     Status = VL53L0X_WrByte(Dev, index, data);
+ 160:Core/Src/vl53l0x_platform.c **** done:
+ 161:Core/Src/vl53l0x_platform.c ****     return Status;
+ 162:Core/Src/vl53l0x_platform.c **** }
+ 163:Core/Src/vl53l0x_platform.c **** 
+ 164:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_RdByte(VL53L0X_DEV Dev, uint8_t index, uint8_t *data) {
+ 535              		.loc 1 164 77 is_stmt 1 view -0
+ 536              		.cfi_startproc
+ 537              		@ args = 0, pretend = 0, frame = 8
+ 538              		@ frame_needed = 0, uses_anonymous_args = 0
+ 539              		.loc 1 164 77 is_stmt 0 view .LVU147
+ 540 0000 30B5     		push	{r4, r5, lr}
+ 541              		.cfi_def_cfa_offset 12
+ 542              		.cfi_offset 4, -12
+ 543              		.cfi_offset 5, -8
+ 544              		.cfi_offset 14, -4
+ 545 0002 83B0     		sub	sp, sp, #12
+ 546              		.cfi_def_cfa_offset 24
+ 547 0004 0446     		mov	r4, r0
+ 548 0006 1546     		mov	r5, r2
+ 549 0008 8DF80710 		strb	r1, [sp, #7]
+ 165:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 550              		.loc 1 165 5 is_stmt 1 view .LVU148
+ 551              	.LVL62:
+ 166:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 552              		.loc 1 166 5 view .LVU149
+ 167:Core/Src/vl53l0x_platform.c **** 
+ 168:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 553              		.loc 1 168 5 view .LVU150
+ 169:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, &index, 1);
+ 554              		.loc 1 169 5 view .LVU151
+ 555              		.loc 1 169 18 is_stmt 0 view .LVU152
+ 556 000c 0122     		movs	r2, #1
+ 557              	.LVL63:
+ 558              		.loc 1 169 18 view .LVU153
+ 559 000e 0DF10701 		add	r1, sp, #7
+ 560              	.LVL64:
+ 561              		.loc 1 169 18 view .LVU154
+ 562 0012 FFF7FEFF 		bl	_I2CWrite
+ 563              	.LVL65:
+ 170:Core/Src/vl53l0x_platform.c ****     if( status_int ){
+ 564              		.loc 1 170 5 is_stmt 1 view .LVU155
+ 565              		.loc 1 170 7 is_stmt 0 view .LVU156
+ 566 0016 38B9     		cbnz	r0, .L43
+ 171:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 172:Core/Src/vl53l0x_platform.c ****         goto done;
+ 173:Core/Src/vl53l0x_platform.c ****     }
+ 174:Core/Src/vl53l0x_platform.c ****     status_int = _I2CRead(Dev, data, 1);
+ 567              		.loc 1 174 5 is_stmt 1 view .LVU157
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 14
+
+
+ 568              		.loc 1 174 18 is_stmt 0 view .LVU158
+ 569 0018 0122     		movs	r2, #1
+ 570 001a 2946     		mov	r1, r5
+ 571 001c 2046     		mov	r0, r4
+ 572              	.LVL66:
+ 573              		.loc 1 174 18 view .LVU159
+ 574 001e FFF7FEFF 		bl	_I2CRead
+ 575              	.LVL67:
+ 175:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 576              		.loc 1 175 5 is_stmt 1 view .LVU160
+ 577              		.loc 1 175 8 is_stmt 0 view .LVU161
+ 578 0022 20B9     		cbnz	r0, .L44
+ 579              	.LVL68:
+ 580              	.L42:
+ 176:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 177:Core/Src/vl53l0x_platform.c ****     }
+ 178:Core/Src/vl53l0x_platform.c **** done:
+ 179:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 581              		.loc 1 179 5 is_stmt 1 view .LVU162
+ 180:Core/Src/vl53l0x_platform.c ****     return Status;
+ 582              		.loc 1 180 5 view .LVU163
+ 181:Core/Src/vl53l0x_platform.c **** }
+ 583              		.loc 1 181 1 is_stmt 0 view .LVU164
+ 584 0024 03B0     		add	sp, sp, #12
+ 585              		.cfi_remember_state
+ 586              		.cfi_def_cfa_offset 12
+ 587              		@ sp needed
+ 588 0026 30BD     		pop	{r4, r5, pc}
+ 589              	.LVL69:
+ 590              	.L43:
+ 591              		.cfi_restore_state
+ 171:Core/Src/vl53l0x_platform.c ****         goto done;
+ 592              		.loc 1 171 16 view .LVU165
+ 593 0028 6FF01300 		mvn	r0, #19
+ 594              	.LVL70:
+ 171:Core/Src/vl53l0x_platform.c ****         goto done;
+ 595              		.loc 1 171 16 view .LVU166
+ 596 002c FAE7     		b	.L42
+ 597              	.LVL71:
+ 598              	.L44:
+ 176:Core/Src/vl53l0x_platform.c ****     }
+ 599              		.loc 1 176 16 view .LVU167
+ 600 002e 6FF01300 		mvn	r0, #19
+ 601              	.LVL72:
+ 176:Core/Src/vl53l0x_platform.c ****     }
+ 602              		.loc 1 176 16 view .LVU168
+ 603 0032 F7E7     		b	.L42
+ 604              		.cfi_endproc
+ 605              	.LFE141:
+ 607              		.section	.text.VL53L0X_UpdateByte,"ax",%progbits
+ 608              		.align	1
+ 609              		.global	VL53L0X_UpdateByte
+ 610              		.syntax unified
+ 611              		.thumb
+ 612              		.thumb_func
+ 613              		.fpu fpv4-sp-d16
+ 615              	VL53L0X_UpdateByte:
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 15
+
+
+ 616              	.LVL73:
+ 617              	.LFB140:
+ 150:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 618              		.loc 1 150 99 is_stmt 1 view -0
+ 619              		.cfi_startproc
+ 620              		@ args = 0, pretend = 0, frame = 8
+ 621              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 622              		.loc 1 150 99 is_stmt 0 view .LVU170
+ 623 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 624              		.cfi_def_cfa_offset 20
+ 625              		.cfi_offset 4, -20
+ 626              		.cfi_offset 5, -16
+ 627              		.cfi_offset 6, -12
+ 628              		.cfi_offset 7, -8
+ 629              		.cfi_offset 14, -4
+ 630 0002 83B0     		sub	sp, sp, #12
+ 631              		.cfi_def_cfa_offset 32
+ 632 0004 0646     		mov	r6, r0
+ 633 0006 0F46     		mov	r7, r1
+ 634 0008 1546     		mov	r5, r2
+ 635 000a 1C46     		mov	r4, r3
+ 151:Core/Src/vl53l0x_platform.c ****     uint8_t data;
+ 636              		.loc 1 151 5 is_stmt 1 view .LVU171
+ 637              	.LVL74:
+ 152:Core/Src/vl53l0x_platform.c **** 
+ 638              		.loc 1 152 5 view .LVU172
+ 154:Core/Src/vl53l0x_platform.c ****     if (Status) {
+ 639              		.loc 1 154 5 view .LVU173
+ 154:Core/Src/vl53l0x_platform.c ****     if (Status) {
+ 640              		.loc 1 154 14 is_stmt 0 view .LVU174
+ 641 000c 0DF10702 		add	r2, sp, #7
+ 642              	.LVL75:
+ 154:Core/Src/vl53l0x_platform.c ****     if (Status) {
+ 643              		.loc 1 154 14 view .LVU175
+ 644 0010 FFF7FEFF 		bl	VL53L0X_RdByte
+ 645              	.LVL76:
+ 155:Core/Src/vl53l0x_platform.c ****         goto done;
+ 646              		.loc 1 155 5 is_stmt 1 view .LVU176
+ 155:Core/Src/vl53l0x_platform.c ****         goto done;
+ 647              		.loc 1 155 8 is_stmt 0 view .LVU177
+ 648 0014 08B1     		cbz	r0, .L49
+ 649              	.LVL77:
+ 650              	.L47:
+ 161:Core/Src/vl53l0x_platform.c **** }
+ 651              		.loc 1 161 5 is_stmt 1 view .LVU178
+ 162:Core/Src/vl53l0x_platform.c **** 
+ 652              		.loc 1 162 1 is_stmt 0 view .LVU179
+ 653 0016 03B0     		add	sp, sp, #12
+ 654              		.cfi_remember_state
+ 655              		.cfi_def_cfa_offset 20
+ 656              		@ sp needed
+ 657 0018 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 658              	.LVL78:
+ 659              	.L49:
+ 660              		.cfi_restore_state
+ 158:Core/Src/vl53l0x_platform.c ****     Status = VL53L0X_WrByte(Dev, index, data);
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 16
+
+
+ 661              		.loc 1 158 5 is_stmt 1 view .LVU180
+ 158:Core/Src/vl53l0x_platform.c ****     Status = VL53L0X_WrByte(Dev, index, data);
+ 662              		.loc 1 158 10 is_stmt 0 view .LVU181
+ 663 001a 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
+ 664 001e 2A40     		ands	r2, r2, r5
+ 665 0020 2243     		orrs	r2, r2, r4
+ 666 0022 8DF80720 		strb	r2, [sp, #7]
+ 159:Core/Src/vl53l0x_platform.c **** done:
+ 667              		.loc 1 159 5 is_stmt 1 view .LVU182
+ 159:Core/Src/vl53l0x_platform.c **** done:
+ 668              		.loc 1 159 14 is_stmt 0 view .LVU183
+ 669 0026 3946     		mov	r1, r7
+ 670 0028 3046     		mov	r0, r6
+ 671 002a FFF7FEFF 		bl	VL53L0X_WrByte
+ 672              	.LVL79:
+ 159:Core/Src/vl53l0x_platform.c **** done:
+ 673              		.loc 1 159 14 view .LVU184
+ 674 002e F2E7     		b	.L47
+ 675              		.cfi_endproc
+ 676              	.LFE140:
+ 678              		.section	.text.VL53L0X_RdWord,"ax",%progbits
+ 679              		.align	1
+ 680              		.global	VL53L0X_RdWord
+ 681              		.syntax unified
+ 682              		.thumb
+ 683              		.thumb_func
+ 684              		.fpu fpv4-sp-d16
+ 686              	VL53L0X_RdWord:
+ 687              	.LVL80:
+ 688              	.LFB142:
+ 182:Core/Src/vl53l0x_platform.c **** 
+ 183:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_RdWord(VL53L0X_DEV Dev, uint8_t index, uint16_t *data) {
+ 689              		.loc 1 183 78 is_stmt 1 view -0
+ 690              		.cfi_startproc
+ 691              		@ args = 0, pretend = 0, frame = 8
+ 692              		@ frame_needed = 0, uses_anonymous_args = 0
+ 693              		.loc 1 183 78 is_stmt 0 view .LVU186
+ 694 0000 30B5     		push	{r4, r5, lr}
+ 695              		.cfi_def_cfa_offset 12
+ 696              		.cfi_offset 4, -12
+ 697              		.cfi_offset 5, -8
+ 698              		.cfi_offset 14, -4
+ 699 0002 83B0     		sub	sp, sp, #12
+ 700              		.cfi_def_cfa_offset 24
+ 701 0004 0446     		mov	r4, r0
+ 702 0006 1546     		mov	r5, r2
+ 703 0008 8DF80710 		strb	r1, [sp, #7]
+ 184:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 704              		.loc 1 184 5 is_stmt 1 view .LVU187
+ 705              	.LVL81:
+ 185:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 706              		.loc 1 185 5 view .LVU188
+ 186:Core/Src/vl53l0x_platform.c **** 
+ 187:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 707              		.loc 1 187 5 view .LVU189
+ 188:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, &index, 1);
+ 708              		.loc 1 188 5 view .LVU190
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 17
+
+
+ 709              		.loc 1 188 18 is_stmt 0 view .LVU191
+ 710 000c 0122     		movs	r2, #1
+ 711              	.LVL82:
+ 712              		.loc 1 188 18 view .LVU192
+ 713 000e 0DF10701 		add	r1, sp, #7
+ 714              	.LVL83:
+ 715              		.loc 1 188 18 view .LVU193
+ 716 0012 FFF7FEFF 		bl	_I2CWrite
+ 717              	.LVL84:
+ 189:Core/Src/vl53l0x_platform.c **** 
+ 190:Core/Src/vl53l0x_platform.c ****     if( status_int ){
+ 718              		.loc 1 190 5 is_stmt 1 view .LVU194
+ 719              		.loc 1 190 7 is_stmt 0 view .LVU195
+ 720 0016 68B9     		cbnz	r0, .L52
+ 191:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 192:Core/Src/vl53l0x_platform.c ****         goto done;
+ 193:Core/Src/vl53l0x_platform.c ****     }
+ 194:Core/Src/vl53l0x_platform.c ****     status_int = _I2CRead(Dev, _I2CBuffer, 2);
+ 721              		.loc 1 194 5 is_stmt 1 view .LVU196
+ 722              		.loc 1 194 18 is_stmt 0 view .LVU197
+ 723 0018 0222     		movs	r2, #2
+ 724 001a 0949     		ldr	r1, .L55
+ 725 001c 2046     		mov	r0, r4
+ 726              	.LVL85:
+ 727              		.loc 1 194 18 view .LVU198
+ 728 001e FFF7FEFF 		bl	_I2CRead
+ 729              	.LVL86:
+ 195:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 730              		.loc 1 195 5 is_stmt 1 view .LVU199
+ 731              		.loc 1 195 8 is_stmt 0 view .LVU200
+ 732 0022 50B9     		cbnz	r0, .L53
+ 196:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 197:Core/Src/vl53l0x_platform.c ****         goto done;
+ 198:Core/Src/vl53l0x_platform.c ****     }
+ 199:Core/Src/vl53l0x_platform.c **** 
+ 200:Core/Src/vl53l0x_platform.c ****     *data = ((uint16_t)_I2CBuffer[0]<<8) + (uint16_t)_I2CBuffer[1];
+ 733              		.loc 1 200 5 is_stmt 1 view .LVU201
+ 734              		.loc 1 200 34 is_stmt 0 view .LVU202
+ 735 0024 0649     		ldr	r1, .L55
+ 736 0026 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 737              		.loc 1 200 64 view .LVU203
+ 738 0028 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
+ 739              		.loc 1 200 42 view .LVU204
+ 740 002a 03EB0223 		add	r3, r3, r2, lsl #8
+ 741              		.loc 1 200 11 view .LVU205
+ 742 002e 2B80     		strh	r3, [r5]	@ movhi
+ 743              	.LVL87:
+ 744              	.L51:
+ 201:Core/Src/vl53l0x_platform.c **** done:
+ 202:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 745              		.loc 1 202 5 is_stmt 1 view .LVU206
+ 203:Core/Src/vl53l0x_platform.c ****     return Status;
+ 746              		.loc 1 203 5 view .LVU207
+ 204:Core/Src/vl53l0x_platform.c **** }
+ 747              		.loc 1 204 1 is_stmt 0 view .LVU208
+ 748 0030 03B0     		add	sp, sp, #12
+ 749              		.cfi_remember_state
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 18
+
+
+ 750              		.cfi_def_cfa_offset 12
+ 751              		@ sp needed
+ 752 0032 30BD     		pop	{r4, r5, pc}
+ 753              	.LVL88:
+ 754              	.L52:
+ 755              		.cfi_restore_state
+ 191:Core/Src/vl53l0x_platform.c ****         goto done;
+ 756              		.loc 1 191 16 view .LVU209
+ 757 0034 6FF01300 		mvn	r0, #19
+ 758              	.LVL89:
+ 191:Core/Src/vl53l0x_platform.c ****         goto done;
+ 759              		.loc 1 191 16 view .LVU210
+ 760 0038 FAE7     		b	.L51
+ 761              	.LVL90:
+ 762              	.L53:
+ 196:Core/Src/vl53l0x_platform.c ****         goto done;
+ 763              		.loc 1 196 16 view .LVU211
+ 764 003a 6FF01300 		mvn	r0, #19
+ 765              	.LVL91:
+ 196:Core/Src/vl53l0x_platform.c ****         goto done;
+ 766              		.loc 1 196 16 view .LVU212
+ 767 003e F7E7     		b	.L51
+ 768              	.L56:
+ 769              		.align	2
+ 770              	.L55:
+ 771 0040 00000000 		.word	_I2CBuffer
+ 772              		.cfi_endproc
+ 773              	.LFE142:
+ 775              		.section	.text.VL53L0X_RdDWord,"ax",%progbits
+ 776              		.align	1
+ 777              		.global	VL53L0X_RdDWord
+ 778              		.syntax unified
+ 779              		.thumb
+ 780              		.thumb_func
+ 781              		.fpu fpv4-sp-d16
+ 783              	VL53L0X_RdDWord:
+ 784              	.LVL92:
+ 785              	.LFB143:
+ 205:Core/Src/vl53l0x_platform.c **** 
+ 206:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_RdDWord(VL53L0X_DEV Dev, uint8_t index, uint32_t *data) {
+ 786              		.loc 1 206 79 is_stmt 1 view -0
+ 787              		.cfi_startproc
+ 788              		@ args = 0, pretend = 0, frame = 8
+ 789              		@ frame_needed = 0, uses_anonymous_args = 0
+ 790              		.loc 1 206 79 is_stmt 0 view .LVU214
+ 791 0000 30B5     		push	{r4, r5, lr}
+ 792              		.cfi_def_cfa_offset 12
+ 793              		.cfi_offset 4, -12
+ 794              		.cfi_offset 5, -8
+ 795              		.cfi_offset 14, -4
+ 796 0002 83B0     		sub	sp, sp, #12
+ 797              		.cfi_def_cfa_offset 24
+ 798 0004 0446     		mov	r4, r0
+ 799 0006 1546     		mov	r5, r2
+ 800 0008 8DF80710 		strb	r1, [sp, #7]
+ 207:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+ 801              		.loc 1 207 5 is_stmt 1 view .LVU215
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 19
+
+
+ 802              	.LVL93:
+ 208:Core/Src/vl53l0x_platform.c ****     int32_t status_int;
+ 803              		.loc 1 208 5 view .LVU216
+ 209:Core/Src/vl53l0x_platform.c **** 
+ 210:Core/Src/vl53l0x_platform.c ****     VL53L0X_GetI2cBus();
+ 804              		.loc 1 210 5 view .LVU217
+ 211:Core/Src/vl53l0x_platform.c ****     status_int = _I2CWrite(Dev, &index, 1);
+ 805              		.loc 1 211 5 view .LVU218
+ 806              		.loc 1 211 18 is_stmt 0 view .LVU219
+ 807 000c 0122     		movs	r2, #1
+ 808              	.LVL94:
+ 809              		.loc 1 211 18 view .LVU220
+ 810 000e 0DF10701 		add	r1, sp, #7
+ 811              	.LVL95:
+ 812              		.loc 1 211 18 view .LVU221
+ 813 0012 FFF7FEFF 		bl	_I2CWrite
+ 814              	.LVL96:
+ 212:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 815              		.loc 1 212 5 is_stmt 1 view .LVU222
+ 816              		.loc 1 212 8 is_stmt 0 view .LVU223
+ 817 0016 98B9     		cbnz	r0, .L59
+ 213:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 214:Core/Src/vl53l0x_platform.c ****         goto done;
+ 215:Core/Src/vl53l0x_platform.c ****     }
+ 216:Core/Src/vl53l0x_platform.c ****     status_int = _I2CRead(Dev, _I2CBuffer, 4);
+ 818              		.loc 1 216 5 is_stmt 1 view .LVU224
+ 819              		.loc 1 216 18 is_stmt 0 view .LVU225
+ 820 0018 0422     		movs	r2, #4
+ 821 001a 0C49     		ldr	r1, .L62
+ 822 001c 2046     		mov	r0, r4
+ 823              	.LVL97:
+ 824              		.loc 1 216 18 view .LVU226
+ 825 001e FFF7FEFF 		bl	_I2CRead
+ 826              	.LVL98:
+ 217:Core/Src/vl53l0x_platform.c ****     if (status_int != 0) {
+ 827              		.loc 1 217 5 is_stmt 1 view .LVU227
+ 828              		.loc 1 217 8 is_stmt 0 view .LVU228
+ 829 0022 80B9     		cbnz	r0, .L60
+ 218:Core/Src/vl53l0x_platform.c ****         Status = VL53L0X_ERROR_CONTROL_INTERFACE;
+ 219:Core/Src/vl53l0x_platform.c ****         goto done;
+ 220:Core/Src/vl53l0x_platform.c ****     }
+ 221:Core/Src/vl53l0x_platform.c **** 
+ 222:Core/Src/vl53l0x_platform.c ****     *data = ((uint32_t)_I2CBuffer[0]<<24) + ((uint32_t)_I2CBuffer[1]<<16) + ((uint32_t)_I2CBuffer[2
+ 830              		.loc 1 222 5 is_stmt 1 view .LVU229
+ 831              		.loc 1 222 34 is_stmt 0 view .LVU230
+ 832 0024 0949     		ldr	r1, .L62
+ 833 0026 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 834              		.loc 1 222 66 view .LVU231
+ 835 0028 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
+ 836              		.loc 1 222 69 view .LVU232
+ 837 002a 1B04     		lsls	r3, r3, #16
+ 838              		.loc 1 222 43 view .LVU233
+ 839 002c 03EB0263 		add	r3, r3, r2, lsl #24
+ 840              		.loc 1 222 98 view .LVU234
+ 841 0030 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
+ 842              		.loc 1 222 75 view .LVU235
+ 843 0032 03EB0223 		add	r3, r3, r2, lsl #8
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 20
+
+
+ 844              		.loc 1 222 128 view .LVU236
+ 845 0036 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 846              		.loc 1 222 106 view .LVU237
+ 847 0038 1344     		add	r3, r3, r2
+ 848              		.loc 1 222 11 view .LVU238
+ 849 003a 2B60     		str	r3, [r5]
+ 850              	.LVL99:
+ 851              	.L58:
+ 223:Core/Src/vl53l0x_platform.c **** 
+ 224:Core/Src/vl53l0x_platform.c **** done:
+ 225:Core/Src/vl53l0x_platform.c ****     VL53L0X_PutI2cBus();
+ 852              		.loc 1 225 5 is_stmt 1 view .LVU239
+ 226:Core/Src/vl53l0x_platform.c ****     return Status;
+ 853              		.loc 1 226 5 view .LVU240
+ 227:Core/Src/vl53l0x_platform.c **** }
+ 854              		.loc 1 227 1 is_stmt 0 view .LVU241
+ 855 003c 03B0     		add	sp, sp, #12
+ 856              		.cfi_remember_state
+ 857              		.cfi_def_cfa_offset 12
+ 858              		@ sp needed
+ 859 003e 30BD     		pop	{r4, r5, pc}
+ 860              	.LVL100:
+ 861              	.L59:
+ 862              		.cfi_restore_state
+ 213:Core/Src/vl53l0x_platform.c ****         goto done;
+ 863              		.loc 1 213 16 view .LVU242
+ 864 0040 6FF01300 		mvn	r0, #19
+ 865              	.LVL101:
+ 213:Core/Src/vl53l0x_platform.c ****         goto done;
+ 866              		.loc 1 213 16 view .LVU243
+ 867 0044 FAE7     		b	.L58
+ 868              	.LVL102:
+ 869              	.L60:
+ 218:Core/Src/vl53l0x_platform.c ****         goto done;
+ 870              		.loc 1 218 16 view .LVU244
+ 871 0046 6FF01300 		mvn	r0, #19
+ 872              	.LVL103:
+ 218:Core/Src/vl53l0x_platform.c ****         goto done;
+ 873              		.loc 1 218 16 view .LVU245
+ 874 004a F7E7     		b	.L58
+ 875              	.L63:
+ 876              		.align	2
+ 877              	.L62:
+ 878 004c 00000000 		.word	_I2CBuffer
+ 879              		.cfi_endproc
+ 880              	.LFE143:
+ 882              		.section	.text.VL53L0X_PollingDelay,"ax",%progbits
+ 883              		.align	1
+ 884              		.global	VL53L0X_PollingDelay
+ 885              		.syntax unified
+ 886              		.thumb
+ 887              		.thumb_func
+ 888              		.fpu fpv4-sp-d16
+ 890              	VL53L0X_PollingDelay:
+ 891              	.LVL104:
+ 892              	.LFB144:
+ 228:Core/Src/vl53l0x_platform.c **** 
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 21
+
+
+ 229:Core/Src/vl53l0x_platform.c **** VL53L0X_Error VL53L0X_PollingDelay(VL53L0X_DEV Dev) {
+ 893              		.loc 1 229 53 is_stmt 1 view -0
+ 894              		.cfi_startproc
+ 895              		@ args = 0, pretend = 0, frame = 0
+ 896              		@ frame_needed = 0, uses_anonymous_args = 0
+ 897              		.loc 1 229 53 is_stmt 0 view .LVU247
+ 898 0000 08B5     		push	{r3, lr}
+ 899              		.cfi_def_cfa_offset 8
+ 900              		.cfi_offset 3, -8
+ 901              		.cfi_offset 14, -4
+ 230:Core/Src/vl53l0x_platform.c ****     VL53L0X_Error status = VL53L0X_ERROR_NONE;
+ 902              		.loc 1 230 5 is_stmt 1 view .LVU248
+ 903              	.LVL105:
+ 231:Core/Src/vl53l0x_platform.c **** 
+ 232:Core/Src/vl53l0x_platform.c ****     // do nothing
+ 233:Core/Src/vl53l0x_platform.c ****     VL53L0X_OsDelay();
+ 904              		.loc 1 233 5 view .LVU249
+ 905 0002 0220     		movs	r0, #2
+ 906              	.LVL106:
+ 907              		.loc 1 233 5 is_stmt 0 view .LVU250
+ 908 0004 FFF7FEFF 		bl	HAL_Delay
+ 909              	.LVL107:
+ 234:Core/Src/vl53l0x_platform.c ****     return status;
+ 910              		.loc 1 234 5 is_stmt 1 view .LVU251
+ 235:Core/Src/vl53l0x_platform.c **** }
+ 911              		.loc 1 235 1 is_stmt 0 view .LVU252
+ 912 0008 0020     		movs	r0, #0
+ 913 000a 08BD     		pop	{r3, pc}
+ 914              		.cfi_endproc
+ 915              	.LFE144:
+ 917              		.comm	_I2CBuffer,64,4
+ 918              		.text
+ 919              	.Letext0:
+ 920              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+ 921              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+ 922              		.file 4 "Core/Inc/vl53l0x_types.h"
+ 923              		.file 5 "Core/Inc/vl53l0x_device.h"
+ 924              		.file 6 "Core/Inc/vl53l0x_def.h"
+ 925              		.file 7 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\loc
+ 926              		.file 8 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_ty
+ 927              		.file 9 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\\
+ 928              		.file 10 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\re
+ 929              		.file 11 "Drivers/CMSIS/Include/core_cm4.h"
+ 930              		.file 12 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 931              		.file 13 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 932              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 933              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 934              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 935              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 936              		.file 18 "Core/Inc/vl53l0x_platform.h"
+ 937              		.file 19 "<built-in>"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 vl53l0x_platform.c
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:18     .text._I2CWrite:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:26     .text._I2CWrite:00000000 _I2CWrite
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:74     .text._I2CRead:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:81     .text._I2CRead:00000000 _I2CRead
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:131    .text.VL53L0X_WriteMulti:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:138    .text.VL53L0X_WriteMulti:00000000 VL53L0X_WriteMulti
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:225    .text.VL53L0X_WriteMulti:00000038 $d
+                            *COM*:00000040 _I2CBuffer
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:230    .text.VL53L0X_ReadMulti:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:237    .text.VL53L0X_ReadMulti:00000000 VL53L0X_ReadMulti
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:315    .text.VL53L0X_WrByte:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:322    .text.VL53L0X_WrByte:00000000 VL53L0X_WrByte
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:374    .text.VL53L0X_WrByte:0000001c $d
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:379    .text.VL53L0X_WrWord:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:386    .text.VL53L0X_WrWord:00000000 VL53L0X_WrWord
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:442    .text.VL53L0X_WrWord:00000020 $d
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:447    .text.VL53L0X_WrDWord:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:454    .text.VL53L0X_WrDWord:00000000 VL53L0X_WrDWord
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:520    .text.VL53L0X_WrDWord:00000028 $d
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:525    .text.VL53L0X_RdByte:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:532    .text.VL53L0X_RdByte:00000000 VL53L0X_RdByte
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:608    .text.VL53L0X_UpdateByte:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:615    .text.VL53L0X_UpdateByte:00000000 VL53L0X_UpdateByte
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:679    .text.VL53L0X_RdWord:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:686    .text.VL53L0X_RdWord:00000000 VL53L0X_RdWord
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:771    .text.VL53L0X_RdWord:00000040 $d
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:776    .text.VL53L0X_RdDWord:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:783    .text.VL53L0X_RdDWord:00000000 VL53L0X_RdDWord
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:878    .text.VL53L0X_RdDWord:0000004c $d
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:883    .text.VL53L0X_PollingDelay:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccrJxoBK.s:890    .text.VL53L0X_PollingDelay:00000000 VL53L0X_PollingDelay
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+HAL_I2C_Master_Receive
+memcpy
+HAL_Delay

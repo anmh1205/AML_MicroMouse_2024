@@ -1,0 +1,519 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"AML_MPUSensor.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.AML_MPUSensor_Setup,"ax",%progbits
+  18              		.align	1
+  19              		.global	AML_MPUSensor_Setup
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	AML_MPUSensor_Setup:
+  27              	.LFB130:
+  28              		.file 1 "Core/Src/AML_MPUSensor.c"
+   1:Core/Src/AML_MPUSensor.c **** #include "AML_MPUSensor.h"
+   2:Core/Src/AML_MPUSensor.c **** 
+   3:Core/Src/AML_MPUSensor.c **** uint8_t ResetCommand[] = {0xFF, 0xAA, 0x52};
+   4:Core/Src/AML_MPUSensor.c **** 
+   5:Core/Src/AML_MPUSensor.c **** extern UART_HandleTypeDef huart3;
+   6:Core/Src/AML_MPUSensor.c **** extern DMA_HandleTypeDef hdma_usart3_rx;
+   7:Core/Src/AML_MPUSensor.c **** 
+   8:Core/Src/AML_MPUSensor.c **** uint8_t data[33];
+   9:Core/Src/AML_MPUSensor.c **** uint8_t buffer = 119;
+  10:Core/Src/AML_MPUSensor.c **** extern int16_t debug[100];
+  11:Core/Src/AML_MPUSensor.c **** double Angle, PreviousAngle = 0, SaveAngle = 0;
+  12:Core/Src/AML_MPUSensor.c **** 
+  13:Core/Src/AML_MPUSensor.c **** void AML_MPUSensor_Setup()
+  14:Core/Src/AML_MPUSensor.c **** {
+  29              		.loc 1 14 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  15:Core/Src/AML_MPUSensor.c ****     HAL_UART_Receive_DMA(&huart3, data, 33);
+  37              		.loc 1 15 5 view .LVU1
+  38 0002 2122     		movs	r2, #33
+  39 0004 0249     		ldr	r1, .L3
+  40 0006 0348     		ldr	r0, .L3+4
+  41 0008 FFF7FEFF 		bl	HAL_UART_Receive_DMA
+  42              	.LVL0:
+  16:Core/Src/AML_MPUSensor.c **** }
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 2
+
+
+  43              		.loc 1 16 1 is_stmt 0 view .LVU2
+  44 000c 08BD     		pop	{r3, pc}
+  45              	.L4:
+  46 000e 00BF     		.align	2
+  47              	.L3:
+  48 0010 00000000 		.word	data
+  49 0014 00000000 		.word	huart3
+  50              		.cfi_endproc
+  51              	.LFE130:
+  53              		.section	.text.handle,"ax",%progbits
+  54              		.align	1
+  55              		.global	handle
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  59              		.fpu fpv4-sp-d16
+  61              	handle:
+  62              	.LFB131:
+  17:Core/Src/AML_MPUSensor.c **** 
+  18:Core/Src/AML_MPUSensor.c **** void handle()
+  19:Core/Src/AML_MPUSensor.c **** {
+  63              		.loc 1 19 1 is_stmt 1 view -0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67 0000 08B5     		push	{r3, lr}
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 3, -8
+  70              		.cfi_offset 14, -4
+  20:Core/Src/AML_MPUSensor.c ****     while (buffer != 85) // wait 0x55
+  71              		.loc 1 20 5 view .LVU4
+  72              	.L6:
+  73              		.loc 1 20 11 view .LVU5
+  74              		.loc 1 20 19 is_stmt 0 view .LVU6
+  75 0002 0A4B     		ldr	r3, .L10
+  76 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  77              		.loc 1 20 11 view .LVU7
+  78 0006 552B     		cmp	r3, #85
+  79 0008 07D0     		beq	.L9
+  21:Core/Src/AML_MPUSensor.c ****     {
+  22:Core/Src/AML_MPUSensor.c ****         HAL_UART_Receive(&huart3, &buffer, 1, 1000);
+  80              		.loc 1 22 9 is_stmt 1 view .LVU8
+  81 000a 4FF47A73 		mov	r3, #1000
+  82 000e 0122     		movs	r2, #1
+  83 0010 0649     		ldr	r1, .L10
+  84 0012 0748     		ldr	r0, .L10+4
+  85 0014 FFF7FEFF 		bl	HAL_UART_Receive
+  86              	.LVL1:
+  87 0018 F3E7     		b	.L6
+  88              	.L9:
+  23:Core/Src/AML_MPUSensor.c ****     }
+  24:Core/Src/AML_MPUSensor.c ****     buffer = 100;
+  89              		.loc 1 24 5 view .LVU9
+  90              		.loc 1 24 12 is_stmt 0 view .LVU10
+  91 001a 044B     		ldr	r3, .L10
+  92 001c 6422     		movs	r2, #100
+  93 001e 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 3
+
+
+  25:Core/Src/AML_MPUSensor.c ****     HAL_UART_Receive_DMA(&huart3, data, 33);
+  94              		.loc 1 25 5 is_stmt 1 view .LVU11
+  95 0020 2122     		movs	r2, #33
+  96 0022 0449     		ldr	r1, .L10+8
+  97 0024 0248     		ldr	r0, .L10+4
+  98 0026 FFF7FEFF 		bl	HAL_UART_Receive_DMA
+  99              	.LVL2:
+  26:Core/Src/AML_MPUSensor.c **** }
+ 100              		.loc 1 26 1 is_stmt 0 view .LVU12
+ 101 002a 08BD     		pop	{r3, pc}
+ 102              	.L11:
+ 103              		.align	2
+ 104              	.L10:
+ 105 002c 00000000 		.word	.LANCHOR0
+ 106 0030 00000000 		.word	huart3
+ 107 0034 00000000 		.word	data
+ 108              		.cfi_endproc
+ 109              	.LFE131:
+ 111              		.global	__aeabi_i2d
+ 112              		.global	__aeabi_dmul
+ 113              		.global	__aeabi_dcmpeq
+ 114              		.global	__aeabi_dsub
+ 115              		.global	__aeabi_dcmpgt
+ 116              		.global	__aeabi_dcmplt
+ 117              		.section	.text.HAL_UART_RxCpltCallback,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	HAL_UART_RxCpltCallback
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 123              		.fpu fpv4-sp-d16
+ 125              	HAL_UART_RxCpltCallback:
+ 126              	.LVL3:
+ 127              	.LFB132:
+  27:Core/Src/AML_MPUSensor.c **** 
+  28:Core/Src/AML_MPUSensor.c **** void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+  29:Core/Src/AML_MPUSensor.c **** {
+ 128              		.loc 1 29 1 is_stmt 1 view -0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+  30:Core/Src/AML_MPUSensor.c ****     UNUSED(huart);
+ 132              		.loc 1 30 5 view .LVU14
+  31:Core/Src/AML_MPUSensor.c ****     if (huart->Instance == USART3)
+ 133              		.loc 1 31 5 view .LVU15
+ 134              		.loc 1 31 14 is_stmt 0 view .LVU16
+ 135 0000 0268     		ldr	r2, [r0]
+ 136              		.loc 1 31 8 view .LVU17
+ 137 0002 2F4B     		ldr	r3, .L30+16
+ 138 0004 9A42     		cmp	r2, r3
+ 139 0006 00D0     		beq	.L28
+ 140 0008 7047     		bx	lr
+ 141              	.L28:
+  29:Core/Src/AML_MPUSensor.c ****     UNUSED(huart);
+ 142              		.loc 1 29 1 view .LVU18
+ 143 000a 2DE97043 		push	{r4, r5, r6, r8, r9, lr}
+ 144              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 4
+
+
+ 145              		.cfi_offset 4, -24
+ 146              		.cfi_offset 5, -20
+ 147              		.cfi_offset 6, -16
+ 148              		.cfi_offset 8, -12
+ 149              		.cfi_offset 9, -8
+ 150              		.cfi_offset 14, -4
+  32:Core/Src/AML_MPUSensor.c ****     {
+  33:Core/Src/AML_MPUSensor.c ****         if (data[0] != 83)
+ 151              		.loc 1 33 9 is_stmt 1 view .LVU19
+ 152              		.loc 1 33 17 is_stmt 0 view .LVU20
+ 153 000e 2D4B     		ldr	r3, .L30+20
+ 154 0010 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 155              		.loc 1 33 12 view .LVU21
+ 156 0012 532B     		cmp	r3, #83
+ 157 0014 38D1     		bne	.L29
+  34:Core/Src/AML_MPUSensor.c ****         {
+  35:Core/Src/AML_MPUSensor.c ****             handle();
+  36:Core/Src/AML_MPUSensor.c ****             return;
+  37:Core/Src/AML_MPUSensor.c ****         }
+  38:Core/Src/AML_MPUSensor.c **** 
+  39:Core/Src/AML_MPUSensor.c ****         PreviousAngle = Angle;
+ 158              		.loc 1 39 9 is_stmt 1 view .LVU22
+ 159              		.loc 1 39 23 is_stmt 0 view .LVU23
+ 160 0016 2C4E     		ldr	r6, .L30+24
+ 161 0018 D6E90089 		ldrd	r8, [r6]
+ 162 001c 2B4B     		ldr	r3, .L30+28
+ 163 001e C3E90089 		strd	r8, [r3]
+  40:Core/Src/AML_MPUSensor.c ****         Angle = (((data[6] << 8) | data[5]) / 32768.0) * 180;
+ 164              		.loc 1 40 9 is_stmt 1 view .LVU24
+ 165              		.loc 1 40 24 is_stmt 0 view .LVU25
+ 166 0022 284B     		ldr	r3, .L30+20
+ 167 0024 9879     		ldrb	r0, [r3, #6]	@ zero_extendqisi2
+ 168              	.LVL4:
+ 169              		.loc 1 40 40 view .LVU26
+ 170 0026 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 171              		.loc 1 40 45 view .LVU27
+ 172 0028 43EA0020 		orr	r0, r3, r0, lsl #8
+ 173 002c FFF7FEFF 		bl	__aeabi_i2d
+ 174              	.LVL5:
+ 175 0030 0022     		movs	r2, #0
+ 176 0032 4FF07C53 		mov	r3, #1056964608
+ 177 0036 FFF7FEFF 		bl	__aeabi_dmul
+ 178              	.LVL6:
+ 179              		.loc 1 40 56 view .LVU28
+ 180 003a 0022     		movs	r2, #0
+ 181 003c 244B     		ldr	r3, .L30+32
+ 182 003e FFF7FEFF 		bl	__aeabi_dmul
+ 183              	.LVL7:
+ 184 0042 0446     		mov	r4, r0
+ 185 0044 0D46     		mov	r5, r1
+ 186              		.loc 1 40 15 view .LVU29
+ 187 0046 C6E90045 		strd	r4, [r6]
+  41:Core/Src/AML_MPUSensor.c **** 
+  42:Core/Src/AML_MPUSensor.c ****         if (Angle != 0)
+ 188              		.loc 1 42 9 is_stmt 1 view .LVU30
+ 189              		.loc 1 42 12 is_stmt 0 view .LVU31
+ 190 004a 0022     		movs	r2, #0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 5
+
+
+ 191 004c 0023     		movs	r3, #0
+ 192 004e FFF7FEFF 		bl	__aeabi_dcmpeq
+ 193              	.LVL8:
+ 194 0052 90B9     		cbnz	r0, .L15
+  43:Core/Src/AML_MPUSensor.c ****         {
+  44:Core/Src/AML_MPUSensor.c ****             if (Angle - PreviousAngle > 350) // 0 -> 360 degree
+ 195              		.loc 1 44 13 is_stmt 1 view .LVU32
+ 196              		.loc 1 44 23 is_stmt 0 view .LVU33
+ 197 0054 4246     		mov	r2, r8
+ 198 0056 4B46     		mov	r3, r9
+ 199 0058 2046     		mov	r0, r4
+ 200 005a 2946     		mov	r1, r5
+ 201 005c FFF7FEFF 		bl	__aeabi_dsub
+ 202              	.LVL9:
+ 203 0060 0446     		mov	r4, r0
+ 204 0062 0D46     		mov	r5, r1
+ 205              		.loc 1 44 16 view .LVU34
+ 206 0064 12A3     		adr	r3, .L30
+ 207 0066 D3E90023 		ldrd	r2, [r3]
+ 208 006a FFF7FEFF 		bl	__aeabi_dcmpgt
+ 209              	.LVL10:
+ 210 006e 70B1     		cbz	r0, .L23
+  45:Core/Src/AML_MPUSensor.c ****             {
+  46:Core/Src/AML_MPUSensor.c ****                 SaveAngle = 360;
+ 211              		.loc 1 46 17 is_stmt 1 view .LVU35
+ 212              		.loc 1 46 27 is_stmt 0 view .LVU36
+ 213 0070 184B     		ldr	r3, .L30+36
+ 214 0072 0020     		movs	r0, #0
+ 215 0074 1849     		ldr	r1, .L30+40
+ 216 0076 C3E90001 		strd	r0, [r3]
+ 217              	.L15:
+  47:Core/Src/AML_MPUSensor.c ****             }
+  48:Core/Src/AML_MPUSensor.c ****             else if (Angle - PreviousAngle < -350) // 360 -> 0 degree
+  49:Core/Src/AML_MPUSensor.c ****             {
+  50:Core/Src/AML_MPUSensor.c ****                 SaveAngle = 0;
+  51:Core/Src/AML_MPUSensor.c ****             }
+  52:Core/Src/AML_MPUSensor.c ****         }
+  53:Core/Src/AML_MPUSensor.c ****         HAL_UART_Receive_DMA(&huart3, data, 33);
+ 218              		.loc 1 53 9 is_stmt 1 view .LVU37
+ 219 007a 2122     		movs	r2, #33
+ 220 007c 1149     		ldr	r1, .L30+20
+ 221 007e 1748     		ldr	r0, .L30+44
+ 222 0080 FFF7FEFF 		bl	HAL_UART_Receive_DMA
+ 223              	.LVL11:
+ 224              	.L12:
+  54:Core/Src/AML_MPUSensor.c ****     }
+  55:Core/Src/AML_MPUSensor.c **** }
+ 225              		.loc 1 55 1 is_stmt 0 view .LVU38
+ 226 0084 BDE87083 		pop	{r4, r5, r6, r8, r9, pc}
+ 227              	.LVL12:
+ 228              	.L29:
+  35:Core/Src/AML_MPUSensor.c ****             return;
+ 229              		.loc 1 35 13 is_stmt 1 view .LVU39
+ 230 0088 FFF7FEFF 		bl	handle
+ 231              	.LVL13:
+  36:Core/Src/AML_MPUSensor.c ****         }
+ 232              		.loc 1 36 13 view .LVU40
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 6
+
+
+ 233 008c FAE7     		b	.L12
+ 234              	.L23:
+  48:Core/Src/AML_MPUSensor.c ****             {
+ 235              		.loc 1 48 18 view .LVU41
+  48:Core/Src/AML_MPUSensor.c ****             {
+ 236              		.loc 1 48 21 is_stmt 0 view .LVU42
+ 237 008e 0AA3     		adr	r3, .L30+8
+ 238 0090 D3E90023 		ldrd	r2, [r3]
+ 239 0094 2046     		mov	r0, r4
+ 240 0096 2946     		mov	r1, r5
+ 241 0098 FFF7FEFF 		bl	__aeabi_dcmplt
+ 242              	.LVL14:
+ 243 009c 0028     		cmp	r0, #0
+ 244 009e ECD0     		beq	.L15
+  50:Core/Src/AML_MPUSensor.c ****             }
+ 245              		.loc 1 50 17 is_stmt 1 view .LVU43
+  50:Core/Src/AML_MPUSensor.c ****             }
+ 246              		.loc 1 50 27 is_stmt 0 view .LVU44
+ 247 00a0 0C4B     		ldr	r3, .L30+36
+ 248 00a2 0020     		movs	r0, #0
+ 249 00a4 0021     		movs	r1, #0
+ 250 00a6 C3E90001 		strd	r0, [r3]
+ 251 00aa E6E7     		b	.L15
+ 252              	.L31:
+ 253 00ac AFF30080 		.align	3
+ 254              	.L30:
+ 255 00b0 00000000 		.word	0
+ 256 00b4 00E07540 		.word	1081466880
+ 257 00b8 00000000 		.word	0
+ 258 00bc 00E075C0 		.word	-1066016768
+ 259 00c0 00480040 		.word	1073760256
+ 260 00c4 00000000 		.word	data
+ 261 00c8 00000000 		.word	Angle
+ 262 00cc 00000000 		.word	.LANCHOR1
+ 263 00d0 00806640 		.word	1080459264
+ 264 00d4 00000000 		.word	.LANCHOR2
+ 265 00d8 00807640 		.word	1081507840
+ 266 00dc 00000000 		.word	huart3
+ 267              		.cfi_endproc
+ 268              	.LFE132:
+ 270              		.section	.text.AML_MPUSensor_ResetAngle,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	AML_MPUSensor_ResetAngle
+ 273              		.syntax unified
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.fpu fpv4-sp-d16
+ 278              	AML_MPUSensor_ResetAngle:
+ 279              	.LFB133:
+  56:Core/Src/AML_MPUSensor.c **** 
+  57:Core/Src/AML_MPUSensor.c **** uint8_t AML_MPUSensor_ResetAngle()
+  58:Core/Src/AML_MPUSensor.c **** {
+ 280              		.loc 1 58 1 is_stmt 1 view -0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 7
+
+
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 3, -8
+ 287              		.cfi_offset 14, -4
+  59:Core/Src/AML_MPUSensor.c ****     SaveAngle = 0;
+ 288              		.loc 1 59 5 view .LVU46
+ 289              		.loc 1 59 15 is_stmt 0 view .LVU47
+ 290 0002 064B     		ldr	r3, .L34
+ 291 0004 0020     		movs	r0, #0
+ 292 0006 0021     		movs	r1, #0
+ 293 0008 C3E90001 		strd	r0, [r3]
+  60:Core/Src/AML_MPUSensor.c ****     return HAL_UART_Transmit(&huart3, ResetCommand, 3, 1000);
+ 294              		.loc 1 60 5 is_stmt 1 view .LVU48
+ 295              		.loc 1 60 12 is_stmt 0 view .LVU49
+ 296 000c 4FF47A73 		mov	r3, #1000
+ 297 0010 0322     		movs	r2, #3
+ 298 0012 0349     		ldr	r1, .L34+4
+ 299 0014 0348     		ldr	r0, .L34+8
+ 300 0016 FFF7FEFF 		bl	HAL_UART_Transmit
+ 301              	.LVL15:
+  61:Core/Src/AML_MPUSensor.c **** }
+ 302              		.loc 1 61 1 view .LVU50
+ 303 001a 08BD     		pop	{r3, pc}
+ 304              	.L35:
+ 305              		.align	2
+ 306              	.L34:
+ 307 001c 00000000 		.word	.LANCHOR2
+ 308 0020 00000000 		.word	.LANCHOR3
+ 309 0024 00000000 		.word	huart3
+ 310              		.cfi_endproc
+ 311              	.LFE133:
+ 313              		.section	.text.AML_MPUSensor_GetAngle,"ax",%progbits
+ 314              		.align	1
+ 315              		.global	AML_MPUSensor_GetAngle
+ 316              		.syntax unified
+ 317              		.thumb
+ 318              		.thumb_func
+ 319              		.fpu fpv4-sp-d16
+ 321              	AML_MPUSensor_GetAngle:
+ 322              	.LFB134:
+  62:Core/Src/AML_MPUSensor.c **** 
+  63:Core/Src/AML_MPUSensor.c **** double AML_MPUSensor_GetAngle()
+  64:Core/Src/AML_MPUSensor.c **** {
+ 323              		.loc 1 64 1 is_stmt 1 view -0
+ 324              		.cfi_startproc
+ 325              		@ args = 0, pretend = 0, frame = 0
+ 326              		@ frame_needed = 0, uses_anonymous_args = 0
+ 327 0000 08B5     		push	{r3, lr}
+ 328              		.cfi_def_cfa_offset 8
+ 329              		.cfi_offset 3, -8
+ 330              		.cfi_offset 14, -4
+  65:Core/Src/AML_MPUSensor.c ****     return Angle - SaveAngle;
+ 331              		.loc 1 65 5 view .LVU52
+ 332              		.loc 1 65 18 is_stmt 0 view .LVU53
+ 333 0002 054B     		ldr	r3, .L38
+ 334 0004 D3E90023 		ldrd	r2, [r3]
+ 335 0008 0449     		ldr	r1, .L38+4
+ 336 000a D1E90001 		ldrd	r0, [r1]
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 8
+
+
+ 337 000e FFF7FEFF 		bl	__aeabi_dsub
+ 338              	.LVL16:
+  66:Core/Src/AML_MPUSensor.c **** }
+ 339              		.loc 1 66 1 view .LVU54
+ 340 0012 41EC100B 		vmov	d0, r0, r1
+ 341 0016 08BD     		pop	{r3, pc}
+ 342              	.L39:
+ 343              		.align	2
+ 344              	.L38:
+ 345 0018 00000000 		.word	.LANCHOR2
+ 346 001c 00000000 		.word	Angle
+ 347              		.cfi_endproc
+ 348              	.LFE134:
+ 350              		.global	SaveAngle
+ 351              		.global	PreviousAngle
+ 352              		.comm	Angle,8,8
+ 353              		.global	buffer
+ 354              		.comm	data,33,4
+ 355              		.global	ResetCommand
+ 356              		.section	.bss.PreviousAngle,"aw",%nobits
+ 357              		.align	3
+ 358              		.set	.LANCHOR1,. + 0
+ 361              	PreviousAngle:
+ 362 0000 00000000 		.space	8
+ 362      00000000 
+ 363              		.section	.bss.SaveAngle,"aw",%nobits
+ 364              		.align	3
+ 365              		.set	.LANCHOR2,. + 0
+ 368              	SaveAngle:
+ 369 0000 00000000 		.space	8
+ 369      00000000 
+ 370              		.section	.data.ResetCommand,"aw"
+ 371              		.align	2
+ 372              		.set	.LANCHOR3,. + 0
+ 375              	ResetCommand:
+ 376 0000 FFAA52   		.ascii	"\377\252R"
+ 377              		.section	.data.buffer,"aw"
+ 378              		.set	.LANCHOR0,. + 0
+ 381              	buffer:
+ 382 0000 77       		.byte	119
+ 383              		.text
+ 384              	.Letext0:
+ 385              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+ 386              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+ 387              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 388              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 389              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 390              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 391              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 392              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 393              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 394              		.file 11 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\lo
+ 395              		.file 12 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_t
+ 396              		.file 13 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\lib\\gcc\\arm-none-eabi\\9.2.1\
+ 397              		.file 14 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\re
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 AML_MPUSensor.c
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:18     .text.AML_MPUSensor_Setup:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:26     .text.AML_MPUSensor_Setup:00000000 AML_MPUSensor_Setup
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:48     .text.AML_MPUSensor_Setup:00000010 $d
+                            *COM*:00000021 data
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:54     .text.handle:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:61     .text.handle:00000000 handle
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:105    .text.handle:0000002c $d
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:118    .text.HAL_UART_RxCpltCallback:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:125    .text.HAL_UART_RxCpltCallback:00000000 HAL_UART_RxCpltCallback
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:255    .text.HAL_UART_RxCpltCallback:000000b0 $d
+                            *COM*:00000008 Angle
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:271    .text.AML_MPUSensor_ResetAngle:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:278    .text.AML_MPUSensor_ResetAngle:00000000 AML_MPUSensor_ResetAngle
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:307    .text.AML_MPUSensor_ResetAngle:0000001c $d
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:314    .text.AML_MPUSensor_GetAngle:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:321    .text.AML_MPUSensor_GetAngle:00000000 AML_MPUSensor_GetAngle
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:345    .text.AML_MPUSensor_GetAngle:00000018 $d
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:368    .bss.SaveAngle:00000000 SaveAngle
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:361    .bss.PreviousAngle:00000000 PreviousAngle
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:381    .data.buffer:00000000 buffer
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:375    .data.ResetCommand:00000000 ResetCommand
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:357    .bss.PreviousAngle:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:364    .bss.SaveAngle:00000000 $d
+C:\Users\anmh1\AppData\Local\Temp\ccmxRk6K.s:371    .data.ResetCommand:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_UART_Receive_DMA
+huart3
+HAL_UART_Receive
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dcmpeq
+__aeabi_dsub
+__aeabi_dcmpgt
+__aeabi_dcmplt
+HAL_UART_Transmit

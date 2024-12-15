@@ -1,0 +1,280 @@
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"AML_Keyboard.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.AML_Keyboard_GetKey,"ax",%progbits
+  18              		.align	1
+  19              		.global	AML_Keyboard_GetKey
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	AML_Keyboard_GetKey:
+  27              	.LVL0:
+  28              	.LFB130:
+  29              		.file 1 "Core/Src/AML_Keyboard.c"
+   1:Core/Src/AML_Keyboard.c **** #include "AML_Keyboard.h"
+   2:Core/Src/AML_Keyboard.c **** 
+   3:Core/Src/AML_Keyboard.c **** // extern ADC_HandleTypeDef hadc1;
+   4:Core/Src/AML_Keyboard.c **** extern int16_t debug[100];
+   5:Core/Src/AML_Keyboard.c **** 
+   6:Core/Src/AML_Keyboard.c **** typedef enum
+   7:Core/Src/AML_Keyboard.c **** {
+   8:Core/Src/AML_Keyboard.c ****     SW1,
+   9:Core/Src/AML_Keyboard.c ****     SW2,
+  10:Core/Src/AML_Keyboard.c ****     SW3,
+  11:Core/Src/AML_Keyboard.c ****     SW4,
+  12:Core/Src/AML_Keyboard.c ****     SW5
+  13:Core/Src/AML_Keyboard.c **** } SW;
+  14:Core/Src/AML_Keyboard.c **** 
+  15:Core/Src/AML_Keyboard.c **** uint16_t Button[5] = {GPIO_PIN_1, GPIO_PIN_2, GPIO_PIN_3, GPIO_PIN_4, GPIO_PIN_5};
+  16:Core/Src/AML_Keyboard.c **** 
+  17:Core/Src/AML_Keyboard.c **** uint8_t AML_Keyboard_GetKey(short key)
+  18:Core/Src/AML_Keyboard.c **** {
+  30              		.loc 1 18 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 18 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+  19:Core/Src/AML_Keyboard.c ****     return HAL_GPIO_ReadPin(ButtonPORT, Button[key]);
+  39              		.loc 1 19 5 is_stmt 1 view .LVU2
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s 			page 2
+
+
+  40              		.loc 1 19 12 is_stmt 0 view .LVU3
+  41 0002 034B     		ldr	r3, .L3
+  42 0004 33F81010 		ldrh	r1, [r3, r0, lsl #1]
+  43 0008 0248     		ldr	r0, .L3+4
+  44              	.LVL1:
+  45              		.loc 1 19 12 view .LVU4
+  46 000a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  47              	.LVL2:
+  20:Core/Src/AML_Keyboard.c **** }
+  48              		.loc 1 20 1 view .LVU5
+  49 000e 08BD     		pop	{r3, pc}
+  50              	.L4:
+  51              		.align	2
+  52              	.L3:
+  53 0010 00000000 		.word	.LANCHOR0
+  54 0014 00100240 		.word	1073876992
+  55              		.cfi_endproc
+  56              	.LFE130:
+  58              		.section	.text.AML_Keyboard_Setup,"ax",%progbits
+  59              		.align	1
+  60              		.global	AML_Keyboard_Setup
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  64              		.fpu fpv4-sp-d16
+  66              	AML_Keyboard_Setup:
+  67              	.LFB131:
+  21:Core/Src/AML_Keyboard.c **** 
+  22:Core/Src/AML_Keyboard.c **** void AML_Keyboard_Setup()
+  23:Core/Src/AML_Keyboard.c **** {
+  68              		.loc 1 23 1 is_stmt 1 view -0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  24:Core/Src/AML_Keyboard.c **** }
+  73              		.loc 1 24 1 view .LVU7
+  74 0000 7047     		bx	lr
+  75              		.cfi_endproc
+  76              	.LFE131:
+  78              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+  79              		.align	1
+  80              		.global	HAL_GPIO_EXTI_Callback
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  84              		.fpu fpv4-sp-d16
+  86              	HAL_GPIO_EXTI_Callback:
+  87              	.LVL3:
+  88              	.LFB132:
+  25:Core/Src/AML_Keyboard.c **** 
+  26:Core/Src/AML_Keyboard.c **** void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+  27:Core/Src/AML_Keyboard.c **** {
+  89              		.loc 1 27 1 view -0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s 			page 3
+
+
+  93              		@ link register save eliminated.
+  28:Core/Src/AML_Keyboard.c ****     if (GPIO_Pin == Button[0])
+  94              		.loc 1 28 5 view .LVU9
+  95              		.loc 1 28 27 is_stmt 0 view .LVU10
+  96 0000 144B     		ldr	r3, .L17
+  97 0002 1B88     		ldrh	r3, [r3]
+  98              		.loc 1 28 8 view .LVU11
+  99 0004 8342     		cmp	r3, r0
+ 100 0006 10D0     		beq	.L12
+  29:Core/Src/AML_Keyboard.c ****     {
+  30:Core/Src/AML_Keyboard.c ****         debug[8] = 1;
+  31:Core/Src/AML_Keyboard.c ****     }
+  32:Core/Src/AML_Keyboard.c ****     else if (GPIO_Pin == Button[1])
+ 101              		.loc 1 32 10 is_stmt 1 view .LVU12
+ 102              		.loc 1 32 32 is_stmt 0 view .LVU13
+ 103 0008 124B     		ldr	r3, .L17
+ 104 000a 5B88     		ldrh	r3, [r3, #2]
+ 105              		.loc 1 32 13 view .LVU14
+ 106 000c 8342     		cmp	r3, r0
+ 107 000e 10D0     		beq	.L13
+  33:Core/Src/AML_Keyboard.c ****     {
+  34:Core/Src/AML_Keyboard.c ****         debug[8] = 2;
+  35:Core/Src/AML_Keyboard.c ****     }
+  36:Core/Src/AML_Keyboard.c ****     else if (GPIO_Pin == Button[2])
+ 108              		.loc 1 36 10 is_stmt 1 view .LVU15
+ 109              		.loc 1 36 32 is_stmt 0 view .LVU16
+ 110 0010 104B     		ldr	r3, .L17
+ 111 0012 9B88     		ldrh	r3, [r3, #4]
+ 112              		.loc 1 36 13 view .LVU17
+ 113 0014 8342     		cmp	r3, r0
+ 114 0016 10D0     		beq	.L14
+  37:Core/Src/AML_Keyboard.c ****     {
+  38:Core/Src/AML_Keyboard.c ****         debug[8] = 3;
+  39:Core/Src/AML_Keyboard.c ****     }
+  40:Core/Src/AML_Keyboard.c ****     else if (GPIO_Pin == Button[3])
+ 115              		.loc 1 40 10 is_stmt 1 view .LVU18
+ 116              		.loc 1 40 32 is_stmt 0 view .LVU19
+ 117 0018 0E4B     		ldr	r3, .L17
+ 118 001a DB88     		ldrh	r3, [r3, #6]
+ 119              		.loc 1 40 13 view .LVU20
+ 120 001c 8342     		cmp	r3, r0
+ 121 001e 10D0     		beq	.L15
+  41:Core/Src/AML_Keyboard.c ****     {
+  42:Core/Src/AML_Keyboard.c ****         debug[8] = 4;
+  43:Core/Src/AML_Keyboard.c ****     }
+  44:Core/Src/AML_Keyboard.c ****     else if (GPIO_Pin == Button[4])
+ 122              		.loc 1 44 10 is_stmt 1 view .LVU21
+ 123              		.loc 1 44 32 is_stmt 0 view .LVU22
+ 124 0020 0C4B     		ldr	r3, .L17
+ 125 0022 1B89     		ldrh	r3, [r3, #8]
+ 126              		.loc 1 44 13 view .LVU23
+ 127 0024 8342     		cmp	r3, r0
+ 128 0026 10D0     		beq	.L16
+ 129              	.L6:
+  45:Core/Src/AML_Keyboard.c ****     {
+  46:Core/Src/AML_Keyboard.c ****         debug[8] = 5;
+  47:Core/Src/AML_Keyboard.c ****     }
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s 			page 4
+
+
+  48:Core/Src/AML_Keyboard.c **** }
+ 130              		.loc 1 48 1 view .LVU24
+ 131 0028 7047     		bx	lr
+ 132              	.L12:
+  30:Core/Src/AML_Keyboard.c ****     }
+ 133              		.loc 1 30 9 is_stmt 1 view .LVU25
+  30:Core/Src/AML_Keyboard.c ****     }
+ 134              		.loc 1 30 18 is_stmt 0 view .LVU26
+ 135 002a 0B4B     		ldr	r3, .L17+4
+ 136 002c 0122     		movs	r2, #1
+ 137 002e 1A82     		strh	r2, [r3, #16]	@ movhi
+ 138 0030 7047     		bx	lr
+ 139              	.L13:
+  34:Core/Src/AML_Keyboard.c ****     }
+ 140              		.loc 1 34 9 is_stmt 1 view .LVU27
+  34:Core/Src/AML_Keyboard.c ****     }
+ 141              		.loc 1 34 18 is_stmt 0 view .LVU28
+ 142 0032 094B     		ldr	r3, .L17+4
+ 143 0034 0222     		movs	r2, #2
+ 144 0036 1A82     		strh	r2, [r3, #16]	@ movhi
+ 145 0038 7047     		bx	lr
+ 146              	.L14:
+  38:Core/Src/AML_Keyboard.c ****     }
+ 147              		.loc 1 38 9 is_stmt 1 view .LVU29
+  38:Core/Src/AML_Keyboard.c ****     }
+ 148              		.loc 1 38 18 is_stmt 0 view .LVU30
+ 149 003a 074B     		ldr	r3, .L17+4
+ 150 003c 0322     		movs	r2, #3
+ 151 003e 1A82     		strh	r2, [r3, #16]	@ movhi
+ 152 0040 7047     		bx	lr
+ 153              	.L15:
+  42:Core/Src/AML_Keyboard.c ****     }
+ 154              		.loc 1 42 9 is_stmt 1 view .LVU31
+  42:Core/Src/AML_Keyboard.c ****     }
+ 155              		.loc 1 42 18 is_stmt 0 view .LVU32
+ 156 0042 054B     		ldr	r3, .L17+4
+ 157 0044 0422     		movs	r2, #4
+ 158 0046 1A82     		strh	r2, [r3, #16]	@ movhi
+ 159 0048 7047     		bx	lr
+ 160              	.L16:
+  46:Core/Src/AML_Keyboard.c ****     }
+ 161              		.loc 1 46 9 is_stmt 1 view .LVU33
+  46:Core/Src/AML_Keyboard.c ****     }
+ 162              		.loc 1 46 18 is_stmt 0 view .LVU34
+ 163 004a 034B     		ldr	r3, .L17+4
+ 164 004c 0522     		movs	r2, #5
+ 165 004e 1A82     		strh	r2, [r3, #16]	@ movhi
+ 166              		.loc 1 48 1 view .LVU35
+ 167 0050 EAE7     		b	.L6
+ 168              	.L18:
+ 169 0052 00BF     		.align	2
+ 170              	.L17:
+ 171 0054 00000000 		.word	.LANCHOR0
+ 172 0058 00000000 		.word	debug
+ 173              		.cfi_endproc
+ 174              	.LFE132:
+ 176              		.global	Button
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s 			page 5
+
+
+ 177              		.section	.data.Button,"aw"
+ 178              		.align	2
+ 179              		.set	.LANCHOR0,. + 0
+ 182              	Button:
+ 183 0000 0200     		.short	2
+ 184 0002 0400     		.short	4
+ 185 0004 0800     		.short	8
+ 186 0006 1000     		.short	16
+ 187 0008 2000     		.short	32
+ 188              		.text
+ 189              	.Letext0:
+ 190              		.file 2 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\machine\
+ 191              		.file 3 "c:\\make\\test\\gcc-arm-none-eabi-9-2019-q4-major-win32\\arm-none-eabi\\include\\sys\\_st
+ 192              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 193              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 194              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 195              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 196              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 AML_Keyboard.c
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:18     .text.AML_Keyboard_GetKey:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:26     .text.AML_Keyboard_GetKey:00000000 AML_Keyboard_GetKey
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:53     .text.AML_Keyboard_GetKey:00000010 $d
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:59     .text.AML_Keyboard_Setup:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:66     .text.AML_Keyboard_Setup:00000000 AML_Keyboard_Setup
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:79     .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:86     .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:171    .text.HAL_GPIO_EXTI_Callback:00000054 $d
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:182    .data.Button:00000000 Button
+C:\Users\anmh1\AppData\Local\Temp\ccoCVcKH.s:178    .data.Button:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_ReadPin
+debug

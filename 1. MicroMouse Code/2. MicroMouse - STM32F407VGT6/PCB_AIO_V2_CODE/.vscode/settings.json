@@ -6,6 +6,9 @@
     "aml_globalvariable.h": "c",
     "aml_switch.h": "c",
     "aml_motorcontrol.h": "c",
-    "aml_pid.h": "c"
+    "aml_pid.h": "c",
+    "aml_irsensor.h": "c",
+    "solver.h": "c",
+    "stdbool.h": "c"
   }
 }

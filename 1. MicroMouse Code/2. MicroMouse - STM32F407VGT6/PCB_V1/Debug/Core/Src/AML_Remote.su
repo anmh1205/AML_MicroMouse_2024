@@ -1,0 +1,2 @@
+../Core/Src/AML_Remote.c:14:6:AML_Remote_Setup	8	static
+../Core/Src/AML_Remote.c:19:6:AML_Remote_Handle	8	static

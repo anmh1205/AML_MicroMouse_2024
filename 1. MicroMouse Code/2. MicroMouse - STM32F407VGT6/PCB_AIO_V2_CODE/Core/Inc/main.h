@@ -55,7 +55,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-static void MX_TIM3_Init(void);
+// static void MX_TIM3_Init(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -125,3 +125,4 @@ static void MX_TIM3_Init(void);
 #endif
 
 #endif /* __MAIN_H */
+
