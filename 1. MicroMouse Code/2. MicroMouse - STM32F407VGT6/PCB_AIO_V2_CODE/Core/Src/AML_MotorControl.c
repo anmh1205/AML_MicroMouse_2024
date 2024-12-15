@@ -174,6 +174,19 @@ void AML_MotorControl_LeftWallFollow(void);
 void AML_MotorControl_RightWallFollow(void);
 void AML_MotorControl_GoStraight(void);
 
+// Timer callback function-------------------------------------------------------------------------------------------------------//
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    UNUSED(htim);
+    if (htim->Instance == htim7.Instance) // timer for wall follow
+    {
+        AML_MotorControl_GoStraghtWithMPU(0);
+
+        // AML_MotorControl_LeftMotorSpeed(30);
+    }
+}
+
 void AML_MotorControl_TurnOnWallFollow(void)
 {
     // AML_MPUSensor_ResetAngle();

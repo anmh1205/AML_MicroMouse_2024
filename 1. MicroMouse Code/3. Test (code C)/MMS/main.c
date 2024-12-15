@@ -18,9 +18,10 @@
 
 int main(int argc, char *argv[])
 {
+    // set the priority heading
     setPriorityHeading(EAST);
 
-    // debug_log("Running...");
+    // initialize the maze
     initialize();
 
     // start the search
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
         // run from the center to the start
         searchCenterToStart();
 
-        // updateDistances();
+        // calculate the shortest path again
         calculateShortestPathDistances();
 
         // run the shortest path

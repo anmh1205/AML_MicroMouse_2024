@@ -33,7 +33,7 @@
 
 
 // DEFINE FOR MOTOR CONTROL-------------------------------------------------------------------------------------------------------//
-#define MotorDirection GPIO_PIN_RESET // use for change direction of motor
+#define MotorDirection GPIO_PIN_SET // use for change direction of motor
 #define LeftMotorDirection MotorDirection // use for change direction of left motor
 #define RightMotorDirection !MotorDirection // use for change direction of right motor
 
@@ -41,8 +41,8 @@
 #define Pi 3.14159265359  // Pi number
 #define WheelDiameter 21  // mm
 #define TransmissionRatio 1     // ratio between wheel and encoder
-#define EncoderPulsePerRound 1420 // 1420 pulse per round encoder
-#define MouseSpeed 25 // % of duty cycle
+#define EncoderPulsePerRound 350 // 1420 pulse per round encoder
+#define MouseSpeed 90 // % of duty cycle
 #define MouseTurnSpeed 25 // % of duty cycle
 
 

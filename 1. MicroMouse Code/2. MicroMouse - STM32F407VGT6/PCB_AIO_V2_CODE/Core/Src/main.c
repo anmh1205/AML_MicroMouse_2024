@@ -121,16 +121,6 @@ void StartSolver()
   }
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  UNUSED(htim);
-  if (htim->Instance == htim7.Instance) // timer for wall follow
-  {
-    // AML_MotorControl_GoStraghtWithMPU(0);
-
-    AML_MotorControl_LeftMotorSpeed(500);
-  }
-}
 
 /* USER CODE END 0 */
 
@@ -230,9 +220,9 @@ int main(void)
     if (AML_Read_Button(SW_0))
     {
       // AML_Buzzer_PlaySong();
-      // AML_MotorControl_Move(pwm, pwm);
+      AML_MotorControl_Move(pwm, pwm);
       // AML_MotorControl_TurnOnWallFollow();
-      // AML_MotorControl_Move(30, -30);
+      // AML_MotorControl_Move(30, 30);
 
       AML_MotorControl_TurnOnWallFollow();
     }
