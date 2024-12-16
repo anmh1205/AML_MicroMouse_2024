@@ -22,49 +22,20 @@ Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
 E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE\MDK-ARM\PCB_AIO_V2_CODE.uvprojx
-Project File Date:  12/08/2024
+Project File Date:  12/16/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'PCB_AIO_V2_CODE'
-compiling AML_MotorControl.c...
-..\Core\Src\AML_MotorControl.c(3): warning:  #260-D: explicit type is missing ("int" assumed)
-  extern debug[100];
-..\Core\Src\AML_MotorControl.c(232): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, !LeftMotorDirection);
-..\Core\Src\AML_MotorControl.c(237): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, !LeftMotorDirection);
-..\Core\Src\AML_MotorControl.c(264): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(265): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, !RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(270): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, !RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(271): warning:  #188-D: enumerated type mixed with another type
-          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, RightMotorDirection);
-..\Core\Src\AML_MotorControl.c(297): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
-      PID_LeftMotor.Input = ((double)AML_Encoder_GetLeftValue() / EncoderPulsePerRound) * (1000 / PID_LeftMotor.sampleTime) * 60; // 50 is the sample time
-..\Core\Src\AML_MotorControl.c(298): warning:  #223-D: function "AML_Encoder_ResetLeftValue" declared implicitly
-      AML_Encoder_ResetLeftValue();
-..\Core\Src\AML_MotorControl.c(309): warning:  #223-D: function "AML_Encoder_GetRightValue" declared implicitly
-      PID_RightMotor.Input = (double)AML_Encoder_GetRightValue() / EncoderPulsePerRound * 50 * 60; // 50 is the sample time
-..\Core\Src\AML_MotorControl.c(310): warning:  #223-D: function "AML_Encoder_ResetRightValue" declared implicitly
-      AML_Encoder_ResetRightValue();
-..\Core\Src\AML_MotorControl.c: 11 warnings, 0 errors
-compiling AML_Encoder.c...
-compiling AML_IRSensor.c...
-..\Core\Src\AML_IRSensor.c(18): warning:  #260-D: explicit type is missing ("int" assumed)
-  extern debug[100];
-..\Core\Src\AML_IRSensor.c(45): warning:  #223-D: function "memset" declared implicitly
-      memset(IRSensorADCValue, 0, sizeof(IRSensorADCValue));
-..\Core\Src\AML_IRSensor.c: 2 warnings, 0 errors
-compiling AML_Switch.c...
-compiling main.c...
-compiling solver.c...
+compiling gpio.c...
+compiling dma.c...
+compiling usart.c...
+compiling adc.c...
+compiling tim.c...
 linking...
-Program Size: Code=33542 RO-data=906 RW-data=916 ZI-data=2892  
+Program Size: Code=33566 RO-data=906 RW-data=908 ZI-data=2892  
 FromELF: creating hex file...
-"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 13 Warning(s).
+"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -87,7 +58,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

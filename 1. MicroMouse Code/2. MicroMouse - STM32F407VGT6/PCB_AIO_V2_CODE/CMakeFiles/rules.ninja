@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\STM32CubeCLT_1.15.0\CMake\bin\cmake.exe --regenerate-during-build -S"E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE" -B"E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE"
+  command = C:\ST\STM32CubeCLT_1.16.0\CMake\bin\cmake.exe --regenerate-during-build -S"E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE" -B"E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE"
   description = Re-running CMake...
   generator = 1
 

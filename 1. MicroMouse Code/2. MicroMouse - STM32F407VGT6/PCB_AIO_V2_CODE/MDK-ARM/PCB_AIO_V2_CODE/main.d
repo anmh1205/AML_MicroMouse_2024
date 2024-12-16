@@ -39,6 +39,12 @@ pcb_aio_v2_code\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h
 pcb_aio_v2_code\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h
 pcb_aio_v2_code\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 pcb_aio_v2_code\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
+pcb_aio_v2_code\main.o: ../Core/Inc/adc.h
+pcb_aio_v2_code\main.o: ../Core/Inc/dma.h
+pcb_aio_v2_code\main.o: ../Core/Inc/memorymap.h
+pcb_aio_v2_code\main.o: ../Core/Inc/tim.h
+pcb_aio_v2_code\main.o: ../Core/Inc/usart.h
+pcb_aio_v2_code\main.o: ../Core/Inc/gpio.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_GlobalVariable.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_MotorControl.h
 pcb_aio_v2_code\main.o: ../Core/Inc/AML_PID.h
