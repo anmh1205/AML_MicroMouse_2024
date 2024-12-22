@@ -3,7 +3,7 @@
 <title>Static Call Graph - [PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Dec 16 08:20:29 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Dec 22 15:53:55 2024
 <BR><P>
 <H3>Maximum Stack Usage =        408 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -950,8 +950,8 @@ Global Symbols
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d2]"></a>AML_MPUSensor_ResetAngle</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, aml_imu.o(i.AML_MPUSensor_ResetAngle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = AML_MPUSensor_ResetAngle &rArr; HAL_UART_Receive_DMA &rArr; UART_Start_Receive_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
+<P><STRONG><a name="[d2]"></a>AML_MPUSensor_HardResetAngle</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, aml_imu.o(i.AML_MPUSensor_HardResetAngle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = AML_MPUSensor_HardResetAngle &rArr; HAL_UART_Receive_DMA &rArr; UART_Start_Receive_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
@@ -963,10 +963,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[d6]"></a>AML_MPUSensor_Setup</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, aml_imu.o(i.AML_MPUSensor_Setup))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = AML_MPUSensor_Setup &rArr; AML_MPUSensor_ResetAngle &rArr; HAL_UART_Receive_DMA &rArr; UART_Start_Receive_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = AML_MPUSensor_Setup &rArr; AML_MPUSensor_HardResetAngle &rArr; HAL_UART_Receive_DMA &rArr; UART_Start_Receive_DMA &rArr; HAL_DMA_Start_IT &rArr; DMA_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_DMA
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_ResetAngle
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_HardResetAngle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1131,8 +1131,7 @@ Global Symbols
 <P><STRONG><a name="[c2]"></a>HAL_ADC_IRQHandler</STRONG> (Thumb, 640 bytes, Stack size 40 bytes, stm32h7xx_hal_adc.o(i.HAL_ADC_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = HAL_ADC_IRQHandler &rArr; HAL_ADC_ConvCpltCallback &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
 </UL>
-<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConvCpltCallback
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_LevelOutOfWindowCallback
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_LevelOutOfWindowCallback
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ErrorCallback
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADCEx_LevelOutOfWindow3Callback
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADCEx_LevelOutOfWindow2Callback
@@ -1142,6 +1141,7 @@ Global Symbols
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_ADC_REG_IsTriggerSourceSWStart
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_ADC_REG_IsConversionOngoing
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_ADC_INJ_IsConversionOngoing
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConvCpltCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
 </UL>
@@ -1236,7 +1236,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_Buzzer_PlayNote
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_ResetAngle
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_HardResetAngle
 </UL>
 
 <P><STRONG><a name="[fb]"></a>HAL_GPIO_Init</STRONG> (Thumb, 506 bytes, Stack size 40 bytes, stm32h7xx_hal_gpio.o(i.HAL_GPIO_Init))
@@ -1710,7 +1710,7 @@ Global Symbols
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_GetError
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_ResetAngle
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_HardResetAngle
 </UL>
 
 <P><STRONG><a name="[139]"></a>HAL_UART_ErrorCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_ErrorCallback))
@@ -1723,14 +1723,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_UART_IRQHandler &rArr; HAL_DMA_Abort
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
+<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
+<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxEventCallback
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_WakeupCallback
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_TxFifoEmptyCallback
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxFifoFullCallback
-<LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
-<LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
@@ -1777,7 +1777,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;handle
 <LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_Setup
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_ResetAngle
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_HardResetAngle
 </UL>
 
 <P><STRONG><a name="[147]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, aml_imu.o(i.HAL_UART_RxCpltCallback))
@@ -1799,7 +1799,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_ResetAngle
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_HardResetAngle
 </UL>
 
 <P><STRONG><a name="[13c]"></a>HAL_UART_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.HAL_UART_TxCpltCallback))
@@ -1813,7 +1813,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32h743xx.o(RESET)
 </UL>
-<P><STRONG><a name="[149]"></a>MX_ADC2_Init</STRONG> (Thumb, 266 bytes, Stack size 48 bytes, adc.o(i.MX_ADC2_Init))
+<P><STRONG><a name="[149]"></a>MX_ADC2_Init</STRONG> (Thumb, 268 bytes, Stack size 48 bytes, adc.o(i.MX_ADC2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = MX_ADC2_Init &rArr; HAL_ADC_Init &rArr; HAL_ADC_MspInit &rArr; HAL_RCCEx_PeriphCLKConfig &rArr; RCCEx_PLL3_Config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
@@ -2109,8 +2109,7 @@ Global Symbols
 <P><STRONG><a name="[ae]"></a>main</STRONG> (Thumb, 298 bytes, Stack size 24 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = main &rArr; MX_ADC2_Init &rArr; HAL_ADC_Init &rArr; HAL_ADC_MspInit &rArr; HAL_RCCEx_PeriphCLKConfig &rArr; RCCEx_PLL3_Config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_IRSensor_Setup
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_Encoder_Setup
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_Encoder_Setup
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_GetAngle
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_Encoder_GetRightValue
 <LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_Encoder_GetLeftValue
@@ -2139,7 +2138,8 @@ Global Symbols
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_Setup
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_ResetAngle
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_MPUSensor_HardResetAngle
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_IRSensor_Setup
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
@@ -2193,10 +2193,10 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e8]"></a>LL_ADC_REG_IsConversionOngoing</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32h7xx_hal_adc.o(i.LL_ADC_REG_IsConversionOngoing))
-<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_IT
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
+<BR><BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
 <LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConfigChannel
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_IRQHandler
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start_IT
 </UL>
 
 <P><STRONG><a name="[ef]"></a>LL_ADC_REG_IsTriggerSourceSWStart</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32h7xx_hal_adc.o(i.LL_ADC_REG_IsTriggerSourceSWStart))
@@ -2298,9 +2298,9 @@ Local Symbols
 <P><STRONG><a name="[a2]"></a>UART_DMAError</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, stm32h7xx_hal_uart.o(i.UART_DMAError))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = UART_DMAError &rArr; UART_EndRxTransfer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
-<LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTxTransfer
+<BR>[Calls]<UL><LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTxTransfer
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
+<LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> stm32h7xx_hal_uart.o(i.UART_Start_Receive_DMA)
 </UL>
@@ -2325,8 +2325,8 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_DMAStop
-<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAError
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 
 <P><STRONG><a name="[135]"></a>UART_EndTxTransfer</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, stm32h7xx_hal_uart.o(i.UART_EndTxTransfer))

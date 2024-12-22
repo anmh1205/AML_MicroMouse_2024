@@ -1155,10 +1155,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The CMake toolchain file"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "UNINITIALIZED",
 			"value" : "E:/1. Phenikaa University/AML/0. Project/7. MicroMouse_2024/1. MicroMouse Code/2. MicroMouse - STM32F407VGT6/PCB_AIO_V2_CODE/cmake/gcc-arm-none-eabi.cmake"
 		},
 		{

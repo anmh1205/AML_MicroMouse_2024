@@ -5,7 +5,7 @@
     distance high range: y = 12.08 * x^(-1.058)
 */
 
-#define ADC_RESOLUTION_BIT 16
+#define ADC_RESOLUTION_BIT 14
 #define ADC_MAX (1 << ADC_RESOLUTION_BIT) // 2^14 = 16384
 #define ADC_VREF 3.3
 

@@ -8,11 +8,25 @@ extern TIM_HandleTypeDef htim7; // timer for interrupt
 GPIO_TypeDef *MotorDirectionPort = GPIOE;
 
 // TimerClock is 240MHz, Prescaler is 12000, AutoReload is 1, so the frequency is 10kHz
-#define TO_CCR(x) (uint16_t)((x) * 10)
+#define TO_CCR(x) (uint16_t)((x) * 10) // convert duty cycle to CCR value
+
+#define PULSE_TO_RPM(x) (double)(x / EncoderPulsePerRound) * ((60 * 1000) / SampleTime) // convert pulse to rpm
+
+#define DISTANCE_TO_PULSE(x) (int32_t)(((x) * EncoderPulsePerRound) / (WheelDiameter * Pi)) // convert distance to pulse
+
+// low pass fillter for PID input
+#define LOW_PASS_FILTER_ALPHA 0.1
+#define LOW_PASS_FILTER(x, y) ((x) * LOW_PASS_FILTER_ALPHA + (y) * (1 - LOW_PASS_FILTER_ALPHA))
 
 // PID struct-------------------------------------------------------------------------------------------------------//
 
 double TempSetpoint = 0;
+
+int32_t PreviousLeftEncoder = 0;
+int32_t PreviousLeftFilter = 0;
+
+int32_t PreviousRightEncoder = 0;
+int32_t PreviousRightFilter = 0;
 
 AML_PID_Struct PID_LeftMotor =
     {
@@ -100,9 +114,9 @@ AML_PID_Struct PID_TurnRight =
 
 AML_PID_Struct PID_MPUFollow =
     {
-        .Kp = 0.5,
-        .Ki = 0.1,
-        .Kd = 0,
+        .Kp = 2.5,
+        .Ki = 0.5,
+        .Kd = 0.7,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -173,6 +187,14 @@ void AML_MotorControl_GoStraghtWithMPU(double setpoint);
 void AML_MotorControl_LeftWallFollow(void);
 void AML_MotorControl_RightWallFollow(void);
 void AML_MotorControl_GoStraight(void);
+void AML_MotorControl_TurnOnWallFollow(void);
+void AML_MotorControl_TurnOffWallFollow(void);
+
+void AML_MotorControl_TurnLeft(void);
+void AML_MotorControl_TurnRight(void);
+
+void AML_MotorControl_MoveForwardOneCell(void);
+void AML_MotorControl_MoveForwardDistance(int32_t distance);
 
 // Timer callback function-------------------------------------------------------------------------------------------------------//
 
@@ -189,7 +211,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 void AML_MotorControl_TurnOnWallFollow(void)
 {
-    // AML_MPUSensor_ResetAngle();
+    // AML_MPUSensor_HardResetAngle();
     HAL_TIM_Base_Start_IT(&htim7);
 }
 
@@ -212,7 +234,7 @@ void AML_MotorControl_Setup(void)
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 
-    AML_MotorControl_AMLPIDSetup();
+    // AML_MotorControl_AMLPIDSetup();
 }
 
 void AML_MotorControl_LeftPWM(int32_t DutyCycle)
@@ -294,7 +316,9 @@ void AML_MotorControl_LeftMotorSpeed(int32_t rpm)
 {
     PID_LeftMotor.Setpoint = (double)rpm;
 
-    PID_LeftMotor.Input = ((double)AML_Encoder_GetLeftValue() / EncoderPulsePerRound) * (1000 / PID_LeftMotor.sampleTime) * 60; // 50 is the sample time
+    int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+    PID_LeftMotor.Input = PULSE_TO_RPM(CurrentLeftEncoder);
+    // PreviousLeftEncoder = CurrentLeftEncoder;
     AML_Encoder_ResetLeftValue();
 
     AML_PID_Compute(&PID_LeftMotor);
@@ -306,8 +330,12 @@ void AML_MotorControl_RightMotorSpeed(int32_t rpm)
 {
     PID_RightMotor.Setpoint = (double)rpm;
 
-    PID_RightMotor.Input = (double)AML_Encoder_GetRightValue() / EncoderPulsePerRound * 50 * 60; // 50 is the sample time
-    AML_Encoder_ResetRightValue();
+    int32_t CurrentRightEncoder = AML_Encoder_GetRightValue();
+    int32_t CurrentRightFilter = LOW_PASS_FILTER(CurrentRightEncoder - PreviousRightEncoder, PreviousRightFilter);
+    PreviousRightEncoder = CurrentRightEncoder;
+    PreviousRightFilter = CurrentRightFilter;
+
+    PID_RightMotor.Input = PULSE_TO_RPM(CurrentRightFilter);
 
     AML_PID_Compute(&PID_RightMotor);
 
@@ -372,7 +400,7 @@ void AML_MotorControl_TurnLeft(void)
 {
     uint16_t WaitingTime = 1500;
 
-    PID_TurnLeft.Setpoint = AML_MPUSensor_GetAngle() + 90;
+    PID_TurnLeft.Setpoint = AML_MPUSensor_GetAngle() + TuneLeft90Angle;
 
     uint32_t InitTime = HAL_GetTick();
     uint32_t CurrentTime = HAL_GetTick();
@@ -387,7 +415,7 @@ void AML_MotorControl_TurnLeft(void)
         AML_MotorControl_LeftPWM(-(int32_t)PID_TurnLeft.Output);
         AML_MotorControl_RightPWM((int32_t)PID_TurnLeft.Output);
 
-        if (ABS(PID_TurnLeft.Input - PID_TurnLeft.Setpoint) < 4.0f)
+        if (ABS(PID_TurnLeft.Input - PID_TurnLeft.Setpoint) < ErrorAngle)
         {
             CurrentTime = HAL_GetTick();
         }
@@ -398,5 +426,66 @@ void AML_MotorControl_TurnLeft(void)
         }
     }
 
+    AML_MotorControl_Stop();
+}
+
+void AML_MotorControl_TurnRight(void)
+{
+    uint16_t WaitingTime = 1500;
+
+    PID_TurnRight.Setpoint = AML_MPUSensor_GetAngle() - TuneRight90Angle;
+
+    uint32_t InitTime = HAL_GetTick();
+    uint32_t CurrentTime = HAL_GetTick();
+    uint32_t PreviousTime = CurrentTime;
+
+    while ((CurrentTime - PreviousTime) < 200 && (HAL_GetTick() - InitTime < WaitingTime))
+    {
+        PID_TurnRight.Input = AML_MPUSensor_GetAngle();
+
+        AML_PID_Compute(&PID_TurnRight);
+
+        AML_MotorControl_LeftPWM((int32_t)PID_TurnRight.Output);
+        AML_MotorControl_RightPWM(-(int32_t)PID_TurnRight.Output);
+
+        if (ABS(PID_TurnRight.Input - PID_TurnRight.Setpoint) < ErrorAngle)
+        {
+            CurrentTime = HAL_GetTick();
+        }
+        else
+        {
+            CurrentTime = HAL_GetTick();
+            PreviousTime = CurrentTime;
+        }
+    }
+
+    AML_MotorControl_Stop();
+}
+
+void AML_MotorControl_MoveForwardOneCell(void)
+{
+    int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+
+    AML_MotorControl_TurnOnWallFollow();
+
+    while (AML_Encoder_GetLeftValue() - CurrentLeftEncoder < TICKS_ONE_CELL)
+    {
+    }
+
+    AML_MotorControl_TurnOffWallFollow();
+    AML_MotorControl_Stop();
+}
+
+void AML_MotorControl_MoveForwardDistance(int32_t distance)
+{
+    int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+
+    AML_MotorControl_TurnOnWallFollow();
+
+    while (AML_Encoder_GetLeftValue() - CurrentLeftEncoder < DISTANCE_TO_PULSE(distance))
+    {
+    }
+
+    AML_MotorControl_TurnOffWallFollow();
     AML_MotorControl_Stop();
 }

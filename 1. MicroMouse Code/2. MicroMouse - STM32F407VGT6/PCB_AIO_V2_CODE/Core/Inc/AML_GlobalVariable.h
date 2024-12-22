@@ -31,37 +31,45 @@
 #define IR_SENSOR_RR 5
 #define IR_SENSOR_FR 6
 
-
 // DEFINE FOR MOTOR CONTROL-------------------------------------------------------------------------------------------------------//
-#define MotorDirection GPIO_PIN_SET // use for change direction of motor
-#define LeftMotorDirection MotorDirection // use for change direction of left motor
+#define MotorDirection GPIO_PIN_SET         // use for change direction of motor
+#define LeftMotorDirection MotorDirection   // use for change direction of left motor
 #define RightMotorDirection !MotorDirection // use for change direction of right motor
 
 // define parameter for transmission function
-#define Pi 3.14159265359  // Pi number
-#define WheelDiameter 21  // mm
-#define TransmissionRatio 1     // ratio between wheel and encoder
-#define EncoderPulsePerRound 350 // 1420 pulse per round encoder
-#define MouseSpeed 90 // % of duty cycle
-#define MouseTurnSpeed 25 // % of duty cycle
-
+#define Pi 3.14159265359         // Pi number
+#define WheelDiameter 21         // mm
+#define TransmissionRatio 1      // ratio between wheel and encoder
+#define EncoderPulsePerRound 700 // 1420 pulse per round encoder
+#define MouseSpeed 90            // % of duty cycle
+#define MouseTurnSpeed 25        // % of duty cycle
 
 // define parameter for PID control
-
-#define SampleTime 20 // time (ms) for each sample
-#define PIDMode 1 // automatic mode
+#define SampleTime 20            // time (ms) for each sample
+#define PIDMode 1                // automatic mode
 #define PIDOutputMin -MouseSpeed // minimum output of PID (duty cycle)
-#define PIDOutputMax MouseSpeed // maximum output of PID (duty cycle)
+#define PIDOutputMax MouseSpeed  // maximum output of PID (duty cycle)
 
-#define PIDSpeedOutputMin 0 // minimum output of PID (duty cycle)
+#define PIDSpeedOutputMin 0  // minimum output of PID (duty cycle)
 #define PIDSpeedOutputMax 50 // maximum output of PID (duty cycle)
+
+// define parameter for turn left and right
+#define TurnLeftSpeed 50  // % of duty cycle
+#define TurnRightSpeed 50 // % of duty cycle
+#define TuneLeft90Angle 90 // degree
+#define TuneRight90Angle 90
+#define TuneLeft180Angle 180
+#define TuneRight180Angle 180
+#define ErrorAngle 3 // degree
 
 // DEFINE FOR IR SENSOR-------------------------------------------------------------------------------------------------------//
 
 // competition maze parameters
+#define TICKS_ONE_CELL 1000
+
 #define WALL_IN_FRONT 155       // 47
-#define WALL_IN_LEFT 55        // 121
-#define WALL_IN_RIGHT 55      // 100
+#define WALL_IN_LEFT 55         // 121
+#define WALL_IN_RIGHT 55        // 100
 #define WALL_IN_FRONT_LEFT 130  // 60
 #define WALL_IN_FRONT_RIGHT 130 // 50
 
@@ -74,21 +82,14 @@
 
 #define ABS(x) ((x) > 0 ? (x) : -(x))
 
-
-
 #define CHECK_WALL_FRONT AML_IRSensor_IsFrontWall()
 #define CHECK_WALL_LEFT AML_IRSensor_IsLeftWall()
 #define CHECK_WALL_RIGHT AML_IRSensor_IsRightWall()
 
-#define MOVE_FORWARD_FUNCTION AML_MotorControl_Stop()
-#define TURN_LEFT_FUNCTION AML_MotorControl_Stop()
-#define TURN_RIGHT_FUNCTION AML_MotorControl_Stop()
-
-
-
+#define MOVE_FORWARD_FUNCTION AML_MotorControl_MoveForwardOneCell()
+#define TURN_LEFT_FUNCTION AML_MotorControl_TurnLeft()
+#define TURN_RIGHT_FUNCTION AML_MotorControl_TurnRight()
 
 //-------------------------------------------------------------------------------------------------------//
 
 #endif
-
-

@@ -1902,9 +1902,9 @@ LOAD C:/ST/STM32CubeCLT_1.16.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/
  .text.AML_Encoder_GetRightValue
                 0x080006c0        0xc CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_Encoder.c.obj
                 0x080006c0                AML_Encoder_GetRightValue
- .text.AML_MPUSensor_ResetAngle
+ .text.AML_MPUSensor_HardResetAngle
                 0x080006cc       0x84 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
-                0x080006cc                AML_MPUSensor_ResetAngle
+                0x080006cc                AML_MPUSensor_HardResetAngle
  .text.AML_MPUSensor_Setup
                 0x08000750       0x20 CMakeFiles/PCB_AIO_V2_CODE.dir/Core/Src/AML_IMU.c.obj
                 0x08000750                AML_MPUSensor_Setup

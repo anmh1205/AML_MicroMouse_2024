@@ -22,20 +22,84 @@ Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
 E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\1. MicroMouse Code\2. MicroMouse - STM32F407VGT6\PCB_AIO_V2_CODE\MDK-ARM\PCB_AIO_V2_CODE.uvprojx
-Project File Date:  12/16/2024
+Project File Date:  12/19/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'PCB_AIO_V2_CODE'
-compiling gpio.c...
-compiling dma.c...
-compiling usart.c...
-compiling adc.c...
-compiling tim.c...
+compiling AML_Switch.c...
+compiling AML_MotorControl.c...
+..\Core\Src\AML_MotorControl.c(3): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern debug[100];
+..\Core\Src\AML_MotorControl.c(254): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, !LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(259): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, !LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(286): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(287): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, !RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(292): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, !RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(293): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(319): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
+      int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+..\Core\Src\AML_MotorControl.c(322): warning:  #223-D: function "AML_Encoder_ResetLeftValue" declared implicitly
+      AML_Encoder_ResetLeftValue();
+..\Core\Src\AML_MotorControl.c(333): warning:  #223-D: function "AML_Encoder_GetRightValue" declared implicitly
+      int32_t CurrentRightEncoder = AML_Encoder_GetRightValue();
+..\Core\Src\AML_MotorControl.c(467): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
+      int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+..\Core\Src\AML_MotorControl.c(481): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
+      int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+..\Core\Src\AML_MotorControl.c: 12 warnings, 0 errors
+compiling AML_IMU.c...
+..\Core\Src\AML_IMU.c(51): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+      HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
+..\Core\Src\AML_IMU.c(59): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+      HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
+..\Core\Src\AML_IMU.c(66): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+          HAL_UART_Receive(IMU_UART, &buffer, 1, 1000);
+..\Core\Src\AML_IMU.c(69): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+      HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
+..\Core\Src\AML_IMU.c(95): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "uint8_t *"
+          HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
+..\Core\Src\AML_IMU.c: 5 warnings, 0 errors
+compiling solver.c...
+..\Core\Src\solver.c(22): warning:  #1295-D: Deprecated declaration initialize - give arg types
+  void initialize();
+..\Core\Src\solver.c(23): warning:  #1295-D: Deprecated declaration updateMaze - give arg types
+  void updateMaze();
+..\Core\Src\solver.c(26): warning:  #1295-D: Deprecated declaration updateDistances - give arg types
+  void updateDistances();
+..\Core\Src\solver.c(27): warning:  #1295-D: Deprecated declaration resetDistances - give arg types
+  void resetDistances();
+..\Core\Src\solver.c(32): warning:  #1295-D: Deprecated declaration solver - give arg types
+  Action solver();
+..\Core\Src\solver.c(33): warning:  #1295-D: Deprecated declaration fastRunSolver - give arg types
+  Action fastRunSolver();
+..\Core\Src\solver.c(34): warning:  #1295-D: Deprecated declaration floodFill - give arg types
+  Action floodFill();
+..\Core\Src\solver.c(37): warning:  #1295-D: Deprecated declaration fastRunWithVariableVelocity - give arg types
+  void fastRunWithVariableVelocity();
+..\Core\Src\solver.c(38): warning:  #1295-D: Deprecated declaration getReachingCenter - give arg types
+  int getReachingCenter();
+..\Core\Src\solver.c(183): warning:  #188-D: enumerated type mixed with another type
+      heading = direction;
+..\Core\Src\solver.c: 10 warnings, 0 errors
+compiling AML_Encoder.c...
+compiling AML_IRSensor.c...
+..\Core\Src\AML_IRSensor.c(18): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern debug[100];
+..\Core\Src\AML_IRSensor.c(45): warning:  #223-D: function "memset" declared implicitly
+      memset(IRSensorADCValue, 0, sizeof(IRSensorADCValue));
+..\Core\Src\AML_IRSensor.c: 2 warnings, 0 errors
+compiling main.c...
 linking...
-Program Size: Code=33566 RO-data=906 RW-data=908 ZI-data=2892  
+Program Size: Code=33566 RO-data=906 RW-data=1044 ZI-data=2892  
 FromELF: creating hex file...
-"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 0 Warning(s).
+"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,7 +122,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

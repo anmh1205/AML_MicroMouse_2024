@@ -24,6 +24,12 @@ void AML_MotorControl_TurnOnWallFollow(void);
 void AML_MotorControl_TurnOffWallFollow(void);
 void AML_MotorControl_GoStraghtWithMPU(double setpoint);
 
+void AML_MotorControl_TurnLeft(void);
+void AML_MotorControl_TurnRight(void);
+
+void AML_MotorControl_MoveForwardOneCell(void);
+void AML_MotorControl_MoveForwardDistance(int32_t distance);
+
 #endif // AML_MOTORCONTROL_H
 
 

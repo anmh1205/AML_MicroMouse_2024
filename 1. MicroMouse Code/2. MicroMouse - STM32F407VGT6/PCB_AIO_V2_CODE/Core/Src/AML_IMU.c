@@ -16,7 +16,7 @@ volatile uint8_t error = 0;
 
 //-------------------------------------------------------------------------------------------------------//
 void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart);
-void AML_MPUSensor_ResetAngle(void);
+void AML_MPUSensor_HardResetAngle(void);
 void AML_MPUSensor_Setup(UART_HandleTypeDef *imu_uart);
 void handle(void);
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
@@ -33,7 +33,7 @@ void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
     }
 }
 
-void AML_MPUSensor_ResetAngle(void)
+void AML_MPUSensor_HardResetAngle(void)
 {
     HAL_UART_DMAStop(IMU_UART);
     HAL_UART_Transmit(IMU_UART, ResetCommand, 3, 1000);
@@ -51,11 +51,13 @@ void AML_MPUSensor_ResetAngle(void)
     HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
 }
 
+
+
 void AML_MPUSensor_Setup(UART_HandleTypeDef *imu_uart)
 {
     IMU_UART = imu_uart;
 
-    AML_MPUSensor_ResetAngle();
+    AML_MPUSensor_HardResetAngle();
     HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
 }
 

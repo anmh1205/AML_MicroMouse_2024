@@ -60,8 +60,8 @@ void MX_ADC2_Init(void)
   {
     Error_Handler();
   }
-  hadc2.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV256;
-  hadc2.Init.Resolution = ADC_RESOLUTION_16B;
+  hadc2.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV64;
+  hadc2.Init.Resolution = ADC_RESOLUTION_14B_OPT;
   if (HAL_ADC_Init(&hadc2) != HAL_OK)
   {
     Error_Handler();
