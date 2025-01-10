@@ -4,7 +4,7 @@
 #define WheelDiameter 50  // mm
 #define Ratio 90 / 14     // 90:14
 #define PulsePerRound 190 // 190 pulse per round encoder
-int32_t MouseSpeed = 100; // % PWM
+int32_t MouseSpeed = 20; // % PWM
 
 uint8_t FinishFlag;
 uint8_t TurnFlag;
@@ -705,7 +705,7 @@ void AML_MotoControl_GoStraight5(void)
     {
         AML_MotorControl_LeftWallFollow();
 
-        // TempSetpoint = -*PID_LeftWallFollow.MyOutput;
+        TempSetpoint = -*PID_LeftWallFollow.MyOutput;
 
         AML_MotorControl_MPUFollow(TempSetpoint - *PID_LeftWallFollow.MyOutput);
     }
@@ -713,7 +713,7 @@ void AML_MotoControl_GoStraight5(void)
     {
         AML_MotorControl_RightWallFollow();
 
-        // TempSetpoint = *PID_RightWallFollow.MyOutput;
+        TempSetpoint = *PID_RightWallFollow.MyOutput;
 
         AML_MotorControl_MPUFollow(TempSetpoint + *PID_RightWallFollow.MyOutput);
     }
@@ -730,9 +730,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         // AML_MotorControl_GoStraight3();
         // AML_MotorControl_GoStraight4();
 
-        // AML_MotoControl_GoStraight5();
+        AML_MotoControl_GoStraight5();
 
-        AML_MotorControl_LeftMotorSpeed(300);
+        // AML_MotorControl_LeftMotorSpeed(300);
     }
     else if (htim->Instance == htim10.Instance) // timer for led control
     {
@@ -790,6 +790,9 @@ void AML_MotorControl_AdvanceTicks(int16_t ticks)
     AML_MotorControl_TurnOffWallFollow();
 
     AML_Encoder_ResetLeftValue();
+
+    AML_MotorControl_ShortBreak('F');
+    AML_MotorControl_Stop();
 }
 
 void AML_MotorControl_TurnLeft90(void)

@@ -20,6 +20,8 @@ void AML_MotorControl_Stop(void);
 
 void AML_MotorControl_LeftMotorSpeed(int32_t rpm);
 
+void AML_MotorControl_UpdateTempSetpoint(double setpoint);
+
 void AML_MotorControl_TurnOnWallFollow(void);
 void AML_MotorControl_TurnOffWallFollow(void);
 void AML_MotorControl_GoStraghtWithMPU(double setpoint);
@@ -31,5 +33,3 @@ void AML_MotorControl_MoveForwardOneCell(void);
 void AML_MotorControl_MoveForwardDistance(int32_t distance);
 
 #endif // AML_MOTORCONTROL_H
-
-

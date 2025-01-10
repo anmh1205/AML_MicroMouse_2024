@@ -1,5 +1,6 @@
 pcb_v1\solver.o: ..\Core\Src\solver.c
 pcb_v1\solver.o: ../Core/Inc/solver.h
+pcb_v1\solver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 pcb_v1\solver.o: ../Core/Inc/queue.h
 pcb_v1\solver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 pcb_v1\solver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
@@ -7,7 +8,6 @@ pcb_v1\solver.o: ../Core/Inc/AML_Parameter.h
 pcb_v1\solver.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 pcb_v1\solver.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 pcb_v1\solver.o: ../Drivers/CMSIS/Include/core_cm4.h
-pcb_v1\solver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 pcb_v1\solver.o: ../Drivers/CMSIS/Include/cmsis_version.h
 pcb_v1\solver.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 pcb_v1\solver.o: ../Drivers/CMSIS/Include/cmsis_armcc.h

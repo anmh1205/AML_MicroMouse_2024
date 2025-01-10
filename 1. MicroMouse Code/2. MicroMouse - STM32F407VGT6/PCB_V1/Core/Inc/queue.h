@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 typedef struct _queue *queue;
 queue queue_create();
@@ -24,7 +25,7 @@ struct _queue
 {
     struct node *head;
     struct node *tail;
-    int size;
+    uint32_t size;
 };
 
 #endif

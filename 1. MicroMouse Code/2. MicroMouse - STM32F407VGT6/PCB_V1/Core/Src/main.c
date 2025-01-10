@@ -195,18 +195,17 @@ int main(void)
 
   ReadButton = 8;
 
-  // for (int i = 0; i < 3; i++)
-  // {
-  //   AML_LaserSensor_ReadAll();
-  //   HAL_Delay(35);
-  // }
+  for (int i = 0; i < 3; i++)
+  {
+    AML_LaserSensor_ReadAll();
+    HAL_Delay(35);
+  }
 
   AML_LaserSensor_ReadAll();
   AML_LaserSensor_ReadAll();
   AML_LaserSensor_ReadAll();
 
   AML_DebugDevice_BuzzerBeep(20);
-
 
   // AML_DebugDevice_TurnOnIT();
 
@@ -227,10 +226,10 @@ int main(void)
     }
 
     // AML_LaserSensor_ReadAll();
-    // for (int i = 0; i < 5; i++)
-    // {
-    //   debug[i] = AML_LaserSensor_ReadSingleWithFillter(i);
-    // }
+    for (int i = 0; i < 5; i++)
+    {
+      debug[i] = AML_LaserSensor_ReadSingleWithFillter(i);
+    }
 
     // AML_LaserSensor_ReadAll();
 
@@ -253,8 +252,8 @@ int main(void)
     }
     else if (ReadButton == 3)
     {
-      // ShortestPath();
       ReadButton = 8;
+      AML_MotorControl_AdvanceTicks(MAZE_ENCODER_TICKS_ONE_CELL);
     }
     else if (ReadButton == 4)
     {
@@ -1384,7 +1383,12 @@ void RunMode()
 void RunNewAlgorithm()
 {
   // debug_log("Running...");
+
+  setPriorityHeading(NORTH);
+
+  setPosition(0, 0, NORTH);
   initialize();
+
 
   // start the search
   searchRun();

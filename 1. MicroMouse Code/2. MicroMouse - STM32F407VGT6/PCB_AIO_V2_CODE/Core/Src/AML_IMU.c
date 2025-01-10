@@ -42,11 +42,11 @@ void AML_MPUSensor_HardResetAngle(void)
     Angle = 0;
     HAL_Delay(5);
 
-    HAL_UART_Transmit(IMU_UART, ResetCommand, 3, 1000);
-    SaveAngle = 0;
-    PreviousAngle = 0;
-    Angle = 0;
-    HAL_Delay(5);
+    // HAL_UART_Transmit(IMU_UART, ResetCommand, 3, 1000);
+    // SaveAngle = 0;
+    // PreviousAngle = 0;
+    // Angle = 0;
+    // HAL_Delay(5);
 
     HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
 }
@@ -58,7 +58,8 @@ void AML_MPUSensor_Setup(UART_HandleTypeDef *imu_uart)
     IMU_UART = imu_uart;
 
     AML_MPUSensor_HardResetAngle();
-    HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
+
+    // HAL_UART_Receive_DMA(IMU_UART, MPUData, 33);
 }
 
 void handle(void)

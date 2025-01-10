@@ -194,7 +194,16 @@ void AML_LaserSensor_ReadAll(void)
 
 int32_t AML_LaserSensor_ReadSingleWithFillter(uint8_t name)
 {
-    return (int32_t)SensorValue[name].RangeMilliMeter;
+    VL53L0X_GetRangingMeasurementData(Laser[name], &SensorValue[name]);
+
+    if (SensorValue[name].RangeMilliMeter > 25)
+    {
+        return (int32_t)SensorValue[name].RangeMilliMeter;
+    }
+    else
+    {
+        return 2000;
+    }
 }
 
 int32_t AML_LaserSensor_ReadSingleWithoutFillter(uint8_t name)

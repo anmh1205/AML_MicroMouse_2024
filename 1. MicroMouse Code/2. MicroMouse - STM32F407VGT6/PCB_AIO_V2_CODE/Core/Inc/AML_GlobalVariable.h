@@ -40,9 +40,9 @@
 #define Pi 3.14159265359         // Pi number
 #define WheelDiameter 21         // mm
 #define TransmissionRatio 1      // ratio between wheel and encoder
-#define EncoderPulsePerRound 700 // 1420 pulse per round encoder
-#define MouseSpeed 90            // % of duty cycle
-#define MouseTurnSpeed 25        // % of duty cycle
+#define EncoderPulsePerRound 140 // 1420 pulse per round encoder
+#define MouseSpeed 40            // % of duty cycle
+#define MouseTurnSpeed 60        // % of duty cycle
 
 // define parameter for PID control
 #define SampleTime 20            // time (ms) for each sample
@@ -54,8 +54,6 @@
 #define PIDSpeedOutputMax 50 // maximum output of PID (duty cycle)
 
 // define parameter for turn left and right
-#define TurnLeftSpeed 50  // % of duty cycle
-#define TurnRightSpeed 50 // % of duty cycle
 #define TuneLeft90Angle 90 // degree
 #define TuneRight90Angle 90
 #define TuneLeft180Angle 180
@@ -65,11 +63,13 @@
 // DEFINE FOR IR SENSOR-------------------------------------------------------------------------------------------------------//
 
 // competition maze parameters
-#define TICKS_ONE_CELL 1000
+#define TICKS_ONE_CELL 350                    // EncoderPulsePerRound * (180 / (WheelDiameter * Pi))    // 1 cell = 180 mm
+
+#define WALL_DISTANCE_SETPOINT 55
 
 #define WALL_IN_FRONT 155       // 47
-#define WALL_IN_LEFT 55         // 121
-#define WALL_IN_RIGHT 55        // 100
+#define WALL_IN_LEFT 85         // 121
+#define WALL_IN_RIGHT 85        // 100
 #define WALL_IN_FRONT_LEFT 130  // 60
 #define WALL_IN_FRONT_RIGHT 130 // 50
 

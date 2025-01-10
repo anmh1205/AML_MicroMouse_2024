@@ -72,14 +72,14 @@ AML_PID_Struct PID_RightMotor =
 
 AML_PID_Struct PID_TurnLeft =
     {
-        .Kp = 1,
-        .Ki = 0,
-        .Kd = 0,
+        .Kp = 1.15,
+        .Ki = 1.8,
+        .Kd = 0.5,
         .tau = 0,
         .limMin = -MouseTurnSpeed,
         .limMax = MouseTurnSpeed,
-        .linMinInt = -15,
-        .linMaxInt = 15,
+        .linMinInt = -20,
+        .linMaxInt = 20,
         .sampleTime = SampleTime,
         .lastTime = 0,
         .integratol = 0,
@@ -93,14 +93,14 @@ AML_PID_Struct PID_TurnLeft =
 
 AML_PID_Struct PID_TurnRight =
     {
-        .Kp = 1,
-        .Ki = 0,
-        .Kd = 0,
+        .Kp = 1.15,
+        .Ki = 1.7,
+        .Kd = 0.5,
         .tau = 0,
         .limMin = -MouseTurnSpeed,
         .limMax = MouseTurnSpeed,
-        .linMinInt = -15,
-        .linMaxInt = 15,
+        .linMinInt = -20,
+        .linMaxInt = 20,
         .sampleTime = SampleTime,
         .lastTime = 0,
         .integratol = 0,
@@ -114,7 +114,7 @@ AML_PID_Struct PID_TurnRight =
 
 AML_PID_Struct PID_MPUFollow =
     {
-        .Kp = 2.5,
+        .Kp = 1.6,
         .Ki = 0.5,
         .Kd = 0.7,
         .tau = 0,
@@ -136,8 +136,8 @@ AML_PID_Struct PID_MPUFollow =
 AML_PID_Struct PID_LeftWallFollow =
     {
         .Kp = 1,
-        .Ki = 0,
-        .Kd = 0,
+        .Ki = 0.1,
+        .Kd = 0.1,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -157,8 +157,8 @@ AML_PID_Struct PID_LeftWallFollow =
 AML_PID_Struct PID_RightWallFollow =
     {
         .Kp = 1,
-        .Ki = 0,
-        .Kd = 0,
+        .Ki = 0,1,
+        .Kd = 0.1,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -181,7 +181,10 @@ void AML_MotorControl_Setup(void);
 void AML_MotorControl_LeftPWM(int32_t DutyCycle);
 void AML_MotorControl_RightPWM(int32_t DutyCycle);
 void AML_MotorControl_Move(int32_t LeftDutyCycle, int32_t RightDutyCycle);
+void AML_MotorControl_ShortBrake(void);
 void AML_MotorControl_Stop(void);
+
+void AML_MotorControl_UpdateTempSetpoint(double setpoint);
 
 void AML_MotorControl_GoStraghtWithMPU(double setpoint);
 void AML_MotorControl_LeftWallFollow(void);
@@ -203,7 +206,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     UNUSED(htim);
     if (htim->Instance == htim7.Instance) // timer for wall follow
     {
-        AML_MotorControl_GoStraghtWithMPU(0);
+        // AML_MotorControl_GoStraghtWithMPU(0);
+
+        // AML_MotorControl_LeftWallFollow();
+        // AML_MotorControl_RightWallFollow();
+
+        AML_MotorControl_GoStraight();
 
         // AML_MotorControl_LeftMotorSpeed(30);
     }
@@ -307,9 +315,18 @@ void AML_MotorControl_Move(int32_t LeftDutyCycle, int32_t RightDutyCycle)
     AML_MotorControl_RightPWM(RightDutyCycle);
 }
 
+void AML_MotorControl_ShortBrake(void)
+{
+    AML_MotorControl_Move(-25, -25);
+    HAL_Delay(60);
+    AML_MotorControl_Move(0, 0);
+}
+
 void AML_MotorControl_Stop(void)
 {
-    AML_MotorControl_Move(0, 0);
+    // AML_MotorControl_Move(0, 0);
+
+    AML_MotorControl_ShortBrake();
 }
 
 void AML_MotorControl_LeftMotorSpeed(int32_t rpm)
@@ -344,6 +361,11 @@ void AML_MotorControl_RightMotorSpeed(int32_t rpm)
 
 //--------------------------------------------------------------------------------------------------------//
 
+void AML_MotorControl_UpdateTempSetpoint(double angle)
+{
+    TempSetpoint += angle;
+}
+
 void AML_MotorControl_GoStraghtWithMPU(double setpoint)
 {
     PID_MPUFollow.Input = AML_MPUSensor_GetAngle();
@@ -357,7 +379,7 @@ void AML_MotorControl_GoStraghtWithMPU(double setpoint)
 void AML_MotorControl_LeftWallFollow(void)
 {
     PID_LeftWallFollow.Input = AML_IRSensor_GetDistance(IR_SENSOR_RL);
-    PID_LeftWallFollow.Setpoint = WALL_IN_LEFT;
+    PID_LeftWallFollow.Setpoint = WALL_DISTANCE_SETPOINT;
 
     AML_PID_Compute(&PID_LeftWallFollow);
 }
@@ -365,32 +387,32 @@ void AML_MotorControl_LeftWallFollow(void)
 void AML_MotorControl_RightWallFollow(void)
 {
     PID_RightWallFollow.Input = AML_IRSensor_GetDistance(IR_SENSOR_RR);
-    PID_RightWallFollow.Setpoint = WALL_IN_RIGHT;
+    PID_RightWallFollow.Setpoint = WALL_DISTANCE_SETPOINT;
 
     AML_PID_Compute(&PID_RightWallFollow);
 }
 
 void AML_MotorControl_GoStraight(void)
 {
-    if (AML_IRSensor_IsNoLeftWall() && AML_IRSensor_IsNoRightWall())
-    {
-        AML_MotorControl_GoStraghtWithMPU(TempSetpoint);
-    }
-    else if (AML_IRSensor_IsLeftWall())
+    if (AML_IRSensor_IsLeftWall())
     {
         AML_MotorControl_LeftWallFollow();
 
-        TempSetpoint = -PID_LeftWallFollow.Output;
+        // TempSetpoint = -PID_LeftWallFollow.Output;
 
-        AML_MotorControl_GoStraghtWithMPU(TempSetpoint - PID_LeftWallFollow.Output);
+        AML_MotorControl_GoStraghtWithMPU(TempSetpoint + PID_LeftWallFollow.Output);
     }
     else if (AML_IRSensor_IsRightWall())
     {
         AML_MotorControl_RightWallFollow();
 
-        TempSetpoint = PID_RightWallFollow.Output;
+        // TempSetpoint = PID_RightWallFollow.Output;
 
-        AML_MotorControl_GoStraghtWithMPU(TempSetpoint + PID_RightWallFollow.Output);
+        AML_MotorControl_GoStraghtWithMPU(TempSetpoint - PID_RightWallFollow.Output);
+    }
+    else
+    {
+        AML_MotorControl_GoStraghtWithMPU(TempSetpoint);
     }
 }
 
@@ -400,13 +422,13 @@ void AML_MotorControl_TurnLeft(void)
 {
     uint16_t WaitingTime = 1500;
 
-    PID_TurnLeft.Setpoint = AML_MPUSensor_GetAngle() + TuneLeft90Angle;
+    PID_TurnLeft.Setpoint = TempSetpoint + TuneLeft90Angle;
 
     uint32_t InitTime = HAL_GetTick();
     uint32_t CurrentTime = HAL_GetTick();
     uint32_t PreviousTime = CurrentTime;
 
-    while ((CurrentTime - PreviousTime) < 200 && (HAL_GetTick() - InitTime < WaitingTime))
+    while ((CurrentTime - PreviousTime) < 500 && (HAL_GetTick() - InitTime < WaitingTime))
     {
         PID_TurnLeft.Input = AML_MPUSensor_GetAngle();
 
@@ -427,26 +449,28 @@ void AML_MotorControl_TurnLeft(void)
     }
 
     AML_MotorControl_Stop();
+
+    AML_MotorControl_UpdateTempSetpoint(TuneLeft90Angle);
 }
 
 void AML_MotorControl_TurnRight(void)
 {
     uint16_t WaitingTime = 1500;
 
-    PID_TurnRight.Setpoint = AML_MPUSensor_GetAngle() - TuneRight90Angle;
+    PID_TurnRight.Setpoint = TempSetpoint - TuneRight90Angle;
 
     uint32_t InitTime = HAL_GetTick();
     uint32_t CurrentTime = HAL_GetTick();
     uint32_t PreviousTime = CurrentTime;
 
-    while ((CurrentTime - PreviousTime) < 200 && (HAL_GetTick() - InitTime < WaitingTime))
+    while ((CurrentTime - PreviousTime) < 500 && (HAL_GetTick() - InitTime < WaitingTime))
     {
         PID_TurnRight.Input = AML_MPUSensor_GetAngle();
 
         AML_PID_Compute(&PID_TurnRight);
 
-        AML_MotorControl_LeftPWM((int32_t)PID_TurnRight.Output);
-        AML_MotorControl_RightPWM(-(int32_t)PID_TurnRight.Output);
+        AML_MotorControl_LeftPWM(-(int32_t)PID_TurnRight.Output);
+        AML_MotorControl_RightPWM((int32_t)PID_TurnRight.Output * 1.07);
 
         if (ABS(PID_TurnRight.Input - PID_TurnRight.Setpoint) < ErrorAngle)
         {
@@ -460,6 +484,8 @@ void AML_MotorControl_TurnRight(void)
     }
 
     AML_MotorControl_Stop();
+
+    AML_MotorControl_UpdateTempSetpoint(-TuneRight90Angle);
 }
 
 void AML_MotorControl_MoveForwardOneCell(void)
@@ -470,6 +496,8 @@ void AML_MotorControl_MoveForwardOneCell(void)
 
     while (AML_Encoder_GetLeftValue() - CurrentLeftEncoder < TICKS_ONE_CELL)
     {
+        debug[3] = AML_Encoder_GetLeftValue();
+        debug[4] = AML_Encoder_GetRightValue();
     }
 
     AML_MotorControl_TurnOffWallFollow();
