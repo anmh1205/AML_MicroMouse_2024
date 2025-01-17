@@ -14,6 +14,7 @@
 #include <AML_Encoder.h>
 
 #include <AML_MotorControl.h>
+#include <stdint.h>
 
 typedef enum Heading
 {
@@ -33,8 +34,9 @@ typedef enum Action
 /* MAZE CONSTANTS */
 #define MAZE_SIZE 16
 
-extern unsigned int maze[MAZE_SIZE][MAZE_SIZE];
-extern int distances[MAZE_SIZE][MAZE_SIZE];
+// extern unsigned int maze[MAZE_SIZE][MAZE_SIZE];
+extern int16_t distances[MAZE_SIZE][MAZE_SIZE];
+extern uint8_t wall_maze[MAZE_SIZE][MAZE_SIZE][4];
 // extern int wall_maze[MAZE_SIZE][MAZE_SIZE][4] = {0};
 
 struct Coordinate

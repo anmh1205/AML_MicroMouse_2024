@@ -81,12 +81,14 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void StartSolver()
-{
-  // set the priority heading
-  setPriorityHeading(EAST);
 
-  // initialize the maze
+void RunNewAlgorithm()
+{
+  // debug_log("Running...");
+
+  // setPriorityHeading(NORTH);
+
+  // setPosition(0, 0, NORTH);
   initialize();
 
   // start the search
@@ -96,23 +98,29 @@ void StartSolver()
   markCenterWall();
   calculateShortestPathDistances();
 
+  // while (ReadButton != 8)
+  // {
+  // }
+  // ReadButton = 8;
+
   // use hand to move the mouse to the start position, and find the shortest path
+  // API_ackReset();
   setPosition(0, 0, NORTH);
 
   // run the shortest path
   fastRunWithVariableVelocity();
 
-  while (1)
-  {
-    // run from the center to the start
-    searchCenterToStart();
+  // while (ReadButton == 8)
+  // {
+  //   // run from the center to the start
+  //   searchCenterToStart();
 
-    // calculate the shortest path again
-    calculateShortestPathDistances();
+  //   // updateDistances();
+  //   calculateShortestPathDistances();
 
-    // run the shortest path
-    fastRunWithVariableVelocity();
-  }
+  //   // run the shortest path
+  //   fastRunWithVariableVelocity();
+  // }
 }
 /* USER CODE END 0 */
 
@@ -213,6 +221,8 @@ int main(void)
     {
       // StartSolver();
 
+      RunNewAlgorithm();
+
       // AML_Buzzer_PlaySong();
       // AML_MotorControl_Move(pwm, pwm);
       // AML_MotorControl_TurnOnWallFollow();
@@ -224,7 +234,7 @@ int main(void)
 
       // AML_MotorControl_MoveForwardOneCell();
 
-      AML_MotorControl_TurnOnWallFollow();
+      // AML_MotorControl_TurnOnWallFollow();
     }
     else if (AML_Read_Button(SW_1))
     {

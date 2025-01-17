@@ -135,7 +135,7 @@ AML_PID_Struct PID_MPUFollow =
 
 AML_PID_Struct PID_LeftWallFollow =
     {
-        .Kp = 1,
+        .Kp = 0.3,
         .Ki = 0.1,
         .Kd = 0.1,
         .tau = 0,
@@ -156,9 +156,9 @@ AML_PID_Struct PID_LeftWallFollow =
 
 AML_PID_Struct PID_RightWallFollow =
     {
-        .Kp = 1,
-        .Ki = 0,1,
-        .Kd = 0.1,
+        .Kp = 0.4,
+        .Ki = 0.04,
+        .Kd = 0.08,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -209,9 +209,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         // AML_MotorControl_GoStraghtWithMPU(0);
 
         // AML_MotorControl_LeftWallFollow();
-        // AML_MotorControl_RightWallFollow();
+        // AML_MotorControl_GoStraghtWithMPU(TempSetpoint - PID_LeftWallFollow.Output);
 
-        AML_MotorControl_GoStraight();
+
+        AML_MotorControl_RightWallFollow();
+        AML_MotorControl_GoStraghtWithMPU(TempSetpoint + PID_RightWallFollow.Output);
+
+        // AML_MotorControl_GoStraight();
 
         // AML_MotorControl_LeftMotorSpeed(30);
     }
@@ -400,7 +404,7 @@ void AML_MotorControl_GoStraight(void)
 
         // TempSetpoint = -PID_LeftWallFollow.Output;
 
-        AML_MotorControl_GoStraghtWithMPU(TempSetpoint + PID_LeftWallFollow.Output);
+        AML_MotorControl_GoStraghtWithMPU(TempSetpoint - PID_LeftWallFollow.Output);
     }
     else if (AML_IRSensor_IsRightWall())
     {
@@ -408,7 +412,7 @@ void AML_MotorControl_GoStraight(void)
 
         // TempSetpoint = PID_RightWallFollow.Output;
 
-        AML_MotorControl_GoStraghtWithMPU(TempSetpoint - PID_RightWallFollow.Output);
+        AML_MotorControl_GoStraghtWithMPU(TempSetpoint + PID_RightWallFollow.Output);
     }
     else
     {

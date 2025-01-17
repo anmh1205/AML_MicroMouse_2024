@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 typedef struct _queue *queue;
-queue queue_create(void);
+queue queue_create();
 void queue_destroy(queue q);
 void queue_push(queue q, int elem);
 int queue_pop(queue q);

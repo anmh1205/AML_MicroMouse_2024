@@ -5,7 +5,7 @@
     distance high range: y = 12.08 * x^(-1.058)
 */
 
-#define ADC_RESOLUTION_BIT 14
+#define ADC_RESOLUTION_BIT 16
 #define ADC_MAX (1 << ADC_RESOLUTION_BIT) // 2^14 = 16384
 #define ADC_VREF 3.3
 
@@ -66,9 +66,6 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
         IRSensorDistanceValueFilter[ADCIndex] = LOW_PASS_FILTER(IRSensorDistanceValue[ADCIndex], IRSensorDistanceValueFilterPrevious[ADCIndex]);
         IRSensorDistanceValueFilterPrevious[ADCIndex] = IRSensorDistanceValueFilter[ADCIndex];
 
-        // IRSensorVoltageValue[ADCIndex] = GET_VOLTAGE(IRSensorADCValue[ADCIndex]);
-        // IRSensorDistanceValue[ADCIndex] = GET_DISTANCE(IRSensorVoltageValue[ADCIndex], ADCIndex);
-
         ADCIndex++;
 
         if (ADCIndex == 7)
@@ -83,7 +80,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 
 double AML_IRSensor_GetDistance(uint8_t sensor)
 {
-    return IRSensorDistanceValueFilter[sensor];
+    return IRSensorDistanceValue[sensor];
 }
 
 //-------------------------------------------------------------------------------------------------------//

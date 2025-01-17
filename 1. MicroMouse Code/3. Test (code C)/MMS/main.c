@@ -18,11 +18,14 @@
 
 int main(int argc, char *argv[])
 {
+    debug_log("Hello, World!\n");
+
     // set the priority heading
     setPriorityHeading(EAST);
 
     // initialize the maze
     initialize();
+    
 
     // start the search
     searchRun();

@@ -1,13 +1,34 @@
-
-#include "solver.h"
-
 #define SIMULATION_BOOL 0 // 1 if you're running the simulation, 0 if you're running the actual robot
+#include "solver.h"
+#include "queue.h"
+
+#if SIMULATION_BOOL
+#include "API.h"
+#define CHECK_WALL_FRONT API_wallFront()
+#define CHECK_WALL_LEFT API_wallLeft()
+#define CHECK_WALL_RIGHT API_wallRight()
+#define MOVE_FORWARD_FUNCTION API_moveForward()
+#define TURN_LEFT_FUNCTION API_turnLeft()
+#define TURN_RIGHT_FUNCTION API_turnRight()
+#define SET_WALL_FUNCTION(x, y, direction) API_setWall(x, y, direction)
+#else
+#include "AML_GlobalVariable.h"
+#include "AML_MotorControl.h"
+#include "AML_IRSensor.h"
+#define CHECK_WALL_FRONT AML_IRSensor_IsFrontWall()
+#define CHECK_WALL_LEFT AML_IRSensor_IsLeftWall()
+#define CHECK_WALL_RIGHT AML_IRSensor_IsRightWall()
+#define MOVE_FORWARD_FUNCTION AML_MotorControl_MoveForwardOneCell()
+// #define MOVE_FORWARD_FUNCTION AML_DebugDevice_BuzzerBeep(2000)
+#define TURN_LEFT_FUNCTION AML_MotorControl_TurnLeft()
+#define TURN_RIGHT_FUNCTION AML_MotorControl_TurnRight()
+#endif
 
 // #define SET_WALL_FUNCTION(x, y, direction) API_setWall(x, y, direction)
 
-int distances[MAZE_SIZE][MAZE_SIZE] = {-1}; // 1000 if it hasn't been visited yet
-int visited[MAZE_SIZE][MAZE_SIZE] = {0};
-int wall_maze[MAZE_SIZE][MAZE_SIZE][4] = {0};
+int16_t distances[MAZE_SIZE][MAZE_SIZE] = {-1}; // 1000 if it hasn't been visited yet
+uint8_t visited[MAZE_SIZE][MAZE_SIZE] = {0};
+uint8_t wall_maze[MAZE_SIZE][MAZE_SIZE][4] = {0};
 
 int priorityHeading = 0;
 
@@ -16,6 +37,17 @@ Heading heading;
 
 int reached_center = 0; // "boolean" that stores whether the mouse should start exploring more squares
 int change_index = 0;   // "boolean" that stores whether the mouse should run the fastRunSolver
+
+int coor[300] = {0};
+int count = 0;
+
+struct coor2
+{
+    int x;
+    int y;
+    int direction;
+} coor2[300];
+int count2 = 0;
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 void setPriorityHeading(int direction);
@@ -38,6 +70,19 @@ void fastRunWithVariableVelocity();
 int getReachingCenter();
 
 //-------------------------------------------------------------------------------------------------------------------------------//
+#if SIMULATION_BOOL
+void printFullMazeDistances()
+{
+    for (int x = 0; x < MAZE_SIZE; ++x)
+    {
+        for (int y = 0; y < MAZE_SIZE; ++y)
+        {
+            API_setText(x, y, distances[x][y]);
+        }
+    }
+}
+#endif
+
 void setPriorityHeading(int direction)
 {
     priorityHeading = direction;
@@ -266,23 +311,26 @@ void markCenterWall()
     }
 }
 
-#if SIMULATION_BOOL
-void printFullMazeDistances()
+void resetWallMaze()
 {
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int i = 0; i < MAZE_SIZE; ++i)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int j = 0; j < MAZE_SIZE; ++j)
         {
-            API_setText(x, y, distances[x][y]);
+            for (int k = 0; k < 4; ++k)
+            {
+                wall_maze[i][j][k] = 0;
+            }
         }
     }
 }
-#endif
 
 void initialize()
 {
+    // resetWallMaze();
+
     // setting the borders
-    for (int i = 1; i < MAZE_SIZE - 1; ++i)
+    for (int i = 0; i < MAZE_SIZE - 1; i++)
     {
         wall_maze[0][i][WEST] = 1;
         wall_maze[i][0][SOUTH] = 1;
@@ -468,17 +516,17 @@ int xyToSquare(int x, int y)
 struct Coordinate squareToCoord(int square)
 {
     struct Coordinate coord;
-    coord.x = square % MAZE_SIZE;
-    coord.y = square / MAZE_SIZE;
+    coord.x = (int)(square % MAZE_SIZE);
+    coord.y = (int)(square / MAZE_SIZE);
     return coord;
 }
 
 void resetDistances()
 {
     // initially sets all the distances to -1 (invalid distance)
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int x = 0; x < MAZE_SIZE; x++)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int y = 0; y < MAZE_SIZE; y++)
         {
             distances[x][y] = -1;
         }
@@ -536,12 +584,17 @@ void updateDistances()
     queue squares = queue_create();
 
     // adds the goal squares to the queue (the middle of the maze or the starting position depending on if you've reached the center)
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int x = 0; x < MAZE_SIZE; x++)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int y = 0; y < MAZE_SIZE; y++)
         {
             if (distances[x][y] == 0)
+            {
                 queue_push(squares, xyToSquare(x, y));
+
+                coor[count] = xyToSquare(x, y);
+                count++;
+            }
         }
     }
 
@@ -556,24 +609,53 @@ void updateDistances()
         {
             distances[x][y + 1] = distances[x][y] + 1;
             queue_push(squares, xyToSquare(x, y + 1));
+
+            coor[count] = xyToSquare(x, y + 1);
+            count++;
         }
+
         // same as ^ but for east
         if (isWallInDirection(x, y, EAST) == 0 && distances[x + 1][y] == -1)
         {
             distances[x + 1][y] = distances[x][y] + 1;
             queue_push(squares, xyToSquare(x + 1, y));
+
+            coor[count] = xyToSquare(x + 1, y);
+            count++;
         }
+
         // same as ^ but for south
         if (isWallInDirection(x, y, SOUTH) == 0 && distances[x][y - 1] == -1)
         {
             distances[x][y - 1] = distances[x][y] + 1;
             queue_push(squares, xyToSquare(x, y - 1));
+
+            coor[count] = xyToSquare(x, y - 1);
+            count++;
         }
+
         // same as ^ but for west
         if (isWallInDirection(x, y, WEST) == 0 && distances[x - 1][y] == -1)
         {
             distances[x - 1][y] = distances[x][y] + 1;
             queue_push(squares, xyToSquare(x - 1, y));
+
+            coor[count] = xyToSquare(x - 1, y);
+            count++;
+        }
+    }
+
+    // sort the coor array
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = i + 1; j < count; j++)
+        {
+            if (coor[i] > coor[j])
+            {
+                int temp = coor[i];
+                coor[i] = coor[j];
+                coor[j] = temp;
+            }
         }
     }
 

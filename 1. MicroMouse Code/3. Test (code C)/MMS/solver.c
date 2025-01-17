@@ -1,53 +1,76 @@
+#define SIMULATION_BOOL 1 // 1 if you're running the simulation, 0 if you're running the actual robot
 #include "solver.h"
-#include "API.h"
 #include "queue.h"
 
-#define SIMULATION_BOOL 1 // 1 if you're running the simulation, 0 if you're running the actual robot
-
+#if SIMULATION_BOOL
+#include "API.h"
 #define CHECK_WALL_FRONT API_wallFront()
 #define CHECK_WALL_LEFT API_wallLeft()
 #define CHECK_WALL_RIGHT API_wallRight()
-
 #define MOVE_FORWARD_FUNCTION API_moveForward()
 #define TURN_LEFT_FUNCTION API_turnLeft()
 #define TURN_RIGHT_FUNCTION API_turnRight()
-
 #define SET_WALL_FUNCTION(x, y, direction) API_setWall(x, y, direction)
+#else
+#include <AML_Parameter.h>
+#include "AML_MotorControl.h"
+#include "AML_LaserSensor.h"
+#define CHECK_WALL_FRONT AML_LaserSensor_IsFrontWall()
+#define CHECK_WALL_LEFT AML_LaserSensor_IsLeftWall()
+#define CHECK_WALL_RIGHT AML_LaserSensor_IsRightWall()
+// #define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(MAZE_ENCODER_TICKS_ONE_CELL)
+#define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(1000)
+#define TURN_LEFT_FUNCTION AML_MotorControl_TurnLeft90()
+#define TURN_RIGHT_FUNCTION AML_MotorControl_TurnRight90()
+#endif
 
-int distances[MAZE_SIZE][MAZE_SIZE] = {-1}; // 1000 if it hasn't been visited yet
-int visited[MAZE_SIZE][MAZE_SIZE] = {0};
-int wall_maze[MAZE_SIZE][MAZE_SIZE][4] = {0};
+int32_t distances[MAZE_SIZE][MAZE_SIZE] = {-1}; // 1000 if it hasn't been visited yet
+int32_t visited[MAZE_SIZE][MAZE_SIZE] = {0};
+int32_t wall_maze[MAZE_SIZE][MAZE_SIZE][4] = {0};
 
-int priorityHeading = 0;
+int32_t priorityHeading = 0;
 
 struct Coordinate position;
 Heading heading;
 
-int reached_center = 0; // "boolean" that stores whether the mouse should start exploring more squares
-int change_index = 0;   // "boolean" that stores whether the mouse should run the fastRunSolver
+int8_t reached_center = 0; // "boolean" that stores whether the mouse should start exploring more squares
+int8_t change_index = 0;   // "boolean" that stores whether the mouse should run the fastRunSolver
 
 //-------------------------------------------------------------------------------------------------------------------------------//
-void setPriorityHeading(int direction);
+void setPriorityHeading(int32_t direction);
 void initialize();
 void updateMaze();
 void updatePosition(Action nextAction);
 void updateHeading(Action nextAction);
 void updateDistances();
 void resetDistances();
-void setPosition(int x, int y, int direction);
-int xyToSquare(int x, int y);
-struct Coordinate squareToCoord(int square);
-int isWallInDirection(int x, int y, Heading direction);
+void setPosition(int32_t x, int32_t y, int32_t direction);
+int32_t xyToSquare(int32_t x, int32_t y);
+struct Coordinate squareToCoord(int32_t square);
+int32_t isWallInDirection(int32_t x, int32_t y, Heading direction);
 Action solver();
 Action fastRunSolver();
 Action floodFill();
 Action floodFillPriorityNorth(void);
-void moveForwardWithVariableVelocity(int steps);
+void moveForwardWithVariableVelocity(int32_t steps);
 void fastRunWithVariableVelocity();
-int getReachingCenter();
+int32_t getReachingCenter();
 
 //-------------------------------------------------------------------------------------------------------------------------------//
-void setPriorityHeading(int direction)
+#if SIMULATION_BOOL
+void printFullMazeDistances()
+{
+    for (int32_t x = 0; x < MAZE_SIZE; ++x)
+    {
+        for (int32_t y = 0; y < MAZE_SIZE; ++y)
+        {
+            API_setText(x, y, distances[x][y]);
+        }
+    }
+}
+#endif
+
+void setPriorityHeading(int32_t direction)
 {
     priorityHeading = direction;
 }
@@ -185,7 +208,7 @@ void fastRunWithVariableVelocity()
     reached_center = 1;
 }
 
-void setPosition(int x, int y, int direction)
+void setPosition(int32_t x, int32_t y, int32_t direction)
 {
     position.x = x;
     position.y = y;
@@ -275,23 +298,26 @@ void markCenterWall()
     }
 }
 
-#if SIMULATION_BOOL
-void printFullMazeDistances()
+void resetWallMaze()
 {
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int8_t i = 0; i < MAZE_SIZE; ++i)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int8_t j = 0; j < MAZE_SIZE; ++j)
         {
-            API_setText(x, y, distances[x][y]);
+            for (int8_t k = 0; k < 4; ++k)
+            {
+                wall_maze[i][j][k] = 0;
+            }
         }
     }
 }
-#endif
 
 void initialize()
 {
+    resetWallMaze();
+
     // setting the borders
-    for (int i = 1; i < MAZE_SIZE - 1; ++i)
+    for (int8_t i = 0; i < MAZE_SIZE - 1; i++)
     {
         wall_maze[0][i][WEST] = 1;
         wall_maze[i][0][SOUTH] = 1;
@@ -311,7 +337,7 @@ void initialize()
     wall_maze[MAZE_SIZE - 1][MAZE_SIZE - 1][NORTH] = 1;
     wall_maze[MAZE_SIZE - 1][MAZE_SIZE - 1][EAST] = 1;
 
-    // setting initial distances 
+    // setting initial distances
     resetDistances();
 
     // setting mouse position + heading
@@ -323,8 +349,8 @@ Updates the maze's walls based on what the mouse can currently see
 */
 void updateMaze()
 {
-    int x = position.x;
-    int y = position.y;
+    int32_t x = position.x;
+    int32_t y = position.y;
     // start by assuming there are no walls, this variable will be changed based on which walls you see
     // unsigned int walls = _0000;
 
@@ -469,25 +495,25 @@ void updateMaze()
 }
 
 // convert xy to square number
-int xyToSquare(int x, int y)
+int32_t xyToSquare(int32_t x, int32_t y)
 {
     return x + MAZE_SIZE * y;
 }
 // convert square number to xy
-struct Coordinate squareToCoord(int square)
+struct Coordinate squareToCoord(int32_t square)
 {
     struct Coordinate coord;
-    coord.x = square % MAZE_SIZE;
-    coord.y = square / MAZE_SIZE;
+    coord.x = (int32_t)(square % MAZE_SIZE);
+    coord.y = (int32_t)(square / MAZE_SIZE);
     return coord;
 }
 
 void resetDistances()
 {
     // initially sets all the distances to -1 (invalid distance)
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int8_t x = 0; x < MAZE_SIZE; x++)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int8_t y = 0; y < MAZE_SIZE; y++)
         {
             distances[x][y] = -1;
         }
@@ -515,7 +541,7 @@ void resetDistances()
     }
 }
 
-int isWallInDirection(int x, int y, Heading direction)
+int32_t isWallInDirection(int32_t x, int32_t y, Heading direction)
 {
     switch (direction)
     {
@@ -542,47 +568,47 @@ int isWallInDirection(int x, int y, Heading direction)
 void updateDistances()
 {
     resetDistances();
-    queue squares = queue_create();
+    queue_reset();
 
     // adds the goal squares to the queue (the middle of the maze or the starting position depending on if you've reached the center)
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int32_t x = 0; x < MAZE_SIZE; x++)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int32_t y = 0; y < MAZE_SIZE; y++)
         {
             if (distances[x][y] == 0)
-                queue_push(squares, xyToSquare(x, y));
+                queue_push(xyToSquare(x, y));
         }
     }
 
-    while (!queue_is_empty(squares))
+    while (!queue_is_empty())
     {
-        struct Coordinate square = squareToCoord(queue_pop(squares));
-        int x = square.x;
-        int y = square.y;
+        struct Coordinate square = squareToCoord(queue_pop());
+        int32_t x = square.x;
+        int32_t y = square.y;
 
         // if there's no wall to the north && the square to the north hasn't been checked yet
-        if (isWallInDirection(x, y, NORTH) == 0 && distances[x][y + 1] == -1)
+        if ((isWallInDirection(x, y, NORTH) == 0) && (distances[x][y + 1] == -1))
         {
             distances[x][y + 1] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x, y + 1));
+            queue_push(xyToSquare(x, y + 1));
         }
         // same as ^ but for east
-        if (isWallInDirection(x, y, EAST) == 0 && distances[x + 1][y] == -1)
+        if ((isWallInDirection(x, y, EAST) == 0) && (distances[x + 1][y] == -1))
         {
             distances[x + 1][y] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x + 1, y));
+            queue_push(xyToSquare(x + 1, y));
         }
         // same as ^ but for south
-        if (isWallInDirection(x, y, SOUTH) == 0 && distances[x][y - 1] == -1)
+        if ((isWallInDirection(x, y, SOUTH) == 0) && (distances[x][y - 1] == -1))
         {
             distances[x][y - 1] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x, y - 1));
+            queue_push(xyToSquare(x, y - 1));
         }
         // same as ^ but for west
-        if (isWallInDirection(x, y, WEST) == 0 && distances[x - 1][y] == -1)
+        if ((isWallInDirection(x, y, WEST) == 0) && (distances[x - 1][y] == -1))
         {
             distances[x - 1][y] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x - 1, y));
+            queue_push(xyToSquare(x - 1, y));
         }
     }
 
@@ -617,23 +643,23 @@ void calculateShortestPathDistances()
     visited[7][8] = 1;
     visited[8][8] = 1;
 
-    queue squares = queue_create();
+    queue_reset();
 
     // adds the goal squares to the queue (the middle of the maze or the starting position depending on if you've reached the center)
-    for (int x = 0; x < MAZE_SIZE; ++x)
+    for (int8_t x = 0; x < MAZE_SIZE; ++x)
     {
-        for (int y = 0; y < MAZE_SIZE; ++y)
+        for (int8_t y = 0; y < MAZE_SIZE; ++y)
         {
             if (distances[x][y] == 0)
-                queue_push(squares, xyToSquare(x, y));
+                queue_push(xyToSquare(x, y));
         }
     }
 
-    while (!queue_is_empty(squares))
+    while (!queue_is_empty())
     {
-        struct Coordinate square = squareToCoord(queue_pop(squares));
-        int x = square.x;
-        int y = square.y;
+        struct Coordinate square = squareToCoord(queue_pop());
+        int32_t x = square.x;
+        int32_t y = square.y;
 
         if (visited[x][y] == 0)
         {
@@ -644,25 +670,25 @@ void calculateShortestPathDistances()
         if (isWallInDirection(x, y, NORTH) == 0 && distances[x][y + 1] == -1)
         {
             distances[x][y + 1] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x, y + 1));
+            queue_push(xyToSquare(x, y + 1));
         }
         // same as ^ but for east
         if (isWallInDirection(x, y, EAST) == 0 && distances[x + 1][y] == -1)
         {
             distances[x + 1][y] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x + 1, y));
+            queue_push(xyToSquare(x + 1, y));
         }
         // same as ^ but for south
         if (isWallInDirection(x, y, SOUTH) == 0 && distances[x][y - 1] == -1)
         {
             distances[x][y - 1] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x, y - 1));
+            queue_push(xyToSquare(x, y - 1));
         }
         // same as ^ but for west
         if (isWallInDirection(x, y, WEST) == 0 && distances[x - 1][y] == -1)
         {
             distances[x - 1][y] = distances[x][y] + 1;
-            queue_push(squares, xyToSquare(x - 1, y));
+            queue_push(xyToSquare(x - 1, y));
         }
     }
 
@@ -671,9 +697,9 @@ void calculateShortestPathDistances()
 #endif
 }
 
-void moveForwardWithVariableVelocity(int steps)
+void moveForwardWithVariableVelocity(int32_t steps)
 {
-    for (int i = 0; i < steps; i++)
+    for (int32_t i = 0; i < steps; i++)
     {
         MOVE_FORWARD_FUNCTION;
     }
@@ -753,7 +779,7 @@ void updatePosition(Action nextAction)
     }
 }
 
-int getReachingCenter()
+int32_t getReachingCenter()
 {
     // if you reached the center, go back to the start
     if (!reached_center && distances[position.x][position.y] == 0)
@@ -767,7 +793,7 @@ int getReachingCenter()
         reached_center = 0;
         change_index++;
     }
-    
+
     return reached_center;
 }
 
@@ -794,7 +820,7 @@ Action fastRunSolver()
 
 Action floodFill(void)
 {
-    unsigned int least_distance = 300; // just some large number, none of the distances will be over 300
+    int32_t least_distance = 300; // just some large number, none of the distances will be over 300
     Action optimal_move = IDLE;
 
     visited[position.x][position.y] = 1;
