@@ -54,8 +54,8 @@
 #define PIDSpeedOutputMax 50 // maximum output of PID (duty cycle)
 
 // define parameter for turn left and right
-#define TuneLeft90Angle 90 // degree
-#define TuneRight90Angle 90
+#define TuneLeft90Angle 94 // degree
+#define TuneRight90Angle 94
 #define TuneLeft180Angle 180
 #define TuneRight180Angle 180
 #define ErrorAngle 3 // degree
@@ -63,13 +63,13 @@
 // DEFINE FOR IR SENSOR-------------------------------------------------------------------------------------------------------//
 
 // competition maze parameters
-#define TICKS_ONE_CELL 350                    // EncoderPulsePerRound * (180 / (WheelDiameter * Pi))    // 1 cell = 180 mm
+#define TICKS_ONE_CELL 350 // EncoderPulsePerRound * (180 / (WheelDiameter * Pi))    // 1 cell = 180 mm
 
-#define WALL_DISTANCE_SETPOINT 55
+#define WALL_DISTANCE_SETPOINT 63
 
-#define WALL_IN_FRONT 155       // 47
-#define WALL_IN_LEFT 85         // 121
-#define WALL_IN_RIGHT 85        // 100
+#define WALL_IN_FRONT 125       // 47
+#define WALL_IN_LEFT 80         // 121
+#define WALL_IN_RIGHT 80        // 100
 #define WALL_IN_FRONT_LEFT 130  // 60
 #define WALL_IN_FRONT_RIGHT 130 // 50
 

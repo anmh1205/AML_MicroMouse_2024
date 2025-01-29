@@ -1,0 +1,131 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.31.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: a anmh1205@gmail.com, b, LIC=D0D7S-L3MWT-456T5-G2U2M-B9KMA-Y4GD2
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.31.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.31.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
+Dialog DLL:      TCM.DLL V1.46.0.0
+ 
+<h2>Project:</h2>
+E:\1. Phenikaa University\AML\0. Project\7. MicroMouse_2024\0. Example\PCB_AIO_V2_CODE\MDK-ARM\PCB_AIO_V2_CODE.uvprojx
+Project File Date:  01/21/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'PCB_AIO_V2_CODE'
+compiling queue.c...
+../Core/Inc/queue.h(11): warning:  #1295-D: Deprecated declaration queue_reset - give arg types
+  void queue_reset();
+../Core/Inc/queue.h(13): warning:  #1295-D: Deprecated declaration queue_pop - give arg types
+  int32_t queue_pop();
+../Core/Inc/queue.h(14): warning:  #1295-D: Deprecated declaration queue_first - give arg types
+  int32_t queue_first();
+../Core/Inc/queue.h(15): warning:  #1295-D: Deprecated declaration queue_is_empty - give arg types
+  int32_t queue_is_empty();
+../Core/Inc/queue.h(16): warning:  #1295-D: Deprecated declaration queue_size - give arg types
+  int32_t queue_size();
+../Core/Inc/queue.h(17): warning:  #1295-D: Deprecated declaration queue_clear - give arg types
+  void queue_clear();
+../Core/Inc/queue.h(27): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\queue.c(67): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\queue.c: 8 warnings, 0 errors
+compiling AML_Switch.c...
+compiling AML_PID.c...
+compiling AML_Encoder.c...
+compiling AML_IRSensor.c...
+..\Core\Src\AML_IRSensor.c(22): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern debug[100];
+..\Core\Src\AML_IRSensor.c(51): warning:  #223-D: function "memset" declared implicitly
+      memset(IRSensorADCValue, 0, sizeof(IRSensorADCValue));
+..\Core\Src\AML_IRSensor.c: 2 warnings, 0 errors
+compiling main.c...
+compiling AML_MotorControl.c...
+..\Core\Src\AML_MotorControl.c(3): warning:  #260-D: explicit type is missing ("int" assumed)
+  extern debug[100];
+..\Core\Src\AML_MotorControl.c(265): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN2_Pin, !LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(270): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, LEFT_MOTOR_IN1_Pin, !LeftMotorDirection);
+..\Core\Src\AML_MotorControl.c(297): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(298): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, !RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(303): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN1_Pin, !RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(304): warning:  #188-D: enumerated type mixed with another type
+          HAL_GPIO_WritePin(MotorDirectionPort, RIGHT_MOTOR_IN2_Pin, RightMotorDirection);
+..\Core\Src\AML_MotorControl.c(339): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
+      int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+..\Core\Src\AML_MotorControl.c(342): warning:  #223-D: function "AML_Encoder_ResetLeftValue" declared implicitly
+      AML_Encoder_ResetLeftValue();
+..\Core\Src\AML_MotorControl.c(353): warning:  #223-D: function "AML_Encoder_GetRightValue" declared implicitly
+      int32_t CurrentRightEncoder = AML_Encoder_GetRightValue();
+..\Core\Src\AML_MotorControl.c(496): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
+      int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+..\Core\Src\AML_MotorControl.c(510): warning:  #223-D: function "AML_Encoder_GetLeftValue" declared implicitly
+      int32_t CurrentLeftEncoder = AML_Encoder_GetLeftValue();
+..\Core\Src\AML_MotorControl.c: 12 warnings, 0 errors
+compiling solver.c...
+../Core/Inc/queue.h(11): warning:  #1295-D: Deprecated declaration queue_reset - give arg types
+  void queue_reset();
+../Core/Inc/queue.h(13): warning:  #1295-D: Deprecated declaration queue_pop - give arg types
+  int32_t queue_pop();
+../Core/Inc/queue.h(14): warning:  #1295-D: Deprecated declaration queue_first - give arg types
+  int32_t queue_first();
+../Core/Inc/queue.h(15): warning:  #1295-D: Deprecated declaration queue_is_empty - give arg types
+  int32_t queue_is_empty();
+../Core/Inc/queue.h(16): warning:  #1295-D: Deprecated declaration queue_size - give arg types
+  int32_t queue_size();
+../Core/Inc/queue.h(17): warning:  #1295-D: Deprecated declaration queue_clear - give arg types
+  void queue_clear();
+../Core/Inc/queue.h(27): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\solver.c(215): warning:  #188-D: enumerated type mixed with another type
+      heading = direction;
+..\Core\Src\solver.c: 8 warnings, 0 errors
+linking...
+Program Size: Code=33750 RO-data=906 RW-data=1036 ZI-data=3004  
+FromELF: creating hex file...
+"PCB_AIO_V2_CODE\PCB_AIO_V2_CODE.axf" - 0 Error(s), 30 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32H7xx_DFP.2.5.0.pack
+                Keil.STM32H7xx_DFP.2.5.0
+                STMicroelectronics STM32H7 Series Device Support and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_PCB_AIO_V2_CODE
+  D:\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  D:\Keil\STM32H7xx_DFP\2.5.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

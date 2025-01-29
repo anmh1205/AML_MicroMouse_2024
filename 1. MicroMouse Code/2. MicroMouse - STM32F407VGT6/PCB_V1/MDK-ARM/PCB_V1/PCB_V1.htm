@@ -3,7 +3,7 @@
 <title>Static Call Graph - [PCB_V1\PCB_V1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image PCB_V1\PCB_V1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Jan 18 00:26:26 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Jan 18 01:01:56 2025
 <BR><P>
 <H3>Maximum Stack Usage =        884 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1548,6 +1548,7 @@ Global Symbols
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Compute
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AML_PID_Compute
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnTXEFlagUntilTimeout
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnRXNEFlagUntilTimeout
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnMasterAddressFlagUntilTimeout
@@ -1555,7 +1556,6 @@ Global Symbols
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_WaitOnBTFFlagUntilTimeout
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Transmit
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Master_Receive
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 
@@ -2547,7 +2547,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_StaticInit
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_StartMeasurement
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_device_read_strobe
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_ref_calibration_io
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_sequence_step_timeout
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_vcsel_pulse_period
@@ -2560,6 +2559,7 @@ Global Symbols
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetInterruptMaskStatus
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetFractionEnable
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_ClearInterruptMask
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_device_read_strobe
 </UL>
 
 <P><STRONG><a name="[181]"></a>VL53L0X_RdDWord</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, vl53l0x_platform.o(i.VL53L0X_RdDWord))
@@ -2728,7 +2728,6 @@ Global Symbols
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_StartMeasurement
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_SetDeviceAddress
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_DataInit
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_device_read_strobe
 <LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;perform_ref_signal_measurement
 <LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_ref_calibration_io
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_perform_vhv_calibration
@@ -2746,6 +2745,7 @@ Global Symbols
 <LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_SetGpioConfig
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_ClearInterruptMask
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_CheckAndLoadInterruptSettings
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_device_read_strobe
 </UL>
 
 <P><STRONG><a name="[198]"></a>VL53L0X_WrWord</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, vl53l0x_platform.o(i.VL53L0X_WrWord))
@@ -2786,11 +2786,11 @@ Global Symbols
 <P><STRONG><a name="[1a2]"></a>VL53L0X_calc_sigma_estimate</STRONG> (Thumb, 674 bytes, Stack size 208 bytes, vl53l0x_api_core.o(i.VL53L0X_calc_sigma_estimate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 324<LI>Call Chain = VL53L0X_calc_sigma_estimate &rArr; VL53L0X_calc_dmax
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_isqrt
+<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_total_signal_rate
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_isqrt
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_total_xtalk_rate
 <LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_timeout_mclks
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_dmax
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_total_signal_rate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_pal_range_status
 </UL>
@@ -2800,8 +2800,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_macro_period_ps
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_sigma_estimate
-<LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_sequence_step_timeout
+<BR>[Called By]<UL><LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_sequence_step_timeout
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_sigma_estimate
 </UL>
 
 <P><STRONG><a name="[1a7]"></a>VL53L0X_calc_timeout_us</STRONG> (Thumb, 54 bytes, Stack size 28 bytes, vl53l0x_api_core.o(i.VL53L0X_calc_timeout_us))
@@ -2843,11 +2843,11 @@ Global Symbols
 <P><STRONG><a name="[19c]"></a>VL53L0X_get_info_from_device</STRONG> (Thumb, 1354 bytes, Stack size 112 bytes, vl53l0x_api_core.o(i.VL53L0X_get_info_from_device))
 <BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = VL53L0X_get_info_from_device &rArr; VL53L0X_device_read_strobe &rArr; VL53L0X_RdByte &rArr; _I2CWrite &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_PollingDelay
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_device_read_strobe
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrByte
+<BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrByte
 <LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdDWord
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdByte
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_PollingDelay
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_device_read_strobe
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_StaticInit
@@ -2873,11 +2873,11 @@ Global Symbols
 <P><STRONG><a name="[187]"></a>VL53L0X_get_pal_range_status</STRONG> (Thumb, 564 bytes, Stack size 112 bytes, vl53l0x_api_core.o(i.VL53L0X_get_pal_range_status))
 <BR><BR>[Stack]<UL><LI>Max Depth = 436<LI>Call Chain = VL53L0X_get_pal_range_status &rArr; VL53L0X_calc_sigma_estimate &rArr; VL53L0X_calc_dmax
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_sigma_estimate
-<LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrByte
+<BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrByte
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdWord
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetLimitCheckValue
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetLimitCheckEnable
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_sigma_estimate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetRangingMeasurementData
 </UL>
@@ -2895,15 +2895,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetXTalkCompensationEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_sigma_estimate
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_total_signal_rate
+<BR>[Called By]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_get_total_signal_rate
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_sigma_estimate
 </UL>
 
 <P><STRONG><a name="[18d]"></a>VL53L0X_get_vcsel_pulse_period</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, vl53l0x_api_core.o(i.VL53L0X_get_vcsel_pulse_period))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = VL53L0X_get_vcsel_pulse_period &rArr; VL53L0X_RdByte &rArr; _I2CWrite &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_decode_vcsel_period
-<LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdByte
+<BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdByte
+<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_decode_vcsel_period
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetVcselPulsePeriod
 </UL>
@@ -2925,8 +2925,8 @@ Global Symbols
 <P><STRONG><a name="[191]"></a>VL53L0X_measurement_poll_for_completion</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, vl53l0x_api_core.o(i.VL53L0X_measurement_poll_for_completion))
 <BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = VL53L0X_measurement_poll_for_completion &rArr; VL53L0X_GetMeasurementDataReady &rArr; VL53L0X_GetInterruptMaskStatus &rArr; VL53L0X_RdByte &rArr; _I2CWrite &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_PollingDelay
-<LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetMeasurementDataReady
+<BR>[Calls]<UL><LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetMeasurementDataReady
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_PollingDelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_perform_single_ref_calibration
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_PerformSingleMeasurement
@@ -3027,11 +3027,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 416<LI>Call Chain = VL53L0X_set_vcsel_pulse_period &rArr; VL53L0X_SetMeasurementTimingBudgetMicroSeconds &rArr; VL53L0X_set_measurement_timing_budget_micro_seconds &rArr; get_sequence_step_timeout &rArr; VL53L0X_GetVcselPulsePeriod &rArr; VL53L0X_get_vcsel_pulse_period &rArr; VL53L0X_RdByte &rArr; _I2CWrite &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_SetMeasurementTimingBudgetMicroSeconds
-<LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_encode_vcsel_period
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_perform_phase_calibration
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_sequence_step_timeout
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_sequence_step_timeout
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrByte
+<LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_encode_vcsel_period
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_SetVcselPulsePeriod
 </UL>
@@ -3221,12 +3221,12 @@ Global Symbols
 <P><STRONG><a name="[18b]"></a>get_sequence_step_timeout</STRONG> (Thumb, 290 bytes, Stack size 64 bytes, vl53l0x_api_core.o(i.get_sequence_step_timeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = get_sequence_step_timeout &rArr; VL53L0X_GetVcselPulsePeriod &rArr; VL53L0X_get_vcsel_pulse_period &rArr; VL53L0X_RdByte &rArr; _I2CWrite &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_decode_timeout
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_timeout_us
-<LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdWord
+<BR>[Calls]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdWord
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdByte
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetVcselPulsePeriod
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetSequenceStepEnables
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_decode_timeout
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_timeout_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_set_vcsel_pulse_period
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_set_measurement_timing_budget_micro_seconds
@@ -3407,14 +3407,14 @@ Global Symbols
 <P><STRONG><a name="[1b6]"></a>set_sequence_step_timeout</STRONG> (Thumb, 314 bytes, Stack size 56 bytes, vl53l0x_api_core.o(i.set_sequence_step_timeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = set_sequence_step_timeout &rArr; VL53L0X_GetVcselPulsePeriod &rArr; VL53L0X_get_vcsel_pulse_period &rArr; VL53L0X_RdByte &rArr; _I2CWrite &rArr; HAL_I2C_Master_Transmit &rArr; I2C_MasterRequestWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_encode_timeout
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_decode_timeout
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_timeout_mclks
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrWord
+<BR>[Calls]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrWord
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_WrByte
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_RdWord
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetVcselPulsePeriod
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_GetSequenceStepEnables
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_encode_timeout
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_decode_timeout
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_calc_timeout_mclks
 </UL>
 <BR>[Called By]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_set_vcsel_pulse_period
 <LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VL53L0X_set_measurement_timing_budget_micro_seconds

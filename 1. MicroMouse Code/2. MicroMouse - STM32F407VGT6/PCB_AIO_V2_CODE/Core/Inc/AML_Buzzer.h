@@ -11,4 +11,3 @@ void AML_Buzzer_PlayNote(float frequency, uint16_t duration);
 void AML_Buzzer_Beep(void);
 
 #endif
-

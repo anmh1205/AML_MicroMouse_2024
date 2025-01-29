@@ -17,7 +17,7 @@
 rule ASM_COMPILER__PCB_AIO_V2_CODE_unscanned_Release
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\ST\STM32CubeCLT_1.16.0\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}D:\STM32CubeCLT_1.15.0\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building ASM object $out
 
 
@@ -27,7 +27,7 @@ rule ASM_COMPILER__PCB_AIO_V2_CODE_unscanned_Release
 rule C_COMPILER__PCB_AIO_V2_CODE_unscanned_Release
   depfile = $DEP_FILE
   deps = gcc
-  command = ${LAUNCHER}${CODE_CHECK}C:\ST\STM32CubeCLT_1.16.0\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = ${LAUNCHER}${CODE_CHECK}D:\STM32CubeCLT_1.15.0\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building C object $out
 
 
@@ -35,7 +35,7 @@ rule C_COMPILER__PCB_AIO_V2_CODE_unscanned_Release
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__PCB_AIO_V2_CODE_Release
-  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && C:\ST\STM32CubeCLT_1.16.0\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe $FLAGS -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard  -T "E:/1. Phenikaa University/AML/0. Project/7. MicroMouse_2024/1. MicroMouse Code/2. MicroMouse - STM32F407VGT6/PCB_AIO_V2_CODE/STM32H743VITx_FLASH.ld" --specs=nano.specs -Wl,-Map=PCB_AIO_V2_CODE.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && D:\STM32CubeCLT_1.15.0\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe $FLAGS -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard  -T "E:/1. Phenikaa University/AML/0. Project/7. MicroMouse_2024/1. MicroMouse Code/2. MicroMouse - STM32F407VGT6/PCB_AIO_V2_CODE/STM32H743VITx_FLASH.ld" --specs=nano.specs -Wl,-Map=PCB_AIO_V2_CODE.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
 
@@ -61,7 +61,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = C:\ST\STM32CubeCLT_1.16.0\Ninja\bin\ninja.exe $FILE_ARG -t clean $TARGETS
+  command = D:\STM32CubeCLT_1.15.0\Ninja\bin\ninja.exe $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -69,6 +69,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = C:\ST\STM32CubeCLT_1.16.0\Ninja\bin\ninja.exe -t targets
+  command = D:\STM32CubeCLT_1.15.0\Ninja\bin\ninja.exe -t targets
   description = All primary targets available:
 
