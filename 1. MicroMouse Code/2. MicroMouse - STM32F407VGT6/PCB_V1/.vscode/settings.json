@@ -38,10 +38,7 @@
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.includeSearch": [
-    "*",
-    "**/*"
-  ],
+  "C_Cpp_Runner.includeSearch": ["*", "**/*"],
   "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
@@ -58,10 +55,15 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "cortex-debug.armToolchainPath": "C:\\MAKE\\TEST\\GCC-ARM-NONE-EABI-9-2019-Q4-MAJOR-WIN32\\BIN",
   "files.associations": {
+    "*.sqlbook": "sql",
+    "*.ndjson": "jsonl",
     "*.dbclient-js": "javascript",
     "*.embeddedhtml": "html",
     "aml_pid.h": "c",
     "solver.h": "c",
-    "aml_mpusensor.h": "c"
+    "aml_mpusensor.h": "c",
+    "aml_lasersensor.h": "c",
+    "aml_motorcontrol.h": "c",
+    "aml_debugdevice.h": "c"
   }
 }

@@ -42,7 +42,7 @@
 #define TransmissionRatio 1      // ratio between wheel and encoder
 #define EncoderPulsePerRound 140 // 1420 pulse per round encoder
 #define MouseSpeed 40            // % of duty cycle
-#define MouseTurnSpeed 60        // % of duty cycle
+#define MouseTurnSpeed 75        // % of duty cycle
 
 // define parameter for PID control
 #define SampleTime 20            // time (ms) for each sample
@@ -54,8 +54,8 @@
 #define PIDSpeedOutputMax 50 // maximum output of PID (duty cycle)
 
 // define parameter for turn left and right
-#define TuneLeft90Angle 94 // degree
-#define TuneRight90Angle 94
+#define TuneLeft90Angle 90 // degree
+#define TuneRight90Angle 90
 #define TuneLeft180Angle 180
 #define TuneRight180Angle 180
 #define ErrorAngle 3 // degree
@@ -65,11 +65,11 @@
 // competition maze parameters
 #define TICKS_ONE_CELL 350 // EncoderPulsePerRound * (180 / (WheelDiameter * Pi))    // 1 cell = 180 mm
 
-#define WALL_DISTANCE_SETPOINT 63
+#define WALL_DISTANCE_SETPOINT 43
 
-#define WALL_IN_FRONT 125       // 47
-#define WALL_IN_LEFT 80         // 121
-#define WALL_IN_RIGHT 80        // 100
+#define WALL_IN_FRONT 160       // 47
+#define WALL_IN_LEFT 100         // 121
+#define WALL_IN_RIGHT 100        // 100
 #define WALL_IN_FRONT_LEFT 130  // 60
 #define WALL_IN_FRONT_RIGHT 130 // 50
 
@@ -92,4 +92,14 @@
 
 //-------------------------------------------------------------------------------------------------------//
 
+struct Robot
+{
+    double YawAngle;
+
+    int8_t CalibFlag;
+};
+
+extern struct Robot Mouse;
+
 #endif
+

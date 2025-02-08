@@ -45,6 +45,7 @@ void AML_MotorControl_TurnOnWallFollow(void);
 void AML_MotorControl_TurnOffWallFollow(void);
 
 void AML_MotorControl_AdvanceTicks(int16_t ticks);
+void AML_MotorControl_MoveForward(int16_t distance, uint8_t speed);
 void AML_MotorControl_TurnLeft90(void);
 void AML_MotorControl_TurnRight90(void);
 void AML_MotorControl_TurnLeft180(void);

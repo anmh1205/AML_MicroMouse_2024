@@ -2,7 +2,6 @@
 
 struct _queue squares_queue;
 
-
 void queue_reset()
 {
     for (int i = 0; i < 256; i++)

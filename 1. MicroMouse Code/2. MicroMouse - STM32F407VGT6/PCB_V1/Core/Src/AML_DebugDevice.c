@@ -56,6 +56,12 @@ void AML_DebugDevice_ToggleAllLED()
     }
 }
 
+void AML_DebugDevice_SetOnlyOneLED(COLOR color)
+{
+    AML_DebugDevice_SetAllLED(GPIO_PIN_RESET);
+    AML_DebugDevice_SetLED(color, GPIO_PIN_SET);
+}
+
 void AML_DebugDevice_Handle()
 {
     // if (LedIndexFlag)

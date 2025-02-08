@@ -19,8 +19,6 @@ GPIO_TypeDef *MotorDirectionPort = GPIOE;
 #define LOW_PASS_FILTER(x, y) ((x) * LOW_PASS_FILTER_ALPHA + (y) * (1 - LOW_PASS_FILTER_ALPHA))
 
 // PID struct-------------------------------------------------------------------------------------------------------//
-bool ModeCalibrateByBackWall = true;
-
 
 double TempSetpoint = 0;
 
@@ -74,9 +72,9 @@ AML_PID_Struct PID_RightMotor =
 
 AML_PID_Struct PID_TurnLeft =
     {
-        .Kp = 1.25,
-        .Ki = 1.5,
-        .Kd = 0.85,
+        .Kp = 1.05,
+        .Ki = 2.5,
+        .Kd = 0.9,
         .tau = 0,
         .limMin = -MouseTurnSpeed,
         .limMax = MouseTurnSpeed,
@@ -95,9 +93,9 @@ AML_PID_Struct PID_TurnLeft =
 
 AML_PID_Struct PID_TurnRight =
     {
-        .Kp = 1.15,
-        .Ki = 1.5,
-        .Kd = 0.85,
+        .Kp = 1.1,
+        .Ki = 2.5,
+        .Kd = 0.9,
         .tau = 0,
         .limMin = -MouseTurnSpeed,
         .limMax = MouseTurnSpeed,
@@ -116,9 +114,9 @@ AML_PID_Struct PID_TurnRight =
 
 AML_PID_Struct PID_MPUFollow =
     {
-        .Kp = 1.6,
-        .Ki = 0.5,
-        .Kd = 0.7,
+        .Kp = 1.3,
+        .Ki = 0.4,
+        .Kd = 0.5,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -137,9 +135,9 @@ AML_PID_Struct PID_MPUFollow =
 
 AML_PID_Struct PID_LeftWallFollow =
     {
-        .Kp = 0.45,
+        .Kp = 0.60,
         .Ki = 0.04,
-        .Kd = 0.08,
+        .Kd = 0.1,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -158,9 +156,9 @@ AML_PID_Struct PID_LeftWallFollow =
 
 AML_PID_Struct PID_RightWallFollow =
     {
-        .Kp = 0.45,
+        .Kp = 0.60,
         .Ki = 0.04,
-        .Kd = 0.08,
+        .Kd = 0.1,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -177,11 +175,13 @@ AML_PID_Struct PID_RightWallFollow =
         .Setpoint = 0,
 };
 
+bool ModeCalibrateByBackWall = false;
+
 AML_PID_Struct PID_CalibrateByBackWall =
     {
         .Kp = 3.5,
         .Ki = 0,
-        .Kd = 0.1,
+        .Kd = 0,
         .tau = 0,
         .limMin = -MouseSpeed,
         .limMax = MouseSpeed,
@@ -200,8 +200,7 @@ AML_PID_Struct PID_CalibrateByBackWall =
 };
 
 // FUNCTION-----------------------------------------------------------------------------------------------------------------//
-void
-AML_MotorControl_AMLPIDSetup(void);
+void AML_MotorControl_AMLPIDSetup(void);
 void AML_MotorControl_Setup(void);
 void AML_MotorControl_LeftPWM(int32_t DutyCycle);
 void AML_MotorControl_RightPWM(int32_t DutyCycle);
@@ -259,6 +258,7 @@ void AML_MotorControl_TurnOffWallFollow(void)
 // PID setup function-------------------------------------------------------------------------------------------------------//
 void AML_MotorControl_AMLPIDSetup(void)
 {
+
 }
 
 // Motor control function-------------------------------------------------------------------------------------------------------//
@@ -424,6 +424,8 @@ void AML_MotorControl_GoStraight(void)
 {
     if (AML_IRSensor_IsLeftWall())
     {
+        AML_LedDebug_SetOnlyOneLED(RED);
+
         AML_MotorControl_LeftWallFollow();
 
         // TempSetpoint = -PID_LeftWallFollow.Output;
@@ -432,6 +434,8 @@ void AML_MotorControl_GoStraight(void)
     }
     else if (AML_IRSensor_IsRightWall())
     {
+        AML_LedDebug_SetOnlyOneLED(GREEN);
+
         AML_MotorControl_RightWallFollow();
 
         // TempSetpoint = PID_RightWallFollow.Output;
@@ -440,6 +444,8 @@ void AML_MotorControl_GoStraight(void)
     }
     else
     {
+        AML_LedDebug_SetOnlyOneLED(BLUE);
+
         AML_MotorControl_GoStraghtWithMPU(TempSetpoint);
     }
 }
@@ -453,7 +459,7 @@ void AML_MotorControl_CalibrateByBackWall(void)
 
     // AML_MotorControl_Move(-(int32_t)PID_CalibrateByBackWall.Output, (int32_t)PID_CalibrateByBackWall.Output);
 
-    AML_LedDebug_SetLED(RED, GPIO_PIN_SET);
+    // AML_LedDebug_SetLED(RED, GPIO_PIN_SET);
 
     uint16_t WaitingTime = 700;
 
@@ -469,7 +475,7 @@ void AML_MotorControl_CalibrateByBackWall(void)
 
         AML_MotorControl_Move(-(int32_t)PID_CalibrateByBackWall.Output, (int32_t)PID_CalibrateByBackWall.Output);
 
-        if (ABS(PID_CalibrateByBackWall.Input) < 2)
+        if (ABS(PID_CalibrateByBackWall.Input) < 3)
         {
             CurrentTime = HAL_GetTick();
         }
@@ -480,7 +486,7 @@ void AML_MotorControl_CalibrateByBackWall(void)
         }
     }
     
-    AML_LedDebug_SetLED(RED, GPIO_PIN_SET);
+    // AML_LedDebug_SetLED(RED, GPIO_PIN_SET);
 }
 
 void AML_MotorControl_TurnLeft(void)
@@ -501,12 +507,13 @@ void AML_MotorControl_TurnLeft(void)
     HAL_Delay(150);
 
     uint16_t WaitingTime = 1500;
+    uint16_t CalibTime = 650;
 
     uint32_t InitTime = HAL_GetTick();
     uint32_t CurrentTime = HAL_GetTick();
     uint32_t PreviousTime = CurrentTime;
 
-    while ((CurrentTime - PreviousTime) < 350 && (HAL_GetTick() - InitTime < WaitingTime))
+    while ((CurrentTime - PreviousTime) < CalibTime && (HAL_GetTick() - InitTime < WaitingTime))
     {
         PID_TurnLeft.Input = AML_MPUSensor_GetAngle();
 
@@ -526,6 +533,7 @@ void AML_MotorControl_TurnLeft(void)
         }
     }
 
+    // Mouse.YawAngle += TuneLeft90Angle;
 
     if (CalibrateFlag)
     {
@@ -555,12 +563,13 @@ void AML_MotorControl_TurnRight(void)
     HAL_Delay(150);
 
     uint16_t WaitingTime = 1500;
+    uint16_t CalibTime = 650;
 
     uint32_t InitTime = HAL_GetTick();
     uint32_t CurrentTime = HAL_GetTick();
     uint32_t PreviousTime = CurrentTime;
 
-    while ((CurrentTime - PreviousTime) < 350 && (HAL_GetTick() - InitTime < WaitingTime))
+    while ((CurrentTime - PreviousTime) < CalibTime && (HAL_GetTick() - InitTime < WaitingTime))
     {
         PID_TurnRight.Input = AML_MPUSensor_GetAngle();
 

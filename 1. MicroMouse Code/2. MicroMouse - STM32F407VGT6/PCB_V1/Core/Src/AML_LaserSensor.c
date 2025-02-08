@@ -291,7 +291,6 @@ void AML_LaserSensor_TestLaser(void)
     }
 }
 
-
 uint8_t AML_LaserSensor_IsLeftWall()
 {
     return AML_LaserSensor_ReadSingleWithFillter(BL) < WALL_IN_LEFT;

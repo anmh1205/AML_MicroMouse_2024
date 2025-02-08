@@ -19,7 +19,7 @@
 #define CHECK_WALL_LEFT AML_LaserSensor_IsLeftWall()
 #define CHECK_WALL_RIGHT AML_LaserSensor_IsRightWall()
 // #define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(MAZE_ENCODER_TICKS_ONE_CELL)
-#define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(1000)
+#define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(1350)
 #define TURN_LEFT_FUNCTION AML_MotorControl_TurnLeft90()
 #define TURN_RIGHT_FUNCTION AML_MotorControl_TurnRight90()
 #endif
@@ -38,23 +38,23 @@ int8_t change_index = 0;   // "boolean" that stores whether the mouse should run
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 void setPriorityHeading(int32_t direction);
-void initialize();
-void updateMaze();
+void initialize(void);
+void updateMaze(void);
 void updatePosition(Action nextAction);
 void updateHeading(Action nextAction);
-void updateDistances();
-void resetDistances();
+void updateDistances(void);
+void resetDistances(void);
 void setPosition(int32_t x, int32_t y, int32_t direction);
 int32_t xyToSquare(int32_t x, int32_t y);
 struct Coordinate squareToCoord(int32_t square);
 int32_t isWallInDirection(int32_t x, int32_t y, Heading direction);
-Action solver();
-Action fastRunSolver();
-Action floodFill();
+Action solver(void);
+Action fastRunSolver(void);
+Action floodFill(void);
 Action floodFillPriorityNorth(void);
 void moveForwardWithVariableVelocity(int32_t steps);
-void fastRunWithVariableVelocity();
-int32_t getReachingCenter();
+void fastRunWithVariableVelocity(void);
+int32_t getReachingCenter(void);
 
 //-------------------------------------------------------------------------------------------------------------------------------//
 #if SIMULATION_BOOL
@@ -75,7 +75,7 @@ void setPriorityHeading(int32_t direction)
     priorityHeading = direction;
 }
 
-void searchRun()
+void searchRun(void)
 {
     while (getReachingCenter() == 0)
     {
@@ -102,7 +102,7 @@ void searchRun()
     }
 }
 
-void searchCenterToStart()
+void searchCenterToStart(void)
 {
     while (getReachingCenter())
     {
@@ -140,7 +140,7 @@ void searchCenterToStart()
     heading = NORTH;
 }
 
-void fastRunWithVariableVelocity()
+void fastRunWithVariableVelocity(void)
 {
     struct path
     {
@@ -215,7 +215,7 @@ void setPosition(int32_t x, int32_t y, int32_t direction)
     heading = direction;
 }
 
-void markCenterWall()
+void markCenterWall(void)
 {
     // set the walls around the center
 
@@ -298,7 +298,7 @@ void markCenterWall()
     }
 }
 
-void resetWallMaze()
+void resetWallMaze(void)
 {
     for (int8_t i = 0; i < MAZE_SIZE; ++i)
     {
@@ -312,7 +312,7 @@ void resetWallMaze()
     }
 }
 
-void initialize()
+void initialize(void)
 {
     resetWallMaze();
 
@@ -347,7 +347,7 @@ void initialize()
 /*
 Updates the maze's walls based on what the mouse can currently see
 */
-void updateMaze()
+void updateMaze(void)
 {
     int32_t x = position.x;
     int32_t y = position.y;
@@ -508,7 +508,7 @@ struct Coordinate squareToCoord(int32_t square)
     return coord;
 }
 
-void resetDistances()
+void resetDistances(void)
 {
     // initially sets all the distances to -1 (invalid distance)
     for (int8_t x = 0; x < MAZE_SIZE; x++)
@@ -565,9 +565,10 @@ int32_t isWallInDirection(int32_t x, int32_t y, Heading direction)
     return 0;
 }
 
-void updateDistances()
+void updateDistances(void)
 {
     resetDistances();
+
     queue_reset();
 
     // adds the goal squares to the queue (the middle of the maze or the starting position depending on if you've reached the center)
@@ -617,7 +618,7 @@ void updateDistances()
 #endif
 }
 
-void calculateShortestPathDistances()
+void calculateShortestPathDistances(void)
 {
     resetDistances();
 
@@ -779,7 +780,7 @@ void updatePosition(Action nextAction)
     }
 }
 
-int32_t getReachingCenter()
+int32_t getReachingCenter(void)
 {
     // if you reached the center, go back to the start
     if (!reached_center && distances[position.x][position.y] == 0)
@@ -797,7 +798,7 @@ int32_t getReachingCenter()
     return reached_center;
 }
 
-Action solver()
+Action solver(void)
 {
     updateMaze();
     updateDistances();
@@ -809,7 +810,7 @@ Action solver()
     return action;
 }
 
-Action fastRunSolver()
+Action fastRunSolver(void)
 {
     Action action = floodFill();
 
