@@ -20,24 +20,24 @@ void AML_DebugDevice_BuzzerBeep(uint16_t delay)
     HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
 }
 
-void AML_DebugDevice_TurnOnLED(COLOR color)
+void AML_DebugDevice_TurnOnLED(uint8_t number)
 {
-    HAL_GPIO_WritePin(GPIOC, Led[color], GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOC, Led[number], GPIO_PIN_SET);
 }
 
-void AML_DebugDevice_TurnOffLED(COLOR color)
+void AML_DebugDevice_TurnOffLED(uint8_t number)
 {
-    HAL_GPIO_WritePin(GPIOC, Led[color], GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOC, Led[number], GPIO_PIN_RESET);
 }
 
-void AML_DebugDevice_ToggleLED(COLOR color)
+void AML_DebugDevice_ToggleLED(uint8_t number)
 {
-    HAL_GPIO_TogglePin(GPIOC, Led[color]);
+    HAL_GPIO_TogglePin(GPIOC, Led[number]);
 }
 
-void AML_DebugDevice_SetLED(COLOR color, GPIO_PinState state)
+void AML_DebugDevice_SetLED(uint8_t number, GPIO_PinState state)
 {
-    HAL_GPIO_WritePin(GPIOC, Led[color], state);
+    HAL_GPIO_WritePin(GPIOC, Led[number], state);
 }
 
 void AML_DebugDevice_SetAllLED(GPIO_PinState state)
@@ -48,7 +48,7 @@ void AML_DebugDevice_SetAllLED(GPIO_PinState state)
     }
 }
 
-void AML_DebugDevice_ToggleAllLED()
+void AML_DebugDevice_ToggleAllLED(void)
 {
     for (uint8_t i = 0; i < 8; i++)
     {
@@ -56,10 +56,10 @@ void AML_DebugDevice_ToggleAllLED()
     }
 }
 
-void AML_DebugDevice_SetOnlyOneLED(COLOR color)
+void AML_DebugDevice_SetOnlyOneLED(uint8_t number)
 {
     AML_DebugDevice_SetAllLED(GPIO_PIN_RESET);
-    AML_DebugDevice_SetLED(color, GPIO_PIN_SET);
+    AML_DebugDevice_SetLED(number, GPIO_PIN_SET);
 }
 
 void AML_DebugDevice_Handle()

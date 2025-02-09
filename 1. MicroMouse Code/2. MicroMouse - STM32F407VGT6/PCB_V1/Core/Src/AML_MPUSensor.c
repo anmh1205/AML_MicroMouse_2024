@@ -5,12 +5,12 @@ uint8_t ResetCommand[] = {0xFF, 0xAA, 0x52};
 extern UART_HandleTypeDef huart3;
 // extern DMA_HandleTypeDef hdma_usart3_rx;
 
-volatile uint8_t MPUData[36];
-volatile uint8_t buffer = 119;
+uint8_t MPUData[36];
+uint8_t buffer = 119;
 // volatile uint8_t index = 0;
 // extern int16_t debug[100];
 volatile double Angle, PreviousAngle = 0, SaveAngle = 0;
-volatile uint8_t error = 0;
+uint8_t error = 0;
 
 void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart)
 {

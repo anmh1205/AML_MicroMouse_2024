@@ -131,10 +131,10 @@ void TestMode(void);
 void RemarkMode(void);
 
 void Run(int);
-void ShortestPath();
-void RunMode();
+void ShortestPath(void);
+void RunMode(void);
 
-void RunNewAlgorithm();
+void RunNewAlgorithm(void);
 
 /* USER CODE END PFP */
 
@@ -823,7 +823,7 @@ void TestMotor(void)
   AML_Encoder_ResetRightValue();
 }
 
-void TestMPU()
+void TestMPU(void)
 {
   AML_DebugDevice_SetAllLED(GPIO_PIN_SET);
 
@@ -848,7 +848,7 @@ void TestMPU()
   AML_DebugDevice_SetAllLED(GPIO_PIN_RESET);
 }
 
-void TestTurning()
+void TestTurning(void)
 {
   RemarkAfterTurnMode = 1;
 
@@ -875,7 +875,7 @@ void TestTurning()
   RemarkAfterTurnMode = 0;
 }
 
-void EncoderTest()
+void EncoderTest(void)
 {
   AML_MotorControl_TurnOnWallFollow();
 
@@ -891,7 +891,7 @@ void EncoderTest()
   HAL_Delay(1500);
 }
 
-void TestMPUFollow()
+void TestMPUFollow(void)
 {
   AML_MPUSensor_ResetAngle();
 
@@ -910,29 +910,29 @@ void SystemTest(void)
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-void TurnOnRemarkAfterTurn()
+void TurnOnRemarkAfterTurn(void)
 {
   RemarkAfterTurnMode = 1;
 }
 
-void TurnOffRemarkAfterTurn()
+void TurnOffRemarkAfterTurn(void)
 {
   RemarkAfterTurnMode = 0;
 }
 
-void TurnOnRemarkWall()
+void TurnOnRemarkWall(void)
 {
   RemarkWallMode = 1;
 }
 
-void TurnOffRemarkWall()
+void TurnOffRemarkWall(void)
 {
   RemarkWallMode = 0;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-void SetTicks()
+void SetTicks(void)
 {
   HAL_Delay(300);
 
@@ -988,7 +988,7 @@ void SetTicks()
   }
 }
 
-void TestMode()
+void TestMode(void)
 {
 
   AML_DebugDevice_SetAllLED(GPIO_PIN_SET);
@@ -1021,7 +1021,7 @@ void TestMode()
   }
 }
 
-void RemarkMode()
+void RemarkMode(void)
 {
   HAL_Delay(300);
 
@@ -1310,7 +1310,7 @@ void Run(int InitDirection)
   // // HAL_Delay(3000);
 }
 
-void ShortestPath()
+void ShortestPath(void)
 {
   // for (int i = 0; i < 5; i++)
   // {
@@ -1346,7 +1346,7 @@ void ShortestPath()
   // return;
 }
 
-void RunMode()
+void RunMode(void)
 {
 
   // AML_DebugDevice_BuzzerBeep(20);
@@ -1385,7 +1385,7 @@ void RunMode()
   // }
 }
 
-void RunNewAlgorithm()
+void RunNewAlgorithm(void)
 {
   // debug_log("Running...");
 

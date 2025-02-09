@@ -10,11 +10,11 @@
 typedef struct _queue *queue;
 void queue_reset();
 void queue_push(int32_t elem);
-int32_t queue_pop();
-int32_t queue_first();
-int32_t queue_is_empty();
-int32_t queue_size();
-void queue_clear();
+int32_t queue_pop(void);
+int32_t queue_first(void);
+int32_t queue_is_empty(void);
+int32_t queue_size(void);
+void queue_clear(void);
 
 struct _queue
 {

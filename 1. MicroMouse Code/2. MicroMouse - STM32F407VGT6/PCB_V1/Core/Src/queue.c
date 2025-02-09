@@ -2,7 +2,7 @@
 
 struct _queue squares_queue;
 
-void queue_reset()
+void queue_reset(void)
 {
     for (int i = 0; i < 256; i++)
     {
@@ -26,7 +26,7 @@ void queue_push(int32_t elem)
     squares_queue.size++;
 }
 
-int32_t queue_pop()
+int32_t queue_pop(void)
 {
     if (squares_queue.size == 0)
     {
@@ -39,7 +39,7 @@ int32_t queue_pop()
     return elem;
 }
 
-int32_t queue_first()
+int32_t queue_first(void)
 {
     if (squares_queue.size == 0)
     {
@@ -49,17 +49,17 @@ int32_t queue_first()
     return squares_queue.data[squares_queue.head];
 }
 
-int32_t queue_is_empty()
+int32_t queue_is_empty(void)
 {
     return squares_queue.size == 0;
 }
 
-int32_t queue_size()
+int32_t queue_size(void)
 {
     return squares_queue.size;
 }
 
-void queue_clear()
+void queue_clear(void)
 {
     squares_queue.head = 0;
     squares_queue.tail = 0;

@@ -1,11 +1,15 @@
 #include "AML_LaserSensor.h"
 
+extern I2C_HandleTypeDef hi2c1;
+
 // uint8_t LaserSensorAddress[] = {0x29, 0x59, 0x60, 0x32, 0x57};
 uint8_t LaserSensorAddress[] = {0x32, 0x57, 0x60, 0x29, 0x59};
 
 SimpleKalmanFilter KalmanFilter[5];
 
-extern I2C_HandleTypeDef hi2c1;
+// low pass fillter for sensor distance
+#define LOW_PASS_FILTER_ALPHA 0.025
+#define LOW_PASS_FILTER(x, y) ((x) * LOW_PASS_FILTER_ALPHA + (y) * (1 - LOW_PASS_FILTER_ALPHA))
 
 VL53L0X_RangingMeasurementData_t SensorValue[7];
 VL53L0X_Dev_t Dev_Val[7];
@@ -144,8 +148,6 @@ void AML_LaserSensor_ReadAll(void)
     /*
         NOT USE FOR LOOP BECAUSE PERFORMANCE ISSUE
     */
-
-
     uint8_t i = 0;
 
     VL53L0X_GetRangingMeasurementData(Laser[i], &SensorValue[i]);
@@ -220,18 +222,6 @@ int32_t AML_LaserSensor_ReadSingleWithoutFillter(uint8_t name)
     }
 }
 
-uint8_t AML_LaserSensor_WallFavor(void)
-{
-    if (AML_LaserSensor_ReadSingleWithoutFillter(FL < LEFT_WALL)) // North
-        return 0;
-    else if (AML_LaserSensor_ReadSingleWithoutFillter(FF < 100)) // East
-        return 1;
-    else if (AML_LaserSensor_ReadSingleWithoutFillter(FR < 100)) // South
-        return 2;
-    else if (AML_LaserSensor_ReadSingleWithoutFillter(BR < 100)) // West
-        return 3;
-}
-
 void AML_LaserSensor_TestLaser(void)
 {
     int32_t t0 = AML_LaserSensor_ReadSingleWithoutFillter(FL);
@@ -291,17 +281,17 @@ void AML_LaserSensor_TestLaser(void)
     }
 }
 
-uint8_t AML_LaserSensor_IsLeftWall()
+uint8_t AML_LaserSensor_IsLeftWall(void)
 {
     return AML_LaserSensor_ReadSingleWithFillter(BL) < WALL_IN_LEFT;
 }
 
-uint8_t AML_LaserSensor_IsFrontWall()
+uint8_t AML_LaserSensor_IsFrontWall(void)
 {
     return AML_LaserSensor_ReadSingleWithFillter(FF) < WALL_IN_FRONT;
 }
 
-uint8_t AML_LaserSensor_IsRightWall()
+uint8_t AML_LaserSensor_IsRightWall(void)
 {
     return AML_LaserSensor_ReadSingleWithFillter(BR) < WALL_IN_RIGHT;
 }

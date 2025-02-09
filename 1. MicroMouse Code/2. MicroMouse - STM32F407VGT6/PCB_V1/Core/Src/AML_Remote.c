@@ -3,9 +3,9 @@
 extern UART_HandleTypeDef huart6;
 // extern int16_t debug[100];
 
-volatile uint8_t RemoteData[48];
-volatile uint8_t RemoteBuffer = 119;
-volatile uint8_t RemoteIndex = 0;
+uint8_t RemoteData[48];
+uint8_t RemoteBuffer = 119;
+uint8_t RemoteIndex = 0;
 uint8_t ErrorString[] = "E";
 uint8_t SuccessString[] = "S";
 

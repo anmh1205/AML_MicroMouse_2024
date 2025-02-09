@@ -37,8 +37,8 @@
 // competition maze parameters
 
 #define WALL_IN_FRONT 125       // 47
-#define WALL_IN_LEFT 105        // 121
-#define WALL_IN_RIGHT 105       // 100
+#define WALL_IN_LEFT 115        // 121
+#define WALL_IN_RIGHT 115       // 100
 #define WALL_IN_FRONT_LEFT 130  // 60
 #define WALL_IN_FRONT_RIGHT 130 // 50
 
