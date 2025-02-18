@@ -30,7 +30,7 @@ void AML_MotorControl_ResetTempSetpoint(void);
 void AML_MotorControl_SetLeftSpeed(double speed, GPIO_PinState direction);
 void AML_MotorControl_SetRightSpeed(double speed, GPIO_PinState direction);
 
-void AML_MotorControl_ShortBreak(char c);
+void AML_MotorControl_ShortBrake(char c);
 void AML_MotorControl_Stop(void);
 
 void AML_MotorControl_SetCenterPosition(void);
@@ -45,6 +45,7 @@ void AML_MotorControl_TurnOnWallFollow(void);
 void AML_MotorControl_TurnOffWallFollow(void);
 
 void AML_MotorControl_AdvanceTicks(int16_t ticks);
+void AML_MotorControl_MoveForwardOneCell(void);
 void AML_MotorControl_MoveForward(int16_t distance, uint8_t speed);
 void AML_MotorControl_TurnLeft90(void);
 void AML_MotorControl_TurnRight90(void);
@@ -58,6 +59,5 @@ void AML_MotorControl_RightStillTurn(void);
 void AML_MotorControl_BackStillTurn(void);
 
 void AML_MotorControl_MoveForward_mm(uint16_t distance);
-
 
 #endif // AML_MOTORCONTROL_H

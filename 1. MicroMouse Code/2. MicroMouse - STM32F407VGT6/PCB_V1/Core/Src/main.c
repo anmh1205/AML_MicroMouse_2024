@@ -884,7 +884,7 @@ void EncoderTest(void)
   }
 
   AML_MotorControl_TurnOffWallFollow();
-  AML_MotorControl_ShortBreak('F');
+  AML_MotorControl_ShortBrake('F');
   AML_Encoder_ResetLeftValue();
   AML_DebugDevice_BuzzerBeep(30);
 
@@ -1017,7 +1017,7 @@ void TestMode(void)
   else if (ReadButton == 3)
   {
     // advanceOneCellVisited();
-    // AML_MotorControl_ShortBreak('F');
+    // AML_MotorControl_ShortBrake('F');
   }
 }
 
@@ -1171,7 +1171,7 @@ void Run(int InitDirection)
   // advanceOneCellVisited();
   // advanceOneCellVisited();
 
-  // AML_MotorControl_ShortBreak('F');
+  // AML_MotorControl_ShortBrake('F');
 
   // for (int i = 0; i < 20; i++)
   // {
@@ -1393,7 +1393,6 @@ void RunNewAlgorithm(void)
 
   setPosition(0, 0, NORTH);
   initialize();
-
 
   // start the search
   searchRun();

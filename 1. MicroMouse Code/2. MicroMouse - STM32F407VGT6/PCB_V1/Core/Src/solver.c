@@ -19,7 +19,8 @@
 #define CHECK_WALL_LEFT AML_LaserSensor_IsLeftWall()
 #define CHECK_WALL_RIGHT AML_LaserSensor_IsRightWall()
 // #define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(MAZE_ENCODER_TICKS_ONE_CELL)
-#define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(1350)
+// #define MOVE_FORWARD_FUNCTION AML_MotorControl_AdvanceTicks(1350)
+#define MOVE_FORWARD_FUNCTION AML_MotorControl_MoveForwardOneCell()
 #define TURN_LEFT_FUNCTION AML_MotorControl_TurnLeft90()
 #define TURN_RIGHT_FUNCTION AML_MotorControl_TurnRight90()
 #endif
@@ -353,6 +354,11 @@ void updateMaze(void)
     int32_t y = position.y;
     // start by assuming there are no walls, this variable will be changed based on which walls you see
     // unsigned int walls = _0000;
+
+    if (visited[x][y])
+    {
+        return;
+    }
 
     switch (heading)
     {

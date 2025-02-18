@@ -159,7 +159,7 @@
           <Type>0</Type>
           <LineNumber>815</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134264804</Address>
+          <Address>134264524</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -236,6 +236,11 @@
           <count>12</count>
           <WinNumber>1</WinNumber>
           <ItemText>PID_MPUFollow,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>TempSetpoint</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
